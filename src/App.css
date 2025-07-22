@@ -57,7 +57,7 @@
 
 .widgets-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   flex: 1;
   width: 100%;
   gap: 1rem;
@@ -690,7 +690,7 @@ input:checked + .toggle-slider:before {
   }
 
   .widget-header {
-    padding: 0.875rem 1.25rem;
+    padding: 0.75rem 1rem;
   }
 
   .widget-content {
@@ -760,11 +760,6 @@ input:checked + .toggle-slider:before {
 
   .translation-toggle label {
     font-size: 0.8rem;
-  }
-
-  .widgets-container {
-    /* Kept same as 768px */
-    gap: 0.75rem;
   }
 
   .widget-header {
@@ -890,11 +885,13 @@ input:checked + .toggle-slider:before {
 @media (min-width: 1024px) {
   .unified-container {
     padding: 2rem;
+    max-width: 1800px;
+    margin: 0 auto;
   }
 
   .widgets-container {
-    grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
   }
 
   .app-title {
@@ -911,10 +908,6 @@ input:checked + .toggle-slider:before {
 
   .translation-toggle label {
     font-size: 1rem;
-  }
-
-  .widgets-container {
-    gap: 2rem;
   }
 
   .widget-header {

@@ -736,16 +736,34 @@ function App() {
           </div>
 
           {/* Weather Widget */}
-          {weather && !loading && (
-            <>
-              <div className="widget weather-widget">
-                <div className="widget-header">
-                  <h3>Wetter</h3>
+          <div className="widget weather-widget">
+            <div className="widget-header">
+              <h3>Wetter</h3>
+              {showTranslations && (
+                <div className="widget-header-english">Weather</div>
+              )}
+            </div>
+            <div className="widget-content">
+              {loading ? (
+                <div className="weather-loading">
+                  Wetter wird geladen...
                   {showTranslations && (
-                    <div className="widget-header-english">Weather</div>
+                    <div className="weather-loading-english">
+                      Loading weather...
+                    </div>
                   )}
                 </div>
-                <div className="widget-content">
+              ) : error ? (
+                <div className="weather-error">
+                  {error}
+                  {showTranslations && (
+                    <div className="weather-error-english">
+                      Weather data could not be loaded
+                    </div>
+                  )}
+                </div>
+              ) : (
+                weather && (
                   <div className="stats-grid">
                     <div className="stat-widget">
                       <div className="city-label-container">
@@ -821,36 +839,10 @@ function App() {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </>
-          )}
-
-          {/* Loading/Error Widget */}
-          {loading && (
-            <div className="widget loading-widget">
-              <div className="widget-content">
-                <div className="weather-loading">Wetter wird geladen...</div>
-                {showTranslations && (
-                  <div className="weather-loading-english">
-                    Loading weather...
-                  </div>
-                )}
-              </div>
+                )
+              )}
             </div>
-          )}
-          {error && (
-            <div className="widget error-widget">
-              <div className="widget-content">
-                <div className="weather-error">{error}</div>
-                {showTranslations && (
-                  <div className="weather-error-english">
-                    Weather data could not be loaded
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
+          </div>
         </div>
 
         <div className="widget settings-widget">
