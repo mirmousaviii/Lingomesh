@@ -471,11 +471,204 @@ function App() {
     return `It is ${englishDescription} at ${temp}°C`;
   };
 
+  function dateToGermanPhonetic(date) {
+    // Example: Freitag, 7. Juni 2024 => Freitag, siebter Juni zweitausendvierundzwanzig
+    const days = [
+      "Sonntag",
+      "Montag",
+      "Dienstag",
+      "Mittwoch",
+      "Donnerstag",
+      "Freitag",
+      "Samstag",
+    ];
+    const months = [
+      "Januar",
+      "Februar",
+      "März",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Dezember",
+    ];
+    const dayOfWeek = days[date.getDay()];
+    const day = date.getDate();
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+    // Convert day to ordinal (e.g., siebter for 7)
+    const ordinals = {
+      1: "erster",
+      2: "zweiter",
+      3: "dritter",
+      4: "vierter",
+      5: "fünfter",
+      6: "sechster",
+      7: "siebter",
+      8: "achter",
+      9: "neunter",
+      10: "zehnter",
+      11: "elfter",
+      12: "zwölfter",
+      13: "dreizehnter",
+      14: "vierzehnter",
+      15: "fünfzehnter",
+      16: "sechzehnter",
+      17: "siebzehnter",
+      18: "achtzehnter",
+      19: "neunzehnter",
+      20: "zwanzigster",
+      21: "einundzwanzigster",
+      22: "zweiundzwanzigster",
+      23: "dreiundzwanzigster",
+      24: "vierundzwanzigster",
+      25: "fünfundzwanzigster",
+      26: "sechsundzwanzigster",
+      27: "siebenundzwanzigster",
+      28: "achtundzwanzigster",
+      29: "neunundzwanzigster",
+      30: "dreißigster",
+      31: "einunddreißigster",
+    };
+    // Year to words (improved version)
+    function yearToGermanWords(y) {
+      const units = [
+        "",
+        "eins",
+        "zwei",
+        "drei",
+        "vier",
+        "fünf",
+        "sechs",
+        "sieben",
+        "acht",
+        "neun",
+      ];
+      const teens = [
+        "zehn",
+        "elf",
+        "zwölf",
+        "dreizehn",
+        "vierzehn",
+        "fünfzehn",
+        "sechzehn",
+        "siebzehn",
+        "achtzehn",
+        "neunzehn",
+      ];
+      const tens = [
+        "",
+        "zehn",
+        "zwanzig",
+        "dreißig",
+        "vierzig",
+        "fünfzig",
+        "sechzig",
+        "siebzig",
+        "achtzig",
+        "neunzig",
+      ];
+      function numberToGerman(n) {
+        if (n === 0) return "null";
+        if (n < 10) return units[n];
+        if (n < 20) return teens[n - 10];
+        if (n % 10 === 0) return tens[Math.floor(n / 10)];
+        return units[n % 10] + "und" + tens[Math.floor(n / 10)];
+      }
+      if (y >= 2000 && y < 2100) {
+        // 2000-2099: zweitausend...
+        if (y === 2000) return "zweitausend";
+        return "zweitausend" + (y % 100 === 0 ? "" : numberToGerman(y % 100));
+      } else if (y >= 1900 && y < 2000) {
+        // 1900-1999: neunzehnhundert...
+        if (y === 1900) return "neunzehnhundert";
+        return (
+          "neunzehnhundert" + (y % 100 === 0 ? "" : numberToGerman(y % 100))
+        );
+      } else if (y >= 1800 && y < 1900) {
+        if (y === 1800) return "achtzehnhundert";
+        return (
+          "achtzehnhundert" + (y % 100 === 0 ? "" : numberToGerman(y % 100))
+        );
+      } else if (y >= 2100 && y < 2200) {
+        if (y === 2100) return "einundzwanzighundert";
+        return (
+          "einundzwanzighundert" +
+          (y % 100 === 0 ? "" : numberToGerman(y % 100))
+        );
+      } else {
+        // fallback: just return the number
+        return y;
+      }
+    }
+    return `${dayOfWeek}, ${ordinals[day]} ${month} ${yearToGermanWords(year)}`;
+  }
+
+  function weatherToGermanPhonetic(weatherData) {
+    if (!weatherData) return "";
+    // Example: Es ist leicht bewölkt bei 18°C => Es ist leicht bewölkt bei achtzehn Grad Celsius
+    const temp = Math.round(weatherData.main.temp);
+    const description = weatherData.weather[0].description;
+    // Numbers in German (0-40)
+    const numbers = [
+      "null",
+      "eins",
+      "zwei",
+      "drei",
+      "vier",
+      "fünf",
+      "sechs",
+      "sieben",
+      "acht",
+      "neun",
+      "zehn",
+      "elf",
+      "zwölf",
+      "dreizehn",
+      "vierzehn",
+      "fünfzehn",
+      "sechzehn",
+      "siebzehn",
+      "achtzehn",
+      "neunzehn",
+      "zwanzig",
+      "einundzwanzig",
+      "zweiundzwanzig",
+      "dreiundzwanzig",
+      "vierundzwanzig",
+      "fünfundzwanzig",
+      "sechsundzwanzig",
+      "siebenundzwanzig",
+      "achtundzwanzig",
+      "neunundzwanzig",
+      "dreißig",
+      "einunddreißig",
+      "zweiunddreißig",
+      "dreiunddreißig",
+      "vierunddreißig",
+      "fünfunddreißig",
+      "sechsunddreißig",
+      "siebenunddreißig",
+      "achtunddreißig",
+      "neununddreißig",
+      "vierzig",
+    ];
+    let tempWord = temp >= 0 && temp <= 40 ? numbers[temp] : temp;
+    return `Es ist ${description} bei ${tempWord} Grad Celsius`;
+  }
+
   return (
     <div className="App">
       <div className="unified-container">
         <div className="header">
-          <div className="app-title">German Dashboard</div>
+          <div className="app-title">
+            <span className="mo-highlight">M</span>eine{" "}
+            <span className="mo-highlight">O</span>rientierung
+          </div>
           <div className="app-subtitle">
             Um Uhrzeit, Datum und Wetter auf Deutsch zu lernen.
           </div>
@@ -497,12 +690,7 @@ function App() {
             </div>
             <div className="widget-content">
               <div className="digital-time">{formatTime(currentTime)}</div>
-              <div className="german-time">{timeToGerman(currentTime)}</div>
-              {showTranslations && (
-                <div className="german-time-english">
-                  {timeToEnglish(currentTime)}
-                </div>
-              )}
+              <div className="german-phonetic">{timeToGerman(currentTime)}</div>
               <div className="time-format-controls">
                 <div className="format-buttons">
                   <button
@@ -531,96 +719,111 @@ function App() {
               )}
             </div>
             <div className="widget-content">
-              <div className="date">{formatDate(currentTime)}</div>
-              {showTranslations && (
-                <div className="date-english">
-                  {formatDateEnglish(currentTime)}
+              {showTranslations ? (
+                <div className="date-row">
+                  <div className="date">{formatDate(currentTime)}</div>
+                  <div className="date-english">
+                    {formatDateEnglish(currentTime)}
+                  </div>
                 </div>
+              ) : (
+                <div className="date">{formatDate(currentTime)}</div>
               )}
+              <div className="german-phonetic">
+                {dateToGermanPhonetic(currentTime)}
+              </div>
             </div>
           </div>
 
           {/* Weather Widget */}
           {weather && !loading && (
-            <div className="widget weather-widget">
-              <div className="widget-header">
-                <h3>Wetter</h3>
-                {showTranslations && (
-                  <div className="widget-header-english">Weather</div>
-                )}
-              </div>
-              <div className="widget-content">
-                <div className="city-selection">
-                  <div className="city-label-container">
-                    <label className="city-label">Stadt</label>
-                    {showTranslations && (
-                      <label className="city-label-english">City</label>
-                    )}
-                  </div>
-                  <select
-                    value={selectedCity}
-                    onChange={(e) => setSelectedCity(e.target.value)}
-                    className="city-select"
-                  >
-                    {germanCities.map((city) => (
-                      <option key={city} value={city}>
-                        {city}
-                      </option>
-                    ))}
-                  </select>
+            <>
+              <div className="widget weather-widget">
+                <div className="widget-header">
+                  <h3>Wetter</h3>
+                  {showTranslations && (
+                    <div className="widget-header-english">Weather</div>
+                  )}
                 </div>
-                <div className="stats-grid">
-                  <div className="stat-widget">
-                    <div className="stat-icon">🌡️</div>
-                    <div className="stat-info">
-                      <span className="stat-value">
-                        {Math.round(weather.main.temp)}°C
-                      </span>
-                      <span className="stat-label">Temperatur</span>
-                      {showTranslations && (
-                        <span className="stat-english">Temperature</span>
-                      )}
+                <div className="widget-content">
+                  <div className="stats-grid">
+                    <div className="stat-widget">
+                      <div className="city-label-container">
+                        <label className="city-label">Stadt</label>
+                        {showTranslations && (
+                          <label className="city-label-english">City</label>
+                        )}
+                      </div>
+                      <select
+                        value={selectedCity}
+                        onChange={(e) => setSelectedCity(e.target.value)}
+                        className="city-select"
+                      >
+                        {germanCities.map((city) => (
+                          <option key={city} value={city}>
+                            {city}
+                          </option>
+                        ))}
+                      </select>
                     </div>
-                  </div>
-                  <div className="stat-widget">
-                    <div className="stat-icon">🌤️</div>
-                    <div className="stat-info">
-                      <span className="stat-value">
-                        {weather.weather[0].description}
-                      </span>
-                      <span className="stat-label">Wetterlage</span>
-                      {showTranslations && (
-                        <span className="stat-english">Weather Condition</span>
-                      )}
+
+                    <div className="stat-widget german-phonetic">
+                      {weatherToGermanPhonetic(weather)}
                     </div>
-                  </div>
-                  <div className="stat-widget">
-                    <div className="stat-icon">💧</div>
-                    <div className="stat-info">
-                      <span className="stat-value">
-                        {weather.main.humidity}%
-                      </span>
-                      <span className="stat-label">Luftfeuchtigkeit</span>
-                      {showTranslations && (
-                        <span className="stat-english">Humidity</span>
-                      )}
+                    <div className="stat-widget">
+                      <div className="stat-icon">🌡️</div>
+                      <div className="stat-info">
+                        <span className="stat-value">
+                          {Math.round(weather.main.temp)}°C
+                        </span>
+                        <span className="stat-label">Temperatur</span>
+                        {showTranslations && (
+                          <span className="stat-english">Temperature</span>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <div className="stat-widget">
-                    <div className="stat-icon">💨</div>
-                    <div className="stat-info">
-                      <span className="stat-value">
-                        {Math.round(weather.wind.speed)} km/h
-                      </span>
-                      <span className="stat-label">Wind</span>
-                      {showTranslations && (
-                        <span className="stat-english">Wind Speed</span>
-                      )}
+                    <div className="stat-widget">
+                      <div className="stat-icon">🌤️</div>
+                      <div className="stat-info">
+                        <span className="stat-value">
+                          {weather.weather[0].description}
+                        </span>
+                        <span className="stat-label">Wetterlage</span>
+                        {showTranslations && (
+                          <span className="stat-english">
+                            Weather Condition
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="stat-widget">
+                      <div className="stat-icon">💧</div>
+                      <div className="stat-info">
+                        <span className="stat-value">
+                          {weather.main.humidity}%
+                        </span>
+                        <span className="stat-label">Luftfeuchtigkeit</span>
+                        {showTranslations && (
+                          <span className="stat-english">Humidity</span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="stat-widget">
+                      <div className="stat-icon">💨</div>
+                      <div className="stat-info">
+                        <span className="stat-value">
+                          {Math.round(weather.wind.speed)} km/h
+                        </span>
+                        <span className="stat-label">Wind</span>
+                        {showTranslations && (
+                          <span className="stat-english">Wind Speed</span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </>
           )}
 
           {/* Loading/Error Widget */}
@@ -740,7 +943,7 @@ function App() {
 
         <div className="footer">
           <p className="copyright">
-            © {new Date().getFullYear()} Zeit & Wetter. Developed by{" "}
+            © {new Date().getFullYear()} Meine Orientierung. Developed by{" "}
             <a
               href="https://mirmousavi.com"
               target="_blank"

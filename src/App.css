@@ -1,4 +1,6 @@
-/* CSS Variables for theming */
+/* ==========================================================================
+   1. Theme Variables
+   ========================================================================== */
 :root {
   /* Light theme variables */
   --bg-primary: #667eea;
@@ -31,6 +33,9 @@
   --stat-icon-bg: rgba(255, 255, 255, 0.08);
 }
 
+/* ==========================================================================
+   2. Base & App Layout
+   ========================================================================== */
 .App {
   min-height: 100vh;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -40,106 +45,101 @@
 }
 
 .unified-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
   min-height: 100vh;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
   gap: 1.5rem;
   transition: all 0.3s ease;
-  max-width: none;
-  width: 100%;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color);
-  width: 100%;
-}
-
-.app-title {
-  font-size: 2.5rem;
-  font-weight: 200;
-  margin: 0 0 0.25rem 0;
-  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 2px;
-}
-
-.app-subtitle {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  margin: 0;
-  font-weight: 300;
-  letter-spacing: 1px;
-}
-
-.app-title-english {
-  font-size: 1.5rem;
-  color: var(--text-muted);
-  margin: 0 0 0.5rem 0;
-  font-weight: 300;
-  letter-spacing: 1px;
-}
-
-.app-subtitle-english {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin: 0;
-  font-weight: 300;
-  letter-spacing: 1px;
-}
-
-.translation-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.75rem 1.25rem;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-}
-
-.translation-toggle label {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.9rem;
-  font-weight: 400;
-  margin: 0;
 }
 
 .widgets-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
-  gap: 1rem;
   flex: 1;
   width: 100%;
+  gap: 1rem;
 }
 
+/* ==========================================================================
+   3. Header
+   ========================================================================== */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.app-title {
+  margin: 0 0 0.25rem 0;
+  font-size: 2.5rem;
+  font-weight: 200;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-subtitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+.app-title-english {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.app-subtitle-english {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.mo-highlight {
+  color: #ffeb3b;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   4. General Widget Styles
+   ========================================================================== */
 .widget {
-  background: var(--widget-bg);
-  border-radius: 5px;
-  backdrop-filter: blur(20px);
   overflow: hidden;
-  box-shadow: 0 8px 32px var(--shadow-color);
-  transition: all 0.3s ease;
+  background: var(--widget-bg);
   border: 1px solid var(--border-color);
+  border-radius: 5px;
+  box-shadow: 0 8px 32px var(--shadow-color);
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
 }
 
 .widget-header {
-  background: var(--widget-header-bg);
-  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 1.5rem;
   gap: 1rem;
+  background: var(--widget-header-bg);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .widget-header h3 {
@@ -150,86 +150,88 @@
 }
 
 .widget-header-english {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 300;
   margin-top: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-muted);
 }
 
 .widget-content {
   padding: 1.5rem;
 }
 
+/* ==========================================================================
+   5. Time & Date Widget
+   ========================================================================== */
 .time-widget .widget-content {
   text-align: center;
 }
 
-.time-format-controls {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-}
-
-.city-selection {
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  width: 100%;
-}
-
-.city-label-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  min-width: 60px;
-}
-
-.city-label {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  font-weight: 400;
-  margin: 0;
-}
-
-.city-label-english {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 300;
-  margin: 0;
-}
-
 .digital-time {
-  font-size: 3.5rem;
-  font-weight: 100;
+  margin-bottom: 1rem;
   font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Courier New",
     monospace;
-  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  font-weight: 100;
+  letter-spacing: 3px;
   background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: 3px;
+  -webkit-text-fill-color: transparent;
 }
 
 .german-time {
+  min-height: 2.2rem;
   font-size: 1.6rem;
-  color: #f0f0f0;
   font-weight: 300;
   line-height: 1.4;
-  min-height: 2.2rem;
+  color: #f0f0f0;
 }
 
 .german-time-english {
+  margin-top: 0.5rem;
   font-size: 1.2rem;
-  color: var(--text-muted);
   font-weight: 300;
   line-height: 1.4;
-  margin-top: 0.5rem;
+  color: var(--text-muted);
 }
 
+.date-section {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.date-row {
+  display: flex;
+  align-items: middle;
+  vertical-align: middle;
+  gap: 0.75rem;
+}
+
+.date {
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+.date-english {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+.date-german-phonetic {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #ffe082;
+}
+
+/* ==========================================================================
+   6. Weather Widget
+   ========================================================================== */
 .weather-section {
   text-align: center;
 }
@@ -248,14 +250,30 @@
 
 .weather-description {
   font-size: 1.1rem;
-  color: var(--text-secondary);
   font-weight: 300;
+  color: var(--text-secondary);
 }
 
 .weather-description-english {
   font-size: 0.9rem;
-  color: var(--text-muted);
   font-weight: 300;
+  color: var(--text-muted);
+}
+
+.weather-german-phonetic {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #ffe082;
+}
+
+.weather-phonetic-widget {
+  margin-top: 0.5rem;
+  background: var(--widget-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .stats-grid {
@@ -265,22 +283,22 @@
 }
 
 .stat-widget {
-  background: var(--stat-bg);
-  border-radius: 12px;
-  padding: 1rem;
   display: flex;
   align-items: center;
+  padding: 1rem;
   gap: 0.75rem;
+  background: var(--stat-bg);
+  border-radius: 12px;
   transition: all 0.3s ease;
 }
 
 .stat-icon {
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
   background: var(--stat-icon-bg);
   border-radius: 8px;
 }
@@ -288,77 +306,62 @@
 .stat-info {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
   flex: 1;
+  gap: 0.25rem;
 }
 
 .stat-label {
   font-size: 0.85rem;
-  color: var(--text-muted);
   font-weight: 300;
+  color: var(--text-muted);
 }
 
 .stat-value {
   font-size: 1.1rem;
-  color: var(--text-secondary);
   font-weight: 400;
+  color: var(--text-secondary);
 }
 
 .stat-english {
   font-size: 0.75rem;
-  color: var(--text-muted);
   font-weight: 300;
+  color: var(--text-muted);
 }
 
 .weather-loading {
-  color: var(--text-secondary);
   font-size: 1rem;
   font-weight: 300;
   font-style: italic;
+  color: var(--text-secondary);
+}
+
+.weather-loading-english {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-muted);
 }
 
 .weather-error {
-  color: #ff6b6b;
+  padding: 0.75rem;
   font-size: 0.9rem;
   font-weight: 300;
-  padding: 0.75rem;
+  color: #ff6b6b;
   background: rgba(255, 107, 107, 0.1);
   border-radius: 8px;
 }
 
-.weather-loading-english {
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  font-weight: 300;
-  font-style: italic;
-  margin-top: 0.5rem;
-}
-
 .weather-error-english {
-  color: var(--text-muted);
+  margin-top: 0.5rem;
   font-size: 0.8rem;
   font-weight: 300;
-  margin-top: 0.5rem;
-}
-
-.date-section {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.date {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  font-weight: 300;
-  margin-bottom: 0.25rem;
-}
-
-.date-english {
-  font-size: 0.9rem;
   color: var(--text-muted);
-  font-weight: 300;
 }
 
+/* ==========================================================================
+   7. Settings Widget
+   ========================================================================== */
 .settings-grid {
   display: flex;
   flex-direction: column;
@@ -382,17 +385,17 @@
 .setting-info {
   display: flex;
   align-items: center;
-  gap: 1rem;
   flex: 1;
+  gap: 1rem;
 }
 
 .setting-icon {
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
   background: var(--stat-icon-bg);
   border-radius: 8px;
 }
@@ -404,42 +407,136 @@
 }
 
 .setting-label {
+  margin: 0;
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-primary);
-  margin: 0;
 }
 
 .setting-description {
   font-size: 0.85rem;
-  color: var(--text-muted);
   font-weight: 300;
+  color: var(--text-muted);
 }
 
 .setting-description-english {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-weight: 300;
   margin-top: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--text-muted);
 }
 
+/* ==========================================================================
+   8. Form & Interactive Elements
+   ========================================================================== */
+/* City Selection */
+.city-selection {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.city-label-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 60px;
+  width: 100%;
+  gap: 0.25rem;
+}
+
+.city-label {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.city-label-english {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+.city-select {
+  flex: 1;
+  max-width: 200px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background: var(--stat-icon-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.city-select:hover {
+  background: var(--stat-bg);
+}
+
+.city-select option {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+}
+
+/* Time Format Buttons */
+.time-format-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.format-buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.format-btn {
+  min-width: 40px;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  background: var(--stat-icon-bg);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.format-btn:hover {
+  background: var(--stat-bg);
+}
+
+.format-btn.active {
+  color: white;
+  background: var(--bg-primary);
+}
+
+/* Theme Selector */
 .theme-selector {
   display: flex;
-  gap: 0.5rem;
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .theme-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border: 1px solid var(--border-color);
-  background: var(--stat-bg);
-  color: var(--text-primary);
-  border-radius: 8px;
+  gap: 0.5rem;
   font-size: 0.9rem;
   font-weight: 400;
+  color: var(--text-primary);
+  background: var(--stat-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -449,67 +546,34 @@
 }
 
 .theme-btn.active {
+  color: white;
   background: var(--bg-primary);
   border-color: var(--bg-primary);
-  color: white;
 }
 
 .theme-icon {
   font-size: 1rem;
 }
 
-.city-select {
-  background: var(--stat-icon-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  color: var(--text-primary);
-  font-size: 0.9rem;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  flex: 1;
-  max-width: 200px;
-  text-align: center;
-}
-
-.city-select:hover {
-  background: var(--stat-bg);
-}
-
-.city-select option {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-}
-
-.format-buttons {
+/* Translation Toggle */
+.translation-toggle {
   display: flex;
-  gap: 0.25rem;
-}
-
-.format-btn {
-  background: var(--stat-icon-bg);
-  border: none;
-  border-radius: 6px;
-  padding: 0.375rem 0.75rem;
-  color: var(--text-primary);
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
   backdrop-filter: blur(10px);
-  min-width: 40px;
 }
 
-.format-btn.active {
-  background: var(--bg-primary);
-  color: white;
+.translation-toggle label {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.format-btn:hover {
-  background: var(--stat-bg);
-}
-
+/* Generic Toggle Switch */
 .toggle-switch {
   position: relative;
   display: inline-block;
@@ -526,14 +590,14 @@
 
 .toggle-slider {
   position: absolute;
-  cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: var(--stat-icon-bg);
-  transition: 0.3s;
   border-radius: 24px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .toggle-slider:before {
@@ -544,8 +608,8 @@
   left: 3px;
   bottom: 3px;
   background-color: var(--text-primary);
-  transition: 0.3s;
   border-radius: 50%;
+  transition: 0.3s;
 }
 
 input:checked + .toggle-slider {
@@ -556,24 +620,27 @@ input:checked + .toggle-slider:before {
   transform: translateX(26px);
 }
 
+/* ==========================================================================
+   9. Footer
+   ========================================================================== */
 .footer {
-  text-align: center;
-  margin-top: 1rem;
   padding-top: 1rem;
+  margin-top: 1rem;
+  text-align: center;
   border-top: 1px solid var(--border-color);
 }
 
 .copyright {
-  color: var(--text-muted);
+  margin: 0;
   font-size: 0.8rem;
   font-weight: 300;
-  margin: 0;
+  color: var(--text-muted);
 }
 
 .footer-link {
+  font-weight: 400;
   color: var(--text-secondary);
   text-decoration: none;
-  font-weight: 400;
   transition: all 0.3s ease;
 }
 
@@ -582,10 +649,31 @@ input:checked + .toggle-slider:before {
   text-decoration: underline;
 }
 
+/* ==========================================================================
+   10. Utility & Phonetic Styles
+   ========================================================================== */
+.german-phonetic {
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #ffe082;
+}
+
+/* ==========================================================================
+   11. Media Queries
+   ========================================================================== */
+/* Medium devices (tablets, 768px and down) */
 @media (max-width: 768px) {
   .unified-container {
     padding: 0.75rem;
     gap: 1rem;
+  }
+
+  .header {
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
   }
 
   .app-title {
@@ -596,23 +684,17 @@ input:checked + .toggle-slider:before {
     font-size: 0.9rem;
   }
 
-  .header {
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    gap: 0.5rem;
-  }
-
   .widgets-container {
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
 
-  .widget-content {
-    padding: 1.25rem;
-  }
-
   .widget-header {
     padding: 0.875rem 1.25rem;
+  }
+
+  .widget-content {
+    padding: 1.25rem;
   }
 
   .digital-time {
@@ -650,20 +732,21 @@ input:checked + .toggle-slider:before {
   }
 }
 
+/* Small devices (phones, 480px and down) */
 @media (max-width: 480px) {
   .unified-container {
     padding: 0.5rem;
     gap: 0.75rem;
   }
 
-  .app-title {
-    font-size: 1.8rem;
+  .header {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    gap: 0.25rem;
   }
 
-  .header {
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    gap: 0.25rem;
+  .app-title {
+    font-size: 1.8rem;
   }
 
   .app-subtitle {
@@ -680,12 +763,8 @@ input:checked + .toggle-slider:before {
   }
 
   .widgets-container {
-    grid-template-columns: 1fr;
+    /* Kept same as 768px */
     gap: 0.75rem;
-  }
-
-  .widget-content {
-    padding: 1rem;
   }
 
   .widget-header {
@@ -694,6 +773,10 @@ input:checked + .toggle-slider:before {
 
   .widget-header h3 {
     font-size: 0.9rem;
+  }
+
+  .widget-content {
+    padding: 1rem;
   }
 
   .digital-time {
@@ -739,18 +822,12 @@ input:checked + .toggle-slider:before {
     font-size: 0.8rem;
   }
 
-  .city-select {
-    font-size: 0.8rem;
-    padding: 0.375rem 0.75rem;
-    max-width: 150px;
-  }
-
-  .city-label {
+  .date-german-phonetic {
     font-size: 0.8rem;
   }
 
-  .city-label-english {
-    font-size: 0.7rem;
+  .weather-german-phonetic {
+    font-size: 0.8rem;
   }
 
   .city-selection {
@@ -761,10 +838,24 @@ input:checked + .toggle-slider:before {
     min-width: 50px;
   }
 
+  .city-label {
+    font-size: 0.8rem;
+  }
+
+  .city-label-english {
+    font-size: 0.7rem;
+  }
+
+  .city-select {
+    padding: 0.375rem 0.75rem;
+    max-width: 150px;
+    font-size: 0.8rem;
+  }
+
   .format-btn {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
     min-width: 35px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
   }
 
   .copyright {
@@ -789,8 +880,13 @@ input:checked + .toggle-slider:before {
     padding: 0.375rem 0.75rem;
     font-size: 0.8rem;
   }
+
+  .german-phonetic {
+    font-size: 0.95rem;
+  }
 }
 
+/* Large devices (desktops, 1024px and up) */
 @media (min-width: 1024px) {
   .unified-container {
     padding: 2rem;
@@ -821,16 +917,16 @@ input:checked + .toggle-slider:before {
     gap: 2rem;
   }
 
-  .widget-content {
-    padding: 2rem;
-  }
-
   .widget-header {
     padding: 1.25rem 2rem;
   }
 
   .widget-header h3 {
     font-size: 1.1rem;
+  }
+
+  .widget-content {
+    padding: 2rem;
   }
 
   .digital-time {
