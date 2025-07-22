@@ -1,73 +1,63 @@
-# German Time & Weather Display App
+# German Dashboard (Meine Orientierung)
 
-A React web application that displays the current time in German words and shows weather information for German cities.
+A web application to learn time, date and weather in German.
 
-## Features
+## Getting Started
 
-- Real-time clock display (without seconds)
-- Time shown in German words (e.g., "drei Uhr" for 3:00)
-- Weather information for German cities
-- German weather descriptions (e.g., "Es ist bewölkt bei 15°C")
-- City selector with 30 popular German cities
-- Beautiful modern UI with glassmorphism design
-- Responsive design for mobile and desktop
-- German and English date format display
+To get started with this project, you'll need to do the following:
 
-## Installation
+1.  **Clone the repository:**
 
-1. Install dependencies:
+    ```bash
+    git clone https://github.com/your-username/german-time.git
+    cd german-time
+    ```
 
-```bash
-npm install
-```
+2.  **Install dependencies:**
 
-2. Get a free API key from [OpenWeatherMap](https://openweathermap.org/api)
+    ```bash
+    npm install
+    ```
 
-3. Configure the API key:
+3.  **Set up environment variables:**
 
-   - Open `src/config.js`
-   - Replace `'YOUR_API_KEY_HERE'` with your actual OpenWeatherMap API key
+    Create a `.env` file in the root of the project and add your OpenWeatherMap API key:
 
-4. Start the development server:
+    ```
+    REACT_APP_WEATHER_API_KEY=your_api_key_here
+    ```
 
-```bash
-npm start
-```
+    You can get a free API key from [OpenWeatherMap](https://openweathermap.org/api).
 
-5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4.  **Run the development server:**
+    ```bash
+    npm start
+    ```
 
-## How it works
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The app displays:
+## Deployment
 
-- Digital time in 24-hour format (HH:MM)
-- Time in German words (e.g., "fünfzehn nach drei" for 3:15)
-- Weather information with German descriptions
-- Current date in both German and English formats
+This project is set up to automatically deploy to GitHub Pages using GitHub Actions.
 
-The German time conversion follows standard German time telling conventions:
+### Setting up the API Key for GitHub Actions
 
-- "X Uhr" for exact hours
-- "X nach Y" for minutes past the hour (up to 30 minutes)
-- "X vor Y" for minutes before the next hour (after 30 minutes)
+To allow the GitHub Actions workflow to build your project, you need to add your OpenWeatherMap API key as a secret to your GitHub repository.
 
-Weather information includes:
+1.  Go to your repository on GitHub.
+2.  Click on **Settings** > **Secrets and variables** > **Actions**.
+3.  Click on **New repository secret**.
+4.  For the name, enter `REACT_APP_WEATHER_API_KEY`.
+5.  For the value, paste your OpenWeatherMap API key.
+6.  Click **Add secret**.
 
-- Temperature in Celsius
-- Weather description in German
-- Humidity percentage
-- Wind speed in km/h
+Now, every time you push to the `main` branch, the GitHub Actions workflow will run, build your project with the API key, and deploy it to GitHub Pages.
 
-## Available Cities
+You will also need to enable GitHub Pages in your repository settings:
 
-The app includes 30 major German cities:
-Berlin, Hamburg, München, Köln, Frankfurt, Stuttgart, Düsseldorf, Dortmund, Essen, Leipzig, Bremen, Dresden, Hannover, Nürnberg, Duisburg, Bochum, Wuppertal, Bielefeld, Bonn, Mannheim, Karlsruhe, Wiesbaden, Münster, Gelsenkirchen, Aachen, Braunschweig, Chemnitz, Kiel, Halle, Magdeburg
+1. Go to your repository on GitHub.
+2. Click on **Settings** > **Pages**.
+3. Under **Source**, select **Deploy from a branch**.
+4. Select the `gh-pages` branch and the `/ (root)` folder, then click **Save**.
 
-## Technologies Used
-
-- React 18
-- Axios for API calls
-- OpenWeatherMap API
-- CSS3 with modern features (backdrop-filter, glassmorphism)
-- JavaScript Date API
-- German localization
+Your app will be available at `https://<your-github-username>.github.io/german-dashboard/`.
