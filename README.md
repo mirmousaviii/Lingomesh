@@ -2,6 +2,7 @@
 
 Web app for learning German time, date, and weather
 
+[![Deploy to GitHub Pages](https://github.com/mirmousaviii/german-dashboard/actions/workflows/deploy.yml/badge.svg)](https://github.com/mirmousaviii/german-dashboard/actions/workflows/deploy.yml)
 ![German Dashboard Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 ![React](https://img.shields.io/badge/React-18.2.0-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.2.2-blue)
