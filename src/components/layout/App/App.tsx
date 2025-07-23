@@ -57,44 +57,49 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-neutral-100 to-german-100 dark:from-neutral-950 dark:via-primary-950 dark:to-german-950 transition-colors duration-500">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="space-y-12 animate-fade-in">
+    <div className="min-h-screen transition-colors duration-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="space-y-16 animate-fade-in">
           {/* Header Section */}
           <Header showTranslations={showTranslations} />
 
-          {/* Main Widgets Grid */}
-          <main className="space-y-12">
-            <div className="grid-auto-fit">
-              <TimeWidget
-                currentTime={currentTime}
-                is24Hour={is24HourFormat}
-                setIs24Hour={setIs24HourFormat}
-                showTranslations={showTranslations}
-              />
-              <DateWidget
-                currentTime={currentTime}
-                showTranslations={showTranslations}
-              />
-              <WeatherWidget
-                weather={weather}
-                loading={isLoading}
-                error={error}
-                selectedCity={selectedCity}
-                setSelectedCity={setSelectedCity}
-                germanCities={GERMAN_CITIES}
-                showTranslations={showTranslations}
-              />
-              <NumberConverterWidget showTranslations={showTranslations} />
+          {/* Main Content */}
+          <main className="space-y-16">
+            {/* Widgets Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+              <div className="lg:col-span-2 space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <TimeWidget
+                    currentTime={currentTime}
+                    is24Hour={is24HourFormat}
+                    setIs24Hour={setIs24HourFormat}
+                    showTranslations={showTranslations}
+                  />
+                  <DateWidget
+                    currentTime={currentTime}
+                    showTranslations={showTranslations}
+                  />
+                </div>
+                <WeatherWidget
+                  weather={weather}
+                  loading={isLoading}
+                  error={error}
+                  selectedCity={selectedCity}
+                  setSelectedCity={setSelectedCity}
+                  germanCities={GERMAN_CITIES}
+                  showTranslations={showTranslations}
+                />
+              </div>
+              <div className="space-y-8">
+                <NumberConverterWidget showTranslations={showTranslations} />
+                <SettingsWidget
+                  showTranslations={showTranslations}
+                  setShowTranslations={setShowTranslations}
+                  themeMode={themeMode}
+                  handleThemeChange={handleThemeChange}
+                />
+              </div>
             </div>
-
-            {/* Settings Section */}
-            <SettingsWidget
-              showTranslations={showTranslations}
-              setShowTranslations={setShowTranslations}
-              themeMode={themeMode}
-              handleThemeChange={handleThemeChange}
-            />
           </main>
 
           {/* Footer Section */}

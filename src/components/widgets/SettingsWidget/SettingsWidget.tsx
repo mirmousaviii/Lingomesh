@@ -23,7 +23,6 @@ const SettingsWidget: React.FC<SettingsWidgetProps> = ({
   const themeOptions = [
     { value: "light", label: "Light", icon: "☀️" },
     { value: "dark", label: "Dark", icon: "🌙" },
-    { value: "system", label: "System", icon: "⚙️" },
   ];
 
   return (
@@ -32,13 +31,13 @@ const SettingsWidget: React.FC<SettingsWidgetProps> = ({
       englishTitle={showTranslations ? "Settings" : undefined}
     >
       <div className="space-y-8">
-        <div className="card p-6">
+        <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-md border border-white/20 dark:border-neutral-700/20 rounded-md shadow-soft hover:shadow-medium transition-all duration-300 p-6">
           <div className="flex items-center justify-between">
             <div>
               <h4 className="font-semibold text-neutral-800 dark:text-neutral-200">
                 Übersetzungen
               </h4>
-              <p className="text-sm text-muted mt-1">
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
                 {showTranslations
                   ? "English translations are visible"
                   : "Englische Übersetzungen anzeigen"}
@@ -54,15 +53,15 @@ const SettingsWidget: React.FC<SettingsWidgetProps> = ({
               />
               <label
                 htmlFor="translations-toggle"
-                className={`toggle-switch ${
-                  showTranslations ? "toggle-switch-on" : "toggle-switch-off"
+                className={`relative inline-flex h-7 w-14 items-center rounded-full transition-colors duration-200 cursor-pointer ${
+                  showTranslations
+                    ? "bg-primary-600"
+                    : "bg-neutral-300 dark:bg-neutral-600"
                 }`}
               >
                 <span
-                  className={`toggle-switch-thumb ${
-                    showTranslations
-                      ? "toggle-switch-thumb-on"
-                      : "toggle-switch-thumb-off"
+                  className={`inline-block h-5 w-5 transform rounded-full bg-white shadow-md transition-transform duration-200 ${
+                    showTranslations ? "translate-x-7" : "translate-x-1"
                   }`}
                 />
               </label>
@@ -70,22 +69,22 @@ const SettingsWidget: React.FC<SettingsWidgetProps> = ({
           </div>
         </div>
 
-        <div className="card p-6">
+        <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-md border border-white/20 dark:border-neutral-700/20 rounded-md shadow-soft hover:shadow-medium transition-all duration-300 p-6">
           <div>
             <h4 className="font-semibold text-neutral-800 dark:text-neutral-200">
               Theme
             </h4>
-            <p className="text-sm text-muted mt-1">
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
               {showTranslations
                 ? "Choose your preferred theme"
                 : "Wählen Sie Ihr bevorzugtes Theme"}
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+          <div className="grid grid-cols-2 gap-4 mt-6">
             {themeOptions.map((theme) => (
               <button
                 key={theme.value}
-                className={`flex flex-col items-center justify-center space-y-2 p-4 rounded-xl border-2 transition-all duration-200
+                className={`flex flex-col items-center justify-center space-y-2 p-4 rounded-md border-2 transition-all duration-200
                   ${
                     themeMode === theme.value
                       ? "border-primary-500 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-200 shadow-soft"

@@ -123,7 +123,7 @@ const DateWidget: React.FC<DateWidgetProps> = ({
         )}
 
         <div className="text-center space-y-4">
-          <p className="text-xl text-german italic">
+          <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic">
             {convertDateToGermanPhonetic(currentTime)}
           </p>
         </div>

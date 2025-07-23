@@ -137,16 +137,16 @@ const TimeWidget: React.FC<TimeWidgetProps> = ({
         </div>
 
         <div className="text-center space-y-4">
-          <p className="text-2xl text-german italic">
+          <p className="text-2xl text-accent-600 dark:text-accent-400 font-medium italic">
             {convertTimeToGermanPhonetic(currentTime)}
           </p>
         </div>
 
         <div className="flex items-center justify-center pt-6">
-          <div className="flex bg-neutral-200 dark:bg-neutral-700 rounded-sm p-1">
+          <div className="flex bg-neutral-200 dark:bg-neutral-700 rounded p-1">
             <button
               onClick={() => setIs24Hour(false)}
-              className={`px-4 py-2 text-sm font-medium rounded-sm transition-all duration-200 ${
+              className={`px-4 py-2 text-sm font-medium rounded transition-all duration-200 ${
                 !is24Hour
                   ? "bg-white dark:bg-neutral-600 text-neutral-900 dark:text-neutral-100 shadow-soft"
                   : "text-neutral-600 dark:text-neutral-300"
@@ -156,7 +156,7 @@ const TimeWidget: React.FC<TimeWidgetProps> = ({
             </button>
             <button
               onClick={() => setIs24Hour(true)}
-              className={`px-4 py-2 text-sm font-medium rounded-sm transition-all duration-200 ${
+              className={`px-4 py-2 text-sm font-medium rounded transition-all duration-200 ${
                 is24Hour
                   ? "bg-white dark:bg-neutral-600 text-neutral-900 dark:text-neutral-100 shadow-soft"
                   : "text-neutral-600 dark:text-neutral-300"
