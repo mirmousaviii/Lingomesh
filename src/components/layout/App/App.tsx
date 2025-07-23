@@ -12,6 +12,7 @@ import WeatherWidget from "../../widgets/WeatherWidget/WeatherWidget";
 import SettingsWidget from "../../widgets/SettingsWidget/SettingsWidget";
 import Footer from "../Footer/Footer";
 import NumberConverterWidget from "../../widgets/NumberConverterWidget/NumberConverterWidget";
+import VerbConjugationWidget from "../../widgets/VerbConjugationWidget/VerbConjugationWidget";
 
 function App() {
   // State management
@@ -92,6 +93,7 @@ function App() {
               </div>
               <div className="space-y-8">
                 <NumberConverterWidget showTranslations={showTranslations} />
+                <VerbConjugationWidget showTranslations={showTranslations} />
                 <SettingsWidget
                   showTranslations={showTranslations}
                   setShowTranslations={setShowTranslations}
