@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Language } from "../../../hooks/useTranslations";
 import { useTranslation } from "../../../constants/translations";
 
@@ -15,6 +16,33 @@ const Header: React.FC<HeaderProps> = ({
   handleThemeChange,
 }) => {
   const t = useTranslation(language);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Handle scroll events to determine if header should be compact
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const handleScroll = () => {
+      // Clear previous timeout to debounce the scroll event
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(() => {
+        const scrollTop = window.scrollY;
+        // Increase threshold to 100px and add hysteresis to prevent flickering
+        if (scrollTop > 100 && !isScrolled) {
+          setIsScrolled(true);
+        } else if (scrollTop < 80 && isScrolled) {
+          setIsScrolled(false);
+        }
+      }, 50); // 50ms debounce
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeoutId);
+    };
+  }, [isScrolled]);
 
   // Theme options
   const themeOptions = [
@@ -49,14 +77,32 @@ const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <header className="bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-700/50 shadow-xl">
+    <header
+      className={`sticky top-0 z-50 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-700/50 shadow-xl transition-all duration-300 ${
+        isScrolled ? "py-2" : "py-4 sm:py-6"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         {/* Full Header - Mobile Optimized */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 sm:py-6 space-y-4 sm:space-y-0">
+        <div
+          className={`flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0 transition-all duration-300 ${
+            isScrolled ? "py-2" : "py-4 sm:py-6"
+          }`}
+        >
           {/* Left side - Title and Description */}
           <div className="flex-1 min-w-0">
-            <div className="space-y-2 sm:space-y-3">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black bg-gradient-to-r from-primary-600 via-accent-500 to-primary-700 bg-clip-text text-transparent leading-tight tracking-tight font-space-grotesk">
+            <div
+              className={`space-y-2 sm:space-y-3 transition-all duration-300 ${
+                isScrolled ? "space-y-1 sm:space-y-2" : "space-y-2 sm:space-y-3"
+              }`}
+            >
+              <h1
+                className={`font-black bg-gradient-to-r from-primary-600 via-accent-500 to-primary-700 bg-clip-text text-transparent leading-tight tracking-tight font-space-grotesk transition-all duration-300 ${
+                  isScrolled
+                    ? "text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+                    : "text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
+                }`}
+              >
                 <span className="text-accent-600 dark:text-accent-400 font-black drop-shadow-sm">
                   M
                 </span>
@@ -67,7 +113,13 @@ const Header: React.FC<HeaderProps> = ({
                 rientierung
               </h1>
 
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg font-medium text-neutral-800 dark:text-neutral-200 max-w-4xl leading-relaxed tracking-wide font-ibm-plex">
+              <p
+                className={`font-medium text-neutral-800 dark:text-neutral-200 max-w-4xl leading-relaxed tracking-wide font-ibm-plex transition-all duration-300 ${
+                  isScrolled
+                    ? "text-xs sm:text-sm md:text-sm lg:text-base opacity-0 max-h-0 overflow-hidden"
+                    : "text-xs sm:text-sm md:text-base lg:text-lg opacity-100 max-h-20"
+                }`}
+              >
                 {language === "en"
                   ? "German learning dashboard: grammar, phrases, time, date & weather."
                   : "Deutsch-Lern-Dashboard: Grammatik, Redewendungen, Uhrzeit, Datum und Wetter."}
@@ -76,13 +128,21 @@ const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Right side - Settings Controls */}
-          <div className="flex items-center justify-center sm:justify-end space-x-3 sm:ml-6">
+          <div
+            className={`flex items-center justify-center sm:justify-end space-x-3 sm:ml-6 transition-all duration-300 ${
+              isScrolled ? "space-x-2" : "space-x-3"
+            }`}
+          >
             {/* Language Selector */}
             <div className="flex items-center bg-neutral-100/80 dark:bg-neutral-800/80 rounded-lg p-1 border border-neutral-200/60 dark:border-neutral-600/60">
               {languageOptions.map((option) => (
                 <button
                   key={option.value}
-                  className={`w-12 h-10 sm:w-14 sm:h-12 px-3 py-2 rounded-md transition-all duration-300 flex items-center justify-center touch-manipulation ${
+                  className={`px-3 py-2 rounded-md transition-all duration-300 flex items-center justify-center touch-manipulation ${
+                    isScrolled
+                      ? "w-10 h-8 sm:w-12 sm:h-10"
+                      : "w-12 h-10 sm:w-14 sm:h-12"
+                  } ${
                     language === option.value
                       ? "bg-white dark:bg-neutral-700 text-primary-600 dark:text-primary-400"
                       : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200"
@@ -90,7 +150,11 @@ const Header: React.FC<HeaderProps> = ({
                   onClick={() => setLanguage(option.value)}
                   title={option.label}
                 >
-                  <span className="text-sm sm:text-base font-medium">
+                  <span
+                    className={`font-medium transition-all duration-300 ${
+                      isScrolled ? "text-xs sm:text-sm" : "text-sm sm:text-base"
+                    }`}
+                  >
                     {option.text}
                   </span>
                 </button>
@@ -102,7 +166,11 @@ const Header: React.FC<HeaderProps> = ({
               {themeOptions.map((option) => (
                 <button
                   key={option.value}
-                  className={`w-12 h-10 sm:w-14 sm:h-12 px-3 py-2 rounded-md transition-all duration-300 flex items-center justify-center touch-manipulation ${
+                  className={`px-3 py-2 rounded-md transition-all duration-300 flex items-center justify-center touch-manipulation ${
+                    isScrolled
+                      ? "w-10 h-8 sm:w-12 sm:h-10"
+                      : "w-12 h-10 sm:w-14 sm:h-12"
+                  } ${
                     themeMode === option.value
                       ? "bg-white dark:bg-neutral-700 text-primary-600 dark:text-primary-400"
                       : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200"
@@ -111,8 +179,11 @@ const Header: React.FC<HeaderProps> = ({
                   title={option.label}
                 >
                   <svg
-                    className="w-4 h-4 sm:w-5 sm:h-5"
-                    fill="currentColor"
+                    className={`fill-current transition-all duration-300 ${
+                      isScrolled
+                        ? "w-3 h-3 sm:w-4 sm:h-4"
+                        : "w-4 h-4 sm:w-5 sm:h-5"
+                    }`}
                     viewBox="0 0 20 20"
                   >
                     {option.value === "light" ? (

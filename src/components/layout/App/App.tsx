@@ -66,17 +66,17 @@ function App() {
 
   return (
     <div className="min-h-screen transition-colors duration-500">
+      {/* Header Section - Fixed at top */}
+      <Header
+        language={language}
+        setLanguage={setLanguage}
+        themeMode={themeMode}
+        handleThemeChange={handleThemeChange}
+      />
+
+      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="space-y-16 animate-fade-in">
-          {/* Header Section */}
-          <Header
-            language={language}
-            setLanguage={setLanguage}
-            themeMode={themeMode}
-            handleThemeChange={handleThemeChange}
-          />
-
-          {/* Main Content */}
           <main className="space-y-16">
             {/* Widgets Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
