@@ -105,6 +105,16 @@ const DateWidget: React.FC<DateWidgetProps> = ({
     return `Heute ist ${dayOfWeek}, der ${ordinal} ${month} ${yearWords}`;
   };
 
+  // Speech synthesis function
+  const speakText = (text: string) => {
+    if ("speechSynthesis" in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "de-DE";
+      utterance.rate = 0.8;
+      speechSynthesis.speak(utterance);
+    }
+  };
+
   return (
     <Widget title="Datum" englishTitle={showTranslations ? "Date" : undefined}>
       <div className="flex flex-col justify-between h-full space-y-8">
@@ -123,9 +133,32 @@ const DateWidget: React.FC<DateWidgetProps> = ({
         )}
 
         <div className="text-center space-y-4">
-          <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic">
-            {convertDateToGermanPhonetic(currentTime)}
-          </p>
+          <div className="flex items-center justify-center gap-3">
+            <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic">
+              {convertDateToGermanPhonetic(currentTime)}
+            </p>
+            <button
+              onClick={() =>
+                speakText(convertDateToGermanPhonetic(currentTime))
+              }
+              className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
+              title={showTranslations ? "Listen" : "Hören"}
+            >
+              <svg
+                className="w-5 h-5 text-neutral-600 dark:text-neutral-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </Widget>

@@ -101,6 +101,16 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
     return `Es ist ${description} bei ${tempWord} Grad Celsius`;
   };
 
+  // Speech synthesis function
+  const speakText = (text: string) => {
+    if ("speechSynthesis" in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "de-DE";
+      utterance.rate = 0.8;
+      speechSynthesis.speak(utterance);
+    }
+  };
+
   // Loading state
   if (loading) {
     return (
@@ -194,9 +204,30 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
             alt={weather.weather[0].description}
             className="mx-auto"
           />
-          <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic">
-            {convertWeatherToGermanPhonetic(weather)}
-          </p>
+          <div className="flex items-center justify-center gap-3 mt-2">
+            <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic">
+              {convertWeatherToGermanPhonetic(weather)}
+            </p>
+            <button
+              onClick={() => speakText(convertWeatherToGermanPhonetic(weather))}
+              className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
+              title={showTranslations ? "Listen" : "Hören"}
+            >
+              <svg
+                className="w-5 h-5 text-neutral-600 dark:text-neutral-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
