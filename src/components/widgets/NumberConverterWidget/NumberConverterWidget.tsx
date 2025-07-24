@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
+import { Language } from "../../../hooks/useTranslations";
+import { useTranslation } from "../../../constants/translations";
 import Widget from "../../ui/Widget/Widget";
 import { convertNumberToGerman } from "../../../utils/numberConverter";
 
 interface NumberConverterWidgetProps {
-  showTranslations: boolean;
+  language: Language;
 }
 
 const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
-  showTranslations,
+  language,
 }) => {
   const [numberInput, setNumberInput] = useState("12");
   const [convertedText, setConvertedText] = useState("");
+  const t = useTranslation(language);
 
   useEffect(() => {
     if (numberInput) {
@@ -36,17 +39,14 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
   };
 
   return (
-    <Widget
-      title="Zahlenkonverter"
-      englishTitle={showTranslations ? "Number Converter" : undefined}
-    >
+    <Widget titleKey="zahlenkonverter" language={language}>
       <div className="space-y-4">
         <input
           type="number"
           value={numberInput}
           onChange={handleInputChange}
           className="w-full px-4 py-3 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-          placeholder="Enter a number"
+          placeholder={t.ui.enterNumber}
         />
         <div className="text-center p-4">
           <div className="flex items-center justify-center gap-3">
@@ -57,7 +57,7 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
               <button
                 onClick={() => speakText(convertedText)}
                 className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-                title={showTranslations ? "Listen" : "Hören"}
+                title={t.ui.listen}
               >
                 <svg
                   className="w-5 h-5 text-neutral-600 dark:text-neutral-400"

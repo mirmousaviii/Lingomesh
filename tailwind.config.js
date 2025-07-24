@@ -91,6 +91,10 @@ export default {
         sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
         inter: ["Inter", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "Fira Code", "monospace"],
+        "roboto-mono": ["Roboto Mono", "monospace"],
+        "space-grotesk": ["Space Grotesk", "sans-serif"],
+        "ibm-plex": ["IBM Plex Sans", "sans-serif"],
+        clock: ["Roboto Mono", "Space Grotesk", "monospace"],
       },
       fontSize: {
         xs: ["0.75rem", { lineHeight: "1rem" }],

@@ -1,100 +1,77 @@
+import { Language } from "../../../hooks/useTranslations";
+import { useTranslation } from "../../../constants/translations";
 import Widget from "../../ui/Widget/Widget";
 import { convertNumberToGerman } from "../../../utils/numberConverter";
 
 interface DateWidgetProps {
   currentTime: Date;
-  showTranslations: boolean;
+  language: Language;
 }
 
-const DateWidget: React.FC<DateWidgetProps> = ({
-  currentTime,
-  showTranslations,
-}) => {
-  // Format date for German display
-  const formatGermanDate = (date: Date) => {
-    return date.toLocaleDateString("de-DE", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
+const DateWidget: React.FC<DateWidgetProps> = ({ currentTime, language }) => {
+  const t = useTranslation(language);
 
-  // Format date for English display
-  const formatEnglishDate = (date: Date) => {
-    return date.toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
+  const days = [
+    "Montag",
+    "Dienstag",
+    "Mittwoch",
+    "Donnerstag",
+    "Freitag",
+    "Samstag",
+    "Sonntag",
+  ];
 
-  // Convert date to German phonetic pronunciation
+  const months = [
+    "Januar",
+    "Februar",
+    "März",
+    "April",
+    "Mai",
+    "Juni",
+    "Juli",
+    "August",
+    "September",
+    "Oktober",
+    "November",
+    "Dezember",
+  ];
+
   const convertDateToGermanPhonetic = (date: Date) => {
-    // German day names
-    const days = [
-      "Sonntag",
-      "Montag",
-      "Dienstag",
-      "Mittwoch",
-      "Donnerstag",
-      "Freitag",
-      "Samstag",
-    ];
-
-    // German month names
-    const months = [
-      "Januar",
-      "Februar",
-      "März",
-      "April",
-      "Mai",
-      "Juni",
-      "Juli",
-      "August",
-      "September",
-      "Oktober",
-      "November",
-      "Dezember",
-    ];
-
-    // German ordinal numbers
-    const ordinals: { [key: number]: string } = {
-      1: "erster",
-      2: "zweiter",
-      3: "dritter",
-      4: "vierter",
-      5: "fünfter",
-      6: "sechster",
-      7: "siebter",
-      8: "achter",
-      9: "neunter",
-      10: "zehnter",
-      11: "elfter",
-      12: "zwölfter",
-      13: "dreizehnter",
-      14: "vierzehnter",
-      15: "fünfzehnter",
-      16: "sechzehnter",
-      17: "siebzehnter",
-      18: "achtzehnter",
-      19: "neunzehnter",
-      20: "zwanzigster",
-      21: "einundzwanzigster",
-      22: "zweiundzwanzigster",
-      23: "dreiundzwanzigster",
-      24: "vierundzwanzigster",
-      25: "fünfundzwanzigster",
-      26: "sechsundzwanzigster",
-      27: "siebenundzwanzigster",
-      28: "achtundzwanzigster",
-      29: "neunundzwanzigster",
-      30: "dreißigster",
-      31: "einunddreißigster",
+    const ordinals: Record<number, string> = {
+      1: "erste",
+      2: "zweite",
+      3: "dritte",
+      4: "vierte",
+      5: "fünfte",
+      6: "sechste",
+      7: "siebte",
+      8: "achte",
+      9: "neunte",
+      10: "zehnte",
+      11: "elfte",
+      12: "zwölfte",
+      13: "dreizehnte",
+      14: "vierzehnte",
+      15: "fünfzehnte",
+      16: "sechzehnte",
+      17: "siebzehnte",
+      18: "achtzehnte",
+      19: "neunzehnte",
+      20: "zwanzigste",
+      21: "einundzwanzigste",
+      22: "zweiundzwanzigste",
+      23: "dreiundzwanzigste",
+      24: "vierundzwanzigste",
+      25: "fünfundzwanzigste",
+      26: "sechsundzwanzigste",
+      27: "siebenundzwanzigste",
+      28: "achtundzwanzigste",
+      29: "neunundzwanzigste",
+      30: "dreißigste",
+      31: "einunddreißigste",
     };
 
-    const dayOfWeek = days[date.getDay()];
+    const dayOfWeek = days[(date.getDay() + 6) % 7];
     const day = date.getDate();
     const month = months[date.getMonth()];
     const year = date.getFullYear();
@@ -103,6 +80,24 @@ const DateWidget: React.FC<DateWidgetProps> = ({
     const yearWords = convertNumberToGerman(year);
 
     return `Heute ist ${dayOfWeek}, der ${ordinal} ${month} ${yearWords}`;
+  };
+
+  const formatDisplayDate = (date: Date) => {
+    const dayOfWeek = days[(date.getDay() + 6) % 7];
+    const day = date.getDate();
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+    return `${dayOfWeek}, ${day}. ${month} ${year}`;
+  };
+
+  const formatEnglishDate = (date: Date) => {
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return date.toLocaleDateString("en-US", options);
   };
 
   // Speech synthesis function
@@ -116,33 +111,30 @@ const DateWidget: React.FC<DateWidgetProps> = ({
   };
 
   return (
-    <Widget title="Datum" englishTitle={showTranslations ? "Date" : undefined}>
+    <Widget titleKey="datum" language={language}>
       <div className="flex flex-col justify-between h-full space-y-8">
         <div className="text-center space-y-4">
-          <p className="text-3xl font-semibold text-neutral-800 dark:text-neutral-200">
-            {formatGermanDate(currentTime)}
+          <p className="text-xl font-bold text-neutral-800 dark:text-neutral-200 md:text-2xl font-space-grotesk">
+            {formatDisplayDate(currentTime)}
           </p>
-        </div>
-
-        {showTranslations && (
-          <div className="text-center space-y-4">
-            <p className="text-xl text-neutral-600 dark:text-neutral-300">
+          {language === "en" && (
+            <p className="mt-2 text-base text-neutral-600 dark:text-neutral-300 md:text-lg">
               {formatEnglishDate(currentTime)}
             </p>
-          </div>
-        )}
+          )}
+        </div>
 
         <div className="text-center space-y-4">
-          <div className="flex items-center justify-center gap-3">
-            <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic">
+          <div className="flex flex-col items-center justify-center gap-2 md:flex-row md:gap-3">
+            <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic font-ibm-plex">
               {convertDateToGermanPhonetic(currentTime)}
             </p>
             <button
               onClick={() =>
                 speakText(convertDateToGermanPhonetic(currentTime))
               }
-              className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-              title={showTranslations ? "Listen" : "Hören"}
+              className="flex-shrink-0 rounded-md bg-neutral-100 p-2 transition-colors duration-200 hover:bg-neutral-200 dark:bg-neutral-700 dark:hover:bg-neutral-600"
+              title={t.ui.listen}
             >
               <svg
                 className="w-5 h-5 text-neutral-600 dark:text-neutral-400"

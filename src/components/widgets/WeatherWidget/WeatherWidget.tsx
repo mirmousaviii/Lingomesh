@@ -1,4 +1,6 @@
 import React from "react";
+import { Language } from "../../../hooks/useTranslations";
+import { useTranslation } from "../../../constants/translations";
 import Widget from "../../ui/Widget/Widget";
 
 interface WeatherData {
@@ -32,7 +34,7 @@ interface WeatherWidgetProps {
   selectedCity: string;
   setSelectedCity: (city: string) => void;
   germanCities: readonly string[];
-  showTranslations: boolean;
+  language: Language;
 }
 
 const WeatherWidget: React.FC<WeatherWidgetProps> = ({
@@ -42,8 +44,10 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
   selectedCity,
   setSelectedCity,
   germanCities,
-  showTranslations,
+  language,
 }) => {
+  const t = useTranslation(language);
+
   // Convert weather data to German phonetic description
   const convertWeatherToGermanPhonetic = (weatherData: WeatherData) => {
     if (!weatherData) return "";
@@ -98,7 +102,45 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
 
     const tempWord =
       temp >= 0 && temp <= 40 ? germanNumbers[temp] : temp.toString();
-    return `Es ist ${description} bei ${tempWord} Grad Celsius`;
+
+    // Weather description mappings
+    const weatherDescriptions: { [key: string]: string } = {
+      "clear sky": "klarer Himmel",
+      "few clouds": "wenige Wolken",
+      "scattered clouds": "verstreute Wolken",
+      "broken clouds": "bewölkt",
+      "overcast clouds": "bedeckt",
+      "light rain": "leichter Regen",
+      "moderate rain": "mäßiger Regen",
+      "heavy rain": "starker Regen",
+      "light snow": "leichter Schnee",
+      "moderate snow": "mäßiger Schnee",
+      "heavy snow": "starker Schnee",
+      mist: "Nebel",
+      fog: "Nebel",
+      haze: "Dunst",
+      smoke: "Rauch",
+      dust: "Staub",
+      sand: "Sand",
+      ash: "Asche",
+      squall: "Böen",
+      tornado: "Tornado",
+      thunderstorm: "Gewitter",
+      drizzle: "Nieselregen",
+      rain: "Regen",
+      snow: "Schnee",
+      sleet: "Schneeregen",
+      "freezing rain": "gefrierender Regen",
+      "shower rain": "Regenschauer",
+      "thunderstorm with light rain": "Gewitter mit leichtem Regen",
+      "thunderstorm with rain": "Gewitter mit Regen",
+      "thunderstorm with heavy rain": "Gewitter mit starkem Regen",
+    };
+
+    const weatherWord =
+      weatherDescriptions[description.toLowerCase()] || description;
+
+    return `In ${selectedCity} ist es ${tempWord} Grad Celsius mit ${weatherWord}`;
   };
 
   // Speech synthesis function
@@ -111,81 +153,45 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
     }
   };
 
-  // Loading state
   if (loading) {
     return (
-      <Widget
-        title="Wetter"
-        englishTitle={showTranslations ? "Weather" : undefined}
-      >
-        <div className="flex flex-col items-center justify-center h-full text-center py-12 space-y-6">
-          <div className="animate-spin rounded-full border-2 border-neutral-300 border-t-primary-600 w-12 h-12"></div>
-          <div className="space-y-2">
-            <p className="text-lg font-medium text-neutral-700 dark:text-neutral-300">
-              Wetter wird geladen...
-            </p>
-            {showTranslations && (
-              <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                Loading weather...
-              </p>
-            )}
-          </div>
+      <Widget titleKey="wetter" language={language}>
+        <div className="flex items-center justify-center h-32">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
         </div>
       </Widget>
     );
   }
 
-  // Error state
   if (error) {
     return (
-      <Widget
-        title="Wetter"
-        englishTitle={showTranslations ? "Weather" : undefined}
-      >
-        <div className="flex flex-col items-center justify-center h-full text-center py-12 space-y-4">
-          <div className="text-red-500 text-5xl mb-4">⚠️</div>
-          <p className="text-lg font-medium text-neutral-700 dark:text-neutral-300">
-            {error}
-          </p>
-          {showTranslations && (
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              Weather data could not be loaded
-            </p>
-          )}
+      <Widget titleKey="wetter" language={language}>
+        <div className="text-center text-red-600 dark:text-red-400">
+          {error}
         </div>
       </Widget>
     );
   }
 
-  // Weather data display
   if (!weather) {
     return (
-      <Widget
-        title="Wetter"
-        englishTitle={showTranslations ? "Weather" : undefined}
-      >
-        <div className="flex items-center justify-center h-full text-center py-12">
-          <p className="text-neutral-600 dark:text-neutral-400">
-            {showTranslations
-              ? "Select a city to view weather"
-              : "Wählen Sie eine Stadt aus"}
-          </p>
+      <Widget titleKey="wetter" language={language}>
+        <div className="text-center text-neutral-600 dark:text-neutral-400">
+          {t.weather.stadtAuswaehlen}
         </div>
       </Widget>
     );
   }
 
   return (
-    <Widget
-      title="Wetter"
-      englishTitle={showTranslations ? "Weather" : undefined}
-    >
-      <div className="flex flex-col justify-between h-full space-y-4 sm:space-y-6">
+    <Widget titleKey="wetter" language={language}>
+      <div className="space-y-6">
+        {/* City Selector */}
         <div>
           <select
             value={selectedCity}
             onChange={(e) => setSelectedCity(e.target.value)}
-            className="w-full px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 appearance-none bg-no-repeat bg-right pr-8 sm:pr-10"
+            className="w-full px-4 py-3 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 appearance-none bg-no-repeat bg-right pr-10"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
             }}
@@ -198,23 +204,33 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
           </select>
         </div>
 
-        <div className="text-center">
-          <img
-            src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-            alt={weather.weather[0].description}
-            className="mx-auto w-16 h-16 sm:w-20 sm:h-20"
-          />
-          <div className="flex items-center justify-center gap-2 sm:gap-3 mt-2">
-            <p className="text-sm sm:text-xl text-accent-600 dark:text-accent-400 font-medium italic leading-tight">
+        {/* Weather Display */}
+        <div className="text-center space-y-4">
+          {/* Weather Icon and Temperature */}
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="flex flex-col items-center">
+              <img
+                src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                alt={weather.weather[0].description}
+                className="w-16 h-16"
+              />
+              <p className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 font-space-grotesk">
+                {Math.round(weather.main.temp)}°C
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-3">
+            <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic font-ibm-plex">
               {convertWeatherToGermanPhonetic(weather)}
             </p>
             <button
               onClick={() => speakText(convertWeatherToGermanPhonetic(weather))}
-              className="flex-shrink-0 p-2.5 sm:p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200 touch-manipulation"
-              title={showTranslations ? "Listen" : "Hören"}
+              className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
+              title={t.ui.listen}
             >
               <svg
-                className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-600 dark:text-neutral-400"
+                className="w-5 h-5 text-neutral-600 dark:text-neutral-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -230,37 +246,38 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center">
-          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-3 sm:p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
-            <div className="text-lg sm:text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+        {/* Weather Details */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-neutral-50 dark:bg-neutral-700/50 rounded-md p-3 border border-neutral-200 dark:border-neutral-600">
+            <div className="text-sm text-neutral-600 dark:text-neutral-400 font-ibm-plex">
+              {t.weather.temperatur}
+            </div>
+            <div className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 font-space-grotesk">
               {Math.round(weather.main.temp)}°C
             </div>
-            <div className="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-400">
-              {showTranslations ? "Temperature" : "Temperatur"}
-            </div>
           </div>
-          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-3 sm:p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
-            <div className="text-sm sm:text-lg font-semibold text-neutral-800 dark:text-neutral-200 capitalize leading-tight">
-              {weather.weather[0].description}
+          <div className="bg-neutral-50 dark:bg-neutral-700/50 rounded-md p-3 border border-neutral-200 dark:border-neutral-600">
+            <div className="text-sm text-neutral-600 dark:text-neutral-400 font-ibm-plex">
+              {t.weather.luftfeuchtigkeit}
             </div>
-            <div className="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-400">
-              {showTranslations ? "Condition" : "Wetterlage"}
-            </div>
-          </div>
-          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-3 sm:p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
-            <div className="text-lg sm:text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+            <div className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 font-space-grotesk">
               {weather.main.humidity}%
             </div>
-            <div className="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-400">
-              {showTranslations ? "Humidity" : "Luftfeuchtigkeit"}
+          </div>
+          <div className="bg-neutral-50 dark:bg-neutral-700/50 rounded-md p-3 border border-neutral-200 dark:border-neutral-600">
+            <div className="text-sm text-neutral-600 dark:text-neutral-400 font-ibm-plex">
+              {t.weather.windgeschwindigkeit}
+            </div>
+            <div className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 font-space-grotesk">
+              {Math.round(weather.wind.speed)} m/s
             </div>
           </div>
-          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-3 sm:p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
-            <div className="text-lg sm:text-2xl font-bold text-neutral-800 dark:text-neutral-200">
-              {Math.round(weather.wind.speed)} km/h
+          <div className="bg-neutral-50 dark:bg-neutral-700/50 rounded-md p-3 border border-neutral-200 dark:border-neutral-600">
+            <div className="text-sm text-neutral-600 dark:text-neutral-400 font-ibm-plex">
+              {t.weather.beschreibung}
             </div>
-            <div className="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-400">
-              {showTranslations ? "Wind" : "Wind"}
+            <div className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 capitalize font-space-grotesk">
+              {weather.weather[0].description}
             </div>
           </div>
         </div>

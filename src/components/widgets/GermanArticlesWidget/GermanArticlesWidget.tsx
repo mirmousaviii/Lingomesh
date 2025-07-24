@@ -1,8 +1,9 @@
 import React from "react";
+import { Language } from "../../../hooks/useTranslations";
 import Widget from "../../ui/Widget/Widget";
 
 interface GermanArticlesWidgetProps {
-  showTranslations: boolean;
+  language: Language;
 }
 
 interface ArticleData {
@@ -15,7 +16,7 @@ interface ArticleData {
 }
 
 const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
-  showTranslations,
+  language,
 }) => {
   const articles: Record<string, ArticleData> = {
     masculine: {
@@ -84,27 +85,19 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
   ];
 
   return (
-    <Widget
-      title="Bestimmte Artikel"
-      englishTitle={showTranslations ? "Definite Articles" : undefined}
-    >
+    <Widget titleKey="artikel" language={language}>
       <div className="space-y-3">
         {/* Header Row */}
         <div className="grid grid-cols-4 gap-1">
           <div className="text-center font-semibold text-neutral-700 dark:text-neutral-300 text-xs">
-            {showTranslations ? "Gender" : "Geschlecht"}
+            {language === "en" ? "Gender" : "Geschlecht"}
           </div>
           {cases.map((caseItem, index) => (
             <div
               key={index}
               className={`text-center font-semibold text-xs p-1 rounded ${caseItem.bgColor} ${caseItem.color}`}
             >
-              <div>{caseItem.name}</div>
-              {showTranslations && (
-                <div className="text-xs opacity-75 leading-tight">
-                  {caseItem.english}
-                </div>
-              )}
+              <div>{language === "en" ? caseItem.english : caseItem.name}</div>
             </div>
           ))}
         </div>
@@ -119,13 +112,8 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
             >
               <div className="flex flex-col justify-center">
                 <div className={`font-semibold text-sm ${article.color}`}>
-                  {gender.label}
+                  {language === "en" ? gender.english : gender.label}
                 </div>
-                {showTranslations && (
-                  <div className="text-xs text-neutral-500 dark:text-neutral-400 leading-tight">
-                    {gender.english}
-                  </div>
-                )}
               </div>
               <div className="text-center">
                 <div
@@ -152,49 +140,27 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
           );
         })}
 
-        {/* Case Descriptions */}
-        {showTranslations && (
-          <div className="mt-3 space-y-1">
-            <h5 className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">
-              Case Functions:
-            </h5>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-              {cases.map((caseItem, index) => (
-                <div
-                  key={index}
-                  className={`p-2 rounded border ${caseItem.bgColor} ${caseItem.color}`}
-                >
-                  <div className="font-semibold text-xs">{caseItem.name}</div>
-                  <div className="text-xs opacity-75 mt-0.5 leading-tight">
-                    {caseItem.description}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Usage Examples */}
         <div className="mt-3 p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded border border-neutral-200 dark:border-neutral-600">
           <h5 className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
-            {showTranslations ? "Quick Reference:" : "Schnellübersicht:"}
+            {language === "en" ? "Quick Reference:" : "Schnellübersicht:"}
           </h5>
           <div className="text-xs text-neutral-600 dark:text-neutral-400 space-y-0.5">
             <div>
               • <strong>Nominativ:</strong>{" "}
-              {showTranslations
+              {language === "en"
                 ? "Who/what is doing the action"
                 : "Wer/was macht die Aktion"}
             </div>
             <div>
               • <strong>Akkusativ:</strong>{" "}
-              {showTranslations
+              {language === "en"
                 ? "Who/what receives the action"
                 : "Wen/was betrifft die Aktion"}
             </div>
             <div>
               • <strong>Dativ:</strong>{" "}
-              {showTranslations
+              {language === "en"
                 ? "Who/what benefits from the action"
                 : "Wem/was nützt die Aktion"}
             </div>

@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Language } from "../../../hooks/useTranslations";
+import { useTranslation } from "../../../constants/translations";
 import Widget from "../../ui/Widget/Widget";
-
-interface VerbConjugationWidgetProps {
-  showTranslations: boolean;
-}
-
-interface ConjugationForm {
-  pronoun: string;
-  verb: string;
-  ending: string;
-  translation: string;
-}
 
 interface VerbData {
   infinitive: string;
   english: string;
-  conjugations: ConjugationForm[];
+  conjugations: {
+    pronoun: string;
+    verb: string;
+    ending: string;
+    translation: string;
+  }[];
+}
+
+interface VerbConjugationWidgetProps {
+  language: Language;
 }
 
 const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
-  showTranslations,
+  language,
 }) => {
   const [selectedVerb, setSelectedVerb] = useState("haben");
+  const t = useTranslation(language);
 
   const verbs: Record<string, VerbData> = {
     haben: {
@@ -129,41 +130,36 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
       infinitive: "machen",
       english: "to make/do",
       conjugations: [
-        {
-          pronoun: "ich",
-          verb: "mache",
-          ending: "e",
-          translation: "I make/do",
-        },
+        { pronoun: "ich", verb: "mache", ending: "e", translation: "I make" },
         {
           pronoun: "du",
           verb: "machst",
           ending: "st",
-          translation: "you make/do (informal)",
+          translation: "you make (informal)",
         },
         {
           pronoun: "er/sie/es",
           verb: "macht",
           ending: "t",
-          translation: "he/she/it makes/does",
+          translation: "he/she/it makes",
         },
         {
           pronoun: "wir",
           verb: "machen",
           ending: "en",
-          translation: "we make/do",
+          translation: "we make",
         },
         {
           pronoun: "ihr",
           verb: "macht",
           ending: "t",
-          translation: "you make/do (plural informal)",
+          translation: "you make (plural informal)",
         },
         {
           pronoun: "sie/Sie",
           verb: "machen",
           ending: "en",
-          translation: "they/you make/do (formal)",
+          translation: "they/you make (formal)",
         },
       ],
     },
@@ -236,85 +232,31 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
         },
       ],
     },
-    sprechen: {
-      infinitive: "sprechen",
-      english: "to speak",
-      conjugations: [
-        {
-          pronoun: "ich",
-          verb: "spreche",
-          ending: "e",
-          translation: "I speak",
-        },
-        {
-          pronoun: "du",
-          verb: "sprichst",
-          ending: "st",
-          translation: "you speak (informal)",
-        },
-        {
-          pronoun: "er/sie/es",
-          verb: "spricht",
-          ending: "t",
-          translation: "he/she/it speaks",
-        },
-        {
-          pronoun: "wir",
-          verb: "sprechen",
-          ending: "en",
-          translation: "we speak",
-        },
-        {
-          pronoun: "ihr",
-          verb: "sprecht",
-          ending: "t",
-          translation: "you speak (plural informal)",
-        },
-        {
-          pronoun: "sie/Sie",
-          verb: "sprechen",
-          ending: "en",
-          translation: "they/you speak (formal)",
-        },
-      ],
-    },
   };
 
   const currentVerb = verbs[selectedVerb];
 
+  // Highlight the ending in the verb
   const highlightEnding = (verb: string, ending: string) => {
-    // Handle irregular verbs like "sein" where the entire word changes
     if (ending === verb) {
       return (
-        <span className="text-accent-600 dark:text-accent-400 font-semibold">
+        <span className="text-primary-600 dark:text-primary-400 font-bold">
           {verb}
         </span>
       );
     }
-
     const base = verb.slice(0, -ending.length);
     return (
       <>
-        <span className="text-neutral-900 dark:text-neutral-100">{base}</span>
-        <span className="text-accent-600 dark:text-accent-400 font-semibold">
+        <span>{base}</span>
+        <span className="text-primary-600 dark:text-primary-400 font-bold">
           {ending}
         </span>
       </>
     );
   };
 
-  const getVerbEndingPattern = () => {
-    const endings = currentVerb.conjugations.map((c) => c.ending);
-    const uniqueEndings = [...new Set(endings)];
-
-    return uniqueEndings.map((ending) => {
-      const pronouns = currentVerb.conjugations
-        .filter((c) => c.ending === ending)
-        .map((c) => c.pronoun);
-      return { ending, pronouns };
-    });
-  };
-
+  // Speech synthesis function
   const speakText = (text: string) => {
     if ("speechSynthesis" in window) {
       const utterance = new SpeechSynthesisUtterance(text);
@@ -325,10 +267,7 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
   };
 
   return (
-    <Widget
-      title="Präsens-Verb"
-      englishTitle={showTranslations ? "Present Verb" : undefined}
-    >
+    <Widget titleKey="praesensVerb" language={language}>
       <div className="space-y-4">
         {/* Verb Selector */}
         <div className="mb-4">
@@ -364,7 +303,7 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
                 </span>
               </div>
               <div className="flex items-center space-x-3">
-                {showTranslations && (
+                {language === "en" && (
                   <span className="text-xs text-neutral-500 dark:text-neutral-400 italic">
                     {conjugation.translation}
                   </span>
@@ -372,7 +311,7 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
                 <button
                   onClick={() => speakText(conjugation.verb)}
                   className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-                  title={showTranslations ? "Listen" : "Hören"}
+                  title={t.ui.listen}
                 >
                   <svg
                     className="w-4 h-4 text-neutral-600 dark:text-neutral-400"
@@ -393,18 +332,48 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
           ))}
         </div>
 
-        {/* Pattern Summary */}
-        <div className="mt-6 p-4 bg-accent-50 dark:bg-accent-900/20 rounded-md border border-accent-200 dark:border-accent-800">
-          <h5 className="text-sm font-semibold text-accent-700 dark:text-accent-300 mb-2">
-            {showTranslations ? "Verb Endings Pattern:" : "Verb-Endungen:"}
+        {/* Quick Tips */}
+        <div className="mt-6 p-4 bg-neutral-50 dark:bg-neutral-700/50 rounded-md border border-neutral-200 dark:border-neutral-600">
+          <h5 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
+            {t.ui.schnelleTipps}
           </h5>
-          <div className="text-xs text-accent-600 dark:text-accent-400 space-y-1">
-            {getVerbEndingPattern().map((pattern, index) => (
-              <div key={index}>
-                • {pattern.pronouns.join(", ")}:{" "}
-                <span className="font-semibold">-{pattern.ending}</span>
-              </div>
-            ))}
+          <div className="text-xs text-neutral-600 dark:text-neutral-400 space-y-2">
+            <div className="flex items-start gap-2">
+              <span className="text-blue-500">•</span>
+              <span>
+                <strong>ich:</strong>{" "}
+                {language === "en"
+                  ? "Always ends with -e"
+                  : "Endet immer mit -e"}
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-green-500">•</span>
+              <span>
+                <strong>du:</strong>{" "}
+                {language === "en"
+                  ? "Always ends with -st"
+                  : "Endet immer mit -st"}
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-purple-500">•</span>
+              <span>
+                <strong>er/sie/es:</strong>{" "}
+                {language === "en"
+                  ? "Always ends with -t"
+                  : "Endet immer mit -t"}
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-orange-500">•</span>
+              <span>
+                <strong>wir/ihr/sie/Sie:</strong>{" "}
+                {language === "en"
+                  ? "Use infinitive form"
+                  : "Verwende Infinitivform"}
+              </span>
+            </div>
           </div>
         </div>
       </div>

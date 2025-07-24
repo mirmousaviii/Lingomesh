@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 
+export type Language = "de" | "en";
+
 export const useTranslations = () => {
-  const [showTranslations, setShowTranslations] = useState(false);
+  const [language, setLanguage] = useState<Language>("de");
 
   useEffect(() => {
-    const savedTranslations = localStorage.getItem("showTranslations");
-    if (savedTranslations !== null) {
-      setShowTranslations(JSON.parse(savedTranslations));
+    const savedLanguage = localStorage.getItem("language");
+    if (savedLanguage && (savedLanguage === "de" || savedLanguage === "en")) {
+      setLanguage(savedLanguage as Language);
     }
   }, []);
 
-  const handleTranslationChange = (show: boolean) => {
-    setShowTranslations(show);
-    localStorage.setItem("showTranslations", JSON.stringify(show));
+  const handleLanguageChange = (newLanguage: Language) => {
+    setLanguage(newLanguage);
+    localStorage.setItem("language", newLanguage);
   };
 
-  return { showTranslations, setShowTranslations: handleTranslationChange };
+  return { language, setLanguage: handleLanguageChange };
 };

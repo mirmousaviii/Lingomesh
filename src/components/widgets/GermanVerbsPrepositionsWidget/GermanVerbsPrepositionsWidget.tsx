@@ -1,8 +1,9 @@
+import { Language } from "../../../hooks/useTranslations";
 import React, { useState } from "react";
 import Widget from "../../ui/Widget/Widget";
 
 interface GermanVerbsPrepositionsWidgetProps {
-  showTranslations: boolean;
+  language: Language;
 }
 
 interface VerbData {
@@ -19,7 +20,7 @@ interface VerbData {
 
 const GermanVerbsPrepositionsWidget: React.FC<
   GermanVerbsPrepositionsWidgetProps
-> = ({ showTranslations }) => {
+> = ({ language }) => {
   const [selectedVerb, setSelectedVerb] = useState("warten");
 
   const verbs: Record<string, VerbData> = {
@@ -213,10 +214,7 @@ const GermanVerbsPrepositionsWidget: React.FC<
   };
 
   return (
-    <Widget
-      title="Verben mit Präpositionen"
-      englishTitle={showTranslations ? "Verbs with Prepositions" : undefined}
-    >
+    <Widget titleKey="verbenPraepositionen" language={language}>
       <div className="space-y-4">
         {/* Verb Selector */}
         <div className="mb-4">
@@ -270,7 +268,7 @@ const GermanVerbsPrepositionsWidget: React.FC<
               <div className="text-base font-medium text-neutral-800 dark:text-neutral-200">
                 {currentVerb.example}
               </div>
-              {showTranslations && (
+              {language === "en" && (
                 <div className="text-sm text-neutral-600 dark:text-neutral-400 italic">
                   {currentVerb.translation}
                 </div>
@@ -282,7 +280,7 @@ const GermanVerbsPrepositionsWidget: React.FC<
             <button
               onClick={() => speakText(currentVerb.example)}
               className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-              title={showTranslations ? "Listen" : "Hören"}
+              title={language === "en" ? "Listen" : "Hören"}
             >
               <svg
                 className="w-5 h-5 text-neutral-600 dark:text-neutral-400"
@@ -301,34 +299,11 @@ const GermanVerbsPrepositionsWidget: React.FC<
           </div>
         </div>
 
-        {/* Case Guide */}
-        <div className="mt-4 p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded-md border border-neutral-200 dark:border-neutral-600">
-          <h5 className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
-            {showTranslations ? "Case Guide:" : "Fall-Leitfaden:"}
-          </h5>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div
-              className={`p-1.5 rounded text-xs font-medium ${caseColors.Akkusativ.bgColor} ${caseColors.Akkusativ.color}`}
-            >
-              <strong>Akkusativ:</strong>{" "}
-              {showTranslations ? "Direct object" : "Direktes Objekt"}
-            </div>
-            <div
-              className={`p-1.5 rounded text-xs font-medium ${caseColors.Dativ.bgColor} ${caseColors.Dativ.color}`}
-            >
-              <strong>Dativ:</strong>{" "}
-              {showTranslations ? "Indirect object" : "Indirektes Objekt"}
-            </div>
-          </div>
-        </div>
-
         {/* Usage Tips */}
         <div className="mt-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-md border border-blue-200 dark:border-blue-800">
-          <h6 className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1">
-            💡 {showTranslations ? "Tip:" : "Tipp:"}
-          </h6>
           <div className="text-xs text-blue-600 dark:text-blue-400">
-            {showTranslations
+            <strong>💡 {language === "en" ? "Tip:" : "Tipp:"}</strong>{" "}
+            {language === "en"
               ? "These verb-preposition combinations must be memorized as they don't follow strict rules."
               : "Diese Verb-Präpositions-Kombinationen müssen auswendig gelernt werden, da sie keinen strengen Regeln folgen."}
           </div>

@@ -1,18 +1,22 @@
+import { Language } from "../../../hooks/useTranslations";
+import { useTranslation } from "../../../constants/translations";
 import Widget from "../../ui/Widget/Widget";
 
 interface TimeWidgetProps {
   currentTime: Date;
   is24Hour: boolean;
   setIs24Hour: (is24: boolean) => void;
-  showTranslations: boolean;
+  language: Language;
 }
 
 const TimeWidget: React.FC<TimeWidgetProps> = ({
   currentTime,
   is24Hour,
   setIs24Hour,
-  showTranslations,
+  language,
 }) => {
+  const t = useTranslation(language);
+
   // Format time for display
   const formatDisplayTime = (date: Date) => {
     return date.toLocaleTimeString("en-US", {
@@ -103,24 +107,34 @@ const TimeWidget: React.FC<TimeWidgetProps> = ({
       38: "achtunddreißig",
       39: "neununddreißig",
       40: "vierzig",
+      41: "einundvierzig",
+      42: "zweiundvierzig",
+      43: "dreiundvierzig",
+      44: "vierundvierzig",
+      45: "fünfundvierzig",
+      46: "sechsundvierzig",
+      47: "siebenundvierzig",
+      48: "achtundvierzig",
+      49: "neunundvierzig",
+      50: "fünfzig",
+      51: "einundfünfzig",
+      52: "zweiundfünfzig",
+      53: "dreiundfünfzig",
+      54: "vierundfünfzig",
+      55: "fünfundfünfzig",
+      56: "sechsundfünfzig",
+      57: "siebenundfünfzig",
+      58: "achtundfünfzig",
+      59: "neunundfünfzig",
     };
 
-    const hourWord = germanNumbers[hours] || hours.toString();
-    const minuteWord =
-      minutes > 0 ? germanMinutes[minutes] || minutes.toString() : "";
+    const hourWord = germanNumbers[hours];
+    const minuteWord = germanMinutes[minutes];
 
-    // Construct German time phrase
     if (minutes === 0) {
       return `Es ist ${hourWord} Uhr`;
-    } else if (minutes <= 30) {
-      return `Es ist ${minuteWord} nach ${hourWord}`;
     } else {
-      const nextHour = hours === 23 ? 0 : hours + 1;
-      const nextHourWord = germanNumbers[nextHour] || nextHour.toString();
-      const remainingMinutes = 60 - minutes;
-      const remainingWord =
-        germanMinutes[remainingMinutes] || remainingMinutes.toString();
-      return `Es ist ${remainingWord} vor ${nextHourWord}`;
+      return `Es ist ${hourWord} Uhr ${minuteWord}`;
     }
   };
 
@@ -135,20 +149,17 @@ const TimeWidget: React.FC<TimeWidgetProps> = ({
   };
 
   return (
-    <Widget
-      title="Uhrzeit"
-      englishTitle={showTranslations ? "Time" : undefined}
-    >
+    <Widget titleKey="zeit" language={language}>
       <div className="flex flex-col justify-between h-full space-y-8">
         <div className="text-center space-y-4">
-          <p className="text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-mono tracking-tight">
+          <p className="text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-clock tracking-wider font-crisp">
             {formatDisplayTime(currentTime)}
           </p>
         </div>
 
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-3">
-            <p className="text-2xl text-accent-600 dark:text-accent-400 font-medium italic">
+            <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic font-ibm-plex">
               {convertTimeToGermanPhonetic(currentTime)}
             </p>
             <button
@@ -156,7 +167,7 @@ const TimeWidget: React.FC<TimeWidgetProps> = ({
                 speakText(convertTimeToGermanPhonetic(currentTime))
               }
               className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-              title={showTranslations ? "Listen" : "Hören"}
+              title={t.ui.listen}
             >
               <svg
                 className="w-5 h-5 text-neutral-600 dark:text-neutral-400"
@@ -175,27 +186,27 @@ const TimeWidget: React.FC<TimeWidgetProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center justify-center pt-6">
-          <div className="flex bg-neutral-200 dark:bg-neutral-700 rounded p-1">
+        <div className="flex justify-center">
+          <div className="flex items-center space-x-4 bg-neutral-100 dark:bg-neutral-700 rounded-lg p-2">
             <button
               onClick={() => setIs24Hour(false)}
-              className={`px-4 py-2 text-sm font-medium rounded transition-all duration-200 ${
+              className={`px-3 py-1 rounded-md text-sm font-medium transition-colors duration-200 ${
                 !is24Hour
-                  ? "bg-white dark:bg-neutral-600 text-neutral-900 dark:text-neutral-100 shadow-soft"
-                  : "text-neutral-600 dark:text-neutral-300"
+                  ? "bg-white dark:bg-neutral-600 text-neutral-900 dark:text-neutral-100 shadow-sm"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200"
               }`}
             >
-              12h
+              {t.time.format12h}
             </button>
             <button
               onClick={() => setIs24Hour(true)}
-              className={`px-4 py-2 text-sm font-medium rounded transition-all duration-200 ${
+              className={`px-3 py-1 rounded-md text-sm font-medium transition-colors duration-200 ${
                 is24Hour
-                  ? "bg-white dark:bg-neutral-600 text-neutral-900 dark:text-neutral-100 shadow-soft"
-                  : "text-neutral-600 dark:text-neutral-300"
+                  ? "bg-white dark:bg-neutral-600 text-neutral-900 dark:text-neutral-100 shadow-sm"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200"
               }`}
             >
-              24h
+              {t.time.format24h}
             </button>
           </div>
         </div>

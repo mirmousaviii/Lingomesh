@@ -4,12 +4,12 @@ import { weatherService } from "../../../services/weatherService";
 import { GERMAN_CITIES } from "../../../constants/cities";
 import { useTheme } from "../../../hooks/useTheme";
 import { useTranslations } from "../../../hooks/useTranslations";
+import { useTranslation } from "../../../constants/translations";
 
 import Header from "../Header/Header";
 import TimeWidget from "../../widgets/TimeWidget/TimeWidget";
 import DateWidget from "../../widgets/DateWidget/DateWidget";
 import WeatherWidget from "../../widgets/WeatherWidget/WeatherWidget";
-import SettingsWidget from "../../widgets/SettingsWidget/SettingsWidget";
 import Footer from "../Footer/Footer";
 import NumberConverterWidget from "../../widgets/NumberConverterWidget/NumberConverterWidget";
 import VerbConjugationWidget from "../../widgets/VerbConjugationWidget/VerbConjugationWidget";
@@ -30,8 +30,9 @@ function App() {
   const [is24HourFormat, setIs24HourFormat] = useState(false);
 
   // Custom hooks
-  const { showTranslations, setShowTranslations } = useTranslations();
+  const { language, setLanguage } = useTranslations();
   const { themeMode, handleThemeChange } = useTheme();
+  const t = useTranslation(language);
 
   // Update time every minute
   useEffect(() => {
@@ -56,7 +57,7 @@ function App() {
       const weatherData = await weatherService.fetchWeather(city);
       setWeather(weatherData);
     } catch (err) {
-      setError("Wetterdaten konnten nicht geladen werden");
+      setError(t.weather.wetterdatenFehler);
       console.error("Weather fetch error:", err);
     } finally {
       setIsLoading(false);
@@ -68,7 +69,12 @@ function App() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="space-y-16 animate-fade-in">
           {/* Header Section */}
-          <Header showTranslations={showTranslations} />
+          <Header
+            language={language}
+            setLanguage={setLanguage}
+            themeMode={themeMode}
+            handleThemeChange={handleThemeChange}
+          />
 
           {/* Main Content */}
           <main className="space-y-16">
@@ -76,25 +82,19 @@ function App() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
               <div className="lg:col-span-2 space-y-8 order-2 lg:order-1">
                 {/* A1 Level - Beginner */}
-                <GermanArticlesWidget showTranslations={showTranslations} />
-                <GermanPersonalPronounsWidget
-                  showTranslations={showTranslations}
-                />
-                <VerbConjugationWidget showTranslations={showTranslations} />
+                <GermanArticlesWidget language={language} />
+                <GermanPersonalPronounsWidget language={language} />
+                <VerbConjugationWidget language={language} />
 
                 {/* A2 Level - Elementary */}
-                <GermanQuestionsWidget showTranslations={showTranslations} />
+                <GermanQuestionsWidget language={language} />
 
                 {/* B1 Level - Intermediate */}
-                <GermanVerbsPrepositionsWidget
-                  showTranslations={showTranslations}
-                />
-                <GermanVerbTensesWidget showTranslations={showTranslations} />
+                <GermanVerbsPrepositionsWidget language={language} />
+                <GermanVerbTensesWidget language={language} />
 
                 {/* B2+ Level - Upper Intermediate/Advanced */}
-                <GermanAdjectiveDeclensionWidget
-                  showTranslations={showTranslations}
-                />
+                <GermanAdjectiveDeclensionWidget language={language} />
               </div>
               <div className="space-y-8 order-1 lg:order-2">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
@@ -102,12 +102,9 @@ function App() {
                     currentTime={currentTime}
                     is24Hour={is24HourFormat}
                     setIs24Hour={setIs24HourFormat}
-                    showTranslations={showTranslations}
+                    language={language}
                   />
-                  <DateWidget
-                    currentTime={currentTime}
-                    showTranslations={showTranslations}
-                  />
+                  <DateWidget currentTime={currentTime} language={language} />
                 </div>
                 <WeatherWidget
                   weather={weather}
@@ -116,15 +113,9 @@ function App() {
                   selectedCity={selectedCity}
                   setSelectedCity={setSelectedCity}
                   germanCities={GERMAN_CITIES}
-                  showTranslations={showTranslations}
+                  language={language}
                 />
-                <NumberConverterWidget showTranslations={showTranslations} />
-                <SettingsWidget
-                  showTranslations={showTranslations}
-                  setShowTranslations={setShowTranslations}
-                  themeMode={themeMode}
-                  handleThemeChange={handleThemeChange}
-                />
+                <NumberConverterWidget language={language} />
               </div>
             </div>
           </main>

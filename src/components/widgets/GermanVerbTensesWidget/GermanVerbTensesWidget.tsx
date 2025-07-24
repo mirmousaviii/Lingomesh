@@ -1,8 +1,9 @@
+import { Language } from "../../../hooks/useTranslations";
 import React, { useState } from "react";
 import Widget from "../../ui/Widget/Widget";
 
 interface GermanVerbTensesWidgetProps {
-  showTranslations: boolean;
+  language: Language;
 }
 
 interface TenseData {
@@ -23,7 +24,7 @@ interface TenseData {
 }
 
 const GermanVerbTensesWidget: React.FC<GermanVerbTensesWidgetProps> = ({
-  showTranslations,
+  language,
 }) => {
   const [activeTense, setActiveTense] = useState<"präsens" | "perfekt">(
     "präsens"
@@ -194,10 +195,7 @@ const GermanVerbTensesWidget: React.FC<GermanVerbTensesWidgetProps> = ({
   };
 
   return (
-    <Widget
-      title="Deutsche Verbzeiten"
-      englishTitle={showTranslations ? "German Verb Tenses" : undefined}
-    >
+    <Widget titleKey="verbzeiten" language={language}>
       <div className="space-y-4">
         {/* Tense Selector Tabs */}
         <div className="flex bg-neutral-100 dark:bg-neutral-700 rounded-lg p-1">
@@ -228,7 +226,7 @@ const GermanVerbTensesWidget: React.FC<GermanVerbTensesWidgetProps> = ({
             >
               <div className="mb-3">
                 <h4 className={`text-lg font-bold ${tense.color}`}>
-                  {showTranslations ? tense.englishName : tense.name}
+                  {language === "en" ? tense.englishName : tense.name}
                 </h4>
               </div>
 
@@ -236,12 +234,12 @@ const GermanVerbTensesWidget: React.FC<GermanVerbTensesWidgetProps> = ({
                 {/* Formula */}
                 <div className="bg-white/50 dark:bg-neutral-800/50 rounded-md p-3 border border-white/30 dark:border-neutral-600/30">
                   <h5 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
-                    {showTranslations ? "Formula:" : "Formel:"}
+                    {language === "en" ? "Formula:" : "Formel:"}
                   </h5>
                   <div className="text-base font-mono text-neutral-800 dark:text-neutral-200">
                     {tense.formula}
                   </div>
-                  {showTranslations && (
+                  {language === "en" && (
                     <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
                       {tense.englishFormula}
                     </div>
@@ -251,7 +249,7 @@ const GermanVerbTensesWidget: React.FC<GermanVerbTensesWidgetProps> = ({
                 {/* Examples */}
                 <div className="space-y-3">
                   <h5 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300">
-                    {showTranslations ? "Examples:" : "Beispiele:"}
+                    {language === "en" ? "Examples:" : "Beispiele:"}
                   </h5>
                   {tense.examples.map((example, index) => (
                     <div
@@ -288,7 +286,7 @@ const GermanVerbTensesWidget: React.FC<GermanVerbTensesWidgetProps> = ({
                                 : []),
                             ])}
                           </div>
-                          {showTranslations && (
+                          {language === "en" && (
                             <div className="text-sm text-neutral-600 dark:text-neutral-400 italic">
                               {example.english}
                             </div>
@@ -297,7 +295,7 @@ const GermanVerbTensesWidget: React.FC<GermanVerbTensesWidgetProps> = ({
                         <button
                           onClick={() => speakText(example.german)}
                           className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-                          title={showTranslations ? "Listen" : "Hören"}
+                          title={language === "en" ? "Listen" : "Hören"}
                         >
                           <svg
                             className="w-4 h-4 text-neutral-600 dark:text-neutral-400"
@@ -325,13 +323,13 @@ const GermanVerbTensesWidget: React.FC<GermanVerbTensesWidgetProps> = ({
         {/* Legend */}
         <div className="mt-4 p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded-md border border-neutral-200 dark:border-neutral-600">
           <h5 className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
-            {showTranslations ? "Color Legend:" : "Farben-Legende:"}
+            {language === "en" ? "Color Legend:" : "Farben-Legende:"}
           </h5>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
               <span className="text-xs text-neutral-600 dark:text-neutral-400">
-                {showTranslations
+                {language === "en"
                   ? "Auxiliary verb (haben/sein)"
                   : "Hilfsverb (haben/sein)"}
               </span>
@@ -339,13 +337,13 @@ const GermanVerbTensesWidget: React.FC<GermanVerbTensesWidgetProps> = ({
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
               <span className="text-xs text-neutral-600 dark:text-neutral-400">
-                {showTranslations ? "Past participle" : "Partizip II"}
+                {language === "en" ? "Past participle" : "Partizip II"}
               </span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
               <span className="text-xs text-neutral-600 dark:text-neutral-400">
-                {showTranslations ? "Main verb" : "Hauptverb"}
+                {language === "en" ? "Main verb" : "Hauptverb"}
               </span>
             </div>
           </div>
@@ -355,22 +353,22 @@ const GermanVerbTensesWidget: React.FC<GermanVerbTensesWidgetProps> = ({
         <div className="mt-3 space-y-2">
           <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-md border border-blue-200 dark:border-blue-800">
             <h6 className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1">
-              💡 {showTranslations ? "Perfekt Tips:" : "Perfekt Tipps:"}
+              💡 {language === "en" ? "Perfekt Tips:" : "Perfekt Tipps:"}
             </h6>
             <div className="text-xs text-blue-600 dark:text-blue-400 space-y-1">
               <div>
                 <strong>
-                  {showTranslations ? "Use 'haben':" : "Verwende 'haben':"}
+                  {language === "en" ? "Use 'haben':" : "Verwende 'haben':"}
                 </strong>{" "}
-                {showTranslations
+                {language === "en"
                   ? "Most verbs (learn, read, sleep)"
                   : "Die meisten Verben (lernen, lesen, schlafen)"}
               </div>
               <div>
                 <strong>
-                  {showTranslations ? "Use 'sein':" : "Verwende 'sein':"}
+                  {language === "en" ? "Use 'sein':" : "Verwende 'sein':"}
                 </strong>{" "}
-                {showTranslations
+                {language === "en"
                   ? "Movement verbs (go, drive, fly) and state changes (become, die)"
                   : "Bewegungsverben (gehen, fahren, fliegen) und Zustandsänderungen (werden, sterben)"}
               </div>
@@ -379,10 +377,10 @@ const GermanVerbTensesWidget: React.FC<GermanVerbTensesWidgetProps> = ({
 
           <div className="p-2 bg-green-50 dark:bg-green-900/20 rounded-md border border-green-200 dark:border-green-800">
             <h6 className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1">
-              📝 {showTranslations ? "Präsens Usage:" : "Präsens Verwendung:"}
+              📝 {language === "en" ? "Präsens Usage:" : "Präsens Verwendung:"}
             </h6>
             <div className="text-xs text-green-600 dark:text-green-400">
-              {showTranslations
+              {language === "en"
                 ? "Used for present actions, habits, and general truths."
                 : "Verwendet für gegenwärtige Handlungen, Gewohnheiten und allgemeine Wahrheiten."}
             </div>

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Language } from "../../../hooks/useTranslations";
 import Widget from "../../ui/Widget/Widget";
 
 interface GermanQuestionsWidgetProps {
-  showTranslations: boolean;
+  language: Language;
 }
 
 interface QuestionExample {
@@ -22,7 +23,7 @@ interface QuestionSection {
 }
 
 const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
-  showTranslations,
+  language,
 }) => {
   const [activeSection, setActiveSection] = useState<"w-fragen" | "ja-nein">(
     "w-fragen"
@@ -113,10 +114,7 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
   const currentSection = questionSections[activeSection];
 
   return (
-    <Widget
-      title="Deutsche Fragen"
-      englishTitle={showTranslations ? "German Questions" : undefined}
-    >
+    <Widget titleKey="fragen" language={language}>
       <div className="space-y-4">
         {/* Question Type Selector Tabs */}
         <div className="flex bg-neutral-100 dark:bg-neutral-700 rounded-lg p-1">
@@ -146,7 +144,7 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
               <h4 className={`text-lg font-bold ${currentSection.color}`}>
                 {currentSection.title}
               </h4>
-              {showTranslations && (
+              {language === "en" && (
                 <p className="text-sm text-neutral-600 dark:text-neutral-400">
                   {currentSection.englishTitle}
                 </p>
@@ -166,7 +164,7 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
                     <div className="font-medium text-neutral-900 dark:text-neutral-100">
                       {example.german}
                     </div>
-                    {showTranslations && (
+                    {language === "en" && (
                       <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
                         {example.english}
                       </div>
@@ -178,7 +176,7 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
                   <button
                     onClick={() => speakText(example.german)}
                     className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-                    title={showTranslations ? "Listen" : "Hören"}
+                    title={language === "en" ? "Listen" : "Hören"}
                   >
                     <svg
                       className="w-4 h-4 text-neutral-600 dark:text-neutral-400"
@@ -203,14 +201,14 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
         {/* Quick Tips */}
         <div className="mt-4 p-4 bg-neutral-50 dark:bg-neutral-700/50 rounded-md border border-neutral-200 dark:border-neutral-600">
           <h5 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
-            {showTranslations ? "Quick Tips:" : "Schnelle Tipps:"}
+            {language === "en" ? "Quick Tips:" : "Schnelle Tipps:"}
           </h5>
           <div className="text-xs text-neutral-600 dark:text-neutral-400 space-y-2">
             <div className="flex items-start gap-2">
               <span className="text-blue-500">•</span>
               <span>
                 <strong>W-Fragen:</strong>{" "}
-                {showTranslations
+                {language === "en"
                   ? "Start with W-words (Was, Wo, Wann, Warum, Wie, Wer, Wen, Wem)"
                   : "Beginnen mit W-Wörtern (Was, Wo, Wann, Warum, Wie, Wer, Wen, Wem)"}
               </span>
@@ -219,7 +217,7 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
               <span className="text-green-500">•</span>
               <span>
                 <strong>Ja/Nein Fragen:</strong>{" "}
-                {showTranslations
+                {language === "en"
                   ? "Verb comes first, subject second"
                   : "Verb kommt zuerst, Subjekt zweitens"}
               </span>
@@ -228,7 +226,7 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
               <span className="text-purple-500">•</span>
               <span>
                 <strong>Formal vs Informal:</strong>{" "}
-                {showTranslations
+                {language === "en"
                   ? "Use 'Sie' for formal, 'du' for informal"
                   : "Verwende 'Sie' für formell, 'du' für informell"}
               </span>

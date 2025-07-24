@@ -1,8 +1,9 @@
+import { Language } from "../../../hooks/useTranslations";
 import React, { useState } from "react";
 import Widget from "../../ui/Widget/Widget";
 
 interface GermanAdjectiveDeclensionWidgetProps {
-  showTranslations: boolean;
+  language: Language;
 }
 
 interface DeclensionData {
@@ -17,7 +18,7 @@ interface DeclensionData {
 
 const GermanAdjectiveDeclensionWidget: React.FC<
   GermanAdjectiveDeclensionWidgetProps
-> = ({ showTranslations }) => {
+> = ({ language }) => {
   const [activeDeclension, setActiveDeclension] = useState<
     "strong" | "weak" | "mixed"
   >("strong");
@@ -237,10 +238,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
   };
 
   return (
-    <Widget
-      title="Adjektivdeklination"
-      englishTitle={showTranslations ? "Adjective Declension" : undefined}
-    >
+    <Widget titleKey="adjektivdeklination" language={language}>
       <div className="space-y-3 sm:space-y-4">
         {/* Declension Type Selector Tabs */}
         <div className="flex bg-neutral-100 dark:bg-neutral-700 rounded-lg p-1">
@@ -275,9 +273,9 @@ const GermanAdjectiveDeclensionWidget: React.FC<
             >
               <div className="mb-2 sm:mb-3">
                 <h4 className={`text-base sm:text-lg font-bold ${type.color}`}>
-                  {showTranslations ? type.english : type.label}
+                  {language === "en" ? type.english : type.label}
                 </h4>
-                {showTranslations && (
+                {language === "en" && (
                   <div className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
                     {type.description}
                   </div>
@@ -288,7 +286,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
                 {/* Header Row */}
                 <div className="grid grid-cols-5 gap-1">
                   <div className="text-center font-semibold text-neutral-700 dark:text-neutral-300 text-xs">
-                    {showTranslations ? "Gender" : "Geschlecht"}
+                    {language === "en" ? "Gender" : "Geschlecht"}
                   </div>
                   {cases.map((caseItem, index) => (
                     <div
@@ -298,7 +296,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
                       <div className="text-xs leading-tight">
                         {caseItem.name}
                       </div>
-                      {showTranslations && (
+                      {language === "en" && (
                         <div className="text-xs opacity-75 leading-tight mt-0.5">
                           {caseItem.english}
                         </div>
@@ -321,7 +319,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
                         >
                           {gender.label}
                         </div>
-                        {showTranslations && (
+                        {language === "en" && (
                           <div className="text-xs text-neutral-500 dark:text-neutral-400 leading-tight">
                             {gender.english}
                           </div>
@@ -364,7 +362,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
             {/* Examples for this declension type */}
             <div className="p-3 sm:p-4 bg-neutral-50 dark:bg-neutral-700/50 rounded border border-neutral-200 dark:border-neutral-600">
               <h4 className="text-xs sm:text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-2 sm:mb-3">
-                {showTranslations ? "Examples" : "Beispiele"}
+                {language === "en" ? "Examples" : "Beispiele"}
               </h4>
               <div className="space-y-2">
                 {examples.map((example, index) => (
@@ -384,7 +382,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
                             ? example.weak
                             : example.mixed}
                         </div>
-                        {showTranslations && (
+                        {language === "en" && (
                           <div className="text-xs text-neutral-500 dark:text-neutral-400 italic leading-tight">
                             {example.english}
                           </div>
@@ -401,7 +399,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
                           )
                         }
                         className="flex-shrink-0 p-2.5 sm:p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200 touch-manipulation"
-                        title={showTranslations ? "Listen" : "Hören"}
+                        title={language === "en" ? "Listen" : "Hören"}
                       >
                         <svg
                           className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-600 dark:text-neutral-400"
@@ -428,51 +426,29 @@ const GermanAdjectiveDeclensionWidget: React.FC<
         {/* Quick Reference */}
         <div className="mt-3 sm:mt-4 p-2 sm:p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded border border-neutral-200 dark:border-neutral-600">
           <h5 className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
-            {showTranslations ? "Quick Reference:" : "Schnellübersicht:"}
+            {language === "en" ? "Quick Reference:" : "Schnellübersicht:"}
           </h5>
           <div className="text-xs text-neutral-600 dark:text-neutral-400 space-y-1">
             <div className="leading-tight">
               <strong>Strong:</strong>{" "}
-              {showTranslations
+              {language === "en"
                 ? "No article or indefinite article"
                 : "Kein Artikel oder unbestimmter Artikel"}
             </div>
             <div className="leading-tight">
               <strong>Weak:</strong>{" "}
-              {showTranslations
+              {language === "en"
                 ? "With definite article (der, die, das)"
                 : "Mit bestimmtem Artikel (der, die, das)"}
             </div>
             <div className="leading-tight">
               <strong>Mixed:</strong>{" "}
-              {showTranslations
+              {language === "en"
                 ? "With indefinite article (ein, eine, ein)"
                 : "Mit unbestimmtem Artikel (ein, eine, ein)"}
             </div>
           </div>
         </div>
-
-        {/* Case Descriptions */}
-        {showTranslations && (
-          <div className="mt-3 space-y-2">
-            <h5 className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">
-              Case Functions:
-            </h5>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-              {cases.map((caseItem, index) => (
-                <div
-                  key={index}
-                  className={`p-2 rounded border ${caseItem.bgColor} ${caseItem.color}`}
-                >
-                  <div className="font-semibold text-xs">{caseItem.name}</div>
-                  <div className="text-xs opacity-75 mt-0.5 leading-tight">
-                    {caseItem.description}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </Widget>
   );

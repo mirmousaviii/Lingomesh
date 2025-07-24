@@ -1,8 +1,9 @@
 import React from "react";
+import { Language } from "../../../hooks/useTranslations";
 import Widget from "../../ui/Widget/Widget";
 
 interface GermanPersonalPronounsWidgetProps {
-  showTranslations: boolean;
+  language: Language;
 }
 
 interface PronounData {
@@ -20,7 +21,7 @@ interface PronounData {
 
 const GermanPersonalPronounsWidget: React.FC<
   GermanPersonalPronounsWidgetProps
-> = ({ showTranslations }) => {
+> = ({ language }) => {
   const pronouns: PronounData[] = [
     {
       person: "1. Person Singular",
@@ -142,10 +143,7 @@ const GermanPersonalPronounsWidget: React.FC<
   };
 
   return (
-    <Widget
-      title="Personalpronomen"
-      englishTitle={showTranslations ? "Personal Pronouns" : undefined}
-    >
+    <Widget titleKey="personalpronomen" language={language}>
       <div className="space-y-3">
         {/* Mobile-friendly layout */}
         <div className="block md:hidden space-y-3">
@@ -159,7 +157,7 @@ const GermanPersonalPronounsWidget: React.FC<
                 <div className={`font-semibold text-sm ${pronoun.color}`}>
                   {pronoun.person}
                 </div>
-                {showTranslations && (
+                {language === "en" && (
                   <div className="text-xs text-neutral-500 dark:text-neutral-400">
                     {pronoun.english}
                   </div>
@@ -170,7 +168,7 @@ const GermanPersonalPronounsWidget: React.FC<
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div className="text-center">
                   <div className="text-xs text-neutral-600 dark:text-neutral-400 mb-1">
-                    {showTranslations ? "Pronoun" : "Pronomen"}
+                    {language === "en" ? "Pronoun" : "Pronomen"}
                   </div>
                   <div
                     className={`text-lg font-bold ${pronoun.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-2 border ${pronoun.borderColor}`}
@@ -180,7 +178,7 @@ const GermanPersonalPronounsWidget: React.FC<
                 </div>
                 <div className="text-center">
                   <div className="text-xs text-neutral-600 dark:text-neutral-400 mb-1">
-                    {showTranslations ? "Possessive" : "Possessiv"}
+                    {language === "en" ? "Possessive" : "Possessiv"}
                   </div>
                   <div
                     className={`text-lg font-bold ${pronoun.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-2 border ${pronoun.borderColor}`}
@@ -194,12 +192,12 @@ const GermanPersonalPronounsWidget: React.FC<
               <div className="flex items-start justify-between gap-2">
                 <div className="flex-1">
                   <div className="text-xs text-neutral-600 dark:text-neutral-400 mb-1">
-                    {showTranslations ? "Example" : "Beispiel"}
+                    {language === "en" ? "Example" : "Beispiel"}
                   </div>
                   <div className={`text-sm font-medium ${pronoun.color}`}>
                     {pronoun.example}
                   </div>
-                  {showTranslations && (
+                  {language === "en" && (
                     <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
                       {pronoun.exampleEnglish}
                     </div>
@@ -208,7 +206,7 @@ const GermanPersonalPronounsWidget: React.FC<
                 <button
                   onClick={() => speakText(pronoun.example)}
                   className="flex-shrink-0 p-2 rounded bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-                  title={showTranslations ? "Listen" : "Hören"}
+                  title={language === "en" ? "Listen" : "Hören"}
                 >
                   <svg
                     className="w-4 h-4 text-neutral-600 dark:text-neutral-400"
@@ -234,16 +232,16 @@ const GermanPersonalPronounsWidget: React.FC<
           {/* Header Row */}
           <div className="grid grid-cols-4 gap-3 mb-3">
             <div className="text-center font-semibold text-neutral-700 dark:text-neutral-300 text-sm">
-              {showTranslations ? "Person" : "Person"}
+              {language === "en" ? "Person" : "Person"}
             </div>
             <div className="text-center font-semibold text-neutral-700 dark:text-neutral-300 text-sm">
-              {showTranslations ? "Pronoun" : "Pronomen"}
+              {language === "en" ? "Pronoun" : "Pronomen"}
             </div>
             <div className="text-center font-semibold text-neutral-700 dark:text-neutral-300 text-sm">
-              {showTranslations ? "Possessive" : "Possessiv"}
+              {language === "en" ? "Possessive" : "Possessiv"}
             </div>
             <div className="text-center font-semibold text-neutral-700 dark:text-neutral-300 text-sm">
-              {showTranslations ? "Example" : "Beispiel"}
+              {language === "en" ? "Example" : "Beispiel"}
             </div>
           </div>
 
@@ -258,7 +256,7 @@ const GermanPersonalPronounsWidget: React.FC<
                 <div className={`font-semibold text-sm ${pronoun.color}`}>
                   {pronoun.person}
                 </div>
-                {showTranslations && (
+                {language === "en" && (
                   <div className="text-xs text-neutral-500 dark:text-neutral-400 leading-tight mt-1">
                     {pronoun.english}
                   </div>
@@ -291,7 +289,7 @@ const GermanPersonalPronounsWidget: React.FC<
                   >
                     {pronoun.example}
                   </div>
-                  {showTranslations && (
+                  {language === "en" && (
                     <div className="text-xs text-neutral-500 dark:text-neutral-400 leading-tight mt-1">
                       {pronoun.exampleEnglish}
                     </div>
@@ -300,7 +298,7 @@ const GermanPersonalPronounsWidget: React.FC<
                 <button
                   onClick={() => speakText(pronoun.example)}
                   className="flex-shrink-0 p-2 rounded bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-                  title={showTranslations ? "Listen" : "Hören"}
+                  title={language === "en" ? "Listen" : "Hören"}
                 >
                   <svg
                     className="w-4 h-4 text-neutral-600 dark:text-neutral-400"
@@ -324,7 +322,7 @@ const GermanPersonalPronounsWidget: React.FC<
         {/* Quick Reference */}
         <div className="mt-3 p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded border border-neutral-200 dark:border-neutral-600">
           <h5 className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
-            {showTranslations ? "Quick Reference:" : "Schnellübersicht:"}
+            {language === "en" ? "Quick Reference:" : "Schnellübersicht:"}
           </h5>
           <div className="text-xs text-neutral-600 dark:text-neutral-400 space-y-1">
             <div>
