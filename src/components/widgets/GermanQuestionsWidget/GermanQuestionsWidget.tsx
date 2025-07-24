@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Widget from "../../ui/Widget/Widget";
 
 interface GermanQuestionsWidgetProps {
@@ -24,8 +24,12 @@ interface QuestionSection {
 const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
   showTranslations,
 }) => {
-  const questionSections: QuestionSection[] = [
-    {
+  const [activeSection, setActiveSection] = useState<"w-fragen" | "ja-nein">(
+    "w-fragen"
+  );
+
+  const questionSections: Record<string, QuestionSection> = {
+    "w-fragen": {
       title: "W-Fragen",
       englishTitle: "W-Questions",
       icon: "❓",
@@ -60,7 +64,7 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
         },
       ],
     },
-    {
+    "ja-nein": {
       title: "Ja/Nein Fragen",
       englishTitle: "Yes/No Questions",
       icon: "❔",
@@ -95,7 +99,7 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
         },
       ],
     },
-  ];
+  };
 
   const speakText = (text: string) => {
     if ("speechSynthesis" in window) {
@@ -106,81 +110,98 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
     }
   };
 
+  const currentSection = questionSections[activeSection];
+
   return (
     <Widget
       title="Deutsche Fragen"
       englishTitle={showTranslations ? "German Questions" : undefined}
     >
-      <div className="space-y-6">
-        {questionSections.map((section, sectionIndex) => (
-          <div
-            key={sectionIndex}
-            className={`p-4 rounded-lg border ${section.borderColor} ${section.bgColor}`}
-          >
-            {/* Section Header */}
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl">{section.icon}</span>
-              <div>
-                <h4 className={`text-lg font-bold ${section.color}`}>
-                  {section.title}
-                </h4>
-                {showTranslations && (
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                    {section.englishTitle}
-                  </p>
-                )}
-              </div>
-            </div>
+      <div className="space-y-4">
+        {/* Question Type Selector Tabs */}
+        <div className="flex bg-neutral-100 dark:bg-neutral-700 rounded-lg p-1">
+          {Object.entries(questionSections).map(([key, section]) => (
+            <button
+              key={key}
+              onClick={() => setActiveSection(key as "w-fragen" | "ja-nein")}
+              className={`flex-1 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                activeSection === key
+                  ? `${section.bgColor} ${section.color} shadow-sm`
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-600/30"
+              }`}
+            >
+              {section.title}
+            </button>
+          ))}
+        </div>
 
-            {/* Examples */}
-            <div className="space-y-3">
-              {section.examples.map((example, exampleIndex) => (
-                <div
-                  key={exampleIndex}
-                  className="bg-white/70 dark:bg-neutral-800/70 rounded-md p-3 border border-white/50 dark:border-neutral-700/50"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex-1">
-                      <div className="font-medium text-neutral-900 dark:text-neutral-100">
-                        {example.german}
-                      </div>
-                      {showTranslations && (
-                        <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-                          {example.english}
-                        </div>
-                      )}
-                      <div className="text-xs text-neutral-500 dark:text-neutral-500 mt-1 italic">
-                        [{example.pronunciation}]
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => speakText(example.german)}
-                      className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-                      title={showTranslations ? "Listen" : "Hören"}
-                    >
-                      <svg
-                        className="w-4 h-4 text-neutral-600 dark:text-neutral-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              ))}
+        {/* Active Section Content */}
+        <div
+          className={`p-4 rounded-lg border ${currentSection.borderColor} ${currentSection.bgColor}`}
+        >
+          {/* Section Header */}
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-2xl">{currentSection.icon}</span>
+            <div>
+              <h4 className={`text-lg font-bold ${currentSection.color}`}>
+                {currentSection.title}
+              </h4>
+              {showTranslations && (
+                <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                  {currentSection.englishTitle}
+                </p>
+              )}
             </div>
           </div>
-        ))}
+
+          {/* Examples */}
+          <div className="space-y-3">
+            {currentSection.examples.map((example, exampleIndex) => (
+              <div
+                key={exampleIndex}
+                className="bg-white/70 dark:bg-neutral-800/70 rounded-md p-3 border border-white/50 dark:border-neutral-700/50"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1">
+                    <div className="font-medium text-neutral-900 dark:text-neutral-100">
+                      {example.german}
+                    </div>
+                    {showTranslations && (
+                      <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                        {example.english}
+                      </div>
+                    )}
+                    <div className="text-xs text-neutral-500 dark:text-neutral-500 mt-1 italic">
+                      [{example.pronunciation}]
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => speakText(example.german)}
+                    className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
+                    title={showTranslations ? "Listen" : "Hören"}
+                  >
+                    <svg
+                      className="w-4 h-4 text-neutral-600 dark:text-neutral-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Quick Tips */}
-        <div className="mt-6 p-4 bg-neutral-50 dark:bg-neutral-700/50 rounded-md border border-neutral-200 dark:border-neutral-600">
+        <div className="mt-4 p-4 bg-neutral-50 dark:bg-neutral-700/50 rounded-md border border-neutral-200 dark:border-neutral-600">
           <h5 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
             {showTranslations ? "Quick Tips:" : "Schnelle Tipps:"}
           </h5>

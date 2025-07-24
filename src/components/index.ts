@@ -12,6 +12,9 @@ export { default as NumberConverterWidget } from "./widgets/NumberConverterWidge
 export { default as VerbConjugationWidget } from "./widgets/VerbConjugationWidget/VerbConjugationWidget";
 export { default as GermanArticlesWidget } from "./widgets/GermanArticlesWidget/GermanArticlesWidget";
 export { default as GermanQuestionsWidget } from "./widgets/GermanQuestionsWidget/GermanQuestionsWidget";
+export { default as GermanVerbTensesWidget } from "./widgets/GermanVerbTensesWidget/GermanVerbTensesWidget";
+export { default as GermanPersonalPronounsWidget } from "./widgets/GermanPersonalPronounsWidget/GermanPersonalPronounsWidget";
+export { default as GermanAdjectiveDeclensionWidget } from "./widgets/GermanAdjectiveDeclensionWidget/GermanAdjectiveDeclensionWidget";
 
 // UI components
 export { default as Widget } from "./ui/Widget/Widget";

@@ -88,20 +88,22 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
       title="Bestimmte Artikel"
       englishTitle={showTranslations ? "Definite Articles" : undefined}
     >
-      <div className="space-y-6">
+      <div className="space-y-3">
         {/* Header Row */}
-        <div className="grid grid-cols-4 gap-2">
-          <div className="text-center font-semibold text-neutral-700 dark:text-neutral-300 text-sm">
+        <div className="grid grid-cols-4 gap-1">
+          <div className="text-center font-semibold text-neutral-700 dark:text-neutral-300 text-xs">
             {showTranslations ? "Gender" : "Geschlecht"}
           </div>
           {cases.map((caseItem, index) => (
             <div
               key={index}
-              className={`text-center font-semibold text-sm p-2 rounded-md ${caseItem.bgColor} ${caseItem.color}`}
+              className={`text-center font-semibold text-xs p-1 rounded ${caseItem.bgColor} ${caseItem.color}`}
             >
               <div>{caseItem.name}</div>
               {showTranslations && (
-                <div className="text-xs opacity-75">{caseItem.english}</div>
+                <div className="text-xs opacity-75 leading-tight">
+                  {caseItem.english}
+                </div>
               )}
             </div>
           ))}
@@ -113,35 +115,35 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
           return (
             <div
               key={gender.key}
-              className={`grid grid-cols-4 gap-2 p-3 rounded-md border ${article.borderColor} ${article.bgColor}`}
+              className={`grid grid-cols-4 gap-1 p-2 rounded border ${article.borderColor} ${article.bgColor}`}
             >
               <div className="flex flex-col justify-center">
-                <div className={`font-semibold ${article.color}`}>
+                <div className={`font-semibold text-sm ${article.color}`}>
                   {gender.label}
                 </div>
                 {showTranslations && (
-                  <div className="text-xs text-neutral-500 dark:text-neutral-400">
+                  <div className="text-xs text-neutral-500 dark:text-neutral-400 leading-tight">
                     {gender.english}
                   </div>
                 )}
               </div>
               <div className="text-center">
                 <div
-                  className={`text-xl font-bold ${article.color} bg-white/50 dark:bg-neutral-800/50 rounded-md py-2 px-3 border ${article.borderColor}`}
+                  className={`text-lg font-bold ${article.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-2 border ${article.borderColor}`}
                 >
                   {article.nominativ}
                 </div>
               </div>
               <div className="text-center">
                 <div
-                  className={`text-xl font-bold ${article.color} bg-white/50 dark:bg-neutral-800/50 rounded-md py-2 px-3 border ${article.borderColor}`}
+                  className={`text-lg font-bold ${article.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-2 border ${article.borderColor}`}
                 >
                   {article.akkusativ}
                 </div>
               </div>
               <div className="text-center">
                 <div
-                  className={`text-xl font-bold ${article.color} bg-white/50 dark:bg-neutral-800/50 rounded-md py-2 px-3 border ${article.borderColor}`}
+                  className={`text-lg font-bold ${article.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-2 border ${article.borderColor}`}
                 >
                   {article.dativ}
                 </div>
@@ -152,18 +154,18 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
 
         {/* Case Descriptions */}
         {showTranslations && (
-          <div className="mt-6 space-y-2">
-            <h5 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+          <div className="mt-3 space-y-1">
+            <h5 className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">
               Case Functions:
             </h5>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
               {cases.map((caseItem, index) => (
                 <div
                   key={index}
-                  className={`p-3 rounded-md border ${caseItem.bgColor} ${caseItem.color}`}
+                  className={`p-2 rounded border ${caseItem.bgColor} ${caseItem.color}`}
                 >
-                  <div className="font-semibold text-sm">{caseItem.name}</div>
-                  <div className="text-xs opacity-75 mt-1">
+                  <div className="font-semibold text-xs">{caseItem.name}</div>
+                  <div className="text-xs opacity-75 mt-0.5 leading-tight">
                     {caseItem.description}
                   </div>
                 </div>
@@ -173,11 +175,11 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
         )}
 
         {/* Usage Examples */}
-        <div className="mt-6 p-4 bg-neutral-50 dark:bg-neutral-700/50 rounded-md border border-neutral-200 dark:border-neutral-600">
-          <h5 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
+        <div className="mt-3 p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded border border-neutral-200 dark:border-neutral-600">
+          <h5 className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
             {showTranslations ? "Quick Reference:" : "Schnellübersicht:"}
           </h5>
-          <div className="text-xs text-neutral-600 dark:text-neutral-400 space-y-1">
+          <div className="text-xs text-neutral-600 dark:text-neutral-400 space-y-0.5">
             <div>
               • <strong>Nominativ:</strong>{" "}
               {showTranslations

@@ -16,6 +16,9 @@ import VerbConjugationWidget from "../../widgets/VerbConjugationWidget/VerbConju
 import GermanArticlesWidget from "../../widgets/GermanArticlesWidget/GermanArticlesWidget";
 import GermanQuestionsWidget from "../../widgets/GermanQuestionsWidget/GermanQuestionsWidget";
 import GermanVerbsPrepositionsWidget from "../../widgets/GermanVerbsPrepositionsWidget/GermanVerbsPrepositionsWidget";
+import GermanVerbTensesWidget from "../../widgets/GermanVerbTensesWidget/GermanVerbTensesWidget";
+import GermanPersonalPronounsWidget from "../../widgets/GermanPersonalPronounsWidget/GermanPersonalPronounsWidget";
+import GermanAdjectiveDeclensionWidget from "../../widgets/GermanAdjectiveDeclensionWidget/GermanAdjectiveDeclensionWidget";
 
 function App() {
   // State management
@@ -71,8 +74,30 @@ function App() {
           <main className="space-y-16">
             {/* Widgets Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-              <div className="lg:col-span-2 space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="lg:col-span-2 space-y-8 order-2 lg:order-1">
+                {/* A1 Level - Beginner */}
+                <GermanArticlesWidget showTranslations={showTranslations} />
+                <GermanPersonalPronounsWidget
+                  showTranslations={showTranslations}
+                />
+                <VerbConjugationWidget showTranslations={showTranslations} />
+
+                {/* A2 Level - Elementary */}
+                <GermanQuestionsWidget showTranslations={showTranslations} />
+
+                {/* B1 Level - Intermediate */}
+                <GermanVerbsPrepositionsWidget
+                  showTranslations={showTranslations}
+                />
+                <GermanVerbTensesWidget showTranslations={showTranslations} />
+
+                {/* B2+ Level - Upper Intermediate/Advanced */}
+                <GermanAdjectiveDeclensionWidget
+                  showTranslations={showTranslations}
+                />
+              </div>
+              <div className="space-y-8 order-1 lg:order-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
                   <TimeWidget
                     currentTime={currentTime}
                     is24Hour={is24HourFormat}
@@ -93,15 +118,7 @@ function App() {
                   germanCities={GERMAN_CITIES}
                   showTranslations={showTranslations}
                 />
-                <GermanArticlesWidget showTranslations={showTranslations} />
-                <GermanQuestionsWidget showTranslations={showTranslations} />
-                <GermanVerbsPrepositionsWidget
-                  showTranslations={showTranslations}
-                />
-              </div>
-              <div className="space-y-8">
                 <NumberConverterWidget showTranslations={showTranslations} />
-                <VerbConjugationWidget showTranslations={showTranslations} />
                 <SettingsWidget
                   showTranslations={showTranslations}
                   setShowTranslations={setShowTranslations}

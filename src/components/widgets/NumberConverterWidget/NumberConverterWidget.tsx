@@ -9,7 +9,7 @@ interface NumberConverterWidgetProps {
 const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
   showTranslations,
 }) => {
-  const [numberInput, setNumberInput] = useState("1");
+  const [numberInput, setNumberInput] = useState("12");
   const [convertedText, setConvertedText] = useState("");
 
   useEffect(() => {

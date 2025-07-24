@@ -180,12 +180,12 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
       title="Wetter"
       englishTitle={showTranslations ? "Weather" : undefined}
     >
-      <div className="flex flex-col justify-between h-full space-y-6">
+      <div className="flex flex-col justify-between h-full space-y-4 sm:space-y-6">
         <div>
           <select
             value={selectedCity}
             onChange={(e) => setSelectedCity(e.target.value)}
-            className="w-full px-4 py-3 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 appearance-none bg-no-repeat bg-right pr-10"
+            className="w-full px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 appearance-none bg-no-repeat bg-right pr-8 sm:pr-10"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
             }}
@@ -202,19 +202,19 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
           <img
             src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
             alt={weather.weather[0].description}
-            className="mx-auto"
+            className="mx-auto w-16 h-16 sm:w-20 sm:h-20"
           />
-          <div className="flex items-center justify-center gap-3 mt-2">
-            <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mt-2">
+            <p className="text-sm sm:text-xl text-accent-600 dark:text-accent-400 font-medium italic leading-tight">
               {convertWeatherToGermanPhonetic(weather)}
             </p>
             <button
               onClick={() => speakText(convertWeatherToGermanPhonetic(weather))}
-              className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
+              className="flex-shrink-0 p-2.5 sm:p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200 touch-manipulation"
               title={showTranslations ? "Listen" : "Hören"}
             >
               <svg
-                className="w-5 h-5 text-neutral-600 dark:text-neutral-400"
+                className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-600 dark:text-neutral-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -230,36 +230,36 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
-            <div className="text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center">
+          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-3 sm:p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
+            <div className="text-lg sm:text-2xl font-bold text-neutral-800 dark:text-neutral-200">
               {Math.round(weather.main.temp)}°C
             </div>
-            <div className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+            <div className="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-400">
               {showTranslations ? "Temperature" : "Temperatur"}
             </div>
           </div>
-          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
-            <div className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 capitalize">
+          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-3 sm:p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
+            <div className="text-sm sm:text-lg font-semibold text-neutral-800 dark:text-neutral-200 capitalize leading-tight">
               {weather.weather[0].description}
             </div>
-            <div className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+            <div className="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-400">
               {showTranslations ? "Condition" : "Wetterlage"}
             </div>
           </div>
-          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
-            <div className="text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-3 sm:p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
+            <div className="text-lg sm:text-2xl font-bold text-neutral-800 dark:text-neutral-200">
               {weather.main.humidity}%
             </div>
-            <div className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+            <div className="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-400">
               {showTranslations ? "Humidity" : "Luftfeuchtigkeit"}
             </div>
           </div>
-          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
-            <div className="text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+          <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-700 rounded-md p-3 sm:p-4 border border-neutral-200 dark:border-neutral-600 hover:shadow-soft transition-all duration-200">
+            <div className="text-lg sm:text-2xl font-bold text-neutral-800 dark:text-neutral-200">
               {Math.round(weather.wind.speed)} km/h
             </div>
-            <div className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+            <div className="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-400">
               {showTranslations ? "Wind" : "Wind"}
             </div>
           </div>

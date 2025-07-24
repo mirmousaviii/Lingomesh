@@ -315,6 +315,15 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
     });
   };
 
+  const speakText = (text: string) => {
+    if ("speechSynthesis" in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "de-DE";
+      utterance.rate = 0.8;
+      speechSynthesis.speak(utterance);
+    }
+  };
+
   return (
     <Widget
       title="Präsens-Verb"
@@ -326,7 +335,10 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
           <select
             value={selectedVerb}
             onChange={(e) => setSelectedVerb(e.target.value)}
-            className="w-full px-4 py-2 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 appearance-none bg-no-repeat bg-right pr-10"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+            }}
           >
             {Object.entries(verbs).map(([key, verb]) => (
               <option key={key} value={key}>
@@ -351,11 +363,32 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
                   {highlightEnding(conjugation.verb, conjugation.ending)}
                 </span>
               </div>
-              {showTranslations && (
-                <span className="text-xs text-neutral-500 dark:text-neutral-400 italic">
-                  {conjugation.translation}
-                </span>
-              )}
+              <div className="flex items-center space-x-3">
+                {showTranslations && (
+                  <span className="text-xs text-neutral-500 dark:text-neutral-400 italic">
+                    {conjugation.translation}
+                  </span>
+                )}
+                <button
+                  onClick={() => speakText(conjugation.verb)}
+                  className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
+                  title={showTranslations ? "Listen" : "Hören"}
+                >
+                  <svg
+                    className="w-4 h-4 text-neutral-600 dark:text-neutral-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           ))}
         </div>

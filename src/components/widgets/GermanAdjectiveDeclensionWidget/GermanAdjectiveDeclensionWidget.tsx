@@ -241,7 +241,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
       title="Adjektivdeklination"
       englishTitle={showTranslations ? "Adjective Declension" : undefined}
     >
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {/* Declension Type Selector Tabs */}
         <div className="flex bg-neutral-100 dark:bg-neutral-700 rounded-lg p-1">
           {declensionTypes.map((type) => (
@@ -250,7 +250,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
               onClick={() =>
                 setActiveDeclension(type.key as "strong" | "weak" | "mixed")
               }
-              className={`flex-1 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+              className={`flex-1 px-2 sm:px-4 py-2.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200 touch-manipulation ${
                 activeDeclension === type.key
                   ? `${type.bgColor} ${type.color} shadow-sm`
                   : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-600/30"
@@ -267,24 +267,24 @@ const GermanAdjectiveDeclensionWidget: React.FC<
             key={type.key}
             className={`${
               activeDeclension === type.key ? "block" : "hidden"
-            } space-y-4`}
+            } space-y-3 sm:space-y-4`}
           >
             {/* Declension Table */}
             <div
-              className={`p-4 rounded-md border ${type.borderColor} ${type.bgColor}`}
+              className={`p-3 sm:p-4 rounded-md border ${type.borderColor} ${type.bgColor}`}
             >
-              <div className="mb-3">
-                <h4 className={`text-lg font-bold ${type.color}`}>
+              <div className="mb-2 sm:mb-3">
+                <h4 className={`text-base sm:text-lg font-bold ${type.color}`}>
                   {showTranslations ? type.english : type.label}
                 </h4>
                 {showTranslations && (
-                  <div className="text-sm text-neutral-600 dark:text-neutral-400">
+                  <div className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
                     {type.description}
                   </div>
                 )}
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {/* Header Row */}
                 <div className="grid grid-cols-5 gap-1">
                   <div className="text-center font-semibold text-neutral-700 dark:text-neutral-300 text-xs">
@@ -295,9 +295,11 @@ const GermanAdjectiveDeclensionWidget: React.FC<
                       key={index}
                       className={`text-center font-semibold text-xs p-1 rounded ${caseItem.bgColor} ${caseItem.color}`}
                     >
-                      <div>{caseItem.name}</div>
+                      <div className="text-xs leading-tight">
+                        {caseItem.name}
+                      </div>
                       {showTranslations && (
-                        <div className="text-xs opacity-75 leading-tight">
+                        <div className="text-xs opacity-75 leading-tight mt-0.5">
                           {caseItem.english}
                         </div>
                       )}
@@ -315,7 +317,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
                     >
                       <div className="flex flex-col justify-center">
                         <div
-                          className={`font-semibold text-sm ${declension.color}`}
+                          className={`font-semibold text-xs sm:text-sm ${declension.color}`}
                         >
                           {gender.label}
                         </div>
@@ -327,28 +329,28 @@ const GermanAdjectiveDeclensionWidget: React.FC<
                       </div>
                       <div className="text-center">
                         <div
-                          className={`text-lg font-bold ${declension.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-2 border ${declension.borderColor}`}
+                          className={`text-sm sm:text-lg font-bold ${declension.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-1 sm:px-2 border ${declension.borderColor}`}
                         >
                           {declension.nominativ}
                         </div>
                       </div>
                       <div className="text-center">
                         <div
-                          className={`text-lg font-bold ${declension.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-2 border ${declension.borderColor}`}
+                          className={`text-sm sm:text-lg font-bold ${declension.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-1 sm:px-2 border ${declension.borderColor}`}
                         >
                           {declension.akkusativ}
                         </div>
                       </div>
                       <div className="text-center">
                         <div
-                          className={`text-lg font-bold ${declension.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-2 border ${declension.borderColor}`}
+                          className={`text-sm sm:text-lg font-bold ${declension.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-1 sm:px-2 border ${declension.borderColor}`}
                         >
                           {declension.dativ}
                         </div>
                       </div>
                       <div className="text-center">
                         <div
-                          className={`text-lg font-bold ${declension.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-2 border ${declension.borderColor}`}
+                          className={`text-sm sm:text-lg font-bold ${declension.color} bg-white/50 dark:bg-neutral-800/50 rounded py-1 px-1 sm:px-2 border ${declension.borderColor}`}
                         >
                           {declension.genitiv}
                         </div>
@@ -360,19 +362,19 @@ const GermanAdjectiveDeclensionWidget: React.FC<
             </div>
 
             {/* Examples for this declension type */}
-            <div className="p-4 bg-neutral-50 dark:bg-neutral-700/50 rounded border border-neutral-200 dark:border-neutral-600">
-              <h4 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
+            <div className="p-3 sm:p-4 bg-neutral-50 dark:bg-neutral-700/50 rounded border border-neutral-200 dark:border-neutral-600">
+              <h4 className="text-xs sm:text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-2 sm:mb-3">
                 {showTranslations ? "Examples" : "Beispiele"}
               </h4>
               <div className="space-y-2">
                 {examples.map((example, index) => (
                   <div
                     key={index}
-                    className="bg-white/50 dark:bg-neutral-800/50 rounded-md p-3 border border-white/30 dark:border-neutral-600/30"
+                    className="bg-white/50 dark:bg-neutral-800/50 rounded-md p-2 sm:p-3 border border-white/30 dark:border-neutral-600/30"
                   >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex-1 space-y-2">
-                        <div className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                    <div className="flex items-start justify-between gap-2 sm:gap-3">
+                      <div className="flex-1 space-y-1 sm:space-y-2">
+                        <div className="text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 leading-tight">
                           <span className={`font-semibold ${type.color}`}>
                             {type.label}:
                           </span>{" "}
@@ -383,7 +385,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
                             : example.mixed}
                         </div>
                         {showTranslations && (
-                          <div className="text-xs text-neutral-500 dark:text-neutral-400 italic">
+                          <div className="text-xs text-neutral-500 dark:text-neutral-400 italic leading-tight">
                             {example.english}
                           </div>
                         )}
@@ -398,11 +400,11 @@ const GermanAdjectiveDeclensionWidget: React.FC<
                               : example.mixed
                           )
                         }
-                        className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
+                        className="flex-shrink-0 p-2.5 sm:p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200 touch-manipulation"
                         title={showTranslations ? "Listen" : "Hören"}
                       >
                         <svg
-                          className="w-4 h-4 text-neutral-600 dark:text-neutral-400"
+                          className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-600 dark:text-neutral-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -424,24 +426,24 @@ const GermanAdjectiveDeclensionWidget: React.FC<
         ))}
 
         {/* Quick Reference */}
-        <div className="mt-4 p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded border border-neutral-200 dark:border-neutral-600">
+        <div className="mt-3 sm:mt-4 p-2 sm:p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded border border-neutral-200 dark:border-neutral-600">
           <h5 className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
             {showTranslations ? "Quick Reference:" : "Schnellübersicht:"}
           </h5>
           <div className="text-xs text-neutral-600 dark:text-neutral-400 space-y-1">
-            <div>
+            <div className="leading-tight">
               <strong>Strong:</strong>{" "}
               {showTranslations
                 ? "No article or indefinite article"
                 : "Kein Artikel oder unbestimmter Artikel"}
             </div>
-            <div>
+            <div className="leading-tight">
               <strong>Weak:</strong>{" "}
               {showTranslations
                 ? "With definite article (der, die, das)"
                 : "Mit bestimmtem Artikel (der, die, das)"}
             </div>
-            <div>
+            <div className="leading-tight">
               <strong>Mixed:</strong>{" "}
               {showTranslations
                 ? "With indefinite article (ein, eine, ein)"
@@ -456,7 +458,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
             <h5 className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">
               Case Functions:
             </h5>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
               {cases.map((caseItem, index) => (
                 <div
                   key={index}
