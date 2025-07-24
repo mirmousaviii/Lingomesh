@@ -15,6 +15,7 @@ import NumberConverterWidget from "../../widgets/NumberConverterWidget/NumberCon
 import VerbConjugationWidget from "../../widgets/VerbConjugationWidget/VerbConjugationWidget";
 import GermanArticlesWidget from "../../widgets/GermanArticlesWidget/GermanArticlesWidget";
 import GermanQuestionsWidget from "../../widgets/GermanQuestionsWidget/GermanQuestionsWidget";
+import GermanVerbsPrepositionsWidget from "../../widgets/GermanVerbsPrepositionsWidget/GermanVerbsPrepositionsWidget";
 
 function App() {
   // State management
@@ -94,6 +95,9 @@ function App() {
                 />
                 <GermanArticlesWidget showTranslations={showTranslations} />
                 <GermanQuestionsWidget showTranslations={showTranslations} />
+                <GermanVerbsPrepositionsWidget
+                  showTranslations={showTranslations}
+                />
               </div>
               <div className="space-y-8">
                 <NumberConverterWidget showTranslations={showTranslations} />
