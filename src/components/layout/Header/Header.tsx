@@ -17,32 +17,42 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const t = useTranslation(language);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Handle scroll events to determine if header should be compact
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-
     const handleScroll = () => {
-      // Clear previous timeout to debounce the scroll event
-      clearTimeout(timeoutId);
+      const scrollTop = window.scrollY;
+      const scrollDelta = Math.abs(scrollTop - lastScrollTop);
 
-      timeoutId = setTimeout(() => {
-        const scrollTop = window.scrollY;
-        // Increase threshold to 100px and add hysteresis to prevent flickering
-        if (scrollTop > 100 && !isScrolled) {
-          setIsScrolled(true);
-        } else if (scrollTop < 80 && isScrolled) {
-          setIsScrolled(false);
+      // Only process scroll events if user is actively scrolling (not automatic adjustments)
+      if (scrollDelta > 1) {
+        setLastScrollTop(scrollTop);
+
+        // Prevent header changes during transitions to avoid oscillation
+        if (!isTransitioning) {
+          if (scrollTop > 100 && !isScrolled) {
+            setIsTransitioning(true);
+            setIsScrolled(true);
+            // Allow header changes again after transition completes
+            setTimeout(() => setIsTransitioning(false), 300);
+          } else if (scrollTop <= 10 && isScrolled) {
+            // Only expand header when user scrolls back to the very top
+            setIsTransitioning(true);
+            setIsScrolled(false);
+            // Allow header changes again after transition completes
+            setTimeout(() => setIsTransitioning(false), 300);
+          }
         }
-      }, 50); // 50ms debounce
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timeoutId);
     };
-  }, [isScrolled]);
+  }, [isScrolled, lastScrollTop, isTransitioning]);
 
   // Theme options
   const themeOptions = [
@@ -85,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         {/* Full Header - Mobile Optimized */}
         <div
-          className={`flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0 transition-all duration-300 ${
+          className={`flex flex-col sm:flex-row sm:items-center justify-between sm:space-y-0 transition-all duration-300 relative ${
             isScrolled ? "py-2" : "py-4 sm:py-6"
           }`}
         >
@@ -93,7 +103,7 @@ const Header: React.FC<HeaderProps> = ({
           <div className="flex-1 min-w-0">
             <div
               className={`space-y-2 sm:space-y-3 transition-all duration-300 ${
-                isScrolled ? "space-y-1 sm:space-y-2" : "space-y-2 sm:space-y-3"
+                isScrolled ? "space-y-0 sm:space-y-2" : "space-y-2 sm:space-y-3"
               }`}
             >
               <h1
@@ -114,10 +124,10 @@ const Header: React.FC<HeaderProps> = ({
               </h1>
 
               <p
-                className={`font-medium text-neutral-800 dark:text-neutral-200 max-w-4xl leading-relaxed tracking-wide font-ibm-plex transition-all duration-300 ${
+                className={`font-medium text-neutral-800 dark:text-neutral-200 max-w-4xl leading-relaxed tracking-wide font-ibm-plex transition-all duration-300 pb-2 ${
                   isScrolled
-                    ? "text-xs sm:text-sm md:text-sm lg:text-base opacity-0 max-h-0 overflow-hidden"
-                    : "text-xs sm:text-sm md:text-base lg:text-lg opacity-100 max-h-20"
+                    ? "text-sm sm:text-base md:text-base lg:text-lg opacity-0 max-h-0 overflow-hidden"
+                    : "text-sm sm:text-base md:text-lg lg:text-xl opacity-100 max-h-20"
                 }`}
               >
                 {language === "en"
@@ -129,8 +139,10 @@ const Header: React.FC<HeaderProps> = ({
 
           {/* Right side - Settings Controls */}
           <div
-            className={`flex items-center justify-center sm:justify-end space-x-3 sm:ml-6 transition-all duration-300 ${
-              isScrolled ? "space-x-2" : "space-x-3"
+            className={`flex items-center justify-end space-x-3 sm:ml-6 transition-all duration-300 ${
+              isScrolled
+                ? "absolute right-0 top-0 bottom-0 flex items-center space-x-2"
+                : "space-x-3"
             }`}
           >
             {/* Language Selector */}
@@ -140,7 +152,7 @@ const Header: React.FC<HeaderProps> = ({
                   key={option.value}
                   className={`px-3 py-2 rounded-md transition-all duration-300 flex items-center justify-center touch-manipulation ${
                     isScrolled
-                      ? "w-10 h-8 sm:w-12 sm:h-10"
+                      ? "w-8 h-6 sm:w-10 sm:h-8"
                       : "w-12 h-10 sm:w-14 sm:h-12"
                   } ${
                     language === option.value
@@ -166,9 +178,9 @@ const Header: React.FC<HeaderProps> = ({
               {themeOptions.map((option) => (
                 <button
                   key={option.value}
-                  className={`px-3 py-2 rounded-md transition-all duration-300 flex items-center justify-center touch-manipulation ${
+                  className={`px-2 py-1 rounded-md transition-all duration-300 flex items-center justify-center touch-manipulation ${
                     isScrolled
-                      ? "w-10 h-8 sm:w-12 sm:h-10"
+                      ? "w-8 h-6 sm:w-10 sm:h-8"
                       : "w-12 h-10 sm:w-14 sm:h-12"
                   } ${
                     themeMode === option.value
@@ -181,8 +193,8 @@ const Header: React.FC<HeaderProps> = ({
                   <svg
                     className={`fill-current transition-all duration-300 ${
                       isScrolled
-                        ? "w-3 h-3 sm:w-4 sm:h-4"
-                        : "w-4 h-4 sm:w-5 sm:h-5"
+                        ? "w-4 h-4 sm:w-5 sm:h-5"
+                        : "w-5 h-5 sm:w-6 sm:h-6"
                     }`}
                     viewBox="0 0 20 20"
                   >
