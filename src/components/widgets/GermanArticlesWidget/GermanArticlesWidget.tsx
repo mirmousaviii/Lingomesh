@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Language } from "../../../hooks/useTranslations";
 import Widget from "../../ui/Widget/Widget";
+import Dropdown from "../../ui/Dropdown/Dropdown";
+import AudioButton from "../../ui/AudioButton/AudioButton";
 
 interface GermanArticlesWidgetProps {
   language: Language;
@@ -464,24 +466,18 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
               </h4>
 
               {/* Gender Selector */}
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
-                  {language === "en"
-                    ? "Select Gender:"
-                    : "Geschlecht auswählen:"}
-                </label>
-                <select
-                  value={selectedGender}
-                  onChange={(e) => setSelectedGender(e.target.value)}
-                  className="w-full p-2 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
-                >
-                  {genders.map((gender) => (
-                    <option key={gender.key} value={gender.key}>
-                      {gender.label} ({gender.english})
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <Dropdown
+                value={selectedGender}
+                onChange={setSelectedGender}
+                options={genders.map((gender) => ({
+                  value: gender.key,
+                  label: `${gender.label} (${gender.english})`,
+                }))}
+                label={
+                  language === "en" ? "Select Gender:" : "Geschlecht auswählen:"
+                }
+                className="mb-4"
+              />
 
               {/* Full Article Table for Selected Gender */}
               <div className="space-y-3">
@@ -571,25 +567,11 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
                                 </div>
                               )}
                             </div>
-                            <button
+                            <AudioButton
                               onClick={() => speakText(example.sentence)}
-                              className="flex-shrink-0 p-2.5 sm:p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200 touch-manipulation"
                               title={language === "en" ? "Listen" : "Hören"}
-                            >
-                              <svg
-                                className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-600 dark:text-neutral-400"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-                                />
-                              </svg>
-                            </button>
+                              size="sm"
+                            />
                           </div>
                         </div>
                       ))}

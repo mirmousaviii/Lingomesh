@@ -15,6 +15,7 @@ export interface Translations {
     verbenPraepositionen: string;
     verbzeiten: string;
     adjektivdeklination: string;
+    nuetzlicheSaetze: string;
   };
 
   // Common UI elements
@@ -78,6 +79,14 @@ export interface Translations {
     verbsPrepositions: string;
     verbTenses: string;
     adjectiveDeclension: string;
+    colorLegend: string;
+    units: string;
+    tens: string;
+    hundreds: string;
+    thousands: string;
+    millions: string;
+    connectors: string;
+    numberRangeError: string;
   };
 
   // Weather related
@@ -122,6 +131,7 @@ export const translations: Record<Language, Translations> = {
       verbenPraepositionen: "Verben & Präpositionen",
       verbzeiten: "Verbzeiten",
       adjektivdeklination: "Adjektivdeklination",
+      nuetzlicheSaetze: "Nützliche Sätze",
     },
     ui: {
       listen: "Hören",
@@ -188,6 +198,15 @@ export const translations: Record<Language, Translations> = {
       verbsPrepositions: "Verben & Präpositionen",
       verbTenses: "Verbzeiten",
       adjectiveDeclension: "Adjektivdeklination",
+      colorLegend: "Farbkodierung:",
+      units: "Einer",
+      tens: "Zehner",
+      hundreds: "Hunderter",
+      thousands: "Tausender",
+      millions: "Millionen",
+      connectors: "Und",
+      numberRangeError:
+        "Bitte geben Sie eine Zahl zwischen 0 und 999.999.999 ein",
     },
     weather: {
       wetterdatenFehler: "Wetterdaten konnten nicht geladen werden",
@@ -226,6 +245,7 @@ export const translations: Record<Language, Translations> = {
       verbenPraepositionen: "Verbs & Prepositions",
       verbzeiten: "Verb Tenses",
       adjektivdeklination: "Adjective Declension",
+      nuetzlicheSaetze: "Useful Sentences",
     },
     ui: {
       listen: "Listen",
@@ -292,6 +312,14 @@ export const translations: Record<Language, Translations> = {
       verbsPrepositions: "Verbs & Prepositions",
       verbTenses: "Verb Tenses",
       adjectiveDeclension: "Adjective Declension",
+      colorLegend: "Color Coding:",
+      units: "Units",
+      tens: "Tens",
+      hundreds: "Hundreds",
+      thousands: "Thousands",
+      millions: "Millions",
+      connectors: "Connectors",
+      numberRangeError: "Please enter a number between 0 and 999,999,999",
     },
     weather: {
       wetterdatenFehler: "Weather data could not be loaded",

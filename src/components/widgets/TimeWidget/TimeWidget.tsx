@@ -1,6 +1,7 @@
 import { Language } from "../../../hooks/useTranslations";
 import { useTranslation } from "../../../constants/translations";
 import Widget from "../../ui/Widget/Widget";
+import AudioButton from "../../ui/AudioButton/AudioButton";
 
 interface TimeWidgetProps {
   currentTime: Date;
@@ -150,42 +151,41 @@ const TimeWidget: React.FC<TimeWidgetProps> = ({
 
   return (
     <Widget titleKey="zeit" language={language}>
-      <div className="flex flex-col justify-between h-full space-y-8">
-        <div className="text-center space-y-4">
-          <p className="text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-clock tracking-wider font-crisp">
-            {formatDisplayTime(currentTime)}
-          </p>
-        </div>
-
-        <div className="text-center space-y-4">
-          <div className="flex items-center justify-center gap-3">
-            <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic font-ibm-plex">
-              {convertTimeToGermanPhonetic(currentTime)}
+      <div className="space-y-6">
+        {/* Display Section */}
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+            {t.ui.time}
+          </label>
+          <div className="w-full px-4 py-3 text-lg border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100">
+            <p className="text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-clock tracking-wider font-crisp text-center">
+              {formatDisplayTime(currentTime)}
             </p>
-            <button
-              onClick={() =>
-                speakText(convertTimeToGermanPhonetic(currentTime))
-              }
-              className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-              title={t.ui.listen}
-            >
-              <svg
-                className="w-5 h-5 text-neutral-600 dark:text-neutral-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-                />
-              </svg>
-            </button>
           </div>
         </div>
 
+        {/* Result Section */}
+        <div className="space-y-4">
+          <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 rounded-xl p-6 border border-primary-100 dark:border-primary-800">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex-1 min-w-0">
+                <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed break-words hyphens-auto text-accent-600 dark:text-accent-400 font-medium italic font-ibm-plex">
+                  {convertTimeToGermanPhonetic(currentTime)}
+                </p>
+              </div>
+
+              <AudioButton
+                onClick={() =>
+                  speakText(convertTimeToGermanPhonetic(currentTime))
+                }
+                title={t.ui.listen}
+                size="lg"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Format Toggle */}
         <div className="flex justify-center">
           <div className="flex items-center space-x-4 bg-neutral-100 dark:bg-neutral-700 rounded-lg p-2">
             <button

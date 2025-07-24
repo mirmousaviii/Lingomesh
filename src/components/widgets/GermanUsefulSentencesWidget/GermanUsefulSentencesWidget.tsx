@@ -3,105 +3,142 @@ import { Language } from "../../../hooks/useTranslations";
 import Widget from "../../ui/Widget/Widget";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 
-interface GermanQuestionsWidgetProps {
+interface GermanUsefulSentencesWidgetProps {
   language: Language;
 }
 
-interface QuestionExample {
+interface SentenceExample {
   german: string;
   english: string;
   pronunciation: string;
 }
 
-interface QuestionSection {
+interface SentenceSection {
   title: string;
   englishTitle: string;
   icon: string;
   color: string;
   bgColor: string;
   borderColor: string;
-  examples: QuestionExample[];
+  examples: SentenceExample[];
 }
 
-const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
-  language,
-}) => {
-  const [activeSection, setActiveSection] = useState<"w-fragen" | "ja-nein">(
-    "w-fragen"
-  );
+const GermanUsefulSentencesWidget: React.FC<
+  GermanUsefulSentencesWidgetProps
+> = ({ language }) => {
+  const [activeSection, setActiveSection] = useState<
+    "greetings" | "daily" | "travel"
+  >("greetings");
 
-  const questionSections: Record<string, QuestionSection> = {
-    "w-fragen": {
-      title: "W-Fragen",
-      englishTitle: "W-Questions",
-      icon: "❓",
-      color: "text-blue-700 dark:text-blue-300",
-      bgColor: "bg-blue-50 dark:bg-blue-900/20",
-      borderColor: "border-blue-200 dark:border-blue-800",
+  const sentenceSections: Record<string, SentenceSection> = {
+    greetings: {
+      title: "Begrüßungen",
+      englishTitle: "Greetings",
+      icon: "👋",
+      color: "text-purple-700 dark:text-purple-300",
+      bgColor: "bg-purple-50 dark:bg-purple-900/20",
+      borderColor: "border-purple-200 dark:border-purple-800",
       examples: [
         {
-          german: "Was ist das?",
-          english: "What is that?",
-          pronunciation: "vas ist das",
+          german: "Guten Morgen!",
+          english: "Good morning!",
+          pronunciation: "goo-ten mor-gen",
         },
         {
-          german: "Wo wohnst du?",
-          english: "Where do you live?",
-          pronunciation: "vo vohnst doo",
+          german: "Guten Tag!",
+          english: "Good day!",
+          pronunciation: "goo-ten tahk",
         },
         {
-          german: "Wann kommst du?",
-          english: "When are you coming?",
-          pronunciation: "van komst doo",
+          german: "Guten Abend!",
+          english: "Good evening!",
+          pronunciation: "goo-ten ah-bent",
         },
         {
-          german: "Warum lernst du Deutsch?",
-          english: "Why are you learning German?",
-          pronunciation: "va-room lernst doo doytsh",
+          german: "Auf Wiedersehen!",
+          english: "Goodbye!",
+          pronunciation: "owf vee-der-zay-en",
         },
         {
-          german: "Wie geht es dir?",
-          english: "How are you?",
-          pronunciation: "vee gayt es deer",
+          german: "Bis später!",
+          english: "See you later!",
+          pronunciation: "bis shpay-ter",
         },
       ],
     },
-    "ja-nein": {
-      title: "Ja/Nein Fragen",
-      englishTitle: "Yes/No Questions",
-      icon: "❔",
-      color: "text-green-700 dark:text-green-300",
-      bgColor: "bg-green-50 dark:bg-green-900/20",
-      borderColor: "border-green-200 dark:border-green-800",
+    daily: {
+      title: "Tägliche Sätze",
+      englishTitle: "Daily Sentences",
+      icon: "📝",
+      color: "text-orange-700 dark:text-orange-300",
+      bgColor: "bg-orange-50 dark:bg-orange-900/20",
+      borderColor: "border-orange-200 dark:border-orange-800",
       examples: [
         {
-          german: "Sprechen Sie Deutsch?",
-          english: "Do you speak German?",
-          pronunciation: "shprekhen zee doytsh",
+          german: "Ich verstehe nicht.",
+          english: "I don't understand.",
+          pronunciation: "ikh fer-shtay-en nikht",
         },
         {
-          german: "Haben Sie Zeit?",
-          english: "Do you have time?",
-          pronunciation: "hahben zee tsait",
+          german: "Können Sie das wiederholen?",
+          english: "Can you repeat that?",
+          pronunciation: "kern-en zee das vee-der-hoh-len",
         },
         {
-          german: "Kommen Sie aus Deutschland?",
-          english: "Are you from Germany?",
-          pronunciation: "kommen zee ows doytshland",
+          german: "Sprechen Sie langsam, bitte.",
+          english: "Please speak slowly.",
+          pronunciation: "shprekhen zee lahng-zahm bit-te",
         },
         {
-          german: "Möchten Sie Kaffee?",
-          english: "Would you like coffee?",
-          pronunciation: "mekhten zee kah-fay",
+          german: "Entschuldigung, wo ist...?",
+          english: "Excuse me, where is...?",
+          pronunciation: "ent-shool-di-gung vo ist",
         },
         {
-          german: "Verstehen Sie mich?",
-          english: "Do you understand me?",
-          pronunciation: "fer-shtayen zee mikh",
+          german: "Danke schön!",
+          english: "Thank you very much!",
+          pronunciation: "dahn-ke shern",
+        },
+      ],
+    },
+    travel: {
+      title: "Reise & Verkehr",
+      englishTitle: "Travel & Transportation",
+      icon: "🚗",
+      color: "text-teal-700 dark:text-teal-300",
+      bgColor: "bg-teal-50 dark:bg-teal-900/20",
+      borderColor: "border-teal-200 dark:border-teal-800",
+      examples: [
+        {
+          german: "Wo ist der Bahnhof?",
+          english: "Where is the train station?",
+          pronunciation: "vo ist der bahn-hof",
+        },
+        {
+          german: "Wie komme ich zum Flughafen?",
+          english: "How do I get to the airport?",
+          pronunciation: "vee kom-me ikh tsoom flook-hah-fen",
+        },
+        {
+          german: "Ein Ticket nach Berlin, bitte.",
+          english: "One ticket to Berlin, please.",
+          pronunciation: "ain ti-ket nahkh ber-leen bit-te",
+        },
+        {
+          german: "Wann fährt der nächste Bus?",
+          english: "When does the next bus leave?",
+          pronunciation: "van fairt der naykh-ste boos",
+        },
+        {
+          german: "Können Sie mir helfen?",
+          english: "Can you help me?",
+          pronunciation: "kern-en zee meer hel-fen",
         },
       ],
     },
   };
+
+  const currentSection = sentenceSections[activeSection];
 
   const speakText = (text: string) => {
     if ("speechSynthesis" in window) {
@@ -112,17 +149,17 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
     }
   };
 
-  const currentSection = questionSections[activeSection];
-
   return (
-    <Widget titleKey="fragen" language={language}>
+    <Widget titleKey="nuetzlicheSaetze" language={language}>
       <div className="space-y-4">
-        {/* Question Type Selector Tabs */}
+        {/* Sentence Type Selector Tabs */}
         <div className="flex bg-neutral-100 dark:bg-neutral-700 rounded-lg p-1">
-          {Object.entries(questionSections).map(([key, section]) => (
+          {Object.entries(sentenceSections).map(([key, section]) => (
             <button
               key={key}
-              onClick={() => setActiveSection(key as "w-fragen" | "ja-nein")}
+              onClick={() =>
+                setActiveSection(key as "greetings" | "daily" | "travel")
+              }
               className={`flex-1 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                 activeSection === key
                   ? `${section.bgColor} ${section.color} shadow-sm`
@@ -192,30 +229,30 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
           </h5>
           <div className="text-xs text-neutral-600 dark:text-neutral-400 space-y-2">
             <div className="flex items-start gap-2">
-              <span className="text-blue-500">•</span>
-              <span>
-                <strong>W-Fragen:</strong>{" "}
-                {language === "en"
-                  ? "Start with W-words (Was, Wo, Wann, Warum, Wie, Wer, Wen, Wem)"
-                  : "Beginnen mit W-Wörtern (Was, Wo, Wann, Warum, Wie, Wer, Wen, Wem)"}
-              </span>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="text-green-500">•</span>
-              <span>
-                <strong>Ja/Nein Fragen:</strong>{" "}
-                {language === "en"
-                  ? "Verb comes first, subject second"
-                  : "Verb kommt zuerst, Subjekt zweitens"}
-              </span>
-            </div>
-            <div className="flex items-start gap-2">
               <span className="text-purple-500">•</span>
               <span>
-                <strong>Formal vs Informal:</strong>{" "}
+                <strong>Begrüßungen:</strong>{" "}
                 {language === "en"
-                  ? "Use 'Sie' for formal, 'du' for informal"
-                  : "Verwende 'Sie' für formell, 'du' für informell"}
+                  ? "Use appropriate greetings based on time of day"
+                  : "Verwende passende Begrüßungen je nach Tageszeit"}
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-orange-500">•</span>
+              <span>
+                <strong>Tägliche Sätze:</strong>{" "}
+                {language === "en"
+                  ? "Essential phrases for daily communication"
+                  : "Wichtige Sätze für die tägliche Kommunikation"}
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="text-teal-500">•</span>
+              <span>
+                <strong>Reise & Verkehr:</strong>{" "}
+                {language === "en"
+                  ? "Useful phrases for travel and transportation"
+                  : "Nützliche Sätze für Reisen und Verkehr"}
               </span>
             </div>
           </div>
@@ -225,4 +262,4 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
   );
 };
 
-export default GermanQuestionsWidget;
+export default GermanUsefulSentencesWidget;

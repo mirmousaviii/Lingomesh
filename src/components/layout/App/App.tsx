@@ -16,7 +16,8 @@ import VerbConjugationWidget from "../../widgets/VerbConjugationWidget/VerbConju
 import GermanArticlesWidget from "../../widgets/GermanArticlesWidget/GermanArticlesWidget";
 import GermanQuestionsWidget from "../../widgets/GermanQuestionsWidget/GermanQuestionsWidget";
 import GermanVerbsPrepositionsWidget from "../../widgets/GermanVerbsPrepositionsWidget/GermanVerbsPrepositionsWidget";
-import GermanVerbTensesWidget from "../../widgets/GermanVerbTensesWidget/GermanVerbTensesWidget";
+import GermanUsefulSentencesWidget from "../../widgets/GermanUsefulSentencesWidget/GermanUsefulSentencesWidget";
+
 import GermanPersonalPronounsWidget from "../../widgets/GermanPersonalPronounsWidget/GermanPersonalPronounsWidget";
 import GermanAdjectiveDeclensionWidget from "../../widgets/GermanAdjectiveDeclensionWidget/GermanAdjectiveDeclensionWidget";
 
@@ -86,12 +87,8 @@ function App() {
                 <GermanPersonalPronounsWidget language={language} />
                 <VerbConjugationWidget language={language} />
 
-                {/* A2 Level - Elementary */}
-                <GermanQuestionsWidget language={language} />
-
                 {/* B1 Level - Intermediate */}
                 <GermanVerbsPrepositionsWidget language={language} />
-                <GermanVerbTensesWidget language={language} />
 
                 {/* B2+ Level - Upper Intermediate/Advanced */}
                 <GermanAdjectiveDeclensionWidget language={language} />
@@ -116,6 +113,12 @@ function App() {
                   language={language}
                 />
                 <NumberConverterWidget language={language} />
+
+                {/* Useful Sentences */}
+                <GermanUsefulSentencesWidget language={language} />
+
+                {/* A2 Level - Elementary */}
+                <GermanQuestionsWidget language={language} />
               </div>
             </div>
           </main>

@@ -2,6 +2,8 @@ import React from "react";
 import { Language } from "../../../hooks/useTranslations";
 import { useTranslation } from "../../../constants/translations";
 import Widget from "../../ui/Widget/Widget";
+import Dropdown from "../../ui/Dropdown/Dropdown";
+import AudioButton from "../../ui/AudioButton/AudioButton";
 
 interface WeatherData {
   main: {
@@ -186,29 +188,28 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
   return (
     <Widget titleKey="wetter" language={language}>
       <div className="space-y-6">
-        {/* City Selector */}
-        <div>
-          <select
+        {/* City Selector Section */}
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+            {t.weather.stadtAuswaehlen}
+          </label>
+          <Dropdown
             value={selectedCity}
-            onChange={(e) => setSelectedCity(e.target.value)}
-            className="w-full px-4 py-3 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 appearance-none bg-no-repeat bg-right pr-10"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
-            }}
-          >
-            {germanCities.map((city) => (
-              <option key={city} value={city}>
-                {city}
-              </option>
-            ))}
-          </select>
+            onChange={setSelectedCity}
+            options={germanCities.map((city) => ({
+              value: city,
+              label: city,
+            }))}
+          />
         </div>
 
-        {/* Weather Display */}
-        <div className="text-center space-y-4">
-          {/* Weather Icon and Temperature */}
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="flex flex-col items-center">
+        {/* Weather Display Section */}
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+            {t.widgets.wetter}
+          </label>
+          <div className="w-full px-4 py-3 text-lg border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100">
+            <div className="flex items-center justify-center gap-4">
               <img
                 src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
                 alt={weather.weather[0].description}
@@ -219,30 +220,26 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
               </p>
             </div>
           </div>
+        </div>
 
-          <div className="flex items-center justify-center gap-3">
-            <p className="text-xl text-accent-600 dark:text-accent-400 font-medium italic font-ibm-plex">
-              {convertWeatherToGermanPhonetic(weather)}
-            </p>
-            <button
-              onClick={() => speakText(convertWeatherToGermanPhonetic(weather))}
-              className="flex-shrink-0 p-2 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors duration-200"
-              title={t.ui.listen}
-            >
-              <svg
-                className="w-5 h-5 text-neutral-600 dark:text-neutral-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-                />
-              </svg>
-            </button>
+        {/* Result Section */}
+        <div className="space-y-4">
+          <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 rounded-xl p-6 border border-primary-100 dark:border-primary-800">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex-1 min-w-0">
+                <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed break-words hyphens-auto text-accent-600 dark:text-accent-400 font-medium italic font-ibm-plex">
+                  {convertWeatherToGermanPhonetic(weather)}
+                </p>
+              </div>
+
+              <AudioButton
+                onClick={() =>
+                  speakText(convertWeatherToGermanPhonetic(weather))
+                }
+                title={t.ui.listen}
+                size="lg"
+              />
+            </div>
           </div>
         </div>
 
