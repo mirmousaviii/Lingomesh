@@ -244,12 +244,6 @@ const GermanAdjectiveDeclensionWidget: React.FC<
       mixed: "Ein großer Mann",
       english: "A big man / The big man",
     },
-    {
-      strong: "Eine schöne Frau",
-      weak: "Die schöne Frau",
-      mixed: "Eine schöne Frau",
-      english: "A beautiful woman / The beautiful woman",
-    },
   ];
 
   const comprehensiveExamples: AdjectiveExample[] = [
