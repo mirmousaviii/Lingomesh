@@ -22,15 +22,6 @@ interface VerbData {
   englishCategory: string;
 }
 
-interface VerbExample {
-  verb: string;
-  preposition: string;
-  case: string;
-  sentence: string;
-  english: string;
-  explanation: string;
-}
-
 interface QuizQuestion {
   question: string;
   options: string[];
@@ -312,73 +303,6 @@ const GermanVerbsPrepositionsWidget: React.FC<
     { key: "Besitz", label: "Besitz", english: "Possession" },
     { key: "Wünsche", label: "Wünsche", english: "Wishes" },
     { key: "Entscheidungen", label: "Entscheidungen", english: "Decisions" },
-  ];
-
-  const comprehensiveExamples: VerbExample[] = [
-    {
-      verb: "warten",
-      preposition: "auf",
-      case: "Akkusativ",
-      sentence: "Ich warte auf den Bus.",
-      english: "I'm waiting for the bus.",
-      explanation: "Waiting for something/someone",
-    },
-    {
-      verb: "denken",
-      preposition: "an",
-      case: "Akkusativ",
-      sentence: "Ich denke an dich.",
-      english: "I'm thinking of you.",
-      explanation: "Thinking about something/someone",
-    },
-    {
-      verb: "sprechen",
-      preposition: "mit",
-      case: "Dativ",
-      sentence: "Ich spreche mit meiner Freundin.",
-      english: "I'm speaking with my friend.",
-      explanation: "Speaking with someone",
-    },
-    {
-      verb: "sich freuen",
-      preposition: "über",
-      case: "Akkusativ",
-      sentence: "Ich freue mich über das Geschenk.",
-      english: "I'm happy about the gift.",
-      explanation: "Being happy about something",
-    },
-    {
-      verb: "sich interessieren",
-      preposition: "für",
-      case: "Akkusativ",
-      sentence: "Ich interessiere mich für Musik.",
-      english: "I'm interested in music.",
-      explanation: "Being interested in something",
-    },
-    {
-      verb: "helfen",
-      preposition: "bei",
-      case: "Dativ",
-      sentence: "Ich helfe dir bei der Arbeit.",
-      english: "I'm helping you with the work.",
-      explanation: "Helping someone with something",
-    },
-    {
-      verb: "danken",
-      preposition: "für",
-      case: "Dativ",
-      sentence: "Ich danke dir für das Geschenk.",
-      english: "I thank you for the gift.",
-      explanation: "Thanking someone for something",
-    },
-    {
-      verb: "glauben",
-      preposition: "an",
-      case: "Dativ",
-      sentence: "Ich glaube an dich.",
-      english: "I believe in you.",
-      explanation: "Believing in someone/something",
-    },
   ];
 
   const quizQuestions: QuizQuestion[] = [

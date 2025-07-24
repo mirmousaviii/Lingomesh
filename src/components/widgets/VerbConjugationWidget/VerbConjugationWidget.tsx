@@ -42,14 +42,6 @@ interface TenseData {
   borderColor: string;
 }
 
-interface VerbExample {
-  verb: string;
-  tense: string;
-  sentence: string;
-  english: string;
-  explanation: string;
-}
-
 interface QuizQuestion {
   question: string;
   options: string[];
@@ -432,65 +424,6 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
       borderColor: "border-purple-200 dark:border-purple-800",
     },
   };
-
-  const comprehensiveExamples: VerbExample[] = [
-    {
-      verb: "haben",
-      tense: "präsens",
-      sentence: "Ich habe ein Auto.",
-      english: "I have a car.",
-      explanation: "Present possession",
-    },
-    {
-      verb: "haben",
-      tense: "perfekt",
-      sentence: "Ich habe ein Auto gehabt.",
-      english: "I have had a car.",
-      explanation: "Past possession with present relevance",
-    },
-    {
-      verb: "sein",
-      tense: "präsens",
-      sentence: "Ich bin Student.",
-      english: "I am a student.",
-      explanation: "Current state",
-    },
-    {
-      verb: "sein",
-      tense: "perfekt",
-      sentence: "Ich bin in Berlin gewesen.",
-      english: "I have been in Berlin.",
-      explanation: "Past experience with present relevance",
-    },
-    {
-      verb: "gehen",
-      tense: "präsens",
-      sentence: "Ich gehe zur Schule.",
-      english: "I go to school.",
-      explanation: "Current action or habit",
-    },
-    {
-      verb: "gehen",
-      tense: "perfekt",
-      sentence: "Ich bin zur Schule gegangen.",
-      english: "I have gone to school.",
-      explanation: "Past movement with present relevance",
-    },
-    {
-      verb: "lernen",
-      tense: "präsens",
-      sentence: "Ich lerne Deutsch.",
-      english: "I learn German.",
-      explanation: "Current action or habit",
-    },
-    {
-      verb: "lernen",
-      tense: "perfekt",
-      sentence: "Ich habe Deutsch gelernt.",
-      english: "I have learned German.",
-      explanation: "Completed action with present relevance",
-    },
-  ];
 
   const quizQuestions: QuizQuestion[] = [
     {

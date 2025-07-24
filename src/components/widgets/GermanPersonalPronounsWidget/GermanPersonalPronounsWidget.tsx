@@ -414,10 +414,6 @@ const GermanPersonalPronounsWidget: React.FC<
     }
   };
 
-  const getSelectedPronounData = () => {
-    return pronouns.find((p) => p.german === selectedPerson) || pronouns[0];
-  };
-
   const getSelectedPronounCases = () => {
     return pronounCases[selectedPerson] || pronounCases.ich;
   };
