@@ -11,6 +11,7 @@ export { default as SettingsWidget } from "./widgets/SettingsWidget/SettingsWidg
 export { default as NumberConverterWidget } from "./widgets/NumberConverterWidget/NumberConverterWidget";
 export { default as VerbConjugationWidget } from "./widgets/VerbConjugationWidget/VerbConjugationWidget";
 export { default as GermanArticlesWidget } from "./widgets/GermanArticlesWidget/GermanArticlesWidget";
+export { default as GermanQuestionsWidget } from "./widgets/GermanQuestionsWidget/GermanQuestionsWidget";
 
 // UI components
 export { default as Widget } from "./ui/Widget/Widget";

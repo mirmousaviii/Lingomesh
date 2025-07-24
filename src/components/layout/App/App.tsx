@@ -14,6 +14,7 @@ import Footer from "../Footer/Footer";
 import NumberConverterWidget from "../../widgets/NumberConverterWidget/NumberConverterWidget";
 import VerbConjugationWidget from "../../widgets/VerbConjugationWidget/VerbConjugationWidget";
 import GermanArticlesWidget from "../../widgets/GermanArticlesWidget/GermanArticlesWidget";
+import GermanQuestionsWidget from "../../widgets/GermanQuestionsWidget/GermanQuestionsWidget";
 
 function App() {
   // State management
@@ -92,6 +93,7 @@ function App() {
                   showTranslations={showTranslations}
                 />
                 <GermanArticlesWidget showTranslations={showTranslations} />
+                <GermanQuestionsWidget showTranslations={showTranslations} />
               </div>
               <div className="space-y-8">
                 <NumberConverterWidget showTranslations={showTranslations} />
