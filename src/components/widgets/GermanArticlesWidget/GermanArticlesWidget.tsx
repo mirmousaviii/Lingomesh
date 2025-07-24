@@ -46,6 +46,7 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
   const [showQuizResult, setShowQuizResult] = useState(false);
   const [score, setScore] = useState(0);
   const [totalQuestions, setTotalQuestions] = useState(0);
+  const [askedQuestions, setAskedQuestions] = useState<Set<number>>(new Set());
   const articles: Record<string, ArticleData> = {
     masculine: {
       nominativ: "der",
@@ -126,9 +127,28 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
   };
 
   const startNewQuiz = () => {
-    const randomQuestion =
-      quizQuestions[Math.floor(Math.random() * quizQuestions.length)];
-    setQuizQuestion(randomQuestion);
+    // Get available questions (not yet asked)
+    const availableQuestions = quizQuestions.filter(
+      (_, index) => !askedQuestions.has(index)
+    );
+
+    // If all questions have been asked, reset the asked questions
+    if (availableQuestions.length === 0) {
+      setAskedQuestions(new Set());
+      const randomQuestion =
+        quizQuestions[Math.floor(Math.random() * quizQuestions.length)];
+      setQuizQuestion(randomQuestion);
+      setAskedQuestions(new Set([quizQuestions.indexOf(randomQuestion)]));
+    } else {
+      // Select a random question from available ones
+      const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+      const selectedQuestion = availableQuestions[randomIndex];
+      const originalIndex = quizQuestions.indexOf(selectedQuestion);
+
+      setQuizQuestion(selectedQuestion);
+      setAskedQuestions((prev) => new Set([...prev, originalIndex]));
+    }
+
     setQuizAnswer(null);
     setShowQuizResult(false);
     setTotalQuestions((prev) => prev + 1);
@@ -677,6 +697,15 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
                       ({Math.round((score / totalQuestions) * 100)}%)
                     </span>
                   )}
+                </div>
+                <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
+                  {language === "en"
+                    ? `Questions left: ${
+                        quizQuestions.length - askedQuestions.size
+                      }`
+                    : `Verbleibende Fragen: ${
+                        quizQuestions.length - askedQuestions.size
+                      }`}
                 </div>
               </div>
 
