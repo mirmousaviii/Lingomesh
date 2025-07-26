@@ -86,4 +86,37 @@
   .animate-bounce-gentle {
     animation: bounceGentle 2s infinite;
   }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
+  /* Mobile responsiveness improvements */
+  @media (max-width: 768px) {
+    .mobile-menu-open {
+      overflow: hidden;
+    }
+  }
+
+  /* Z-index management */
+  .z-header {
+    z-index: 50;
+  }
+
+  .z-navigation {
+    z-index: 40;
+  }
+
+  .z-dropdown {
+    z-index: 60;
+  }
+
+  .z-modal {
+    z-index: 100;
+  }
 }

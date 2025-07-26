@@ -1,6 +1,6 @@
 # German Dashboard
 
-Web app for German learning dashboard: grammar, phrases, time, date & weather.
+Web app for learning German easily & interactively – with grammar explanations, examples, exercises, quizzes and smart learning tools.
 
 [![Deploy to GitHub Pages](https://github.com/mirmousaviii/german-dashboard/actions/workflows/deploy.yml/badge.svg)](https://github.com/mirmousaviii/german-dashboard/actions/workflows/deploy.yml)
 ![German Dashboard Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
