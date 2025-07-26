@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-700/50 shadow-xl transition-all duration-300 ${
+      className={`bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-700/50 shadow-xl transition-all duration-300 ${
         isScrolled ? "py-2" : "py-4 sm:py-6"
       }`}
     >
@@ -131,8 +131,8 @@ const Header: React.FC<HeaderProps> = ({
                 }`}
               >
                 {language === "en"
-                  ? "German learning dashboard: grammar, phrases, time, date & weather."
-                  : "Deutsch-Lern-Dashboard: Grammatik, Redewendungen, Uhrzeit, Datum und Wetter."}
+                  ? "Learn German easily & interactively – with grammar explanations, examples, exercises, quizzes and smart learning tools."
+                  : "Deutsch lernen einfach & interaktiv – mit Grammatik-Erklärungen, Beispielen, Übungen, Quizzes und smarten Lern-Tools."}
               </p>
             </div>
           </div>

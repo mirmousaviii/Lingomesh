@@ -7,6 +7,46 @@ interface GermanQuestionsWidgetProps {
   language: Language;
 }
 
+export const questionQuizQuestions = [
+  {
+    question: "Welches Fragewort benutzt man für 'What'?",
+    questionEn: "Which question word is used for 'What'?",
+    options: ["Wo", "Was", "Wann", "Warum"],
+    correctAnswer: 1,
+    explanation: "'Was' bedeutet 'What' auf Deutsch.",
+    explanationEn: "'Was' means 'What' in German.",
+  },
+  {
+    question: "Wie fragt man nach dem Ort?",
+    questionEn: "How do you ask about location?",
+    options: ["Was", "Wann", "Wo", "Wie"],
+    correctAnswer: 2,
+    explanation: "'Wo' bedeutet 'Where' und fragt nach dem Ort.",
+    explanationEn: "'Wo' means 'Where' and asks about location.",
+  },
+  {
+    question: "Welche Frage erwartet eine Ja/Nein-Antwort?",
+    questionEn: "Which question expects a Yes/No answer?",
+    options: [
+      "Was machst du?",
+      "Sprechen Sie Deutsch?",
+      "Wo wohnst du?",
+      "Warum lernst du?",
+    ],
+    correctAnswer: 1,
+    explanation: "Ja/Nein-Fragen beginnen mit dem Verb.",
+    explanationEn: "Yes/No questions start with the verb.",
+  },
+  {
+    question: "Was bedeutet 'Warum'?",
+    questionEn: "What does 'Warum' mean?",
+    options: ["When", "Where", "What", "Why"],
+    correctAnswer: 3,
+    explanation: "'Warum' bedeutet 'Why' auf Englisch.",
+    explanationEn: "'Warum' means 'Why' in English.",
+  },
+];
+
 interface QuestionExample {
   german: string;
   english: string;

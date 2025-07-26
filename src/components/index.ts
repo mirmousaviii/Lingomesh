@@ -15,6 +15,7 @@ export { default as GermanQuestionsWidget } from "./widgets/GermanQuestionsWidge
 
 export { default as GermanPersonalPronounsWidget } from "./widgets/GermanPersonalPronounsWidget/GermanPersonalPronounsWidget";
 export { default as GermanAdjectiveDeclensionWidget } from "./widgets/GermanAdjectiveDeclensionWidget/GermanAdjectiveDeclensionWidget";
+export { default as GermanVerbsPrepositionsWidget } from "./widgets/GermanVerbsPrepositionsWidget/GermanVerbsPrepositionsWidget";
 
 // UI components
 export { default as Widget } from "./ui/Widget/Widget";

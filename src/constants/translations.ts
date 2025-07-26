@@ -6,8 +6,11 @@ export interface Translations {
     zahlenkonverter: string;
     einstellungen: string;
     datum: string;
+    datumAufDeutsch: string;
     zeit: string;
+    zeitEinstellen: string;
     wetter: string;
+    wetterAufDeutsch: string;
     praesensVerb: string;
     artikel: string;
     personalpronomen: string;
@@ -15,7 +18,17 @@ export interface Translations {
     verbenPraepositionen: string;
     verbzeiten: string;
     adjektivdeklination: string;
-    nuetzlicheSaetze: string;
+    quiz: string;
+    quizNumbers: string;
+    quizDate: string;
+    quizTime: string;
+    quizWeather: string;
+    quizVerbs: string;
+    quizArticles: string;
+    quizPronouns: string;
+    quizQuestions: string;
+    quizPrepositions: string;
+    quizDeclension: string;
   };
 
   // Common UI elements
@@ -70,7 +83,10 @@ export interface Translations {
     examples: string;
     settings: string;
     date: string;
+    dateToGerman: string;
     time: string;
+    setTime: string;
+    weatherToGerman: string;
     numberConverter: string;
     presentVerb: string;
     articles: string;
@@ -94,7 +110,9 @@ export interface Translations {
     wetterdatenFehler: string;
     weatherDataError: string;
     stadtAuswaehlen: string;
+    stadtWaehlen: string;
     selectCity: string;
+    selectCityLabel: string;
     temperatur: string;
     temperature: string;
     luftfeuchtigkeit: string;
@@ -113,6 +131,10 @@ export interface Translations {
     the: string;
     format24h: string;
     format12h: string;
+    klickenZumAendern: string;
+    clickToChange: string;
+    datumAendern: string;
+    clickToChangeDate: string;
   };
 }
 
@@ -122,16 +144,29 @@ export const translations: Record<Language, Translations> = {
       zahlenkonverter: "Zahlenkonverter",
       einstellungen: "Einstellungen",
       datum: "Datum",
+      datumAufDeutsch: "Datum auf Deutsch",
       zeit: "Zeit",
+      zeitEinstellen: "Zeit auf Deutsch",
       wetter: "Wetter",
-      praesensVerb: "Präsens-Verb",
-      artikel: "Artikel",
-      personalpronomen: "Personalpronomen",
-      fragen: "Fragen",
-      verbenPraepositionen: "Verben & Präpositionen",
+      wetterAufDeutsch: "Wetter auf Deutsch",
+      praesensVerb: "Verbkonjugation",
+      artikel: "Deutsche Artikel",
+      personalpronomen: "Deutsche Personalpronomen",
+      fragen: "Deutsche Fragen",
+      verbenPraepositionen: "Deutsche Verben & Präpositionen",
       verbzeiten: "Verbzeiten",
-      adjektivdeklination: "Adjektivdeklination",
-      nuetzlicheSaetze: "Nützliche Sätze",
+      adjektivdeklination: "Deutsche Adjektivdeklination",
+      quiz: "Quiz",
+      quizNumbers: "Zahlen Quiz",
+      quizDate: "Datum Quiz",
+      quizTime: "Zeit Quiz",
+      quizWeather: "Wetter Quiz",
+      quizVerbs: "Verb Quiz",
+      quizArticles: "Artikel Quiz",
+      quizPronouns: "Personalpronomen Quiz",
+      quizQuestions: "Fragen Quiz",
+      quizPrepositions: "Präpositionen Quiz",
+      quizDeclension: "Deklination Quiz",
     },
     ui: {
       listen: "Hören",
@@ -189,15 +224,18 @@ export const translations: Record<Language, Translations> = {
       examples: "Beispiele:",
       settings: "Einstellungen",
       date: "Datum",
+      dateToGerman: "Datum auf Deutsch",
       time: "Zeit",
+      setTime: "Zeit auf Deutsch",
+      weatherToGerman: "Wetter auf Deutsch",
       numberConverter: "Zahlenkonverter",
-      presentVerb: "Präsens-Verb",
-      articles: "Artikel",
-      personalPronouns: "Personalpronomen",
-      questions: "Fragen",
-      verbsPrepositions: "Verben & Präpositionen",
+      presentVerb: "Verbkonjugation",
+      articles: "Deutsche Artikel",
+      personalPronouns: "Deutsche Personalpronomen",
+      questions: "Deutsche Fragen",
+      verbsPrepositions: "Deutsche Verben & Präpositionen",
       verbTenses: "Verbzeiten",
-      adjectiveDeclension: "Adjektivdeklination",
+      adjectiveDeclension: "Deutsche Adjektivdeklination",
       colorLegend: "Farbkodierung:",
       units: "Einer",
       tens: "Zehner",
@@ -212,7 +250,9 @@ export const translations: Record<Language, Translations> = {
       wetterdatenFehler: "Wetterdaten konnten nicht geladen werden",
       weatherDataError: "Weather data could not be loaded",
       stadtAuswaehlen: "Stadt auswählen",
+      stadtWaehlen: "Stadt wählen (Wetter abrufen)",
       selectCity: "Select city",
+      selectCityLabel: "Select city (get weather)",
       temperatur: "Temperatur",
       temperature: "Temperature",
       luftfeuchtigkeit: "Luftfeuchtigkeit",
@@ -229,6 +269,10 @@ export const translations: Record<Language, Translations> = {
       the: "the",
       format24h: "24h Format",
       format12h: "12h Format",
+      klickenZumAendern: "Zeit anpassen (klicken)",
+      clickToChange: "Click to change time",
+      datumAendern: "Datum anpassen (klicken)",
+      clickToChangeDate: "Click to change date",
     },
   },
   en: {
@@ -236,16 +280,29 @@ export const translations: Record<Language, Translations> = {
       zahlenkonverter: "Number Converter",
       einstellungen: "Settings",
       datum: "Date",
+      datumAufDeutsch: "Date to German",
       zeit: "Time",
+      zeitEinstellen: "Time to German",
       wetter: "Weather",
-      praesensVerb: "Present Verb",
-      artikel: "Articles",
-      personalpronomen: "Personal Pronouns",
-      fragen: "Questions",
-      verbenPraepositionen: "Verbs & Prepositions",
+      wetterAufDeutsch: "Weather to German",
+      praesensVerb: "Verb Conjugation",
+      artikel: "German Articles",
+      personalpronomen: "German Personal Pronouns",
+      fragen: "German Questions",
+      verbenPraepositionen: "German Verbs & Prepositions",
       verbzeiten: "Verb Tenses",
-      adjektivdeklination: "Adjective Declension",
-      nuetzlicheSaetze: "Useful Sentences",
+      adjektivdeklination: "German Adjective Declension",
+      quiz: "Quiz",
+      quizNumbers: "Number Quiz",
+      quizDate: "Date Quiz",
+      quizTime: "Time Quiz",
+      quizWeather: "Weather Quiz",
+      quizVerbs: "Verb Quiz",
+      quizArticles: "Article Quiz",
+      quizPronouns: "Personal Pronoun Quiz",
+      quizQuestions: "Question Quiz",
+      quizPrepositions: "Preposition Quiz",
+      quizDeclension: "Declension Quiz",
     },
     ui: {
       listen: "Listen",
@@ -303,15 +360,18 @@ export const translations: Record<Language, Translations> = {
       examples: "Examples:",
       settings: "Settings",
       date: "Date",
+      dateToGerman: "Date to German",
       time: "Time",
+      setTime: "Time to German",
+      weatherToGerman: "Weather to German",
       numberConverter: "Number Converter",
-      presentVerb: "Present Verb",
-      articles: "Articles",
-      personalPronouns: "Personal Pronouns",
-      questions: "Questions",
-      verbsPrepositions: "Verbs & Prepositions",
+      presentVerb: "Verb Conjugation",
+      articles: "German Articles",
+      personalPronouns: "German Personal Pronouns",
+      questions: "German Questions",
+      verbsPrepositions: "German Verbs & Prepositions",
       verbTenses: "Verb Tenses",
-      adjectiveDeclension: "Adjective Declension",
+      adjectiveDeclension: "German Adjective Declension",
       colorLegend: "Color Coding:",
       units: "Units",
       tens: "Tens",
@@ -325,7 +385,9 @@ export const translations: Record<Language, Translations> = {
       wetterdatenFehler: "Weather data could not be loaded",
       weatherDataError: "Weather data could not be loaded",
       stadtAuswaehlen: "Select city",
+      stadtWaehlen: "Select city (get weather)",
       selectCity: "Select city",
+      selectCityLabel: "Select city (get weather)",
       temperatur: "Temperature",
       temperature: "Temperature",
       luftfeuchtigkeit: "Humidity",
@@ -342,6 +404,10 @@ export const translations: Record<Language, Translations> = {
       the: "the",
       format24h: "24h Format",
       format12h: "12h Format",
+      klickenZumAendern: "Adjust time (click)",
+      clickToChange: "Click to change time",
+      datumAendern: "Adjust date (click)",
+      clickToChangeDate: "Click to change date",
     },
   },
 };

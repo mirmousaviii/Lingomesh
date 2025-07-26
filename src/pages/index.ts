@@ -1,0 +1,11 @@
+export { default as Dashboard } from "./Dashboard/Dashboard";
+export { default as Articles } from "./Articles/Articles";
+export { default as Pronouns } from "./Pronouns/Pronouns";
+export { default as Verbs } from "./Verbs/Verbs";
+export { default as Prepositions } from "./Prepositions/Prepositions";
+export { default as Declension } from "./Declension/Declension";
+export { default as Questions } from "./Questions/Questions";
+export { default as Numbers } from "./Numbers/Numbers";
+export { default as Time } from "./Time/Time";
+export { default as Date } from "./Date/Date";
+export { default as Weather } from "./Weather/Weather";

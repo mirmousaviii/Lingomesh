@@ -39,6 +39,12 @@ interface WeatherWidgetProps {
   language: Language;
 }
 
+// Weather part interface for colored display
+interface WeatherPart {
+  text: string;
+  type: "prefix" | "city" | "temperature" | "unit" | "condition" | "space";
+}
+
 const WeatherWidget: React.FC<WeatherWidgetProps> = ({
   weather,
   loading,
@@ -50,9 +56,31 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
 }) => {
   const t = useTranslation(language);
 
-  // Convert weather data to German phonetic description
-  const convertWeatherToGermanPhonetic = (weatherData: WeatherData) => {
-    if (!weatherData) return "";
+  // Color mapping for different weather parts
+  const getColorClass = (type: WeatherPart["type"]) => {
+    switch (type) {
+      case "prefix":
+        return "text-neutral-600 dark:text-neutral-400";
+      case "city":
+        return "text-blue-600 dark:text-blue-400";
+      case "temperature":
+        return "text-orange-600 dark:text-orange-400";
+      case "unit":
+        return "text-green-600 dark:text-green-400";
+      case "condition":
+        return "text-purple-600 dark:text-purple-400";
+      case "space":
+        return "text-neutral-700 dark:text-neutral-300";
+      default:
+        return "text-neutral-700 dark:text-neutral-300";
+    }
+  };
+
+  // Convert weather data to German structured description
+  const convertWeatherToGermanStructured = (
+    weatherData: WeatherData
+  ): WeatherPart[] => {
+    if (!weatherData) return [];
 
     const temp = Math.round(weatherData.main.temp);
     const description = weatherData.weather[0].description;
@@ -142,12 +170,34 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
     const weatherWord =
       weatherDescriptions[description.toLowerCase()] || description;
 
-    return `In ${selectedCity} ist es ${tempWord} Grad Celsius mit ${weatherWord}`;
+    const parts: WeatherPart[] = [
+      { text: "In", type: "prefix" },
+      { text: " ", type: "space" },
+      { text: selectedCity, type: "city" },
+      { text: " ", type: "space" },
+      { text: "ist es", type: "prefix" },
+      { text: " ", type: "space" },
+      { text: tempWord, type: "temperature" },
+      { text: " ", type: "space" },
+      { text: "Grad Celsius", type: "unit" },
+      { text: " ", type: "space" },
+      { text: "mit", type: "prefix" },
+      { text: " ", type: "space" },
+      { text: weatherWord, type: "condition" },
+    ];
+
+    return parts;
+  };
+
+  // Convert WeatherParts to simple text for speech
+  const convertWeatherPartsToText = (parts: WeatherPart[]): string => {
+    return parts.map((part) => part.text).join("");
   };
 
   // Speech synthesis function
-  const speakText = (text: string) => {
+  const speakText = (parts: WeatherPart[]) => {
     if ("speechSynthesis" in window) {
+      const text = convertWeatherPartsToText(parts);
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "de-DE";
       utterance.rate = 0.8;
@@ -157,7 +207,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
 
   if (loading) {
     return (
-      <Widget titleKey="wetter" language={language}>
+      <Widget titleKey="wetterAufDeutsch" language={language}>
         <div className="flex items-center justify-center h-32">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
         </div>
@@ -167,7 +217,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
 
   if (error) {
     return (
-      <Widget titleKey="wetter" language={language}>
+      <Widget titleKey="wetterAufDeutsch" language={language}>
         <div className="text-center text-red-600 dark:text-red-400">
           {error}
         </div>
@@ -177,7 +227,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
 
   if (!weather) {
     return (
-      <Widget titleKey="wetter" language={language}>
+      <Widget titleKey="wetterAufDeutsch" language={language}>
         <div className="text-center text-neutral-600 dark:text-neutral-400">
           {t.weather.stadtAuswaehlen}
         </div>
@@ -186,13 +236,17 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
   }
 
   return (
-    <Widget titleKey="wetter" language={language}>
+    <Widget titleKey="wetterAufDeutsch" language={language}>
       <div className="space-y-6">
         {/* City Selector Section */}
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300">
-            {t.weather.stadtAuswaehlen}
+          {/* Label for city selector */}
+          <label className="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+            {language === "de"
+              ? t.weather.stadtWaehlen
+              : t.weather.selectCityLabel}
           </label>
+
           <Dropdown
             value={selectedCity}
             onChange={setSelectedCity}
@@ -205,9 +259,6 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
 
         {/* Weather Display Section */}
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300">
-            {t.widgets.wetter}
-          </label>
           <div className="w-full px-4 py-3 text-lg border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100">
             <div className="flex items-center justify-center gap-4">
               <img
@@ -227,18 +278,68 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
           <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 rounded-xl p-6 border border-primary-100 dark:border-primary-800">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex-1 min-w-0">
-                <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed break-words hyphens-auto text-accent-600 dark:text-accent-400 font-medium italic font-ibm-plex">
-                  {convertWeatherToGermanPhonetic(weather)}
+                <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed break-words hyphens-auto">
+                  {convertWeatherToGermanStructured(weather).map(
+                    (part, index) => (
+                      <span
+                        key={index}
+                        className={`${getColorClass(
+                          part.type
+                        )} transition-colors duration-200`}
+                      >
+                        {part.text}
+                      </span>
+                    )
+                  )}
                 </p>
               </div>
 
               <AudioButton
                 onClick={() =>
-                  speakText(convertWeatherToGermanPhonetic(weather))
+                  speakText(convertWeatherToGermanStructured(weather))
                 }
                 title={t.ui.listen}
                 size="lg"
               />
+            </div>
+          </div>
+
+          {/* Color Legend */}
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <h4 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-3">
+              {t.ui.colorLegend}
+            </h4>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
+                <span className="text-neutral-600 dark:text-neutral-400">
+                  {language === "de" ? "Präfix" : "Prefix"}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                <span className="text-neutral-600 dark:text-neutral-400">
+                  {language === "de" ? "Stadt" : "City"}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-orange-500"></div>
+                <span className="text-neutral-600 dark:text-neutral-400">
+                  {language === "de" ? "Temperatur" : "Temperature"}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                <span className="text-neutral-600 dark:text-neutral-400">
+                  {language === "de" ? "Einheit" : "Unit"}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+                <span className="text-neutral-600 dark:text-neutral-400">
+                  {language === "de" ? "Bedingung" : "Condition"}
+                </span>
+              </div>
             </div>
           </div>
         </div>

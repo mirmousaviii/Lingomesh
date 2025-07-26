@@ -15,7 +15,7 @@ interface NumberConverterWidgetProps {
 const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
   language,
 }) => {
-  const [numberInput, setNumberInput] = useState("302");
+  const [numberInput, setNumberInput] = useState("321");
   const [convertedParts, setConvertedParts] = useState<NumberPart[]>([]);
   const [inputError, setInputError] = useState(false);
   const t = useTranslation(language);
@@ -78,9 +78,6 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
       <div className="space-y-6">
         {/* Input Section */}
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300">
-            {t.ui.enterNumber}
-          </label>
           <input
             type="number"
             value={numberInput}

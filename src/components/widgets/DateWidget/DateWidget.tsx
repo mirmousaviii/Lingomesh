@@ -3,14 +3,59 @@ import { useTranslation } from "../../../constants/translations";
 import Widget from "../../ui/Widget/Widget";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 import { convertNumberToGerman } from "../../../utils/numberConverter";
+import { useState, useEffect, useRef } from "react";
+import { CalendarDaysIcon } from "@heroicons/react/24/outline";
 
 interface DateWidgetProps {
   currentTime: Date;
   language: Language;
+  setCurrentTime: (date: Date) => void;
 }
 
-const DateWidget: React.FC<DateWidgetProps> = ({ currentTime, language }) => {
+// Date part interface for colored display
+interface DatePart {
+  text: string;
+  type: "prefix" | "day" | "ordinal" | "month" | "year" | "space" | "comma";
+}
+
+const DateWidget: React.FC<DateWidgetProps> = ({
+  currentTime,
+  language,
+  setCurrentTime,
+}) => {
   const t = useTranslation(language);
+
+  // State for the date input
+  const [dateInputValue, setDateInputValue] = useState(
+    currentTime.toISOString().split("T")[0]
+  );
+  const dateInputRef = useRef<HTMLInputElement>(null);
+
+  // Color mapping for different date parts
+  const getColorClass = (type: DatePart["type"]) => {
+    switch (type) {
+      case "prefix":
+        return "text-neutral-600 dark:text-neutral-400";
+      case "day":
+        return "text-blue-600 dark:text-blue-400";
+      case "ordinal":
+        return "text-green-600 dark:text-green-400";
+      case "month":
+        return "text-purple-600 dark:text-purple-400";
+      case "year":
+        return "text-orange-600 dark:text-orange-400";
+      case "comma":
+      case "space":
+        return "text-neutral-700 dark:text-neutral-300";
+      default:
+        return "text-neutral-700 dark:text-neutral-300";
+    }
+  };
+
+  // Sync date input value with currentTime changes
+  useEffect(() => {
+    setDateInputValue(currentTime.toISOString().split("T")[0]);
+  }, [currentTime]);
 
   const days = [
     "Montag",
@@ -37,7 +82,7 @@ const DateWidget: React.FC<DateWidgetProps> = ({ currentTime, language }) => {
     "Dezember",
   ];
 
-  const convertDateToGermanPhonetic = (date: Date) => {
+  const convertDateToGermanStructured = (date: Date): DatePart[] => {
     const ordinals: Record<number, string> = {
       1: "erste",
       2: "zweite",
@@ -80,7 +125,27 @@ const DateWidget: React.FC<DateWidgetProps> = ({ currentTime, language }) => {
     const ordinal = ordinals[day] || convertNumberToGerman(day) + "ter";
     const yearWords = convertNumberToGerman(year);
 
-    return `${t.time.heuteIst} ${dayOfWeek}, ${t.time.der} ${ordinal} ${month} ${yearWords}`;
+    const parts: DatePart[] = [
+      { text: t.time.heuteIst, type: "prefix" },
+      { text: " ", type: "space" },
+      { text: dayOfWeek, type: "day" },
+      { text: ",", type: "comma" },
+      { text: " ", type: "space" },
+      { text: t.time.der, type: "prefix" },
+      { text: " ", type: "space" },
+      { text: ordinal, type: "ordinal" },
+      { text: " ", type: "space" },
+      { text: month, type: "month" },
+      { text: " ", type: "space" },
+      { text: yearWords, type: "year" },
+    ];
+
+    return parts;
+  };
+
+  // Convert DateParts to simple text for speech
+  const convertDatePartsToText = (parts: DatePart[]): string => {
+    return parts.map((part) => part.text).join("");
   };
 
   const formatDisplayDate = (date: Date) => {
@@ -101,9 +166,46 @@ const DateWidget: React.FC<DateWidgetProps> = ({ currentTime, language }) => {
     return date.toLocaleDateString("en-US", options);
   };
 
+  // Handle date change from date input
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedDate = e.target.value;
+    if (selectedDate) {
+      const newDate = new Date(selectedDate);
+      // Preserve the current time while changing the date
+      newDate.setHours(currentTime.getHours());
+      newDate.setMinutes(currentTime.getMinutes());
+      newDate.setSeconds(currentTime.getSeconds());
+      newDate.setMilliseconds(currentTime.getMilliseconds());
+
+      setCurrentTime(newDate);
+      setDateInputValue(selectedDate);
+    }
+  };
+
+  // Handle clicking on the formatted date to open date picker
+  const handleDateClick = () => {
+    if (dateInputRef.current) {
+      // Try to use showPicker first (modern browsers)
+      if (dateInputRef.current.showPicker) {
+        try {
+          dateInputRef.current.showPicker();
+        } catch (error) {
+          // Fallback to focus + click for older browsers
+          dateInputRef.current.focus();
+          dateInputRef.current.click();
+        }
+      } else {
+        // Fallback for browsers without showPicker support
+        dateInputRef.current.focus();
+        dateInputRef.current.click();
+      }
+    }
+  };
+
   // Speech synthesis function
-  const speakText = (text: string) => {
+  const speakText = (parts: DatePart[]) => {
     if ("speechSynthesis" in window) {
+      const text = convertDatePartsToText(parts);
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "de-DE";
       utterance.rate = 0.8;
@@ -112,23 +214,45 @@ const DateWidget: React.FC<DateWidgetProps> = ({ currentTime, language }) => {
   };
 
   return (
-    <Widget titleKey="datum" language={language}>
+    <Widget titleKey="datumAufDeutsch" language={language}>
       <div className="space-y-6">
-        {/* Display Section */}
-        <div className="space-y-2">
-          <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300">
-            {t.ui.date}
+        {/* Custom Date Picker Section */}
+        <div className="relative">
+          {/* Label for date input */}
+          <label className="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+            {language === "de" ? t.time.datumAendern : t.time.clickToChangeDate}
           </label>
-          <div className="w-full px-4 py-3 text-lg border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100">
-            <p className="text-xl font-bold text-neutral-800 dark:text-neutral-200 md:text-2xl font-space-grotesk">
-              {formatDisplayDate(currentTime)}
-            </p>
+
+          {/* Formatted Date Display (Clickable) */}
+          <div
+            onClick={handleDateClick}
+            className="w-full px-4 py-3 text-lg border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-750 transition-colors duration-200 group"
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-xl font-bold text-neutral-800 dark:text-neutral-200 md:text-2xl font-space-grotesk">
+                {formatDisplayDate(currentTime)}
+              </p>
+              <CalendarDaysIcon className="w-6 h-6 text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors duration-200" />
+            </div>
             {language === "en" && (
               <p className="mt-2 text-base text-neutral-600 dark:text-neutral-300 md:text-lg">
                 {formatEnglishDate(currentTime)}
               </p>
             )}
           </div>
+
+          {/* Hidden Date Input */}
+          <input
+            ref={dateInputRef}
+            type="date"
+            value={dateInputValue}
+            onChange={handleDateChange}
+            className="absolute inset-0 w-full h-full opacity-0 pointer-events-none"
+            style={{
+              colorScheme: "light dark",
+              zIndex: -1,
+            }}
+          />
         </div>
 
         {/* Result Section */}
@@ -136,18 +260,68 @@ const DateWidget: React.FC<DateWidgetProps> = ({ currentTime, language }) => {
           <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 rounded-xl p-6 border border-primary-100 dark:border-primary-800">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex-1 min-w-0">
-                <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed break-words hyphens-auto text-accent-600 dark:text-accent-400 font-medium italic font-ibm-plex">
-                  {convertDateToGermanPhonetic(currentTime)}
+                <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed break-words hyphens-auto">
+                  {convertDateToGermanStructured(currentTime).map(
+                    (part, index) => (
+                      <span
+                        key={index}
+                        className={`${getColorClass(
+                          part.type
+                        )} transition-colors duration-200`}
+                      >
+                        {part.text}
+                      </span>
+                    )
+                  )}
                 </p>
               </div>
 
               <AudioButton
                 onClick={() =>
-                  speakText(convertDateToGermanPhonetic(currentTime))
+                  speakText(convertDateToGermanStructured(currentTime))
                 }
                 title={t.ui.listen}
                 size="lg"
               />
+            </div>
+          </div>
+
+          {/* Color Legend */}
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <h4 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-3">
+              {t.ui.colorLegend}
+            </h4>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
+                <span className="text-neutral-600 dark:text-neutral-400">
+                  {language === "de" ? "Präfix" : "Prefix"}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                <span className="text-neutral-600 dark:text-neutral-400">
+                  {language === "de" ? "Wochentag" : "Weekday"}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                <span className="text-neutral-600 dark:text-neutral-400">
+                  {language === "de" ? "Ordinalzahl" : "Ordinal"}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+                <span className="text-neutral-600 dark:text-neutral-400">
+                  {language === "de" ? "Monat" : "Month"}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-orange-500"></div>
+                <span className="text-neutral-600 dark:text-neutral-400">
+                  {language === "de" ? "Jahr" : "Year"}
+                </span>
+              </div>
             </div>
           </div>
         </div>
