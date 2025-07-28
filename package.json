@@ -1,7 +1,7 @@
 {
-  "name": "german-dashboard",
+  "name": "lingomesh",
   "version": "1.0.0",
-  "description": "A modern React dashboard for learning German time, date, and weather with beautiful UI",
+  "description": "A modern React app for discovering German grammar, vocabulary, and sentence structure with interactive tools",
   "type": "module",
   "scripts": {
     "dev": "vite",

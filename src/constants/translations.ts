@@ -286,7 +286,7 @@ export const translations: Record<Language, Translations> = {
       wetter: "Weather",
       wetterAufDeutsch: "Weather to German",
       praesensVerb: "Verb Conjugation",
-      artikel: "German Articles",
+      artikel: "Articles",
       personalpronomen: "German Personal Pronouns",
       fragen: "German Questions",
       verbenPraepositionen: "German Verbs & Prepositions",

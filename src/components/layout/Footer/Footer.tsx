@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     <footer className="text-center py-8">
       <div className="flex items-center justify-center space-x-2 text-neutral-600 dark:text-neutral-400">
         <span className="text-sm font-ibm-plex">
-          © {currentYear} Meine Orientierung. Developed by
+          © {currentYear} LingoMesh. Developed by
         </span>
         <a
           href="https://mirmousavi.com"

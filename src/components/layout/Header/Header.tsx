@@ -96,7 +96,7 @@ const Header: React.FC<HeaderProps> = ({
         {/* Full Header - Mobile Optimized */}
         <div
           className={`flex flex-col sm:flex-row sm:items-center justify-between sm:space-y-0 transition-all duration-300 relative ${
-            isScrolled ? "py-2" : "py-4 sm:py-6"
+            isScrolled ? "py-2" : "py-2 sm:py-0"
           }`}
         >
           {/* Left side - Title and Description */}
@@ -107,20 +107,13 @@ const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <h1
-                className={`font-black bg-gradient-to-r from-primary-600 via-accent-500 to-primary-700 bg-clip-text text-transparent leading-tight tracking-tight font-space-grotesk transition-all duration-300 ${
+                className={`font-black bg-gradient-to-r from-primary-600 via-accent-600 to-accent-800 bg-clip-text text-transparent tracking-tight font-inter font-smooth transition-all duration-300 ${
                   isScrolled
                     ? "text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
                     : "text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
                 }`}
               >
-                <span className="text-accent-600 dark:text-accent-400 font-black drop-shadow-sm">
-                  M
-                </span>
-                eine{" "}
-                <span className="text-accent-600 dark:text-accent-400 font-black drop-shadow-sm">
-                  O
-                </span>
-                rientierung
+                LingoMesh
               </h1>
 
               <p
@@ -131,8 +124,8 @@ const Header: React.FC<HeaderProps> = ({
                 }`}
               >
                 {language === "en"
-                  ? "Learn German easily & interactively – with grammar explanations, examples, exercises, quizzes and smart learning tools."
-                  : "Deutsch lernen einfach & interaktiv – mit Grammatik-Erklärungen, Beispielen, Übungen, Quizzes und smarten Lern-Tools."}
+                  ? "Discover German grammar vocabulary and sentence structure in one place with clear explanations practical examples and interactive tools."
+                  : "Entdecke deutsche Grammatik Wortschatz und Satzstruktur an einem Ort mit klaren Erklärungen praktischen Beispielen und interaktiven Tools."}
               </p>
             </div>
           </div>

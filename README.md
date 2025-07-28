@@ -1,6 +1,6 @@
-# German Dashboard
+# LingoMesh
 
-Web app for learning German easily & interactively – with grammar explanations, examples, exercises, quizzes and smart learning tools.
+Web app for discovering German grammar, vocabulary, and sentence structure in one place with clear explanations, practical examples and interactive tools.
 
 [![Deploy to GitHub Pages](https://github.com/mirmousaviii/german-dashboard/actions/workflows/deploy.yml/badge.svg)](https://github.com/mirmousaviii/german-dashboard/actions/workflows/deploy.yml)
 ![German Dashboard Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
