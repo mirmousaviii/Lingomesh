@@ -57,113 +57,116 @@ const Navigation: React.FC<NavigationProps> = ({
   const menuItems: MenuItem[] = [
     {
       id: "dashboard",
-      label: language === "de" ? "Startseite" : "Home",
+      label: t.navigation.home,
     },
     {
       id: "vocabulary",
-      label: "Vocabulary",
+      label: t.navigation.vocabulary,
       children: [
         {
           id: "numbers",
-          label: language === "de" ? "Zahlen" : "Numbers",
+          label: t.navigation.numbers,
         },
         {
           id: "time",
-          label: language === "de" ? "Zeit" : "Time",
+          label: t.navigation.time,
         },
         {
           id: "date",
-          label: language === "de" ? "Datum" : "Date",
+          label: t.navigation.date,
         },
         {
           id: "weather",
-          label: language === "de" ? "Wetter" : "Weather",
+          label: t.navigation.weather,
         },
         {
           id: "countries",
-          label:
-            language === "de"
-              ? "Länder & Nationalitäten"
-              : "Countries & Nationalities",
+          label: t.navigation.countries,
         },
       ],
     },
     {
       id: "verbs-main",
-      label: "Verbs",
+      label: t.navigation.verbs,
       children: [
-        { id: "verbs", label: "Verb Conjugator" },
-        { id: "modal-verbs", label: "Modal Verbs" },
-        { id: "passive-voice", label: "Passive Voice" },
-        { id: "reflexive-verbs", label: "Reflexive Verbs" },
+        { id: "verbs", label: t.navigation.verbConjugator },
+        { id: "modal-verbs", label: t.navigation.modalVerbs },
+        { id: "passive-voice", label: t.navigation.passiveVoice },
+        { id: "reflexive-verbs", label: t.navigation.reflexiveVerbs },
       ],
     },
     {
       id: "tenses",
-      label: "Tenses",
+      label: t.navigation.tenses,
       children: [
         {
           id: "present-tense",
-          label: "Present Tense",
+          label: t.navigation.presentTense,
         },
         {
           id: "perfect-tense",
-          label: "Perfect Tense",
+          label: t.navigation.perfectTense,
         },
         {
           id: "past-tense",
-          label: "Past Tense",
+          label: t.navigation.pastTense,
         },
         {
           id: "past-perfect",
-          label: "Past Perfect",
+          label: t.navigation.pastPerfect,
         },
         {
           id: "future-tense",
-          label: "Future",
+          label: t.navigation.futureTense,
         },
         {
           id: "future-perfect",
-          label: "Future Perfect",
+          label: t.navigation.futurePerfect,
         },
         {
           id: "irregular-verbs",
-          label: "Irregular Verbs",
+          label: t.navigation.irregularVerbs,
         },
         {
           id: "tenses-overview",
-          label: "Overview of the Tenses",
+          label: t.navigation.tensesOverview,
         },
       ],
     },
     {
       id: "pronouns-main",
-      label: "Pronouns",
+      label: t.navigation.pronouns,
       children: [
-        { id: "pronouns", label: "Personal Pronouns" },
-        { id: "possessives", label: "Possessives" },
-        { id: "reflexive-pronouns", label: "Reflexive Pronouns" },
-        { id: "relative-pronouns", label: "Relative Pronouns" },
-        { id: "interrogative-pronouns", label: "Interrogative Pronouns" },
-        { id: "demonstrative-pronouns", label: "Demonstrative Pronouns" },
-        { id: "indefinite-pronouns", label: "Indefinite Pronouns" },
+        { id: "pronouns", label: t.navigation.personalPronouns },
+        { id: "possessives", label: t.navigation.possessives },
+        { id: "reflexive-pronouns", label: t.navigation.reflexivePronouns },
+        { id: "relative-pronouns", label: t.navigation.relativePronouns },
+        {
+          id: "interrogative-pronouns",
+          label: t.navigation.interrogativePronouns,
+        },
+        {
+          id: "demonstrative-pronouns",
+          label: t.navigation.demonstrativePronouns,
+        },
+        { id: "indefinite-pronouns", label: t.navigation.indefinitePronouns },
       ],
     },
     {
       id: "adjectives",
-      label: "Adjectives",
+      label: t.navigation.adjectives,
     },
     {
       id: "declension",
-      label: "Declension",
+      label: t.navigation.declension,
     },
     {
       id: "adverbs",
-      label: "Adverbs",
+      label: t.navigation.adverbs,
     },
     {
       id: "prepositions",
-      label: "Prepositions",
+      label: t.navigation.prepositions,
     },
     {
       id: "articles",

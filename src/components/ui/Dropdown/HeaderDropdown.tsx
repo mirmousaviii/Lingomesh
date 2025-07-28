@@ -136,7 +136,6 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
         className={`flex items-center justify-center transition-all duration-300 touch-manipulation bg-neutral-100/80 dark:bg-neutral-800/80 rounded-lg p-1 border border-neutral-200/60 dark:border-neutral-600/60 ${
           isScrolled ? "w-8 h-6 sm:w-10 sm:h-8" : "w-12 h-10 sm:w-14 sm:h-12"
         }`}
-        title={selectedOption?.label}
       >
         {renderTriggerContent()}
       </button>

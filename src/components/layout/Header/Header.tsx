@@ -85,6 +85,8 @@ const Header: React.FC<HeaderProps> = ({
   const languageOptions = [
     { value: "de" as Language, label: t.ui.german, text: "DE" },
     { value: "en" as Language, label: t.ui.english, text: "EN" },
+    { value: "es" as Language, label: t.ui.spanish, text: "ES" },
+    { value: "ru" as Language, label: t.ui.russian, text: "RU" },
   ];
 
   return (
@@ -114,7 +116,7 @@ const Header: React.FC<HeaderProps> = ({
                     : "text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
                 }`}
               >
-                LingoMesh
+                {t.app.name}
               </h1>
 
               <p
@@ -124,9 +126,7 @@ const Header: React.FC<HeaderProps> = ({
                     : "text-sm sm:text-base md:text-lg lg:text-xl opacity-100 max-h-20"
                 }`}
               >
-                {language === "en"
-                  ? "Discover German grammar vocabulary and sentence structure in one place with clear explanations practical examples and interactive tools."
-                  : "Entdecke deutsche Grammatik Wortschatz und Satzstruktur an einem Ort mit klaren Erklärungen praktischen Beispielen und interaktiven Tools."}
+                {t.app.tagline}
               </p>
             </div>
           </div>

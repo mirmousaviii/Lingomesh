@@ -1,6 +1,109 @@
 import { Language } from "../hooks/useTranslations";
 
 export interface Translations {
+  // App branding
+  app: {
+    name: string;
+    tagline: string;
+    taglineDe: string;
+    taglineEn: string;
+    footer: string;
+    developer: string;
+  };
+
+  // Navigation menu
+  navigation: {
+    home: string;
+    vocabulary: string;
+    numbers: string;
+    time: string;
+    date: string;
+    weather: string;
+    countries: string;
+    verbs: string;
+    verbConjugator: string;
+    modalVerbs: string;
+    passiveVoice: string;
+    reflexiveVerbs: string;
+    tenses: string;
+    presentTense: string;
+    perfectTense: string;
+    pastTense: string;
+    pastPerfect: string;
+    futureTense: string;
+    futurePerfect: string;
+    irregularVerbs: string;
+    tensesOverview: string;
+    pronouns: string;
+    personalPronouns: string;
+    possessives: string;
+    reflexivePronouns: string;
+    relativePronouns: string;
+    interrogativePronouns: string;
+    demonstrativePronouns: string;
+    indefinitePronouns: string;
+    adjectives: string;
+    declension: string;
+    adverbs: string;
+    prepositions: string;
+  };
+
+  // Dashboard
+  dashboard: {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroSubtitleDe: string;
+    heroSubtitleEn: string;
+    startLearning: string;
+    learnNumbers: string;
+    learnNumbersDe: string;
+    learnNumbersEn: string;
+    learnTime: string;
+    learnTimeDe: string;
+    learnTimeEn: string;
+    learnDate: string;
+    learnDateDe: string;
+    learnDateEn: string;
+    learnWeather: string;
+    learnWeatherDe: string;
+    learnWeatherEn: string;
+    learnArticles: string;
+    learnArticlesDe: string;
+    learnArticlesEn: string;
+    learnPronouns: string;
+    learnPronounsDe: string;
+    learnPronounsEn: string;
+    learnVerbs: string;
+    learnVerbsDe: string;
+    learnVerbsEn: string;
+    learnPrepositions: string;
+    learnPrepositionsDe: string;
+    learnPrepositionsEn: string;
+    learnDeclension: string;
+    learnDeclensionDe: string;
+    learnDeclensionEn: string;
+    learnQuestions: string;
+    learnQuestionsDe: string;
+    learnQuestionsEn: string;
+    simple: string;
+    learningModules: string;
+    interactive: string;
+    withInteractiveExercises: string;
+    withInteractiveExercisesDe: string;
+    withInteractiveExercisesEn: string;
+    bilingual: string;
+  };
+
+  // Quiz
+  quiz: {
+    noQuestionsAvailable: string;
+    noQuestionsAvailableDe: string;
+    reset: string;
+    resetDe: string;
+    nextQuestion: string;
+    nextQuestionDe: string;
+  };
+
   // Widget titles
   widgets: {
     zahlenkonverter: string;
@@ -77,6 +180,8 @@ export interface Translations {
     dark: string;
     german: string;
     english: string;
+    spanish: string;
+    russian: string;
     enterNumber: string;
     enterVerb: string;
     formula: string;
@@ -140,6 +245,107 @@ export interface Translations {
 
 export const translations: Record<Language, Translations> = {
   de: {
+    app: {
+      name: "LingoMesh",
+      tagline:
+        "Deutsch lernen mit Grammatik, Wortschatz, Satzstruktur und interaktiven Werkzeugen",
+      taglineDe:
+        "Deutsch lernen mit Grammatik, Wortschatz, Satzstruktur und interaktiven Werkzeugen",
+      taglineEn:
+        "Learn German with grammar, vocabulary, sentence structure and interactive tools",
+      footer: "© {currentYear} LingoMesh. Developed by",
+      developer: "mirmousavi.com",
+    },
+    navigation: {
+      home: "Startseite",
+      vocabulary: "Wortschatz",
+      numbers: "Zahlen",
+      time: "Zeit",
+      date: "Datum",
+      weather: "Wetter",
+      countries: "Länder & Nationalitäten",
+      verbs: "Verben",
+      verbConjugator: "Verbkonjugator",
+      modalVerbs: "Modalverben",
+      passiveVoice: "Passiv",
+      reflexiveVerbs: "Reflexive Verben",
+      tenses: "Zeiten",
+      presentTense: "Präsens",
+      perfectTense: "Perfekt",
+      pastTense: "Präteritum",
+      pastPerfect: "Plusquamperfekt",
+      futureTense: "Futur",
+      futurePerfect: "Futur II",
+      irregularVerbs: "Unregelmäßige Verben",
+      tensesOverview: "Übersicht der Zeiten",
+      pronouns: "Pronomen",
+      personalPronouns: "Personalpronomen",
+      possessives: "Possessivpronomen",
+      reflexivePronouns: "Reflexivpronomen",
+      relativePronouns: "Relativpronomen",
+      interrogativePronouns: "Interrogativpronomen",
+      demonstrativePronouns: "Demonstrativpronomen",
+      indefinitePronouns: "Indefinitpronomen",
+      adjectives: "Adjektive",
+      declension: "Deklination",
+      adverbs: "Adverbien",
+      prepositions: "Präpositionen",
+    },
+    dashboard: {
+      heroTitle: "Lasst uns Deutsch lernen!",
+      heroSubtitle:
+        "Entdecken Sie unsere interaktiven Lernmodule für die deutsche Sprache",
+      heroSubtitleDe:
+        "Entdecken Sie unsere interaktiven Lernmodule für die deutsche Sprache",
+      heroSubtitleEn:
+        "Discover our interactive learning modules for the German language",
+      startLearning: "Jetzt lernen",
+      learnNumbers: "Lernen Sie deutsche Zahlen",
+      learnNumbersDe: "Lernen Sie deutsche Zahlen",
+      learnNumbersEn: "Learn German numbers",
+      learnTime: "Lernen Sie die deutsche Zeit",
+      learnTimeDe: "Lernen Sie die deutsche Zeit",
+      learnTimeEn: "Learn German time",
+      learnDate: "Lernen Sie die deutsche Datumsangabe",
+      learnDateDe: "Lernen Sie die deutsche Datumsangabe",
+      learnDateEn: "Learn German date",
+      learnWeather: "Grundlegende Wetterbegriffe auf Deutsch",
+      learnWeatherDe: "Grundlegende Wetterbegriffe auf Deutsch",
+      learnWeatherEn: "Basic weather terms in German",
+      learnArticles: "Lernen Sie die deutschen Artikel",
+      learnArticlesDe: "Lernen Sie die deutschen Artikel",
+      learnArticlesEn: "Learn German articles",
+      learnPronouns: "Deutsche Personalpronomen lernen",
+      learnPronounsDe: "Deutsche Personalpronomen lernen",
+      learnPronounsEn: "Learn German personal pronouns",
+      learnVerbs: "Deutsche Verbkonjugation im Präsens",
+      learnVerbsDe: "Deutsche Verbkonjugation im Präsens",
+      learnVerbsEn: "German verb conjugation in present tense",
+      learnPrepositions: "Verben mit Präpositionen lernen",
+      learnPrepositionsDe: "Verben mit Präpositionen lernen",
+      learnPrepositionsEn: "Learn verbs with prepositions",
+      learnDeclension: "Adjektive in allen Fällen deklinieren",
+      learnDeclensionDe: "Adjektive in allen Fällen deklinieren",
+      learnDeclensionEn: "Decline adjectives in all cases",
+      learnQuestions: "Deutsche Fragen richtig stellen",
+      learnQuestionsDe: "Deutsche Fragen richtig stellen",
+      learnQuestionsEn: "Ask German questions correctly",
+      simple: "Simple",
+      learningModules: "Lernmodule",
+      interactive: "Interaktiv",
+      withInteractiveExercises: "mit interaktiven Übungen",
+      withInteractiveExercisesDe: "mit interaktiven Übungen",
+      withInteractiveExercisesEn: "With interactive exercises",
+      bilingual: "Zweisprachig",
+    },
+    quiz: {
+      noQuestionsAvailable: "Keine Quiz-Fragen verfügbar",
+      noQuestionsAvailableDe: "Keine Quiz-Fragen verfügbar",
+      reset: "Zurücksetzen",
+      resetDe: "Zurücksetzen",
+      nextQuestion: "Nächste Frage",
+      nextQuestionDe: "Nächste Frage",
+    },
     widgets: {
       zahlenkonverter: "Zahlenkonverter",
       einstellungen: "Einstellungen",
@@ -218,6 +424,8 @@ export const translations: Record<Language, Translations> = {
       dark: "Dark",
       german: "German",
       english: "English",
+      spanish: "Spanish",
+      russian: "Russian",
       enterNumber: "Zahl eingeben",
       enterVerb: "Verb eingeben",
       formula: "Formel:",
@@ -276,6 +484,107 @@ export const translations: Record<Language, Translations> = {
     },
   },
   en: {
+    app: {
+      name: "LingoMesh",
+      tagline:
+        "Learn German with grammar, vocabulary, sentence structure and interactive tools",
+      taglineDe:
+        "Deutsch lernen mit Grammatik, Wortschatz, Satzstruktur und interaktiven Werkzeugen",
+      taglineEn:
+        "Learn German with grammar, vocabulary, sentence structure and interactive tools",
+      footer: "© {currentYear} LingoMesh. Developed by",
+      developer: "mirmousavi.com",
+    },
+    navigation: {
+      home: "Home",
+      vocabulary: "Vocabulary",
+      numbers: "Numbers",
+      time: "Time",
+      date: "Date",
+      weather: "Weather",
+      countries: "Countries & Nationalities",
+      verbs: "Verbs",
+      verbConjugator: "Verb Conjugator",
+      modalVerbs: "Modal Verbs",
+      passiveVoice: "Passive Voice",
+      reflexiveVerbs: "Reflexive Verbs",
+      tenses: "Tenses",
+      presentTense: "Present Tense",
+      perfectTense: "Perfect Tense",
+      pastTense: "Past Tense",
+      pastPerfect: "Past Perfect",
+      futureTense: "Future",
+      futurePerfect: "Future Perfect",
+      irregularVerbs: "Irregular Verbs",
+      tensesOverview: "Overview of the Tenses",
+      pronouns: "Pronouns",
+      personalPronouns: "Personal Pronouns",
+      possessives: "Possessives",
+      reflexivePronouns: "Reflexive Pronouns",
+      relativePronouns: "Relative Pronouns",
+      interrogativePronouns: "Interrogative Pronouns",
+      demonstrativePronouns: "Demonstrative Pronouns",
+      indefinitePronouns: "Indefinite Pronouns",
+      adjectives: "Adjectives",
+      declension: "Declension",
+      adverbs: "Adverbs",
+      prepositions: "Prepositions",
+    },
+    dashboard: {
+      heroTitle: "Let's learn German!",
+      heroSubtitle:
+        "Discover our interactive learning modules for the German language",
+      heroSubtitleDe:
+        "Entdecken Sie unsere interaktiven Lernmodule für die deutsche Sprache",
+      heroSubtitleEn:
+        "Discover our interactive learning modules for the German language",
+      startLearning: "Start learning",
+      learnNumbers: "Learn German numbers",
+      learnNumbersDe: "Lernen Sie deutsche Zahlen",
+      learnNumbersEn: "Learn German numbers",
+      learnTime: "Learn German time",
+      learnTimeDe: "Lernen Sie die deutsche Zeit",
+      learnTimeEn: "Learn German time",
+      learnDate: "Learn German date",
+      learnDateDe: "Lernen Sie die deutsche Datumsangabe",
+      learnDateEn: "Learn German date",
+      learnWeather: "Basic weather terms in German",
+      learnWeatherDe: "Grundlegende Wetterbegriffe auf Deutsch",
+      learnWeatherEn: "Basic weather terms in German",
+      learnArticles: "Learn German articles",
+      learnArticlesDe: "Lernen Sie die deutschen Artikel",
+      learnArticlesEn: "Learn German articles",
+      learnPronouns: "Learn German personal pronouns",
+      learnPronounsDe: "Deutsche Personalpronomen lernen",
+      learnPronounsEn: "Learn German personal pronouns",
+      learnVerbs: "German verb conjugation in present tense",
+      learnVerbsDe: "Deutsche Verbkonjugation im Präsens",
+      learnVerbsEn: "German verb conjugation in present tense",
+      learnPrepositions: "Learn verbs with prepositions",
+      learnPrepositionsDe: "Verben mit Präpositionen lernen",
+      learnPrepositionsEn: "Learn verbs with prepositions",
+      learnDeclension: "Decline adjectives in all cases",
+      learnDeclensionDe: "Adjektive in allen Fällen deklinieren",
+      learnDeclensionEn: "Decline adjectives in all cases",
+      learnQuestions: "Ask German questions correctly",
+      learnQuestionsDe: "Deutsche Fragen richtig stellen",
+      learnQuestionsEn: "Ask German questions correctly",
+      simple: "Simple",
+      learningModules: "Learning Modules",
+      interactive: "Interactive",
+      withInteractiveExercises: "With interactive exercises",
+      withInteractiveExercisesDe: "mit interaktiven Übungen",
+      withInteractiveExercisesEn: "With interactive exercises",
+      bilingual: "Bilingual",
+    },
+    quiz: {
+      noQuestionsAvailable: "No quiz questions available",
+      noQuestionsAvailableDe: "Keine Quiz-Fragen verfügbar",
+      reset: "Reset",
+      resetDe: "Zurücksetzen",
+      nextQuestion: "Next Question",
+      nextQuestionDe: "Nächste Frage",
+    },
     widgets: {
       zahlenkonverter: "Number Converter",
       einstellungen: "Settings",
@@ -354,6 +663,8 @@ export const translations: Record<Language, Translations> = {
       dark: "Dark",
       german: "German",
       english: "English",
+      spanish: "Spanish",
+      russian: "Russian",
       enterNumber: "Enter a number",
       enterVerb: "Enter a verb",
       formula: "Formula:",
@@ -407,6 +718,486 @@ export const translations: Record<Language, Translations> = {
       klickenZumAendern: "Adjust time (click)",
       clickToChange: "Click to change time",
       datumAendern: "Adjust date (click)",
+      clickToChangeDate: "Click to change date",
+    },
+  },
+  es: {
+    app: {
+      name: "LingoMesh",
+      tagline:
+        "Aprende alemán con gramática, vocabulario, estructura de oraciones y herramientas interactivas",
+      taglineDe:
+        "Deutsch lernen mit Grammatik, Wortschatz, Satzstruktur und interaktiven Werkzeugen",
+      taglineEn:
+        "Learn German with grammar, vocabulary, sentence structure and interactive tools",
+      footer: "© {currentYear} LingoMesh. Desarrollado por",
+      developer: "mirmousavi.com",
+    },
+    navigation: {
+      home: "Inicio",
+      vocabulary: "Vocabulario",
+      numbers: "Números",
+      time: "Tiempo",
+      date: "Fecha",
+      weather: "Clima",
+      countries: "Países y Nacionalidades",
+      verbs: "Verbos",
+      verbConjugator: "Conjugador de Verbos",
+      modalVerbs: "Verbos Modales",
+      passiveVoice: "Voz Pasiva",
+      reflexiveVerbs: "Verbos Reflexivos",
+      tenses: "Tiempos",
+      presentTense: "Presente",
+      perfectTense: "Perfecto",
+      pastTense: "Pasado",
+      pastPerfect: "Pluscuamperfecto",
+      futureTense: "Futuro",
+      futurePerfect: "Futuro Perfecto",
+      irregularVerbs: "Verbos Irregulares",
+      tensesOverview: "Resumen de los Tiempos",
+      pronouns: "Pronombres",
+      personalPronouns: "Pronombres Personales",
+      possessives: "Posesivos",
+      reflexivePronouns: "Pronombres Reflexivos",
+      relativePronouns: "Pronombres Relativos",
+      interrogativePronouns: "Pronombres Interrogativos",
+      demonstrativePronouns: "Pronombres Demostrativos",
+      indefinitePronouns: "Pronombres Indefinidos",
+      adjectives: "Adjetivos",
+      declension: "Declinación",
+      adverbs: "Adverbios",
+      prepositions: "Preposiciones",
+    },
+    dashboard: {
+      heroTitle: "¡Aprendamos alemán!",
+      heroSubtitle:
+        "Descubre nuestros módulos interactivos de aprendizaje para el idioma alemán",
+      heroSubtitleDe:
+        "Entdecken Sie unsere interaktiven Lernmodule für die deutsche Sprache",
+      heroSubtitleEn:
+        "Discover our interactive learning modules for the German language",
+      startLearning: "Comenzar a aprender",
+      learnNumbers: "Aprende números en alemán",
+      learnNumbersDe: "Lernen Sie deutsche Zahlen",
+      learnNumbersEn: "Learn German numbers",
+      learnTime: "Aprende la hora en alemán",
+      learnTimeDe: "Lernen Sie die deutsche Zeit",
+      learnTimeEn: "Learn German time",
+      learnDate: "Aprende la fecha en alemán",
+      learnDateDe: "Lernen Sie die deutsche Datumsangabe",
+      learnDateEn: "Learn German date",
+      learnWeather: "Términos básicos del clima en alemán",
+      learnWeatherDe: "Grundlegende Wetterbegriffe auf Deutsch",
+      learnWeatherEn: "Basic weather terms in German",
+      learnArticles: "Aprende artículos en alemán",
+      learnArticlesDe: "Lernen Sie die deutschen Artikel",
+      learnArticlesEn: "Learn German articles",
+      learnPronouns: "Aprende pronombres personales en alemán",
+      learnPronounsDe: "Deutsche Personalpronomen lernen",
+      learnPronounsEn: "Learn German personal pronouns",
+      learnVerbs: "Conjugación de verbos alemanes en presente",
+      learnVerbsDe: "Deutsche Verbkonjugation im Präsens",
+      learnVerbsEn: "German verb conjugation in present tense",
+      learnPrepositions: "Aprende verbos con preposiciones",
+      learnPrepositionsDe: "Verben mit Präpositionen lernen",
+      learnPrepositionsEn: "Learn verbs with prepositions",
+      learnDeclension: "Declina adjetivos en todos los casos",
+      learnDeclensionDe: "Adjektive in allen Fällen deklinieren",
+      learnDeclensionEn: "Decline adjectives in all cases",
+      learnQuestions: "Haz preguntas en alemán correctamente",
+      learnQuestionsDe: "Deutsche Fragen richtig stellen",
+      learnQuestionsEn: "Ask German questions correctly",
+      simple: "Simple",
+      learningModules: "Módulos de Aprendizaje",
+      interactive: "Interactivo",
+      withInteractiveExercises: "Con ejercicios interactivos",
+      withInteractiveExercisesDe: "mit interaktiven Übungen",
+      withInteractiveExercisesEn: "With interactive exercises",
+      bilingual: "Bilingüe",
+    },
+    quiz: {
+      noQuestionsAvailable: "No hay preguntas de quiz disponibles",
+      noQuestionsAvailableDe: "Keine Quiz-Fragen verfügbar",
+      reset: "Reiniciar",
+      resetDe: "Zurücksetzen",
+      nextQuestion: "Siguiente Pregunta",
+      nextQuestionDe: "Nächste Frage",
+    },
+    widgets: {
+      zahlenkonverter: "Convertidor de Números",
+      einstellungen: "Configuración",
+      datum: "Fecha",
+      datumAufDeutsch: "Fecha en Alemán",
+      zeit: "Tiempo",
+      zeitEinstellen: "Tiempo en Alemán",
+      wetter: "Clima",
+      wetterAufDeutsch: "Clima en Alemán",
+      praesensVerb: "Conjugación de Verbos",
+      artikel: "Artículos Alemanes",
+      personalpronomen: "Pronombres Personales Alemanes",
+      fragen: "Preguntas Alemanas",
+      verbenPraepositionen: "Verbos y Preposiciones Alemanes",
+      verbzeiten: "Tiempos Verbales",
+      adjektivdeklination: "Declinación de Adjetivos Alemanes",
+      quiz: "Quiz",
+      quizNumbers: "Quiz de Números",
+      quizDate: "Quiz de Fechas",
+      quizTime: "Quiz de Tiempo",
+      quizWeather: "Quiz de Clima",
+      quizVerbs: "Quiz de Verbos",
+      quizArticles: "Quiz de Artículos",
+      quizPronouns: "Quiz de Pronombres Personales",
+      quizQuestions: "Quiz de Preguntas",
+      quizPrepositions: "Quiz de Preposiciones",
+      quizDeclension: "Quiz de Declinación",
+    },
+    ui: {
+      listen: "Escuchar",
+      hoeren: "Escuchar",
+      beispiele: "Ejemplos",
+      formel: "Fórmula",
+      beispiel: "Ejemplo",
+      schnelleTipps: "Consejos Rápidos",
+      quickTips: "Consejos Rápidos",
+      perfektTipps: "Consejos del Perfecto",
+      perfektTips: "Consejos del Perfecto",
+      praesensVerwendung: "Uso del Presente",
+      praesensUsage: "Uso del Presente",
+      verwendeHaben: "Usa 'haben':",
+      useHaben: "Usa 'haben':",
+      verwendeSein: "Usa 'sein':",
+      useSein: "Usa 'sein':",
+      meisteVerben: "La mayoría de verbos (aprender, leer, dormir)",
+      mostVerbs: "La mayoría de verbos (aprender, leer, dormir)",
+      bewegungsverben:
+        "Verbos de movimiento (ir, conducir, volar) y cambios de estado (convertirse, morir)",
+      movementVerbs:
+        "Verbos de movimiento (ir, conducir, volar) y cambios de estado (convertirse, morir)",
+      zustaendsaenderungen: "Cambios de estado (convertirse, morir)",
+      stateChanges: "Cambios de estado (convertirse, morir)",
+      gegenwaertigeHandlungen:
+        "Usado para acciones presentes, hábitos y verdades generales.",
+      presentActions:
+        "Usado para acciones presentes, hábitos y verdades generales.",
+      gewohnheiten: "Hábitos",
+      habits: "Hábitos",
+      allgemeineWahrheiten: "Verdades generales",
+      generalTruths: "Verdades generales",
+      wFragen: "Preguntas W:",
+      jaNeinFragen: "Preguntas Sí/No:",
+      formalVsInformal: "Formal vs Informal:",
+      wFragenBeschreibung:
+        "Comienzan con palabras W (Was, Wo, Wann, Warum, Wie, Wer, Wen, Wem)",
+      wQuestionsDescription:
+        "Comienzan con palabras W (Was, Wo, Wann, Warum, Wie, Wer, Wen, Wem)",
+      jaNeinBeschreibung: "El verbo va primero, el sujeto segundo",
+      yesNoDescription: "El verbo va primero, el sujeto segundo",
+      formalBeschreibung: "Usa 'Sie' para formal, 'du' para informal",
+      formalDescription: "Usa 'Sie' para formal, 'du' para informal",
+      uebersetzungen: "Traducciones",
+      translations: "Traducciones",
+      englishTranslationsVisible: "Las traducciones en inglés están visibles",
+      englishTranslationsShow: "Mostrar traducciones en inglés",
+      light: "Claro",
+      dark: "Oscuro",
+      german: "Alemán",
+      english: "Inglés",
+      spanish: "Español",
+      russian: "Ruso",
+      enterNumber: "Ingresa un número",
+      enterVerb: "Ingresa un verbo",
+      formula: "Fórmula:",
+      examples: "Ejemplos:",
+      settings: "Configuración",
+      date: "Fecha",
+      dateToGerman: "Fecha en Alemán",
+      time: "Tiempo",
+      setTime: "Tiempo en Alemán",
+      weatherToGerman: "Clima en Alemán",
+      numberConverter: "Convertidor de Números",
+      presentVerb: "Conjugación de Verbos",
+      articles: "Artículos Alemanes",
+      personalPronouns: "Pronombres Personales Alemanes",
+      questions: "Preguntas Alemanas",
+      verbsPrepositions: "Verbos y Preposiciones Alemanes",
+      verbTenses: "Tiempos Verbales",
+      adjectiveDeclension: "Declinación de Adjetivos Alemanes",
+      colorLegend: "Codificación de Colores:",
+      units: "Unidades",
+      tens: "Decenas",
+      hundreds: "Centenas",
+      thousands: "Miles",
+      millions: "Millones",
+      connectors: "Conectores",
+      numberRangeError: "Por favor ingresa un número entre 0 y 999,999,999",
+    },
+    weather: {
+      wetterdatenFehler: "No se pudieron cargar los datos del clima",
+      weatherDataError: "Weather data could not be loaded",
+      stadtAuswaehlen: "Seleccionar ciudad",
+      stadtWaehlen: "Seleccionar ciudad (obtener clima)",
+      selectCity: "Select city",
+      selectCityLabel: "Select city (get weather)",
+      temperatur: "Temperatura",
+      temperature: "Temperature",
+      luftfeuchtigkeit: "Humedad",
+      humidity: "Humidity",
+      windgeschwindigkeit: "Velocidad del Viento",
+      windSpeed: "Wind Speed",
+      beschreibung: "Descripción",
+      description: "Description",
+    },
+    time: {
+      heuteIst: "Hoy es",
+      todayIs: "Today is",
+      der: "el",
+      the: "the",
+      format24h: "Formato 24h",
+      format12h: "Formato 12h",
+      klickenZumAendern: "Ajustar tiempo (clic)",
+      clickToChange: "Click to change time",
+      datumAendern: "Ajustar fecha (clic)",
+      clickToChangeDate: "Click to change date",
+    },
+  },
+  ru: {
+    app: {
+      name: "LingoMesh",
+      tagline:
+        "Изучайте немецкий язык с грамматикой, лексикой, структурой предложений и интерактивными инструментами",
+      taglineDe:
+        "Deutsch lernen mit Grammatik, Wortschatz, Satzstruktur und interaktiven Werkzeugen",
+      taglineEn:
+        "Learn German with grammar, vocabulary, sentence structure and interactive tools",
+      footer: "© {currentYear} LingoMesh. Разработано",
+      developer: "mirmousavi.com",
+    },
+    navigation: {
+      home: "Главная",
+      vocabulary: "Словарь",
+      numbers: "Числа",
+      time: "Время",
+      date: "Дата",
+      weather: "Погода",
+      countries: "Страны и Национальности",
+      verbs: "Глаголы",
+      verbConjugator: "Спряжение Глаголов",
+      modalVerbs: "Модальные Глаголы",
+      passiveVoice: "Пассивный Залог",
+      reflexiveVerbs: "Возвратные Глаголы",
+      tenses: "Времена",
+      presentTense: "Настоящее Время",
+      perfectTense: "Перфект",
+      pastTense: "Прошедшее Время",
+      pastPerfect: "Плюсквамперфект",
+      futureTense: "Будущее Время",
+      futurePerfect: "Будущее Совершенное",
+      irregularVerbs: "Неправильные Глаголы",
+      tensesOverview: "Обзор Времен",
+      pronouns: "Местоимения",
+      personalPronouns: "Личные Местоимения",
+      possessives: "Притяжательные",
+      reflexivePronouns: "Возвратные Местоимения",
+      relativePronouns: "Относительные Местоимения",
+      interrogativePronouns: "Вопросительные Местоимения",
+      demonstrativePronouns: "Указательные Местоимения",
+      indefinitePronouns: "Неопределенные Местоимения",
+      adjectives: "Прилагательные",
+      declension: "Склонение",
+      adverbs: "Наречия",
+      prepositions: "Предлоги",
+    },
+    dashboard: {
+      heroTitle: "Давайте изучать немецкий!",
+      heroSubtitle:
+        "Откройте для себя наши интерактивные модули обучения немецкому языку",
+      heroSubtitleDe:
+        "Entdecken Sie unsere interaktiven Lernmodule für die deutsche Sprache",
+      heroSubtitleEn:
+        "Discover our interactive learning modules for the German language",
+      startLearning: "Начать обучение",
+      learnNumbers: "Изучайте немецкие числа",
+      learnNumbersDe: "Lernen Sie deutsche Zahlen",
+      learnNumbersEn: "Learn German numbers",
+      learnTime: "Изучайте немецкое время",
+      learnTimeDe: "Lernen Sie die deutsche Zeit",
+      learnTimeEn: "Learn German time",
+      learnDate: "Изучайте немецкие даты",
+      learnDateDe: "Lernen Sie die deutsche Datumsangabe",
+      learnDateEn: "Learn German date",
+      learnWeather: "Основные погодные термины на немецком",
+      learnWeatherDe: "Grundlegende Wetterbegriffe auf Deutsch",
+      learnWeatherEn: "Basic weather terms in German",
+      learnArticles: "Изучайте немецкие артикли",
+      learnArticlesDe: "Lernen Sie die deutschen Artikel",
+      learnArticlesEn: "Learn German articles",
+      learnPronouns: "Изучайте немецкие личные местоимения",
+      learnPronounsDe: "Deutsche Personalpronomen lernen",
+      learnPronounsEn: "Learn German personal pronouns",
+      learnVerbs: "Немецкое спряжение глаголов в настоящем времени",
+      learnVerbsDe: "Deutsche Verbkonjugation im Präsens",
+      learnVerbsEn: "German verb conjugation in present tense",
+      learnPrepositions: "Изучайте глаголы с предлогами",
+      learnPrepositionsDe: "Verben mit Präpositionen lernen",
+      learnPrepositionsEn: "Learn verbs with prepositions",
+      learnDeclension: "Склоняйте прилагательные во всех падежах",
+      learnDeclensionDe: "Adjektive in allen Fällen deklinieren",
+      learnDeclensionEn: "Decline adjectives in all cases",
+      learnQuestions: "Задавайте немецкие вопросы правильно",
+      learnQuestionsDe: "Deutsche Fragen richtig stellen",
+      learnQuestionsEn: "Ask German questions correctly",
+      simple: "Просто",
+      learningModules: "Модули Обучения",
+      interactive: "Интерактивно",
+      withInteractiveExercises: "С интерактивными упражнениями",
+      withInteractiveExercisesDe: "mit interaktiven Übungen",
+      withInteractiveExercisesEn: "With interactive exercises",
+      bilingual: "Двуязычный",
+    },
+    quiz: {
+      noQuestionsAvailable: "Нет доступных вопросов для викторины",
+      noQuestionsAvailableDe: "Keine Quiz-Fragen verfügbar",
+      reset: "Сбросить",
+      resetDe: "Zurücksetzen",
+      nextQuestion: "Следующий Вопрос",
+      nextQuestionDe: "Nächste Frage",
+    },
+    widgets: {
+      zahlenkonverter: "Конвертер Чисел",
+      einstellungen: "Настройки",
+      datum: "Дата",
+      datumAufDeutsch: "Дата на Немецком",
+      zeit: "Время",
+      zeitEinstellen: "Время на Немецком",
+      wetter: "Погода",
+      wetterAufDeutsch: "Погода на Немецком",
+      praesensVerb: "Спряжение Глаголов",
+      artikel: "Немецкие Артикли",
+      personalpronomen: "Немецкие Личные Местоимения",
+      fragen: "Немецкие Вопросы",
+      verbenPraepositionen: "Немецкие Глаголы и Предлоги",
+      verbzeiten: "Времена Глаголов",
+      adjektivdeklination: "Немецкое Склонение Прилагательных",
+      quiz: "Викторина",
+      quizNumbers: "Викторина по Числам",
+      quizDate: "Викторина по Датам",
+      quizTime: "Викторина по Времени",
+      quizWeather: "Викторина по Погоде",
+      quizVerbs: "Викторина по Глаголам",
+      quizArticles: "Викторина по Артиклям",
+      quizPronouns: "Викторина по Личным Местоимениям",
+      quizQuestions: "Викторина по Вопросам",
+      quizPrepositions: "Викторина по Предлогам",
+      quizDeclension: "Викторина по Склонению",
+    },
+    ui: {
+      listen: "Слушать",
+      hoeren: "Слушать",
+      beispiele: "Примеры",
+      formel: "Формула",
+      beispiel: "Пример",
+      schnelleTipps: "Быстрые Советы",
+      quickTips: "Быстрые Советы",
+      perfektTipps: "Советы по Перфекту",
+      perfektTips: "Советы по Перфекту",
+      praesensVerwendung: "Использование Настоящего Времени",
+      praesensUsage: "Использование Настоящего Времени",
+      verwendeHaben: "Используйте 'haben':",
+      useHaben: "Используйте 'haben':",
+      verwendeSein: "Используйте 'sein':",
+      useSein: "Используйте 'sein':",
+      meisteVerben: "Большинство глаголов (учить, читать, спать)",
+      mostVerbs: "Большинство глаголов (учить, читать, спать)",
+      bewegungsverben:
+        "Глаголы движения (идти, ехать, лететь) и изменения состояния (становиться, умирать)",
+      movementVerbs:
+        "Глаголы движения (идти, ехать, лететь) и изменения состояния (становиться, умирать)",
+      zustaendsaenderungen: "Изменения состояния (становиться, умирать)",
+      stateChanges: "Изменения состояния (становиться, умирать)",
+      gegenwaertigeHandlungen:
+        "Используется для настоящих действий, привычек и общих истин.",
+      presentActions:
+        "Используется для настоящих действий, привычек и общих истин.",
+      gewohnheiten: "Привычки",
+      habits: "Привычки",
+      allgemeineWahrheiten: "Общие истины",
+      generalTruths: "Общие истины",
+      wFragen: "W-Вопросы:",
+      jaNeinFragen: "Да/Нет Вопросы:",
+      formalVsInformal: "Формальный vs Неформальный:",
+      wFragenBeschreibung:
+        "Начинаются с W-слов (Was, Wo, Wann, Warum, Wie, Wer, Wen, Wem)",
+      wQuestionsDescription:
+        "Начинаются с W-слов (Was, Wo, Wann, Warum, Wie, Wer, Wen, Wem)",
+      jaNeinBeschreibung: "Глагол идет первым, подлежащее вторым",
+      yesNoDescription: "Глагол идет первым, подлежащее вторым",
+      formalBeschreibung:
+        "Используйте 'Sie' для формального, 'du' для неформального",
+      formalDescription:
+        "Используйте 'Sie' для формального, 'du' для неформального",
+      uebersetzungen: "Переводы",
+      translations: "Переводы",
+      englishTranslationsVisible: "Английские переводы видны",
+      englishTranslationsShow: "Показать английские переводы",
+      light: "Светлый",
+      dark: "Темный",
+      german: "Немецкий",
+      english: "Английский",
+      spanish: "Испанский",
+      russian: "Русский",
+      enterNumber: "Введите число",
+      enterVerb: "Введите глагол",
+      formula: "Формула:",
+      examples: "Примеры:",
+      settings: "Настройки",
+      date: "Дата",
+      dateToGerman: "Дата на Немецком",
+      time: "Время",
+      setTime: "Время на Немецком",
+      weatherToGerman: "Погода на Немецком",
+      numberConverter: "Конвертер Чисел",
+      presentVerb: "Спряжение Глаголов",
+      articles: "Немецкие Артикли",
+      personalPronouns: "Немецкие Личные Местоимения",
+      questions: "Немецкие Вопросы",
+      verbsPrepositions: "Немецкие Глаголы и Предлоги",
+      verbTenses: "Времена Глаголов",
+      adjectiveDeclension: "Немецкое Склонение Прилагательных",
+      colorLegend: "Цветовое Кодирование:",
+      units: "Единицы",
+      tens: "Десятки",
+      hundreds: "Сотни",
+      thousands: "Тысячи",
+      millions: "Миллионы",
+      connectors: "Соединители",
+      numberRangeError: "Пожалуйста, введите число от 0 до 999,999,999",
+    },
+    weather: {
+      wetterdatenFehler: "Данные о погоде не удалось загрузить",
+      weatherDataError: "Weather data could not be loaded",
+      stadtAuswaehlen: "Выбрать город",
+      stadtWaehlen: "Выбрать город (получить погоду)",
+      selectCity: "Select city",
+      selectCityLabel: "Select city (get weather)",
+      temperatur: "Температура",
+      temperature: "Temperature",
+      luftfeuchtigkeit: "Влажность",
+      humidity: "Humidity",
+      windgeschwindigkeit: "Скорость Ветра",
+      windSpeed: "Wind Speed",
+      beschreibung: "Описание",
+      description: "Description",
+    },
+    time: {
+      heuteIst: "Сегодня",
+      todayIs: "Today is",
+      der: "the",
+      the: "the",
+      format24h: "24ч Формат",
+      format12h: "12ч Формат",
+      klickenZumAendern: "Настроить время (клик)",
+      clickToChange: "Click to change time",
+      datumAendern: "Настроить дату (клик)",
       clickToChangeDate: "Click to change date",
     },
   },

@@ -1,4 +1,5 @@
 import { Language } from "../../hooks/useTranslations";
+import { useTranslation } from "../../constants/translations";
 
 interface DashboardProps {
   language: Language;
@@ -6,15 +7,13 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
-  const isGerman = language === "de";
+  const t = useTranslation(language);
 
   const features = [
     {
       id: "numbers",
-      title: isGerman ? "Zahlen" : "Numbers",
-      description: isGerman
-        ? "Lernen Sie deutsche Zahlen"
-        : "Learn German numbers",
+      title: t.dashboard.learnNumbers,
+      description: t.dashboard.learnNumbers,
       icon: (
         <svg
           className="w-8 h-8"
@@ -34,10 +33,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "time",
-      title: isGerman ? "Zeit" : "Time",
-      description: isGerman
-        ? "Lernen Sie die deutsche Zeit"
-        : "Learn German time",
+      title: t.dashboard.learnTime,
+      description: t.dashboard.learnTime,
       icon: (
         <svg
           className="w-8 h-8"
@@ -57,10 +54,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "date",
-      title: isGerman ? "Datum" : "Date",
-      description: isGerman
-        ? "Lernen Sie die deutsche Datumsangabe"
-        : "Learn German date",
+      title: t.dashboard.learnDate,
+      description: t.dashboard.learnDate,
       icon: (
         <svg
           className="w-8 h-8"
@@ -80,10 +75,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "weather",
-      title: isGerman ? "Wetter" : "Weather",
-      description: isGerman
-        ? "Grundlegende Wetterbegriffe auf Deutsch"
-        : "Basic weather terms in German",
+      title: t.dashboard.learnWeather,
+      description: t.dashboard.learnWeather,
       icon: (
         <svg
           className="w-8 h-8"
@@ -103,10 +96,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "articles",
-      title: isGerman ? "Artikel" : "Articles",
-      description: isGerman
-        ? "Lernen Sie die deutschen Artikel"
-        : "Learn German articles",
+      title: t.dashboard.learnArticles,
+      description: t.dashboard.learnArticles,
       icon: (
         <svg
           className="w-8 h-8"
@@ -126,10 +117,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "pronouns",
-      title: isGerman ? "Personalpronomen" : "Personal Pronouns",
-      description: isGerman
-        ? "Deutsche Personalpronomen lernen"
-        : "Learn German personal pronouns",
+      title: t.dashboard.learnPronouns,
+      description: t.dashboard.learnPronouns,
       icon: (
         <svg
           className="w-8 h-8"
@@ -149,10 +138,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "verbs",
-      title: isGerman ? "Verben" : "Verbs",
-      description: isGerman
-        ? "Deutsche Verbkonjugation im Präsens"
-        : "German verb conjugation in present tense",
+      title: t.dashboard.learnVerbs,
+      description: t.dashboard.learnVerbs,
       icon: (
         <svg
           className="w-8 h-8"
@@ -172,10 +159,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "prepositions",
-      title: isGerman ? "Präpositionen" : "Prepositions",
-      description: isGerman
-        ? "Verben mit Präpositionen lernen"
-        : "Learn verbs with prepositions",
+      title: t.dashboard.learnPrepositions,
+      description: t.dashboard.learnPrepositions,
       icon: (
         <svg
           className="w-8 h-8"
@@ -195,10 +180,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "declension",
-      title: isGerman ? "Adjektivdeklination" : "Adjective Declension",
-      description: isGerman
-        ? "Adjektive in allen Fällen deklinieren"
-        : "Decline adjectives in all cases",
+      title: t.dashboard.learnDeclension,
+      description: t.dashboard.learnDeclension,
       icon: (
         <svg
           className="w-8 h-8"
@@ -218,10 +201,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "questions",
-      title: isGerman ? "Fragen" : "Questions",
-      description: isGerman
-        ? "Deutsche Fragen richtig stellen"
-        : "Ask German questions correctly",
+      title: t.dashboard.learnQuestions,
+      description: t.dashboard.learnQuestions,
       icon: (
         <svg
           className="w-8 h-8"
@@ -247,15 +228,12 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
-            {isGerman ? "Lasst uns Deutsch lernen!" : "Let's learn German!"}
+            {t.dashboard.heroTitle}
           </h1>
           <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-            {isGerman
-              ? "Entdecken Sie unsere interaktiven Lernmodule für die deutsche Sprache"
-              : "Discover our interactive learning modules for the German language"}
+            {t.dashboard.heroSubtitle}
           </p>
         </div>
-
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature) => (
@@ -279,7 +257,7 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
               </p>
               <div className="mt-4 flex items-center text-primary-600 dark:text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <span className="text-sm font-medium">
-                  {isGerman ? "Jetzt lernen" : "Start learning"}
+                  {t.dashboard.startLearning}
                 </span>
                 <svg
                   className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"
@@ -297,42 +275,6 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
               </div>
             </button>
           ))}
-        </div>
-
-        {/* Quick Stats */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 rounded-2xl p-6 border border-primary-200 dark:border-primary-800">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                {isGerman ? "Simple" : "Simple"}
-              </div>
-              <div className="text-sm text-neutral-600 dark:text-neutral-400">
-                {isGerman ? "Lernmodule" : "Learning Modules"}
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 rounded-2xl p-6 border border-green-200 dark:border-green-800">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">
-                {isGerman ? "Interaktiv" : "Interactive"}
-              </div>
-              <div className="text-sm text-neutral-600 dark:text-neutral-400">
-                {isGerman
-                  ? "mit interaktiven Übungen"
-                  : "With interactive exercises"}
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-800">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
-                DE/EN
-              </div>
-              <div className="text-sm text-neutral-600 dark:text-neutral-400">
-                {isGerman ? "Zweisprachig" : "Bilingual"}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Language } from "../../../hooks/useTranslations";
 import Widget from "../../ui/Widget/Widget";
 
 export interface QuizQuestion {
@@ -9,7 +10,7 @@ export interface QuizQuestion {
 }
 
 interface QuizWidgetProps {
-  language: "en" | "de";
+  language: Language;
   questions: QuizQuestion[];
   subject: string;
 }
