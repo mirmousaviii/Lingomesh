@@ -119,4 +119,36 @@
   .z-modal {
     z-index: 100;
   }
+
+  /* Dropdown animation classes */
+  .animate-dropdownAppear {
+    animation: dropdownAppear 0.2s ease-out forwards;
+  }
+
+  .animate-dropdownDisappear {
+    animation: dropdownDisappear 0.15s ease-in forwards;
+  }
+}
+
+/* Dropdown animations */
+@keyframes dropdownAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes dropdownDisappear {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Language } from "../../../hooks/useTranslations";
 import { useTranslation } from "../../../constants/translations";
+import HeaderDropdown from "../../ui/Dropdown/HeaderDropdown";
 
 interface HeaderProps {
   language: Language;
@@ -139,71 +140,22 @@ const Header: React.FC<HeaderProps> = ({
             }`}
           >
             {/* Language Selector */}
-            <div className="flex items-center bg-neutral-100/80 dark:bg-neutral-800/80 rounded-lg p-1 border border-neutral-200/60 dark:border-neutral-600/60">
-              {languageOptions.map((option) => (
-                <button
-                  key={option.value}
-                  className={`px-3 py-2 rounded-md transition-all duration-300 flex items-center justify-center touch-manipulation ${
-                    isScrolled
-                      ? "w-8 h-6 sm:w-10 sm:h-8"
-                      : "w-12 h-10 sm:w-14 sm:h-12"
-                  } ${
-                    language === option.value
-                      ? "bg-white dark:bg-neutral-700 text-primary-600 dark:text-primary-400"
-                      : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200"
-                  }`}
-                  onClick={() => setLanguage(option.value)}
-                  title={option.label}
-                >
-                  <span
-                    className={`font-medium transition-all duration-300 ${
-                      isScrolled ? "text-xs sm:text-sm" : "text-sm sm:text-base"
-                    }`}
-                  >
-                    {option.text}
-                  </span>
-                </button>
-              ))}
-            </div>
+            <HeaderDropdown
+              value={language}
+              onChange={(value) => setLanguage(value as Language)}
+              options={languageOptions}
+              isScrolled={isScrolled}
+              type="language"
+            />
 
             {/* Theme Selector */}
-            <div className="flex items-center bg-neutral-100/80 dark:bg-neutral-800/80 rounded-lg p-1 border border-neutral-200/60 dark:border-neutral-600/60">
-              {themeOptions.map((option) => (
-                <button
-                  key={option.value}
-                  className={`px-2 py-1 rounded-md transition-all duration-300 flex items-center justify-center touch-manipulation ${
-                    isScrolled
-                      ? "w-8 h-6 sm:w-10 sm:h-8"
-                      : "w-12 h-10 sm:w-14 sm:h-12"
-                  } ${
-                    themeMode === option.value
-                      ? "bg-white dark:bg-neutral-700 text-primary-600 dark:text-primary-400"
-                      : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200"
-                  }`}
-                  onClick={() => handleThemeChange(option.value)}
-                  title={option.label}
-                >
-                  <svg
-                    className={`fill-current transition-all duration-300 ${
-                      isScrolled
-                        ? "w-4 h-4 sm:w-5 sm:h-5"
-                        : "w-5 h-5 sm:w-6 sm:h-6"
-                    }`}
-                    viewBox="0 0 20 20"
-                  >
-                    {option.value === "light" ? (
-                      <path
-                        fillRule="evenodd"
-                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                        clipRule="evenodd"
-                      />
-                    ) : (
-                      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                    )}
-                  </svg>
-                </button>
-              ))}
-            </div>
+            <HeaderDropdown
+              value={themeMode}
+              onChange={handleThemeChange}
+              options={themeOptions}
+              isScrolled={isScrolled}
+              type="theme"
+            />
           </div>
         </div>
       </div>
