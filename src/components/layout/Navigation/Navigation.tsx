@@ -197,7 +197,7 @@ const Navigation: React.FC<NavigationProps> = ({
     const hasChildren = item.children && item.children.length > 0;
     const isActive =
       currentPage === item.id ||
-      (hasChildren && item.children.some((child) => child.id === currentPage));
+      (hasChildren && item.children?.some((child) => child.id === currentPage));
 
     if (isMobile) {
       return (
