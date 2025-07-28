@@ -1,12 +1,48 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Language } from "../../../hooks/useTranslations";
 import { useTranslation } from "../../../constants/translations";
+
+interface MenuItem {
+  id: string;
+  label: string;
+  children?: MenuItem[];
+}
 
 interface NavigationProps {
   currentPage: string;
   onPageChange: (page: string) => void;
   language: Language;
 }
+
+const DropdownMenu: React.FC<{
+  items: MenuItem[];
+  onPageChange: (page: string) => void;
+  currentPage: string;
+}> = ({ items, onPageChange, currentPage }) => (
+  <div className="absolute top-full left-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-neutral-800 ring-1 ring-black ring-opacity-5 z-50">
+    <div
+      className="py-1"
+      role="menu"
+      aria-orientation="vertical"
+      aria-labelledby="options-menu"
+    >
+      {items.map((item) => (
+        <button
+          key={item.id}
+          onClick={() => onPageChange(item.id)}
+          className={`w-full text-left flex items-center space-x-3 px-4 py-2 text-sm ${
+            currentPage === item.id
+              ? "bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300"
+              : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700"
+          }`}
+          role="menuitem"
+        >
+          <span className="font-medium">{item.label}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+);
 
 const Navigation: React.FC<NavigationProps> = ({
   currentPage,
@@ -15,248 +51,280 @@ const Navigation: React.FC<NavigationProps> = ({
 }) => {
   const t = useTranslation(language);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const navRef = useRef<HTMLElement>(null);
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     {
       id: "dashboard",
       label: language === "de" ? "Startseite" : "Home",
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-          />
-        </svg>
-      ),
     },
     {
-      id: "numbers",
-      label: language === "de" ? "Zahlen" : "Numbers",
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"
-          />
-        </svg>
-      ),
+      id: "vocabulary",
+      label: "Vocabulary",
+      children: [
+        {
+          id: "numbers",
+          label: language === "de" ? "Zahlen" : "Numbers",
+        },
+        {
+          id: "time",
+          label: language === "de" ? "Zeit" : "Time",
+        },
+        {
+          id: "date",
+          label: language === "de" ? "Datum" : "Date",
+        },
+        {
+          id: "weather",
+          label: language === "de" ? "Wetter" : "Weather",
+        },
+        {
+          id: "countries",
+          label:
+            language === "de"
+              ? "Länder & Nationalitäten"
+              : "Countries & Nationalities",
+        },
+      ],
     },
     {
-      id: "time",
-      label: language === "de" ? "Zeit" : "Time",
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      ),
+      id: "verbs-main",
+      label: "Verbs",
+      children: [
+        { id: "verbs", label: "Verb Conjugator" },
+        { id: "modal-verbs", label: "Modal Verbs" },
+        { id: "passive-voice", label: "Passive Voice" },
+        { id: "reflexive-verbs", label: "Reflexive Verbs" },
+      ],
     },
     {
-      id: "date",
-      label: language === "de" ? "Datum" : "Date",
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-          />
-        </svg>
-      ),
+      id: "tenses",
+      label: "Tenses",
+      children: [
+        {
+          id: "present-tense",
+          label: "Present Tense",
+        },
+        {
+          id: "perfect-tense",
+          label: "Perfect Tense",
+        },
+        {
+          id: "past-tense",
+          label: "Past Tense",
+        },
+        {
+          id: "past-perfect",
+          label: "Past Perfect",
+        },
+        {
+          id: "future-tense",
+          label: "Future",
+        },
+        {
+          id: "future-perfect",
+          label: "Future Perfect",
+        },
+        {
+          id: "irregular-verbs",
+          label: "Irregular Verbs",
+        },
+        {
+          id: "tenses-overview",
+          label: "Overview of the Tenses",
+        },
+      ],
     },
     {
-      id: "weather",
-      label: language === "de" ? "Wetter" : "Weather",
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-          />
-        </svg>
-      ),
+      id: "pronouns-main",
+      label: "Pronouns",
+      children: [
+        { id: "pronouns", label: "Personal Pronouns" },
+        { id: "possessives", label: "Possessives" },
+        { id: "reflexive-pronouns", label: "Reflexive Pronouns" },
+        { id: "relative-pronouns", label: "Relative Pronouns" },
+        { id: "interrogative-pronouns", label: "Interrogative Pronouns" },
+        { id: "demonstrative-pronouns", label: "Demonstrative Pronouns" },
+        { id: "indefinite-pronouns", label: "Indefinite Pronouns" },
+      ],
+    },
+    {
+      id: "adjectives",
+      label: "Adjectives",
+    },
+    {
+      id: "declension",
+      label: "Declension",
+    },
+    {
+      id: "adverbs",
+      label: "Adverbs",
+    },
+    {
+      id: "prepositions",
+      label: "Prepositions",
     },
     {
       id: "articles",
       label: t.widgets.artikel,
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-          />
-        </svg>
-      ),
-    },
-    {
-      id: "pronouns",
-      label: t.widgets.personalpronomen,
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-          />
-        </svg>
-      ),
-    },
-    {
-      id: "verbs",
-      label: t.widgets.praesensVerb,
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M13 10V3L4 14h7v7l9-11h-7z"
-          />
-        </svg>
-      ),
-    },
-    {
-      id: "prepositions",
-      label: t.widgets.verbenPraepositionen,
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-          />
-        </svg>
-      ),
-    },
-    {
-      id: "declension",
-      label: t.widgets.adjektivdeklination,
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-          />
-        </svg>
-      ),
-    },
-    {
-      id: "questions",
-      label: t.widgets.fragen,
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      ),
     },
   ];
 
   const handlePageChange = (pageId: string) => {
     onPageChange(pageId);
     setIsMenuOpen(false);
+    setOpenDropdown(null);
   };
 
+  const handleDropdownToggle = (id: string) => {
+    setOpenDropdown(openDropdown === id ? null : id);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const renderMenuItem = (item: MenuItem, isMobile: boolean) => {
+    const hasChildren = item.children && item.children.length > 0;
+    const isActive =
+      currentPage === item.id ||
+      (hasChildren && item.children.some((child) => child.id === currentPage));
+
+    if (isMobile) {
+      return (
+        <div key={item.id}>
+          {hasChildren ? (
+            <>
+              <button
+                onClick={() => handleDropdownToggle(item.id)}
+                className="w-full flex items-center justify-between space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+              >
+                <div className="flex items-center space-x-3">
+                  <span className="font-medium">{item.label}</span>
+                </div>
+                <svg
+                  className={`w-5 h-5 transform transition-transform ${
+                    openDropdown === item.id ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              {openDropdown === item.id && (
+                <div className="pl-8 space-y-1 py-1">
+                  {item.children?.map((child) => renderMenuItem(child, true))}
+                </div>
+              )}
+            </>
+          ) : (
+            <button
+              onClick={() => handlePageChange(item.id)}
+              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${
+                currentPage === item.id
+                  ? "bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-700"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+              }`}
+            >
+              <span className="font-medium">{item.label}</span>
+            </button>
+          )}
+        </div>
+      );
+    }
+
+    return (
+      <div key={item.id} className="relative">
+        <button
+          onClick={() =>
+            hasChildren
+              ? handleDropdownToggle(item.id)
+              : handlePageChange(item.id)
+          }
+          className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
+            isActive
+              ? "bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-700"
+              : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 "
+          }`}
+        >
+          <span className="font-medium text-sm">{item.label}</span>
+          {hasChildren && (
+            <svg
+              className={`w-4 h-4 ml-1 transform transition-transform ${
+                openDropdown === item.id ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          )}
+        </button>
+        {openDropdown === item.id && item.children && (
+          <DropdownMenu
+            items={item.children}
+            onPageChange={handlePageChange}
+            currentPage={currentPage}
+          />
+        )}
+      </div>
+    );
+  };
+
+  const findCurrentItem = (
+    items: MenuItem[],
+    id: string
+  ): MenuItem | undefined => {
+    for (const item of items) {
+      if (item.id === id) return item;
+      if (item.children) {
+        const found = findCurrentItem(item.children, id);
+        if (found) return found;
+      }
+    }
+  };
+
+  const currentItem = findCurrentItem(menuItems, currentPage);
+  const activePageLabel = currentItem
+    ? currentItem.label
+    : menuItems.find((item) => item.id === "dashboard")?.label;
+
   return (
-    <nav className="bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-700/50 shadow-lg">
+    <nav
+      ref={navRef}
+      className="bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-700/50 shadow-lg"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8 overflow-x-auto scrollbar-hide">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handlePageChange(item.id)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
-                  currentPage === item.id
-                    ? "bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-700"
-                    : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-                }`}
-              >
-                {item.icon}
-                <span className="font-medium text-sm">{item.label}</span>
-              </button>
-            ))}
+          <div className="hidden lg:flex items-center space-x-2 flex-wrap">
+            {menuItems.map((item) => renderMenuItem(item, false))}
           </div>
 
           {/* Mobile Navigation Button */}
-          <div className="lg:hidden">
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="flex items-center justify-center w-10 h-10 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors duration-200"
@@ -284,36 +352,25 @@ const Navigation: React.FC<NavigationProps> = ({
                 )}
               </svg>
             </button>
+            <span className="ml-3 font-medium text-sm text-neutral-700 dark:text-neutral-200 lg:hidden">
+              {activePageLabel}
+            </span>
           </div>
-          {/* Show active page name to the right of the button with 5px space icon as button text */}
-          <span className="inline-block w-[5px]" />
-          <span className="m-3 font-medium text-sm text-neutral-700 dark:text-neutral-200">
-            {menuItems.find((item) => item.id === currentPage)?.label}
-          </span>
-        </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 shadow-lg z-dropdown">
-            <div className="px-4 py-2 space-y-1 max-h-96 overflow-y-auto">
-              {menuItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handlePageChange(item.id)}
-                  className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${
-                    currentPage === item.id
-                      ? "bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-700"
-                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-                  }`}
-                >
-                  {item.icon}
-                  <span className="font-medium">{item.label}</span>
-                </button>
-              ))}
-            </div>
+          <div className="hidden lg:block">
+            {/* Can add elements here for desktop, e.g. theme switcher */}
           </div>
-        )}
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 shadow-lg z-50">
+          <div className="px-2 py-2 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
+            {menuItems.map((item) => renderMenuItem(item, true))}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
