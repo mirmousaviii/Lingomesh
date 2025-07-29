@@ -100,7 +100,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
       return (
         <span
           className={`font-medium transition-all duration-300 ${
-            isScrolled ? "text-xs sm:text-sm" : "text-sm sm:text-base"
+            isScrolled ? "text-xs" : "text-sm"
           }`}
         >
           {selectedOption?.text}
@@ -111,7 +111,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
     return (
       <svg
         className={`fill-current transition-all duration-300 ${
-          isScrolled ? "w-4 h-4 sm:w-5 sm:h-5" : "w-5 h-5 sm:w-6 sm:h-6"
+          isScrolled ? "w-3 h-3 sm:w-4 sm:h-4" : "w-4 h-4 sm:w-5 sm:h-5"
         }`}
         viewBox="0 0 20 20"
       >
@@ -133,8 +133,8 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
       {/* Trigger Button */}
       <button
         onClick={handleToggle}
-        className={`flex items-center justify-center transition-all duration-300 touch-manipulation bg-neutral-100/80 dark:bg-neutral-800/80 rounded-lg p-1 border border-neutral-200/60 dark:border-neutral-600/60 ${
-          isScrolled ? "w-8 h-6 sm:w-10 sm:h-8" : "w-12 h-10 sm:w-14 sm:h-12"
+        className={`flex items-center justify-center transition-all duration-300 touch-manipulation bg-neutral-100/80 dark:bg-neutral-800/80 rounded-md p-1 border border-neutral-200/60 dark:border-neutral-600/60 ${
+          isScrolled ? "w-7 h-5 sm:w-8 sm:h-6" : "w-10 h-8 sm:w-12 sm:h-10"
         }`}
       >
         {renderTriggerContent()}
@@ -145,7 +145,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
         createPortal(
           <div
             data-dropdown="true"
-            className="fixed z-[999999] min-w-[120px] bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-600 py-1 origin-top-right animate-dropdownAppear"
+            className="fixed z-[999999] min-w-[120px] bg-white dark:bg-neutral-800 rounded-md shadow-lg border border-neutral-200 dark:border-neutral-600 py-1 origin-top-right animate-dropdownAppear"
             style={{
               left: getDropdownPosition().x,
               top: getDropdownPosition().y,

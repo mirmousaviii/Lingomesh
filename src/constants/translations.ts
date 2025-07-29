@@ -263,7 +263,7 @@ export const translations: Record<Language, Translations> = {
         "Deutsch lernen mit Grammatik, Wortschatz, Satzstruktur und interaktiven Werkzeugen",
       taglineEn:
         "Learn German with grammar, vocabulary, sentence structure and interactive tools",
-      footer: "© {currentYear} LingoMesh. Developed by",
+      footer: "© {currentYear} LingoMesh.",
       developer: "mirmousavi.com",
     },
     navigation: {
@@ -512,7 +512,7 @@ export const translations: Record<Language, Translations> = {
         "Deutsch lernen mit Grammatik, Wortschatz, Satzstruktur und interaktiven Werkzeugen",
       taglineEn:
         "Learn German with grammar, vocabulary, sentence structure and interactive tools",
-      footer: "© {currentYear} LingoMesh. Developed by",
+      footer: "© {currentYear} LingoMesh.",
       developer: "mirmousavi.com",
     },
     navigation: {
@@ -760,7 +760,7 @@ export const translations: Record<Language, Translations> = {
         "Deutsch lernen mit Grammatik, Wortschatz, Satzstruktur und interaktiven Werkzeugen",
       taglineEn:
         "Learn German with grammar, vocabulary, sentence structure and interactive tools",
-      footer: "© {currentYear} LingoMesh. Desarrollado por",
+      footer: "© {currentYear} LingoMesh.\n Desarrollado por",
       developer: "mirmousavi.com",
     },
     navigation: {
@@ -1009,7 +1009,7 @@ export const translations: Record<Language, Translations> = {
         "Deutsch lernen mit Grammatik, Wortschatz, Satzstruktur und interaktiven Werkzeugen",
       taglineEn:
         "Learn German with grammar, vocabulary, sentence structure and interactive tools",
-      footer: "© {currentYear} LingoMesh. Разработано",
+      footer: "© {currentYear} LingoMesh.\n Разработано",
       developer: "mirmousavi.com",
     },
     navigation: {

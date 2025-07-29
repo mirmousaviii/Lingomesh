@@ -223,15 +223,18 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div className="px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <div className="animate-fade-in">
         {/* Hero Section */}
-        <div className="text-center mb-12">
+        <div className="text-left mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
             {t.dashboard.heroTitle}
           </h1>
-          <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mb-6">
             {t.dashboard.heroSubtitle}
+          </p>
+          <p className="text-base text-neutral-700 dark:text-neutral-300 max-w-4xl leading-relaxed">
+            {t.app.tagline}
           </p>
         </div>
         {/* Features Grid */}

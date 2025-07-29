@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Language } from "../../../hooks/useTranslations";
 import { useTranslation } from "../../../constants/translations";
 import HeaderDropdown from "../../ui/Dropdown/HeaderDropdown";
@@ -8,6 +7,8 @@ interface HeaderProps {
   setLanguage: (language: Language) => void;
   themeMode: string;
   handleThemeChange: (theme: string) => void;
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: (isOpen: boolean) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -15,45 +16,10 @@ const Header: React.FC<HeaderProps> = ({
   setLanguage,
   themeMode,
   handleThemeChange,
+  isSidebarOpen,
+  setIsSidebarOpen,
 }) => {
   const t = useTranslation(language);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  // Handle scroll events to determine if header should be compact
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const scrollDelta = Math.abs(scrollTop - lastScrollTop);
-
-      // Only process scroll events if user is actively scrolling (not automatic adjustments)
-      if (scrollDelta > 1) {
-        setLastScrollTop(scrollTop);
-
-        // Prevent header changes during transitions to avoid oscillation
-        if (!isTransitioning) {
-          if (scrollTop > 100 && !isScrolled) {
-            setIsTransitioning(true);
-            setIsScrolled(true);
-            // Allow header changes again after transition completes
-            setTimeout(() => setIsTransitioning(false), 300);
-          } else if (scrollTop <= 10 && isScrolled) {
-            // Only expand header when user scrolls back to the very top
-            setIsTransitioning(true);
-            setIsScrolled(false);
-            // Allow header changes again after transition completes
-            setTimeout(() => setIsTransitioning(false), 300);
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isScrolled, lastScrollTop, isTransitioning]);
 
   // Theme options
   const themeOptions = [
@@ -81,70 +47,61 @@ const Header: React.FC<HeaderProps> = ({
     },
   ];
 
-  // Language options
+  // Language options - Always in English regardless of selected language
   const languageOptions = [
-    { value: "de" as Language, label: t.ui.german, text: "DE" },
-    { value: "en" as Language, label: t.ui.english, text: "EN" },
-    { value: "es" as Language, label: t.ui.spanish, text: "ES" },
-    { value: "ru" as Language, label: t.ui.russian, text: "RU" },
+    { value: "de" as Language, label: "German", text: "DE" },
+    { value: "en" as Language, label: "English", text: "EN" },
+    { value: "es" as Language, label: "Spanish", text: "ES" },
+    { value: "ru" as Language, label: "Russian", text: "RU" },
   ];
 
   return (
-    <header
-      className={`bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-700/50 shadow-xl transition-all duration-300 ${
-        isScrolled ? "py-2" : "py-4 sm:py-6"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-700/50 shadow-xl h-16">
+      <div className="px-3 sm:px-4 md:px-6 lg:px-2 h-full">
         {/* Full Header - Mobile Optimized */}
-        <div
-          className={`flex flex-col sm:flex-row sm:items-center justify-between sm:space-y-0 transition-all duration-300 relative ${
-            isScrolled ? "py-2" : "py-2 sm:py-0"
-          }`}
-        >
+        <div className="flex items-center justify-between h-full">
           {/* Left side - Title and Description */}
           <div className="flex-1 min-w-0">
-            <div
-              className={`space-y-2 sm:space-y-3 transition-all duration-300 ${
-                isScrolled ? "space-y-0 sm:space-y-2" : "space-y-2 sm:space-y-3"
-              }`}
-            >
-              <h1
-                className={`font-black bg-gradient-to-r from-primary-600 via-accent-600 to-accent-800 bg-clip-text text-transparent tracking-tight font-inter font-smooth transition-all duration-300 ${
-                  isScrolled
-                    ? "text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
-                    : "text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
-                }`}
+            <div className="flex items-center space-x-3">
+              {/* Sidebar Toggle Button */}
+              <button
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                className="lg:hidden p-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               >
-                {t.app.name}
-              </h1>
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
 
-              <p
-                className={`font-medium text-neutral-800 dark:text-neutral-200 max-w-4xl leading-relaxed tracking-wide font-ibm-plex transition-all duration-300 pb-2 ${
-                  isScrolled
-                    ? "text-sm sm:text-base md:text-base lg:text-lg opacity-0 max-h-0 overflow-hidden"
-                    : "text-sm sm:text-base md:text-lg lg:text-xl opacity-100 max-h-20"
-                }`}
-              >
-                {t.app.tagline}
-              </p>
+              <div className="flex items-center space-x-3">
+                <h1 className="font-black bg-gradient-to-r from-primary-600 via-accent-600 to-accent-800 bg-clip-text text-transparent tracking-tight font-inter font-smooth text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+                  {t.app.name}
+                </h1>
+                <span className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-neutral-600 dark:text-neutral-400 font-medium lg:pl-4">
+                  German Guide
+                </span>
+              </div>
             </div>
           </div>
 
           {/* Right side - Settings Controls */}
-          <div
-            className={`flex items-center justify-end space-x-3 sm:ml-6 transition-all duration-300 ${
-              isScrolled
-                ? "absolute right-0 top-0 bottom-0 flex items-center space-x-2"
-                : "space-x-3"
-            }`}
-          >
+          <div className="flex items-center justify-end space-x-3 ml-6 mr-4">
             {/* Language Selector */}
             <HeaderDropdown
               value={language}
               onChange={(value) => setLanguage(value as Language)}
               options={languageOptions}
-              isScrolled={isScrolled}
+              isScrolled={false}
               type="language"
             />
 
@@ -153,7 +110,7 @@ const Header: React.FC<HeaderProps> = ({
               value={themeMode}
               onChange={handleThemeChange}
               options={themeOptions}
-              isScrolled={isScrolled}
+              isScrolled={false}
               type="theme"
             />
           </div>

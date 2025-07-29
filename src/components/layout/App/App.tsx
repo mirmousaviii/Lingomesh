@@ -3,8 +3,7 @@ import { useTheme } from "../../../hooks/useTheme";
 import { useTranslations } from "../../../hooks/useTranslations";
 
 import Header from "../Header/Header";
-import Navigation from "../Navigation/Navigation";
-import Footer from "../Footer/Footer";
+import Sidebar from "../Sidebar/Sidebar";
 
 // Import all pages
 import {
@@ -24,6 +23,8 @@ import {
 function App() {
   // State management
   const [currentPage, setCurrentPage] = useState("dashboard");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Custom hooks
   const { language, setLanguage } = useTranslations();
@@ -62,30 +63,38 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen transition-colors duration-500">
-      {/* Sticky Header and Navigation Container */}
-      <div className="sticky top-0 z-header">
-        {/* Header Section */}
-        <Header
-          language={language}
-          setLanguage={setLanguage}
-          themeMode={themeMode}
-          handleThemeChange={handleThemeChange}
-        />
+    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 transition-colors duration-500">
+      {/* Header */}
+      <Header
+        language={language}
+        setLanguage={setLanguage}
+        themeMode={themeMode}
+        handleThemeChange={handleThemeChange}
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
 
-        {/* Navigation Section */}
-        <Navigation
+      {/* Main Layout */}
+      <div className="flex h-[calc(100vh-4rem)]">
+        {/* Sidebar */}
+        <Sidebar
           currentPage={currentPage}
           onPageChange={setCurrentPage}
           language={language}
+          isOpen={isSidebarOpen}
+          setIsOpen={setIsSidebarOpen}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
         />
+
+        {/* Main Content */}
+        <div className="flex-1 flex flex-col overflow-hidden">
+          {/* Content Area */}
+          <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+            {renderCurrentPage()}
+          </main>
+        </div>
       </div>
-
-      {/* Main Content */}
-      <div className="min-h-screen">{renderCurrentPage()}</div>
-
-      {/* Footer Section */}
-      <Footer />
     </div>
   );
 }
