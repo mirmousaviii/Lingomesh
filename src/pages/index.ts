@@ -1,4 +1,4 @@
-export { default as Dashboard } from "./Dashboard/Dashboard";
+export { default as Home } from "./Home/Home";
 export { default as Articles } from "./Articles/Articles";
 export { default as Pronouns } from "./Pronouns/Pronouns";
 export { default as Verbs } from "./Verbs/Verbs";

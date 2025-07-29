@@ -58,8 +58,8 @@ export interface Translations {
     friends: string;
   };
 
-  // Dashboard
-  dashboard: {
+  // Home
+  home: {
     heroTitle: string;
     heroSubtitle: string;
     heroSubtitleDe: string;
@@ -311,7 +311,7 @@ export const translations: Record<Language, Translations> = {
       homePhrases: "Zuhause",
       friends: "Freunde",
     },
-    dashboard: {
+    home: {
       heroTitle: "Lasst uns Deutsch lernen!",
       heroSubtitle:
         "Entdecken Sie unsere interaktiven Lernmodule für die deutsche Sprache",
@@ -560,7 +560,7 @@ export const translations: Record<Language, Translations> = {
       homePhrases: "Home",
       friends: "Friends",
     },
-    dashboard: {
+    home: {
       heroTitle: "Let's learn German!",
       heroSubtitle:
         "Discover our interactive learning modules for the German language",
@@ -808,7 +808,7 @@ export const translations: Record<Language, Translations> = {
       homePhrases: "Casa",
       friends: "Amigos",
     },
-    dashboard: {
+    home: {
       heroTitle: "¡Aprendamos alemán!",
       heroSubtitle:
         "Descubre nuestros módulos interactivos de aprendizaje para el idioma alemán",
@@ -1057,7 +1057,7 @@ export const translations: Record<Language, Translations> = {
       homePhrases: "Дом",
       friends: "Друзья",
     },
-    dashboard: {
+    home: {
       heroTitle: "Давайте изучать немецкий!",
       heroSubtitle:
         "Откройте для себя наши интерактивные модули обучения немецкому языку",

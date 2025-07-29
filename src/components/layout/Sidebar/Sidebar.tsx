@@ -696,7 +696,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   const menuItems: MenuItem[] = [
     {
-      id: "dashboard",
+      id: "home",
       label: t.navigation.home,
       icon: "home",
     },

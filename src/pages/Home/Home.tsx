@@ -1,19 +1,19 @@
 import { Language } from "../../hooks/useTranslations";
 import { useTranslation } from "../../constants/translations";
 
-interface DashboardProps {
+interface HomeProps {
   language: Language;
   onPageChange: (page: string) => void;
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
+const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
   const t = useTranslation(language);
 
   const features = [
     {
       id: "numbers",
-      title: t.dashboard.learnNumbers,
-      description: t.dashboard.learnNumbers,
+      title: t.home.learnNumbers,
+      description: t.home.learnNumbers,
       icon: (
         <svg
           className="w-8 h-8"
@@ -33,8 +33,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "time",
-      title: t.dashboard.learnTime,
-      description: t.dashboard.learnTime,
+      title: t.home.learnTime,
+      description: t.home.learnTime,
       icon: (
         <svg
           className="w-8 h-8"
@@ -54,8 +54,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "date",
-      title: t.dashboard.learnDate,
-      description: t.dashboard.learnDate,
+      title: t.home.learnDate,
+      description: t.home.learnDate,
       icon: (
         <svg
           className="w-8 h-8"
@@ -75,8 +75,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "weather",
-      title: t.dashboard.learnWeather,
-      description: t.dashboard.learnWeather,
+      title: t.home.learnWeather,
+      description: t.home.learnWeather,
       icon: (
         <svg
           className="w-8 h-8"
@@ -96,8 +96,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "articles",
-      title: t.dashboard.learnArticles,
-      description: t.dashboard.learnArticles,
+      title: t.home.learnArticles,
+      description: t.home.learnArticles,
       icon: (
         <svg
           className="w-8 h-8"
@@ -117,8 +117,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "pronouns",
-      title: t.dashboard.learnPronouns,
-      description: t.dashboard.learnPronouns,
+      title: t.home.learnPronouns,
+      description: t.home.learnPronouns,
       icon: (
         <svg
           className="w-8 h-8"
@@ -138,8 +138,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "verbs",
-      title: t.dashboard.learnVerbs,
-      description: t.dashboard.learnVerbs,
+      title: t.home.learnVerbs,
+      description: t.home.learnVerbs,
       icon: (
         <svg
           className="w-8 h-8"
@@ -159,8 +159,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "prepositions",
-      title: t.dashboard.learnPrepositions,
-      description: t.dashboard.learnPrepositions,
+      title: t.home.learnPrepositions,
+      description: t.home.learnPrepositions,
       icon: (
         <svg
           className="w-8 h-8"
@@ -180,8 +180,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "declension",
-      title: t.dashboard.learnDeclension,
-      description: t.dashboard.learnDeclension,
+      title: t.home.learnDeclension,
+      description: t.home.learnDeclension,
       icon: (
         <svg
           className="w-8 h-8"
@@ -201,8 +201,8 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
     },
     {
       id: "questions",
-      title: t.dashboard.learnQuestions,
-      description: t.dashboard.learnQuestions,
+      title: t.home.learnQuestions,
+      description: t.home.learnQuestions,
       icon: (
         <svg
           className="w-8 h-8"
@@ -228,10 +228,10 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
         {/* Hero Section */}
         <div className="text-left mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
-            {t.dashboard.heroTitle}
+            {t.home.heroTitle}
           </h1>
           <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mb-6">
-            {t.dashboard.heroSubtitle}
+            {t.home.heroSubtitle}
           </p>
           <p className="text-base text-neutral-700 dark:text-neutral-300 max-w-4xl leading-relaxed">
             {t.app.tagline}
@@ -260,7 +260,7 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
               </p>
               <div className="mt-4 flex items-center text-primary-600 dark:text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <span className="text-sm font-medium">
-                  {t.dashboard.startLearning}
+                  {t.home.startLearning}
                 </span>
                 <svg
                   className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"
@@ -284,4 +284,4 @@ const Dashboard: React.FC<DashboardProps> = ({ language, onPageChange }) => {
   );
 };
 
-export default Dashboard;
+export default Home;

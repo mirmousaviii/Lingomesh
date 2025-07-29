@@ -1,12 +1,12 @@
 # Pages Structure
 
-This directory contains all the individual pages for the German Learning Dashboard.
+This directory contains all the individual pages for the Lingomesh.
 
 ## Page Components
 
-### Dashboard (`Dashboard/Dashboard.tsx`)
+### Home (`Home/Home.tsx`)
 
-- Main dashboard page with time, date, weather, and utility widgets
+- Main home page with time, date, weather, and utility widgets
 - Contains the right-side widgets from the original layout
 - Organized in a responsive grid layout
 

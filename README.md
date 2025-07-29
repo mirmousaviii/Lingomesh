@@ -2,8 +2,8 @@
 
 Web app for discovering German grammar, vocabulary, and sentence structure in one place with clear explanations, practical examples and interactive tools.
 
-[![Deploy to GitHub Pages](https://github.com/mirmousaviii/german-dashboard/actions/workflows/deploy.yml/badge.svg)](https://github.com/mirmousaviii/german-dashboard/actions/workflows/deploy.yml)
-![German Dashboard Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
+[![Deploy to GitHub Pages](https://github.com/mirmousaviii/Lingomesh/actions/workflows/deploy.yml/badge.svg)](https://github.com/mirmousaviii/Lingomesh/actions/workflows/deploy.yml)
+![LingoMesh Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 ![React](https://img.shields.io/badge/React-18.2.0-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.2.2-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.3.5-38B2AC)

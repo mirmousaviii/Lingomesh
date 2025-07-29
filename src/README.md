@@ -1,6 +1,6 @@
-# German Dashboard - Project Structure
+# Project Structure
 
-This document describes the improved project structure and organization of the German Dashboard application.
+This document describes the improved project structure and organization of the LingoMesh application.
 
 ## Directory Structure
 

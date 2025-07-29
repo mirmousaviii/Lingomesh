@@ -7,7 +7,7 @@ import Sidebar from "../Sidebar/Sidebar";
 
 // Import all pages
 import {
-  Dashboard,
+  Home,
   Articles,
   Pronouns,
   Verbs,
@@ -22,7 +22,7 @@ import {
 
 function App() {
   // State management
-  const [currentPage, setCurrentPage] = useState("dashboard");
+  const [currentPage, setCurrentPage] = useState("home");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -35,8 +35,8 @@ function App() {
     const pageProps = { language, onPageChange: setCurrentPage };
 
     switch (currentPage) {
-      case "dashboard":
-        return <Dashboard {...pageProps} />;
+      case "home":
+        return <Home {...pageProps} />;
       case "articles":
         return <Articles {...pageProps} />;
       case "pronouns":
@@ -58,7 +58,7 @@ function App() {
       case "weather":
         return <Weather {...pageProps} />;
       default:
-        return <Dashboard {...pageProps} />;
+        return <Home {...pageProps} />;
     }
   };
 
