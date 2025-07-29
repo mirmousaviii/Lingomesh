@@ -16,10 +16,12 @@ export interface Translations {
     home: string;
     vocabulary: string;
     numbers: string;
+    alphabet: string;
     time: string;
     date: string;
     weather: string;
     countries: string;
+    grammar: string;
     verbs: string;
     verbConjugator: string;
     modalVerbs: string;
@@ -46,6 +48,14 @@ export interface Translations {
     declension: string;
     adverbs: string;
     prepositions: string;
+    articles: string;
+    questions: string;
+    usefulPhrases: string;
+    general: string;
+    classroom: string;
+    restaurant: string;
+    homePhrases: string;
+    friends: string;
   };
 
   // Dashboard
@@ -260,10 +270,12 @@ export const translations: Record<Language, Translations> = {
       home: "Startseite",
       vocabulary: "Wortschatz",
       numbers: "Zahlen",
+      alphabet: "Alphabet",
       time: "Zeit",
       date: "Datum",
       weather: "Wetter",
       countries: "Länder & Nationalitäten",
+      grammar: "Grammatik",
       verbs: "Verben",
       verbConjugator: "Verbkonjugator",
       modalVerbs: "Modalverben",
@@ -290,6 +302,14 @@ export const translations: Record<Language, Translations> = {
       declension: "Deklination",
       adverbs: "Adverbien",
       prepositions: "Präpositionen",
+      articles: "Artikel",
+      questions: "Fragen",
+      usefulPhrases: "Nützliche Sätze",
+      general: "Allgemein",
+      classroom: "Klassenzimmer",
+      restaurant: "Restaurant",
+      homePhrases: "Zuhause",
+      friends: "Freunde",
     },
     dashboard: {
       heroTitle: "Lasst uns Deutsch lernen!",
@@ -499,10 +519,12 @@ export const translations: Record<Language, Translations> = {
       home: "Home",
       vocabulary: "Vocabulary",
       numbers: "Numbers",
+      alphabet: "Alphabet",
       time: "Time",
       date: "Date",
       weather: "Weather",
       countries: "Countries & Nationalities",
+      grammar: "Grammar",
       verbs: "Verbs",
       verbConjugator: "Verb Conjugator",
       modalVerbs: "Modal Verbs",
@@ -529,6 +551,14 @@ export const translations: Record<Language, Translations> = {
       declension: "Declension",
       adverbs: "Adverbs",
       prepositions: "Prepositions",
+      articles: "Articles",
+      questions: "Questions",
+      usefulPhrases: "Useful Phrases",
+      general: "General",
+      classroom: "Classroom",
+      restaurant: "Restaurant",
+      homePhrases: "Home",
+      friends: "Friends",
     },
     dashboard: {
       heroTitle: "Let's learn German!",
@@ -737,10 +767,12 @@ export const translations: Record<Language, Translations> = {
       home: "Inicio",
       vocabulary: "Vocabulario",
       numbers: "Números",
+      alphabet: "Alfabeto",
       time: "Tiempo",
       date: "Fecha",
       weather: "Clima",
       countries: "Países y Nacionalidades",
+      grammar: "Gramática",
       verbs: "Verbos",
       verbConjugator: "Conjugador de Verbos",
       modalVerbs: "Verbos Modales",
@@ -767,6 +799,14 @@ export const translations: Record<Language, Translations> = {
       declension: "Declinación",
       adverbs: "Adverbios",
       prepositions: "Preposiciones",
+      articles: "Artículos",
+      questions: "Preguntas",
+      usefulPhrases: "Frases Útiles",
+      general: "General",
+      classroom: "Aula",
+      restaurant: "Restaurante",
+      homePhrases: "Casa",
+      friends: "Amigos",
     },
     dashboard: {
       heroTitle: "¡Aprendamos alemán!",
@@ -976,10 +1016,12 @@ export const translations: Record<Language, Translations> = {
       home: "Главная",
       vocabulary: "Словарь",
       numbers: "Числа",
+      alphabet: "Алфавит",
       time: "Время",
       date: "Дата",
       weather: "Погода",
       countries: "Страны и Национальности",
+      grammar: "Грамматика",
       verbs: "Глаголы",
       verbConjugator: "Спряжение Глаголов",
       modalVerbs: "Модальные Глаголы",
@@ -1006,6 +1048,14 @@ export const translations: Record<Language, Translations> = {
       declension: "Склонение",
       adverbs: "Наречия",
       prepositions: "Предлоги",
+      articles: "Артикли",
+      questions: "Вопросы",
+      usefulPhrases: "Полезные Фразы",
+      general: "Общие",
+      classroom: "Класс",
+      restaurant: "Ресторан",
+      homePhrases: "Дом",
+      friends: "Друзья",
     },
     dashboard: {
       heroTitle: "Давайте изучать немецкий!",
