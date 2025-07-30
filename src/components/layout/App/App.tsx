@@ -27,7 +27,7 @@ import {
 
 function App() {
   // State management
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   // Custom hooks
