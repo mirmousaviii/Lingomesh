@@ -155,7 +155,16 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
   const currentSection = questionSections[activeSection];
 
   return (
-    <Widget titleKey="fragen" language={language}>
+    <Widget
+      titleKey="fragen"
+      language={language}
+      headerColor="teal"
+      description={
+        language === "de"
+          ? "Fragewörter und ihre Verwendung"
+          : "Question words and their usage"
+      }
+    >
       <div className="space-y-4">
         {/* Question Type Selector Tabs */}
         <div className="flex bg-neutral-100 dark:bg-neutral-700 rounded-lg p-1">

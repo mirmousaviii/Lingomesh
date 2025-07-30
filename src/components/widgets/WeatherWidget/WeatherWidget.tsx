@@ -207,7 +207,16 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
 
   if (loading) {
     return (
-      <Widget titleKey="wetterAufDeutsch" language={language}>
+      <Widget
+        titleKey="wetter"
+        language={language}
+        headerColor="primary"
+        description={
+          language === "de"
+            ? "Wetterbeschreibungen auf Deutsch"
+            : "Weather descriptions in German"
+        }
+      >
         <div className="flex items-center justify-center h-32">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
         </div>
@@ -217,7 +226,16 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
 
   if (error) {
     return (
-      <Widget titleKey="wetterAufDeutsch" language={language}>
+      <Widget
+        titleKey="wetter"
+        language={language}
+        headerColor="primary"
+        description={
+          language === "de"
+            ? "Wetterbeschreibungen auf Deutsch"
+            : "Weather descriptions in German"
+        }
+      >
         <div className="text-center text-red-600 dark:text-red-400">
           {error}
         </div>
@@ -227,7 +245,16 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
 
   if (!weather) {
     return (
-      <Widget titleKey="wetterAufDeutsch" language={language}>
+      <Widget
+        titleKey="wetter"
+        language={language}
+        headerColor="primary"
+        description={
+          language === "de"
+            ? "Wetterbeschreibungen auf Deutsch"
+            : "Weather descriptions in German"
+        }
+      >
         <div className="text-center text-neutral-600 dark:text-neutral-400">
           {t.weather.stadtAuswaehlen}
         </div>
@@ -236,7 +263,16 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
   }
 
   return (
-    <Widget titleKey="wetterAufDeutsch" language={language}>
+    <Widget
+      titleKey="wetter"
+      language={language}
+      headerColor="primary"
+      description={
+        language === "de"
+          ? "Wetterbeschreibungen auf Deutsch"
+          : "Weather descriptions in German"
+      }
+    >
       <div className="space-y-6">
         {/* City Selector Section */}
         <div className="space-y-2">

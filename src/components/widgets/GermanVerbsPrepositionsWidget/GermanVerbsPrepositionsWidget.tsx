@@ -187,7 +187,16 @@ const GermanVerbsPrepositionsWidget: React.FC<
   const filteredVerbs = getFilteredVerbs();
 
   return (
-    <Widget titleKey="verbenPraepositionen" language={language}>
+    <Widget
+      titleKey="verbenPraepositionen"
+      language={language}
+      headerColor="blue"
+      description={
+        language === "de"
+          ? "Verben mit Präpositionen"
+          : "Verbs with prepositions"
+      }
+    >
       <div className="space-y-4">
         {/* Category Selection */}
         <div>

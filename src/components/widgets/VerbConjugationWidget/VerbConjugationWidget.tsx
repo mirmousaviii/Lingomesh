@@ -307,8 +307,17 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
   };
 
   return (
-    <Widget titleKey="verbzeiten" language={language}>
-      <div className="space-y-4">
+    <Widget
+      titleKey="verbzeiten"
+      language={language}
+      headerColor="purple"
+      description={
+        language === "de"
+          ? "Verbkonjugation und Zeitformen"
+          : "Verb conjugation and tenses"
+      }
+    >
+      <div className="space-y-6">
         {/* Verb Selector */}
         <Dropdown
           value={selectedVerb}

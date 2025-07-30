@@ -185,7 +185,16 @@ const GermanPersonalPronounsWidget: React.FC<
   ];
 
   return (
-    <Widget titleKey="personalpronomen" language={language}>
+    <Widget
+      titleKey="personalpronomen"
+      language={language}
+      headerColor="pink"
+      description={
+        language === "de"
+          ? "Personalpronomen und ihre Deklination"
+          : "Personal pronouns and their declension"
+      }
+    >
       <div className="space-y-4">
         {/* Pronoun Cases Table */}
         <div className="space-y-3">

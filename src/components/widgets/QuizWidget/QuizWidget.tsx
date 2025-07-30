@@ -113,7 +113,16 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
 
   if (questions.length === 0) {
     return (
-      <Widget titleKey={titleKey} language={language}>
+      <Widget
+        titleKey={titleKey}
+        language={language}
+        headerColor="purple"
+        description={
+          language === "de"
+            ? "Testen Sie Ihr Wissen mit interaktiven Quiz"
+            : "Test your knowledge with interactive quizzes"
+        }
+      >
         <div className="text-center py-8">
           <p className="text-neutral-600 dark:text-neutral-400">
             {language === "en"
@@ -126,7 +135,16 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
   }
 
   return (
-    <Widget titleKey={titleKey} language={language}>
+    <Widget
+      titleKey={titleKey}
+      language={language}
+      headerColor="purple"
+      description={
+        language === "de"
+          ? "Testen Sie Ihr Wissen mit interaktiven Quiz"
+          : "Test your knowledge with interactive quizzes"
+      }
+    >
       <div className="space-y-4">
         {/* Score Display */}
         {totalAnswered > 0 && (

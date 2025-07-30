@@ -213,11 +213,11 @@ const Numbers: React.FC<NumbersProps> = ({ language }) => {
     >
       {/* Basic Numbers Section */}
       <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-primary-600 to-accent-600 px-6 py-4">
+        <div className="bg-gradient-to-r from-green-600 to-teal-600 px-6 py-4">
           <h2 className="text-xl font-bold text-white">
             {isGerman ? "Grundzahlen" : "Basic Numbers"}
           </h2>
-          <p className="text-primary-100 mt-1 text-sm">
+          <p className="text-green-100 mt-1 text-sm">
             {isGerman
               ? "Die wichtigsten Zahlen im Deutschen"
               : "The most important numbers in German"}

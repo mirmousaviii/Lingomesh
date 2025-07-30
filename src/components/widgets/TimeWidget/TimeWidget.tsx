@@ -222,7 +222,16 @@ const TimeWidget: React.FC<TimeWidgetProps> = ({
   };
 
   return (
-    <Widget titleKey="zeitEinstellen" language={language}>
+    <Widget
+      titleKey="zeit"
+      language={language}
+      headerColor="primary"
+      description={
+        language === "de"
+          ? "Zeitangaben und Uhrzeiten auf Deutsch"
+          : "Time expressions and clock times in German"
+      }
+    >
       <div className="space-y-6">
         {/* Custom Time Picker Section */}
         <div className="relative">

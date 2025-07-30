@@ -147,7 +147,16 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
   ];
 
   return (
-    <Widget titleKey="artikel" language={language}>
+    <Widget
+      titleKey="artikel"
+      language={language}
+      headerColor="blue"
+      description={
+        language === "de"
+          ? "Deutsche Artikel und ihre Deklination"
+          : "German articles and their declension"
+      }
+    >
       <div className="space-y-4">
         {/* Article Table */}
         <div className="space-y-3">

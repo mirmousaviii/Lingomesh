@@ -295,7 +295,16 @@ const GermanAdjectiveDeclensionWidget: React.FC<
   const currentDeclension = getCurrentDeclension();
 
   return (
-    <Widget titleKey="adjektivdeklination" language={language}>
+    <Widget
+      titleKey="adjektivdeklination"
+      language={language}
+      headerColor="emerald"
+      description={
+        language === "de"
+          ? "Adjektivdeklination und Endungen"
+          : "Adjective declension and endings"
+      }
+    >
       <div className="space-y-4">
         {/* Declension Type Selection */}
         <div>

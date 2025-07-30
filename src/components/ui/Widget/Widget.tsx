@@ -6,6 +6,16 @@ interface WidgetProps {
   children: React.ReactNode;
   className?: string;
   language: Language;
+  headerColor?:
+    | "blue"
+    | "purple"
+    | "green"
+    | "orange"
+    | "pink"
+    | "teal"
+    | "emerald"
+    | "primary";
+  description?: string;
 }
 
 const Widget: React.FC<WidgetProps> = ({
@@ -13,22 +23,49 @@ const Widget: React.FC<WidgetProps> = ({
   children,
   className = "",
   language,
+  headerColor = "blue",
+  description,
 }) => {
   const t = useTranslation(language);
 
+  // Color mapping for different header colors
+  const getHeaderGradient = (color: string) => {
+    switch (color) {
+      case "primary":
+        return "bg-gradient-to-r from-primary-600 to-accent-600";
+      case "blue":
+        return "bg-gradient-to-r from-blue-600 to-purple-600";
+      case "purple":
+        return "bg-gradient-to-r from-purple-600 to-pink-600";
+      case "green":
+        return "bg-gradient-to-r from-green-600 to-teal-600";
+      case "orange":
+        return "bg-gradient-to-r from-orange-600 to-red-600";
+      case "pink":
+        return "bg-gradient-to-r from-pink-600 to-purple-600";
+      case "teal":
+        return "bg-gradient-to-r from-teal-600 to-blue-600";
+      case "emerald":
+        return "bg-gradient-to-r from-emerald-600 to-green-600";
+      default:
+        return "bg-gradient-to-r from-blue-600 to-purple-600";
+    }
+  };
+
   return (
     <div
-      className={`bg-white/90 dark:bg-neutral-800/90 backdrop-blur-lg border border-white/30 dark:border-neutral-700/30 rounded-md shadow-medium hover:shadow-strong transition-all duration-300 h-full flex flex-col p-6 animate-scale-in ${className}`}
+      className={`bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden ${className}`}
     >
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h3 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 font-space-grotesk">
-            {t.widgets[titleKey]}
-          </h3>
-        </div>
+      {/* Colored Header */}
+      <div className={`${getHeaderGradient(headerColor)} px-6 py-4`}>
+        <h3 className="text-xl font-bold text-white">{t.widgets[titleKey]}</h3>
+        {description && (
+          <p className="text-white/80 mt-1 text-sm">{description}</p>
+        )}
       </div>
 
-      <div className="flex-grow">{children}</div>
+      {/* Content */}
+      <div className="p-6">{children}</div>
     </div>
   );
 };

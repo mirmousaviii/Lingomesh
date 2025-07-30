@@ -24,8 +24,16 @@ const SettingsWidget: React.FC<SettingsWidgetProps> = ({
   ];
 
   return (
-    <Widget titleKey="einstellungen" language={language}>
-      <div className="space-y-8">
+    <Widget
+      titleKey="einstellungen"
+      language={language}
+      description={
+        language === "de"
+          ? "App-Einstellungen und Konfiguration"
+          : "App settings and configuration"
+      }
+    >
+      <div className="space-y-4">
         <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-md border border-white/20 dark:border-neutral-700/20 rounded-md shadow-soft hover:shadow-medium transition-all duration-300 p-6">
           <div className="flex items-center justify-between">
             <div>

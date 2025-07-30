@@ -126,12 +126,10 @@ const DateWidget: React.FC<DateWidgetProps> = ({
     const yearWords = convertNumberToGerman(year);
 
     const parts: DatePart[] = [
-      { text: t.time.heuteIst, type: "prefix" },
+      { text: "Heute ist", type: "prefix" },
       { text: " ", type: "space" },
       { text: dayOfWeek, type: "day" },
       { text: ",", type: "comma" },
-      { text: " ", type: "space" },
-      { text: t.time.der, type: "prefix" },
       { text: " ", type: "space" },
       { text: ordinal, type: "ordinal" },
       { text: " ", type: "space" },
@@ -164,6 +162,26 @@ const DateWidget: React.FC<DateWidgetProps> = ({
       day: "numeric",
     };
     return date.toLocaleDateString("en-US", options);
+  };
+
+  const formatSpanishDate = (date: Date) => {
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return date.toLocaleDateString("es-ES", options);
+  };
+
+  const formatRussianDate = (date: Date) => {
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return date.toLocaleDateString("ru-RU", options);
   };
 
   // Handle date change from date input
@@ -214,7 +232,16 @@ const DateWidget: React.FC<DateWidgetProps> = ({
   };
 
   return (
-    <Widget titleKey="datumAufDeutsch" language={language}>
+    <Widget
+      titleKey="datum"
+      language={language}
+      headerColor="primary"
+      description={
+        language === "de"
+          ? "Datum und Datumsangaben auf Deutsch"
+          : "Dates and date expressions in German"
+      }
+    >
       <div className="space-y-6">
         {/* Custom Date Picker Section */}
         <div className="relative">
@@ -235,8 +262,18 @@ const DateWidget: React.FC<DateWidgetProps> = ({
               <CalendarDaysIcon className="w-6 h-6 text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors duration-200" />
             </div>
             {language === "en" && (
-              <p className="mt-2 text-base text-neutral-600 dark:text-neutral-300 md:text-lg">
+              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300 md:text-base">
                 {formatEnglishDate(currentTime)}
+              </p>
+            )}
+            {language === "es" && (
+              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300 md:text-base">
+                {formatSpanishDate(currentTime)}
+              </p>
+            )}
+            {language === "ru" && (
+              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300 md:text-base">
+                {formatRussianDate(currentTime)}
               </p>
             )}
           </div>
