@@ -26,79 +26,85 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
   const getPageContent = () => {
     const pageContent = {
       home: {
-        title: t.app.name,
-        description: t.app.tagline,
-        keywords: "German, language learning, grammar, vocabulary, interactive",
+        title: `${t.app.name} - German Language Learning Platform`,
+        description: `${t.app.name} - Your comprehensive German language learning platform. ${t.app.tagline} Visit lingomesh.com for the best German learning experience.`,
+        keywords:
+          "German learning, German grammar, German vocabulary, LingoMesh, lingomesh.com, German interactive tools, German pronunciation, German exercises",
       },
       // 404 page
       "404": {
         title: `404 - ${t.app.name}`,
-        description: "Page not found. The requested page does not exist.",
-        keywords: "404, page not found, error",
+        description:
+          "Page not found. The requested page does not exist on LingoMesh.",
+        keywords: "404, page not found, error, LingoMesh",
       },
       // Vocabulary pages
       alphabet: {
         title: `${t.navigation.alphabet} - ${t.app.name}`,
-        description:
-          "Learn the German alphabet with pronunciation and examples.",
-        keywords: "German alphabet, pronunciation, German letters, vocabulary",
+        description: `Learn the German alphabet with pronunciation and examples on ${t.app.name}. Master German letters and sounds with interactive tools.`,
+        keywords:
+          "German alphabet, pronunciation, German letters, vocabulary, LingoMesh, lingomesh.com",
       },
       numbers: {
         title: `${t.navigation.numbers} - ${t.app.name}`,
-        description:
-          "Learn German numbers and counting with interactive tools.",
-        keywords: "German numbers, counting, German vocabulary, numbers",
+        description: `Learn German numbers and counting with interactive tools on ${t.app.name}. Practice German number pronunciation and usage.`,
+        keywords:
+          "German numbers, counting, German vocabulary, numbers, LingoMesh, lingomesh.com",
       },
       time: {
         title: `${t.navigation.time} - ${t.app.name}`,
-        description:
-          "Learn to tell time in German with interactive clock and examples.",
-        keywords: "German time, clock, telling time, German vocabulary",
+        description: `Learn to tell time in German with interactive clock and examples on ${t.app.name}. Master German time expressions and clock reading.`,
+        keywords:
+          "German time, clock, telling time, German vocabulary, LingoMesh, lingomesh.com",
       },
       date: {
         title: `${t.navigation.date} - ${t.app.name}`,
-        description: "Learn German date formats and calendar vocabulary.",
-        keywords: "German date, calendar, date format, German vocabulary",
+        description: `Learn German date formats and calendar vocabulary on ${t.app.name}. Master German date expressions and calendar terms.`,
+        keywords:
+          "German date, calendar, date format, German vocabulary, LingoMesh, lingomesh.com",
       },
       weather: {
         title: `${t.navigation.weather} - ${t.app.name}`,
-        description: "Learn German weather vocabulary and expressions.",
-        keywords: "German weather, weather vocabulary, German expressions",
+        description: `Learn German weather vocabulary and expressions on ${t.app.name}. Master weather-related German phrases and vocabulary.`,
+        keywords:
+          "German weather, weather vocabulary, German expressions, LingoMesh, lingomesh.com",
       },
       countries: {
         title: `${t.navigation.countries} - ${t.app.name}`,
-        description: "Learn German country names and nationalities.",
-        keywords: "German countries, nationalities, geography, vocabulary",
+        description: `Learn German country names and nationalities on ${t.app.name}. Master geographical vocabulary in German.`,
+        keywords:
+          "German countries, nationalities, geography, vocabulary, LingoMesh, lingomesh.com",
       },
       // Grammar pages
       articles: {
         title: `${t.navigation.articles} - ${t.app.name}`,
-        description:
-          "Learn German articles (der, die, das) with interactive exercises and examples.",
+        description: `Learn German articles (der, die, das) with interactive exercises and examples on ${t.app.name}. Master German definite and indefinite articles.`,
         keywords:
-          "German articles, der die das, German grammar, definite articles",
+          "German articles, der die das, German grammar, definite articles, LingoMesh, lingomesh.com",
       },
       adjectives: {
         title: `${t.navigation.adjectives} - ${t.app.name}`,
-        description: "Learn German adjectives and their usage in sentences.",
-        keywords: "German adjectives, descriptive words, German grammar",
+        description: `Learn German adjectives and their usage in sentences on ${t.app.name}. Master German descriptive words and adjective placement.`,
+        keywords:
+          "German adjectives, descriptive words, German grammar, LingoMesh, lingomesh.com",
       },
       declension: {
         title: `${t.navigation.declension} - ${t.app.name}`,
-        description:
-          "Learn German adjective declension with comprehensive examples.",
-        keywords: "German declension, adjective declension, German grammar",
+        description: `Learn German adjective declension with comprehensive examples on ${t.app.name}. Master German adjective endings and declension patterns.`,
+        keywords:
+          "German declension, adjective declension, German grammar, LingoMesh, lingomesh.com",
       },
       adverbs: {
         title: `${t.navigation.adverbs} - ${t.app.name}`,
-        description: "Learn German adverbs and their placement in sentences.",
-        keywords: "German adverbs, word order, German grammar",
+        description: `Learn German adverbs and their placement in sentences on ${t.app.name}. Master German adverb usage and word order.`,
+        keywords:
+          "German adverbs, word order, German grammar, LingoMesh, lingomesh.com",
       },
       prepositions: {
         title: `${t.navigation.prepositions} - ${t.app.name}`,
-        description:
-          "Master German prepositions with examples and practice exercises.",
-        keywords: "German prepositions, grammar, prepositions",
+        description: `Master German prepositions with examples and practice exercises on ${t.app.name}. Learn German preposition usage and case requirements.`,
+        keywords:
+          "German prepositions, grammar, prepositions, LingoMesh, lingomesh.com",
       },
       questions: {
         title: `${t.navigation.questions} - ${t.app.name}`,
@@ -231,14 +237,15 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
       },
       "home-phrases": {
         title: `${t.navigation.homePhrases} - ${t.app.name}`,
-        description:
-          "Learn German phrases for everyday home and family situations.",
-        keywords: "German home phrases, family, household, vocabulary",
+        description: `Learn German phrases for everyday home and family situations on ${t.app.name}. Master German household and family vocabulary.`,
+        keywords:
+          "German home phrases, family, household, vocabulary, LingoMesh, lingomesh.com",
       },
       "friends-phrases": {
         title: `${t.navigation.friends} - ${t.app.name}`,
-        description: "Learn German phrases for social situations with friends.",
-        keywords: "German friend phrases, social, casual, vocabulary",
+        description: `Learn German phrases for social situations with friends on ${t.app.name}. Master casual German conversation and social vocabulary.`,
+        keywords:
+          "German friend phrases, social, casual, vocabulary, LingoMesh, lingomesh.com",
       },
     };
 
@@ -255,10 +262,11 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
   const finalDescription =
     description ||
     (is404
-      ? "Page not found. The requested page does not exist."
+      ? "Page not found. The requested page does not exist on LingoMesh."
       : pageContent.description);
   const finalKeywords =
-    keywords || (is404 ? "404, page not found, error" : pageContent.keywords);
+    keywords ||
+    (is404 ? "404, page not found, error, LingoMesh" : pageContent.keywords);
 
   // Language-specific meta tags
   const langMap = {
@@ -283,6 +291,12 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={langMap[language]} />
       <meta property="og:site_name" content={t.app.name} />
+      <meta
+        property="og:url"
+        content={`https://lingomesh.com/${language}${
+          page === "home" ? "" : `/${page}`
+        }`}
+      />
 
       {/* Twitter Card Tags */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -293,33 +307,33 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
       <link
         rel="alternate"
         hrefLang="de"
-        href={`https://your-domain.com/de${page === "home" ? "" : `/${page}`}`}
+        href={`https://lingomesh.com/de${page === "home" ? "" : `/${page}`}`}
       />
       <link
         rel="alternate"
         hrefLang="en"
-        href={`https://your-domain.com/en${page === "home" ? "" : `/${page}`}`}
+        href={`https://lingomesh.com/en${page === "home" ? "" : `/${page}`}`}
       />
       <link
         rel="alternate"
         hrefLang="es"
-        href={`https://your-domain.com/es${page === "home" ? "" : `/${page}`}`}
+        href={`https://lingomesh.com/es${page === "home" ? "" : `/${page}`}`}
       />
       <link
         rel="alternate"
         hrefLang="ru"
-        href={`https://your-domain.com/ru${page === "home" ? "" : `/${page}`}`}
+        href={`https://lingomesh.com/ru${page === "home" ? "" : `/${page}`}`}
       />
       <link
         rel="alternate"
         hrefLang="x-default"
-        href={`https://your-domain.com/de${page === "home" ? "" : `/${page}`}`}
+        href={`https://lingomesh.com/de${page === "home" ? "" : `/${page}`}`}
       />
 
       {/* Canonical URL */}
       <link
         rel="canonical"
-        href={`https://your-domain.com/${language}${
+        href={`https://lingomesh.com/${language}${
           page === "home" ? "" : `/${page}`
         }`}
       />

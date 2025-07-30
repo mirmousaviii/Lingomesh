@@ -1,6 +1,6 @@
 # LingoMesh
 
-Web app for discovering German grammar, vocabulary, and sentence structure in one place with clear explanations, practical examples and interactive tools.
+**LingoMesh** is a comprehensive German language learning platform available at [lingomesh.com](https://lingomesh.com). Discover German grammar, vocabulary, and sentence structure in one place with clear explanations, practical examples, and interactive tools designed to make learning German effective and enjoyable.
 
 [![Deploy to GitHub Pages](https://github.com/mirmousaviii/Lingomesh/actions/workflows/deploy.yml/badge.svg)](https://github.com/mirmousaviii/Lingomesh/actions/workflows/deploy.yml)
 ![LingoMesh Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
@@ -8,6 +8,18 @@ Web app for discovering German grammar, vocabulary, and sentence structure in on
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.2.2-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.3.5-38B2AC)
 ![Vite](https://img.shields.io/badge/Vite-5.0.0-646CFF)
+
+## Features
+
+- **Interactive Learning Tools**: Grammar exercises, vocabulary builders, and pronunciation guides
+- **Multi-language Support**: Available in German, English, Spanish, and Russian
+- **Comprehensive Content**: From basic vocabulary to advanced grammar concepts
+- **SEO Optimized**: 172+ indexed pages with proper meta tags and sitemap
+- **Mobile Responsive**: Works perfectly on all devices
+
+## Live Demo
+
+Visit [lingomesh.com](https://lingomesh.com) to experience the platform.
 
 ## Installation
 

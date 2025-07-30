@@ -265,7 +265,7 @@ ${urlsetEnd}`;
 };
 
 // Get the base URL from environment or use default
-const baseUrl = process.env.BASE_URL || "https://your-domain.com";
+const baseUrl = process.env.BASE_URL || "https://lingomesh.com";
 
 // Generate the sitemap
 const sitemapXml = generateSitemapXml(baseUrl);

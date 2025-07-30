@@ -1,7 +1,7 @@
 {
   "name": "lingomesh",
   "version": "1.0.0",
-  "description": "A modern React app for discovering German grammar, vocabulary, and sentence structure with interactive tools",
+  "description": "LingoMesh - A comprehensive German language learning platform with interactive tools, grammar guides, vocabulary exercises, and pronunciation practice. Visit lingomesh.com for the best German learning experience.",
   "type": "module",
   "scripts": {
     "dev": "vite",
