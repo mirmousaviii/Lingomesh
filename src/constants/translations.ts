@@ -129,6 +129,17 @@ export interface Translations {
     simple: string;
     lingoMeshFeatures: string;
     interactive: string;
+    interactiveDescription: string;
+    interactiveDescriptionDe: string;
+    interactiveDescriptionEn: string;
+    multilingual: string;
+    multilingualDescription: string;
+    multilingualDescriptionDe: string;
+    multilingualDescriptionEn: string;
+    dynamic: string;
+    dynamicDescription: string;
+    dynamicDescriptionDe: string;
+    dynamicDescriptionEn: string;
     withInteractiveExercises: string;
     withInteractiveExercisesDe: string;
     withInteractiveExercisesEn: string;
@@ -173,6 +184,8 @@ export interface Translations {
     quizQuestions: string;
     quizPrepositions: string;
     quizDeclension: string;
+    numberConverterDescription: string;
+    quizDescription: string;
   };
 
   // Common UI elements
@@ -281,6 +294,21 @@ export interface Translations {
     clickToChange: string;
     datumAendern: string;
     clickToChangeDate: string;
+  };
+
+  // Numbers related
+  numbers: {
+    basicNumbersTitle: string;
+    basicNumbersSubtitle: string;
+    numberRulesTitle: string;
+    numberRulesSubtitle: string;
+    ordinalNumbersTitle: string;
+    ordinalNumbersSubtitle: string;
+    numberRules: Array<{
+      title: string;
+      description: string;
+      example: string;
+    }>;
   };
 }
 
@@ -415,6 +443,23 @@ export const translations: Record<Language, Translations> = {
       simple: "Simple",
       lingoMeshFeatures: "LingoMesh Funktionen",
       interactive: "Interaktiv",
+      interactiveDescription:
+        "Interaktive Übungen und Lernwerkzeuge für ein effektives Lernen",
+      interactiveDescriptionDe:
+        "Interaktive Übungen und Lernwerkzeuge für ein effektives Lernen",
+      interactiveDescriptionEn:
+        "Interactive exercises and learning tools for effective learning",
+      multilingual: "Mehrsprachig",
+      multilingualDescription:
+        "Unterstützung für mehrere Sprachen und Übersetzungen",
+      multilingualDescriptionDe:
+        "Unterstützung für mehrere Sprachen und Übersetzungen",
+      multilingualDescriptionEn:
+        "Support for multiple languages and translations",
+      dynamic: "Dynamisch",
+      dynamicDescription: "Anpassbare Inhalte und personalisierte Lernpfade",
+      dynamicDescriptionDe: "Anpassbare Inhalte und personalisierte Lernpfade",
+      dynamicDescriptionEn: "Adaptable content and personalized learning paths",
       withInteractiveExercises: "mit interaktiven Übungen",
       withInteractiveExercisesDe: "mit interaktiven Übungen",
       withInteractiveExercisesEn: "With interactive exercises",
@@ -455,6 +500,8 @@ export const translations: Record<Language, Translations> = {
       quizQuestions: "Fragen Quiz",
       quizPrepositions: "Präpositionen Quiz",
       quizDeclension: "Deklination Quiz",
+      numberConverterDescription: "Konvertieren Sie Zahlen in deutsche Wörter",
+      quizDescription: "Testen Sie Ihr Wissen mit interaktiven Quiz",
     },
     ui: {
       listen: "Hören",
@@ -563,6 +610,39 @@ export const translations: Record<Language, Translations> = {
       clickToChange: "Click to change time",
       datumAendern: "Datum anpassen (klicken)",
       clickToChangeDate: "Datum anpassen (klicken)",
+    },
+    numbers: {
+      basicNumbersTitle: "Grundzahlen",
+      basicNumbersSubtitle: "Die wichtigsten Zahlen im Deutschen",
+      numberRulesTitle: "Zahlenregeln",
+      numberRulesSubtitle: "Wichtige Regeln für deutsche Zahlen",
+      ordinalNumbersTitle: "Ordinalzahlen",
+      ordinalNumbersSubtitle:
+        "Erste, zweite, dritte... Lernen Sie die Ordinalzahlen",
+      numberRules: [
+        {
+          title: "Einer kommen zuerst",
+          description:
+            "Bei zweistelligen Zahlen wird die Einerstelle vor der Zehnerstelle gesprochen: 21 = einundzwanzig",
+          example: "21 → ein-und-zwanzig",
+        },
+        {
+          title: "Dreißig ist anders",
+          description: "30 heißt 'dreißig', nicht 'dreizig'",
+          example: "30 → dreißig",
+        },
+        {
+          title: "Hundert ohne 'ein'",
+          description: "100 heißt einfach 'hundert', nicht 'einhundert'",
+          example: "100 → hundert",
+        },
+        {
+          title: "Ordinalzahlen enden auf -te",
+          description:
+            "Ordinalzahlen enden meist auf -te: erste, zweite, dritte",
+          example: "1. → erste, 2. → zweite",
+        },
+      ],
     },
   },
   en: {
@@ -695,6 +775,23 @@ export const translations: Record<Language, Translations> = {
       simple: "Simple",
       lingoMeshFeatures: "LingoMesh Features",
       interactive: "Interactive",
+      interactiveDescription:
+        "Interactive exercises and learning tools for effective learning",
+      interactiveDescriptionDe:
+        "Interaktive Übungen und Lernwerkzeuge für ein effektives Lernen",
+      interactiveDescriptionEn:
+        "Interactive exercises and learning tools for effective learning",
+      multilingual: "Multilingual",
+      multilingualDescription:
+        "Support for multiple languages and translations",
+      multilingualDescriptionDe:
+        "Unterstützung für mehrere Sprachen und Übersetzungen",
+      multilingualDescriptionEn:
+        "Support for multiple languages and translations",
+      dynamic: "Dynamic",
+      dynamicDescription: "Adaptable content and personalized learning paths",
+      dynamicDescriptionDe: "Anpassbare Inhalte und personalisierte Lernpfade",
+      dynamicDescriptionEn: "Adaptable content and personalized learning paths",
       withInteractiveExercises: "With interactive exercises",
       withInteractiveExercisesDe: "mit interaktiven Übungen",
       withInteractiveExercisesEn: "With interactive exercises",
@@ -735,6 +832,8 @@ export const translations: Record<Language, Translations> = {
       quizQuestions: "Question Quiz",
       quizPrepositions: "Preposition Quiz",
       quizDeclension: "Declension Quiz",
+      numberConverterDescription: "Convert numbers to German words",
+      quizDescription: "Test your knowledge with interactive quizzes",
     },
     ui: {
       listen: "Listen",
@@ -842,6 +941,39 @@ export const translations: Record<Language, Translations> = {
       clickToChange: "Click to change time",
       datumAendern: "Adjust date (click)",
       clickToChangeDate: "Click to change date",
+    },
+    numbers: {
+      basicNumbersTitle: "Basic Numbers",
+      basicNumbersSubtitle: "The most important numbers in German",
+      numberRulesTitle: "Number Rules",
+      numberRulesSubtitle: "Important rules for German numbers",
+      ordinalNumbersTitle: "Ordinal Numbers",
+      ordinalNumbersSubtitle:
+        "First, second, third... Learn the ordinal numbers",
+      numberRules: [
+        {
+          title: "Units come first",
+          description:
+            "In two-digit numbers, the units are spoken before the tens: 21 = einundzwanzig",
+          example: "21 → ein-und-zwanzig",
+        },
+        {
+          title: "Thirty is different",
+          description: "30 is called 'dreißig', not 'dreizig'",
+          example: "30 → dreißig",
+        },
+        {
+          title: "Hundred without 'ein'",
+          description: "100 is simply 'hundert', not 'einhundert'",
+          example: "100 → hundert",
+        },
+        {
+          title: "Ordinals end in -te",
+          description:
+            "Ordinal numbers usually end in -te: erste, zweite, dritte",
+          example: "1. → erste, 2. → zweite",
+        },
+      ],
     },
   },
   es: {
@@ -974,6 +1106,23 @@ export const translations: Record<Language, Translations> = {
       simple: "Simple",
       lingoMeshFeatures: "Funciones de LingoMesh",
       interactive: "Interactivo",
+      interactiveDescription:
+        "Ejercicios interactivos y herramientas de aprendizaje para un aprendizaje efectivo",
+      interactiveDescriptionDe:
+        "Interaktive Übungen und Lernwerkzeuge für ein effektives Lernen",
+      interactiveDescriptionEn:
+        "Interactive exercises and learning tools for effective learning",
+      multilingual: "Multilingüe",
+      multilingualDescription: "Soporte para múltiples idiomas y traducciones",
+      multilingualDescriptionDe:
+        "Unterstützung für mehrere Sprachen und Übersetzungen",
+      multilingualDescriptionEn:
+        "Support for multiple languages and translations",
+      dynamic: "Dinámico",
+      dynamicDescription:
+        "Contenido adaptable y rutas de aprendizaje personalizadas",
+      dynamicDescriptionDe: "Anpassbare Inhalte und personalisierte Lernpfade",
+      dynamicDescriptionEn: "Adaptable content and personalized learning paths",
       withInteractiveExercises: "Con ejercicios interactivos",
       withInteractiveExercisesDe: "mit interaktiven Übungen",
       withInteractiveExercisesEn: "With interactive exercises",
@@ -1014,6 +1163,8 @@ export const translations: Record<Language, Translations> = {
       quizQuestions: "Quiz de Preguntas",
       quizPrepositions: "Quiz de Preposiciones",
       quizDeclension: "Quiz de Declinación",
+      numberConverterDescription: "Convierte números a palabras alemanas",
+      quizDescription: "Prueba tu conocimiento con cuestionarios interactivos",
     },
     ui: {
       listen: "Escuchar",
@@ -1122,6 +1273,39 @@ export const translations: Record<Language, Translations> = {
       clickToChange: "Click to change time",
       datumAendern: "Ajustar fecha (clic)",
       clickToChangeDate: "Ajustar fecha (clic)",
+    },
+    numbers: {
+      basicNumbersTitle: "Números Básicos",
+      basicNumbersSubtitle: "Los números más importantes en alemán",
+      numberRulesTitle: "Reglas de Números",
+      numberRulesSubtitle: "Reglas importantes para números alemanes",
+      ordinalNumbersTitle: "Números Ordinales",
+      ordinalNumbersSubtitle:
+        "Primero, segundo, tercero... Aprende los números ordinales",
+      numberRules: [
+        {
+          title: "Las unidades van primero",
+          description:
+            "En números de dos dígitos, las unidades se dicen antes que las decenas: 21 = einundzwanzig",
+          example: "21 → ein-und-zwanzig",
+        },
+        {
+          title: "Treinta es diferente",
+          description: "30 se dice 'dreißig', no 'dreizig'",
+          example: "30 → dreißig",
+        },
+        {
+          title: "Cien sin 'ein'",
+          description: "100 simplemente es 'hundert', no 'einhundert'",
+          example: "100 → hundert",
+        },
+        {
+          title: "Los ordinales terminan en -te",
+          description:
+            "Los números ordinales generalmente terminan en -te: erste, zweite, dritte",
+          example: "1. → erste, 2. → zweite",
+        },
+      ],
     },
   },
   ru: {
@@ -1254,6 +1438,23 @@ export const translations: Record<Language, Translations> = {
       simple: "Просто",
       lingoMeshFeatures: "Функции LingoMesh",
       interactive: "Интерактивно",
+      interactiveDescription:
+        "Интерактивные упражнения и инструменты обучения для эффективного обучения",
+      interactiveDescriptionDe:
+        "Interaktive Übungen und Lernwerkzeuge für ein effektives Lernen",
+      interactiveDescriptionEn:
+        "Interactive exercises and learning tools for effective learning",
+      multilingual: "Многоязычный",
+      multilingualDescription: "Поддержка нескольких языков и переводов",
+      multilingualDescriptionDe:
+        "Unterstützung für mehrere Sprachen und Übersetzungen",
+      multilingualDescriptionEn:
+        "Support for multiple languages and translations",
+      dynamic: "Динамичный",
+      dynamicDescription:
+        "Адаптивный контент и персонализированные пути обучения",
+      dynamicDescriptionDe: "Anpassbare Inhalte und personalisierte Lernpfade",
+      dynamicDescriptionEn: "Adaptable content and personalized learning paths",
       withInteractiveExercises: "С интерактивными упражнениями",
       withInteractiveExercisesDe: "mit interaktiven Übungen",
       withInteractiveExercisesEn: "With interactive exercises",
@@ -1294,6 +1495,8 @@ export const translations: Record<Language, Translations> = {
       quizQuestions: "Викторина по Вопросам",
       quizPrepositions: "Викторина по Предлогам",
       quizDeclension: "Викторина по Склонению",
+      numberConverterDescription: "Конвертируйте числа в немецкие слова",
+      quizDescription: "Проверьте свои знания с интерактивными викторинами",
     },
     ui: {
       listen: "Слушать",
@@ -1404,6 +1607,39 @@ export const translations: Record<Language, Translations> = {
       clickToChange: "Click to change time",
       datumAendern: "Настроить дату (клик)",
       clickToChangeDate: "Настроить дату (клик)",
+    },
+    numbers: {
+      basicNumbersTitle: "Основные Числа",
+      basicNumbersSubtitle: "Самые важные числа в немецком языке",
+      numberRulesTitle: "Правила Чисел",
+      numberRulesSubtitle: "Важные правила для немецких чисел",
+      ordinalNumbersTitle: "Порядковые Числа",
+      ordinalNumbersSubtitle:
+        "Первый, второй, третий... Изучите порядковые числа",
+      numberRules: [
+        {
+          title: "Единицы идут первыми",
+          description:
+            "В двузначных числах единицы произносятся перед десятками: 21 = einundzwanzig",
+          example: "21 → ein-und-zwanzig",
+        },
+        {
+          title: "Тридцать отличается",
+          description: "30 называется 'dreißig', а не 'dreizig'",
+          example: "30 → dreißig",
+        },
+        {
+          title: "Сто без 'ein'",
+          description: "100 просто 'hundert', а не 'einhundert'",
+          example: "100 → hundert",
+        },
+        {
+          title: "Порядковые числа оканчиваются на -te",
+          description:
+            "Порядковые числа обычно оканчиваются на -te: erste, zweite, dritte",
+          example: "1. → erste, 2. → zweite",
+        },
+      ],
     },
   },
 };

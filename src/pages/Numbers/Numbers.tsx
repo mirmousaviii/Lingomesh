@@ -14,70 +14,125 @@ const Numbers: React.FC<NumbersProps> = ({ language }) => {
   const t = useTranslation(language);
   const isGerman = language === "de";
 
-  // Example numbers for learning
+  // Example numbers for learning (removed English translations)
   const basicNumbers = [
-    { number: 0, german: "null", english: "zero" },
-    { number: 1, german: "eins", english: "one" },
-    { number: 2, german: "zwei", english: "two" },
-    { number: 3, german: "drei", english: "three" },
-    { number: 4, german: "vier", english: "four" },
-    { number: 5, german: "fünf", english: "five" },
-    { number: 6, german: "sechs", english: "six" },
-    { number: 7, german: "sieben", english: "seven" },
-    { number: 8, german: "acht", english: "eight" },
-    { number: 9, german: "neun", english: "nine" },
-    { number: 10, german: "zehn", english: "ten" },
-    { number: 11, german: "elf", english: "eleven" },
-    { number: 12, german: "zwölf", english: "twelve" },
-    { number: 13, german: "dreizehn", english: "thirteen" },
-    { number: 20, german: "zwanzig", english: "twenty" },
-    { number: 21, german: "einundzwanzig", english: "twenty-one" },
-    { number: 30, german: "dreißig", english: "thirty" },
-    { number: 100, german: "hundert", english: "one hundred" },
-    { number: 1000, german: "tausend", english: "one thousand" },
+    { number: 0, german: "null" },
+    { number: 1, german: "eins" },
+    { number: 2, german: "zwei" },
+    { number: 3, german: "drei" },
+    { number: 4, german: "vier" },
+    { number: 5, german: "fünf" },
+    { number: 6, german: "sechs" },
+    { number: 7, german: "sieben" },
+    { number: 8, german: "acht" },
+    { number: 9, german: "neun" },
+    { number: 10, german: "zehn" },
+    { number: 11, german: "elf" },
+    { number: 12, german: "zwölf" },
+    { number: 13, german: "dreizehn" },
+    { number: 14, german: "vierzehn" },
+    { number: 15, german: "fünfzehn" },
+    { number: 16, german: "sechzehn" },
+    { number: 17, german: "siebzehn" },
+    { number: 18, german: "achtzehn" },
+    { number: 19, german: "neunzehn" },
+    { number: 20, german: "zwanzig" },
+    { number: 21, german: "einundzwanzig" },
+    { number: 22, german: "zweiundzwanzig" },
+    { number: 23, german: "dreiundzwanzig" },
+    { number: 24, german: "vierundzwanzig" },
+    { number: 25, german: "fünfundzwanzig" },
+    { number: 26, german: "sechsundzwanzig" },
+    { number: 27, german: "siebenundzwanzig" },
+    { number: 28, german: "achtundzwanzig" },
+    { number: 29, german: "neunundzwanzig" },
+    { number: 30, german: "dreißig" },
+    { number: 40, german: "vierzig" },
+    { number: 50, german: "fünfzig" },
+    { number: 60, german: "sechzig" },
+    { number: 70, german: "siebzig" },
+    { number: 80, german: "achtzig" },
+    { number: 90, german: "neunzig" },
+    { number: 100, german: "hundert" },
+    { number: 1000, german: "tausend" },
+    { number: 10000, german: "zehntausend" },
+    { number: 100000, german: "hunderttausend" },
+    { number: 1000000, german: "eine Million" },
   ];
 
   const ordinalNumbers = [
-    { number: "1.", german: "erste", english: "first" },
-    { number: "2.", german: "zweite", english: "second" },
-    { number: "3.", german: "dritte", english: "third" },
-    { number: "4.", german: "vierte", english: "fourth" },
-    { number: "5.", german: "fünfte", english: "fifth" },
-    { number: "10.", german: "zehnte", english: "tenth" },
-    { number: "20.", german: "zwanzigste", english: "twentieth" },
-    { number: "100.", german: "hundertste", english: "hundredth" },
+    { number: "0.", german: "nullte" },
+    { number: "1.", german: "erste" },
+    { number: "2.", german: "zweite" },
+    { number: "3.", german: "dritte" },
+    { number: "4.", german: "vierte" },
+    { number: "5.", german: "fünfte" },
+    { number: "6.", german: "sechste" },
+    { number: "7.", german: "siebte" },
+    { number: "8.", german: "achte" },
+    { number: "9.", german: "neunte" },
+    { number: "10.", german: "zehnte" },
+    { number: "11.", german: "elfte" },
+    { number: "12.", german: "zwölfte" },
+    { number: "13.", german: "dreizehnte" },
+    { number: "14.", german: "vierzehnte" },
+    { number: "15.", german: "fünfzehnte" },
+    { number: "16.", german: "sechzehnte" },
+    { number: "17.", german: "siebzehnte" },
+    { number: "18.", german: "achtzehnte" },
+    { number: "19.", german: "neunzehnte" },
+    { number: "20.", german: "zwanzigste" },
+    { number: "21.", german: "einundzwanzigste" },
+    { number: "22.", german: "zweiundzwanzigste" },
+    { number: "23.", german: "dreiundzwanzigste" },
+    { number: "24.", german: "vierundzwanzigste" },
+    { number: "25.", german: "fünfundzwanzigste" },
+    { number: "26.", german: "sechsundzwanzigste" },
+    { number: "27.", german: "siebenundzwanzigste" },
+    { number: "28.", german: "achtundzwanzigste" },
+    { number: "29.", german: "neunundzwanzigste" },
+    { number: "30.", german: "dreißigste" },
+    { number: "40.", german: "vierzigste" },
+    { number: "50.", german: "fünfzigste" },
+    { number: "60.", german: "sechzigste" },
+    { number: "70.", german: "siebzigste" },
+    { number: "80.", german: "achtzigste" },
+    { number: "90.", german: "neunzigste" },
+    { number: "100.", german: "hundertste" },
+    { number: "1000.", german: "tausendste" },
+    { number: "10000.", german: "zehntausendste" },
+    { number: "100000.", german: "hunderttausendste" },
+    { number: "1000000.", german: "millionste" },
   ];
 
-  const numberRules = [
-    {
-      title: isGerman ? "Einer kommen zuerst" : "Units come first",
-      description: isGerman
-        ? "Bei zweistelligen Zahlen wird die Einerstelle vor der Zehnerstelle gesprochen: 21 = einundzwanzig"
-        : "In two-digit numbers, the units are spoken before the tens: 21 = einundzwanzig",
-      example: "21 → ein-und-zwanzig",
-    },
-    {
-      title: isGerman ? "Dreißig ist anders" : "Thirty is different",
-      description: isGerman
-        ? "30 heißt 'dreißig', nicht 'dreizig'"
-        : "30 is called 'dreißig', not 'dreizig'",
-      example: "30 → dreißig",
-    },
-    {
-      title: isGerman ? "Hundert ohne 'ein'" : "Hundred without 'ein'",
-      description: isGerman
-        ? "100 heißt einfach 'hundert', nicht 'einhundert'"
-        : "100 is simply 'hundert', not 'einhundert'",
-      example: "100 → hundert",
-    },
-    {
-      title: isGerman ? "Ordinalzahlen enden auf -te" : "Ordinals end in -te",
-      description: isGerman
-        ? "Ordinalzahlen enden meist auf -te: erste, zweite, dritte"
-        : "Ordinal numbers usually end in -te: erste, zweite, dritte",
-      example: "1. → erste, 2. → zweite",
-    },
-  ];
+  // Titles and subtitles from translations
+  const basicNumbersTitle =
+    t.numbers.basicNumbersTitle ||
+    (language === "de" ? "Grundzahlen" : "Basic Numbers");
+  const basicNumbersSubtitle =
+    t.numbers.basicNumbersSubtitle ||
+    (language === "de"
+      ? "Die wichtigsten Zahlen im Deutschen"
+      : "The most important numbers in German");
+  const numberRulesTitle =
+    t.numbers.numberRulesTitle ||
+    (language === "de" ? "Zahlenregeln" : "Number Rules");
+  const numberRulesSubtitle =
+    t.numbers.numberRulesSubtitle ||
+    (language === "de"
+      ? "Wichtige Regeln für deutsche Zahlen"
+      : "Important rules for German numbers");
+  const ordinalNumbersTitle =
+    t.numbers.ordinalNumbersTitle ||
+    (language === "de" ? "Ordinalzahlen" : "Ordinal Numbers");
+  const ordinalNumbersSubtitle =
+    t.numbers.ordinalNumbersSubtitle ||
+    (language === "de"
+      ? "Erste, zweite, dritte... Lernen Sie die Ordinalzahlen"
+      : "First, second, third... Learn the ordinal numbers");
+
+  // Number rules from translations
+  const numberRules = t.numbers.numberRules || [];
 
   // Speech synthesis function
   const speakGerman = (text: string) => {
@@ -108,7 +163,7 @@ const Numbers: React.FC<NumbersProps> = ({ language }) => {
         language === "de"
           ? "Wie wird '21' auf Deutsch ausgesprochen?"
           : "How is '21' pronounced in German?",
-      options: ["zwanzigeins", "einzwanzig", "einundzwanzig", "zwanzigund"],
+      options: ["zwanzigeins", "einzwanzig", "einundzwanzig", "zwanzigand"],
       correctAnswer: 2,
       explanation:
         language === "de"
@@ -214,34 +269,25 @@ const Numbers: React.FC<NumbersProps> = ({ language }) => {
       {/* Basic Numbers Section */}
       <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
         <div className="bg-gradient-to-r from-green-600 to-teal-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Grundzahlen" : "Basic Numbers"}
-          </h2>
-          <p className="text-green-100 mt-1 text-sm">
-            {isGerman
-              ? "Die wichtigsten Zahlen im Deutschen"
-              : "The most important numbers in German"}
-          </p>
+          <h2 className="text-xl font-bold text-white">{basicNumbersTitle}</h2>
+          <p className="text-green-100 mt-1 text-sm">{basicNumbersSubtitle}</p>
         </div>
 
         <div className="p-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
             {basicNumbers.map((item) => (
               <div
                 key={item.number}
                 className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div className="text-lg font-bold text-primary-600 dark:text-primary-400 mb-1">
-                      {item.number}
-                    </div>
-                    <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                      {item.german}
-                    </div>
-                    <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                      {item.english}
-                    </div>
+                <div className="flex flex-col items-center justify-center text-center">
+                  <div className="text-lg font-bold text-primary-600 dark:text-primary-400 mb-1">
+                    {item.number >= 1000
+                      ? item.number.toLocaleString()
+                      : item.number}
+                  </div>
+                  <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+                    {item.german}
                   </div>
                   <AudioButton
                     onClick={() => speakGerman(item.german)}
@@ -258,14 +304,8 @@ const Numbers: React.FC<NumbersProps> = ({ language }) => {
       {/* Number Rules Section */}
       <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
         <div className="bg-gradient-to-r from-accent-600 to-primary-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Zahlenregeln" : "Number Rules"}
-          </h2>
-          <p className="text-accent-100 mt-1 text-sm">
-            {isGerman
-              ? "Wichtige Regeln für deutsche Zahlen"
-              : "Important rules for German numbers"}
-          </p>
+          <h2 className="text-xl font-bold text-white">{numberRulesTitle}</h2>
+          <p className="text-accent-100 mt-1 text-sm">{numberRulesSubtitle}</p>
         </div>
 
         <div className="p-6">
@@ -303,33 +343,29 @@ const Numbers: React.FC<NumbersProps> = ({ language }) => {
       <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
         <div className="bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-4">
           <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Ordinalzahlen" : "Ordinal Numbers"}
+            {ordinalNumbersTitle}
           </h2>
           <p className="text-purple-100 mt-1 text-sm">
-            {isGerman
-              ? "Erste, zweite, dritte... Lernen Sie die Ordinalzahlen"
-              : "First, second, third... Learn the ordinal numbers"}
+            {ordinalNumbersSubtitle}
           </p>
         </div>
 
         <div className="p-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
             {ordinalNumbers.map((item, index) => (
               <div
                 key={index}
                 className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-1">
-                      {item.number}
-                    </div>
-                    <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                      {item.german}
-                    </div>
-                    <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                      {item.english}
-                    </div>
+                <div className="flex flex-col items-center justify-center text-center">
+                  <div className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-1">
+                    {item.number.replace(/\d+/, (match) => {
+                      const num = parseInt(match);
+                      return num >= 1000 ? num.toLocaleString() : match;
+                    })}
+                  </div>
+                  <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+                    {item.german}
                   </div>
                   <AudioButton
                     onClick={() => speakGerman(item.german)}

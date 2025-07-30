@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Language } from "../../../hooks/useTranslations";
+import { useTranslation } from "../../../constants/translations";
 import Widget from "../../ui/Widget/Widget";
 
 export interface QuizQuestion {
@@ -20,6 +21,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
   questions,
   subject,
 }) => {
+  const t = useTranslation(language);
   const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion | null>(
     null
   );
@@ -117,11 +119,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
         titleKey={titleKey}
         language={language}
         headerColor="purple"
-        description={
-          language === "de"
-            ? "Testen Sie Ihr Wissen mit interaktiven Quiz"
-            : "Test your knowledge with interactive quizzes"
-        }
+        description={t.widgets.quizDescription}
       >
         <div className="text-center py-8">
           <p className="text-neutral-600 dark:text-neutral-400">
@@ -139,11 +137,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
       titleKey={titleKey}
       language={language}
       headerColor="purple"
-      description={
-        language === "de"
-          ? "Testen Sie Ihr Wissen mit interaktiven Quiz"
-          : "Test your knowledge with interactive quizzes"
-      }
+      description={t.widgets.quizDescription}
     >
       <div className="space-y-4">
         {/* Score Display */}

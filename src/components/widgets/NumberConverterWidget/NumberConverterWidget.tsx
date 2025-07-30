@@ -78,11 +78,7 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
       titleKey="zahlenkonverter"
       language={language}
       headerColor="primary"
-      description={
-        language === "de"
-          ? "Konvertieren Sie Zahlen in deutsche Wörter"
-          : "Convert numbers to German words"
-      }
+      description={t.widgets.numberConverterDescription}
     >
       <div className="space-y-6">
         {/* Input Section */}
