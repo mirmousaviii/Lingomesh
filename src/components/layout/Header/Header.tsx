@@ -49,8 +49,8 @@ const Header: React.FC<HeaderProps> = ({
 
   // Language options - Always in English regardless of selected language
   const languageOptions = [
-    { value: "de" as Language, label: "German", text: "DE" },
     { value: "en" as Language, label: "English", text: "EN" },
+    { value: "de" as Language, label: "German", text: "DE" },
     { value: "es" as Language, label: "Spanish", text: "ES" },
     { value: "ru" as Language, label: "Russian", text: "RU" },
   ];

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useTheme } from "../../../hooks/useTheme";
 import { useRouting } from "../../../hooks/useRouting";
+import { useLanguageSelection } from "../../../hooks/useLanguageSelection";
 
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 import { MetaTags } from "../../SEO/MetaTags";
+import LanguageSelectionModal from "../../ui/LanguageSelectionModal";
 
 // Import all pages
 import {
@@ -37,6 +39,7 @@ function App() {
     changePage,
   } = useRouting();
   const { themeMode, handleThemeChange } = useTheme();
+  const { showLanguageModal, handleLanguageSelect } = useLanguageSelection();
 
   // Page rendering function
   const renderCurrentPage = () => {
@@ -144,6 +147,12 @@ function App() {
         language={currentLanguage}
         page={currentPage}
         is404={!isPageValid}
+      />
+
+      {/* Language Selection Modal */}
+      <LanguageSelectionModal
+        isOpen={showLanguageModal}
+        onLanguageSelect={handleLanguageSelect}
       />
 
       {/* Header */}

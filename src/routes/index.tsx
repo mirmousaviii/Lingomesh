@@ -294,7 +294,7 @@ export const router = createBrowserRouter([
   // Redirect root to default language
   {
     path: "/",
-    element: <Navigate to="/de" replace />,
+    element: <Navigate to="/en" replace />,
   },
   // Language-specific routes
   ...createLanguageRoutes(),
@@ -320,7 +320,7 @@ export const getLanguageFromPath = (pathname: string): Language => {
     return language;
   }
 
-  return "de"; // Default to German
+  return "en"; // Default to English
 };
 
 export const getPageFromPath = (pathname: string): PageType => {

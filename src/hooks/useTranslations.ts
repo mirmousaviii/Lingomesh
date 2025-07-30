@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 export type Language = "de" | "en" | "es" | "ru";
 
 export const useTranslations = () => {
-  const [language, setLanguage] = useState<Language>("de");
+  const [language, setLanguage] = useState<Language>("en");
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem("language");
