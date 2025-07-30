@@ -313,21 +313,14 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
             style={{ animationDelay: "1s", animationFillMode: "both" }}
           >
             <div className="relative bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-600 dark:from-purple-600 dark:via-pink-600 dark:to-indigo-700 rounded-2xl p-6 sm:p-8 shadow-2xl border border-purple-300 dark:border-purple-600 overflow-hidden animate-soft-glow">
-              {/* Animated background elements */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-gradient-shift"></div>
-              <div className="absolute top-0 left-0 w-24 h-24 bg-yellow-400/20 rounded-full blur-2xl animate-float"></div>
-              <div
-                className="absolute bottom-0 right-0 w-32 h-32 bg-cyan-400/20 rounded-full blur-2xl animate-float"
-                style={{ animationDelay: "2s" }}
-              ></div>
-              <div
-                className="absolute top-1/2 left-1/4 w-20 h-20 bg-pink-400/20 rounded-full blur-xl animate-float"
-                style={{ animationDelay: "1s" }}
-              ></div>
-
               {/* Shimmer effect overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer pointer-events-none"></div>
-
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-shimmer"
+                style={{
+                  pointerEvents: "none",
+                  animationDuration: "10s",
+                }}
+              ></div>
               {/* Sparkle effects */}
               <div className="absolute top-3 right-6 w-2 h-2 bg-yellow-300 rounded-full animate-sparkle"></div>
               <div
@@ -338,7 +331,6 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                 className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-pink-300 rounded-full animate-sparkle"
                 style={{ animationDelay: "1s" }}
               ></div>
-
               {/* Content */}
               <div className="relative z-10">
                 <div className="mb-4">
@@ -357,20 +349,50 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                       />
                     </svg>
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-2 drop-shadow-lg">
-                    {t.home.learningModules}
+                  <h2 className="text-xl sm:text-2xl font-bold mb-2 drop-shadow-lg bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-600 bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient-x animate-pulse">
+                    {t.home.lingoMeshFeatures}
                   </h2>
-                  <div className="w-20 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full shadow-lg"></div>
+                  <div className="relative flex justify-center items-center my-4">
+                    {/* Magical sparkle animation */}
+                    <div className="absolute left-1/4 -top-2 w-3 h-3 bg-gradient-to-br from-yellow-300 via-pink-400 to-blue-400 rounded-full blur-sm animate-pulse-sparkle animate-bounce"></div>
+                    <div
+                      className="absolute right-1/4 -bottom-2 w-2 h-2 bg-gradient-to-br from-cyan-300 to-purple-400 rounded-full blur-sm animate-pulse-sparkle animate-bounce"
+                      style={{ animationDelay: "0.7s" }}
+                    ></div>
+                    <div
+                      className="absolute left-1/2 top-0 w-1.5 h-1.5 bg-gradient-to-br from-white to-blue-300 rounded-full blur-sm animate-pulse-sparkle animate-bounce"
+                      style={{ animationDelay: "1.2s" }}
+                    ></div>
+                    {/* Magical glowing line with animated width and shimmer */}
+                    <div className="w-48 h-1 bg-gradient-to-r from-cyan-400 via-white to-blue-500 rounded-full shadow-lg animate-magical-glow relative overflow-hidden">
+                      <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-transparent via-white/60 to-transparent animate-shimmer"></div>
+                    </div>
+                    {/* New: Animated floating icons */}
+                    <div className="absolute -left-8 top-1/2 transform -translate-y-1/2 animate-float-x">
+                      <svg
+                        className="w-4 h-4 text-yellow-200 opacity-80"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <circle cx="10" cy="10" r="8" />
+                      </svg>
+                    </div>
+                    <div className="absolute -right-8 top-1/3 animate-float-y">
+                      <svg
+                        className="w-3 h-3 text-pink-200 opacity-70"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <rect x="4" y="4" width="12" height="12" rx="3" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-
-                <p className="text-white/90 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
-                  {t.home.withInteractiveExercises}
-                </p>
 
                 {/* Feature highlights */}
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-                    <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg mb-2 mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 group">
+                    <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg mb-2 mx-auto">
                       <svg
                         className="w-4 h-4 text-white"
                         fill="none"
@@ -390,8 +412,8 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                     </p>
                   </div>
 
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-                    <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg mb-2 mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 group">
+                    <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg mb-2 mx-auto">
                       <svg
                         className="w-4 h-4 text-white"
                         fill="none"
@@ -411,8 +433,8 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                     </p>
                   </div>
 
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-                    <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg mb-2 mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 group">
+                    <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg mb-2 mx-auto">
                       <svg
                         className="w-4 h-4 text-white"
                         fill="none"

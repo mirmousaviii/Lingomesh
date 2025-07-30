@@ -127,7 +127,7 @@ export interface Translations {
     questionsDescriptionDe: string;
     questionsDescriptionEn: string;
     simple: string;
-    learningModules: string;
+    lingoMeshFeatures: string;
     interactive: string;
     withInteractiveExercises: string;
     withInteractiveExercisesDe: string;
@@ -413,7 +413,7 @@ export const translations: Record<Language, Translations> = {
       questionsDescriptionDe: "Deutsche Fragen richtig stellen",
       questionsDescriptionEn: "Ask German questions correctly",
       simple: "Simple",
-      learningModules: "Lernmodule",
+      lingoMeshFeatures: "LingoMesh Funktionen",
       interactive: "Interaktiv",
       withInteractiveExercises: "mit interaktiven Übungen",
       withInteractiveExercisesDe: "mit interaktiven Übungen",
@@ -693,7 +693,7 @@ export const translations: Record<Language, Translations> = {
       questionsDescriptionDe: "Deutsche Fragen richtig stellen",
       questionsDescriptionEn: "Ask German questions correctly",
       simple: "Simple",
-      learningModules: "Learning Modules",
+      lingoMeshFeatures: "LingoMesh Features",
       interactive: "Interactive",
       withInteractiveExercises: "With interactive exercises",
       withInteractiveExercisesDe: "mit interaktiven Übungen",
@@ -972,7 +972,7 @@ export const translations: Record<Language, Translations> = {
       questionsDescriptionDe: "Deutsche Fragen richtig stellen",
       questionsDescriptionEn: "Ask German questions correctly",
       simple: "Simple",
-      learningModules: "Módulos de Aprendizaje",
+      lingoMeshFeatures: "Funciones de LingoMesh",
       interactive: "Interactivo",
       withInteractiveExercises: "Con ejercicios interactivos",
       withInteractiveExercisesDe: "mit interaktiven Übungen",
@@ -1252,7 +1252,7 @@ export const translations: Record<Language, Translations> = {
       questionsDescriptionDe: "Deutsche Fragen richtig stellen",
       questionsDescriptionEn: "Ask German questions correctly",
       simple: "Просто",
-      learningModules: "Модули Обучения",
+      lingoMeshFeatures: "Функции LingoMesh",
       interactive: "Интерактивно",
       withInteractiveExercises: "С интерактивными упражнениями",
       withInteractiveExercisesDe: "mit interaktiven Übungen",

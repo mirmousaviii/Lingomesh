@@ -141,25 +141,6 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ language, onPageChange }) => {
           <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
             {t.description}
           </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-            <div className="flex items-center space-x-3 text-neutral-600 dark:text-neutral-400">
-              <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
-              <span>{t.features.interactive}</span>
-            </div>
-            <div className="flex items-center space-x-3 text-neutral-600 dark:text-neutral-400">
-              <div className="w-2 h-2 bg-accent-500 rounded-full"></div>
-              <span>{t.features.audio}</span>
-            </div>
-            <div className="flex items-center space-x-3 text-neutral-600 dark:text-neutral-400">
-              <div className="w-2 h-2 bg-primary-400 rounded-full"></div>
-              <span>{t.features.explanations}</span>
-            </div>
-            <div className="flex items-center space-x-3 text-neutral-600 dark:text-neutral-400">
-              <div className="w-2 h-2 bg-accent-400 rounded-full"></div>
-              <span>{t.features.quizzes}</span>
-            </div>
-          </div>
         </div>
 
         {/* Progress bar */}
