@@ -19,6 +19,7 @@ import {
   Time,
   Date,
   Weather,
+  ComingSoon,
   NotFound,
 } from "../../../pages";
 
@@ -55,9 +56,9 @@ function App() {
       case "articles":
         return <Articles {...pageProps} />;
       case "adjectives":
-        return <Articles {...pageProps} />; // Placeholder - create Adjectives component
+        return <ComingSoon {...pageProps} />;
       case "adverbs":
-        return <Articles {...pageProps} />; // Placeholder - create Adverbs component
+        return <ComingSoon {...pageProps} />;
       case "declension":
         return <Declension {...pageProps} />;
       case "prepositions":
@@ -73,61 +74,61 @@ function App() {
       case "weather":
         return <Weather {...pageProps} />;
       case "alphabet":
-        return <Articles {...pageProps} />; // Placeholder - create Alphabet component
+        return <ComingSoon {...pageProps} />;
       case "countries":
-        return <Articles {...pageProps} />; // Placeholder - create Countries component
+        return <ComingSoon {...pageProps} />;
       // Verb-related pages
       case "verb-conjugator":
         return <Verbs {...pageProps} />;
       case "modal-verbs":
-        return <Verbs {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "passive-voice":
-        return <Verbs {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "reflexive-verbs":
-        return <Verbs {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       // Tense-related pages
       case "present-tense":
-        return <Verbs {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "perfect-tense":
-        return <Verbs {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "past-tense":
-        return <Verbs {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "past-perfect":
-        return <Verbs {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "future-tense":
-        return <Verbs {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "future-perfect":
-        return <Verbs {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "irregular-verbs":
-        return <Verbs {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "tenses-overview":
-        return <Verbs {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       // Pronoun-related pages
       case "personal-pronouns":
         return <Pronouns {...pageProps} />;
       case "possessives":
-        return <Pronouns {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "reflexive-pronouns":
-        return <Pronouns {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "relative-pronouns":
-        return <Pronouns {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "interrogative-pronouns":
-        return <Pronouns {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "demonstrative-pronouns":
-        return <Pronouns {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       case "indefinite-pronouns":
-        return <Pronouns {...pageProps} />;
+        return <ComingSoon {...pageProps} />;
       // Useful phrases pages
       case "general-phrases":
-        return <Articles {...pageProps} />; // Placeholder - create Phrases component
+        return <ComingSoon {...pageProps} />;
       case "classroom-phrases":
-        return <Articles {...pageProps} />; // Placeholder - create Phrases component
+        return <ComingSoon {...pageProps} />;
       case "restaurant-phrases":
-        return <Articles {...pageProps} />; // Placeholder - create Phrases component
+        return <ComingSoon {...pageProps} />;
       case "home-phrases":
-        return <Articles {...pageProps} />; // Placeholder - create Phrases component
+        return <ComingSoon {...pageProps} />;
       case "friends-phrases":
-        return <Articles {...pageProps} />; // Placeholder - create Phrases component
+        return <ComingSoon {...pageProps} />;
       // 404 page
       case "404":
         return <NotFound {...pageProps} />;
