@@ -407,8 +407,11 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-xs font-medium text-center">
-                      Interactive
+                    <p className="text-white/80 text-xs font-medium text-center mb-1">
+                      {t.home.interactive}
+                    </p>
+                    <p className="text-white/60 text-xs text-center leading-tight">
+                      {t.home.interactiveDescription}
                     </p>
                   </div>
 
@@ -428,8 +431,11 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-xs font-medium text-center">
-                      Multilingual
+                    <p className="text-white/80 text-xs font-medium text-center mb-1">
+                      {t.home.multilingual}
+                    </p>
+                    <p className="text-white/60 text-xs text-center leading-tight">
+                      {t.home.multilingualDescription}
                     </p>
                   </div>
 
@@ -449,8 +455,11 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-xs font-medium text-center">
-                      Dynamic
+                    <p className="text-white/80 text-xs font-medium text-center mb-1">
+                      {t.home.dynamic}
+                    </p>
+                    <p className="text-white/60 text-xs text-center leading-tight">
+                      {t.home.dynamicDescription}
                     </p>
                   </div>
                 </div>
