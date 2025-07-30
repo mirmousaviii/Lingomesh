@@ -5,19 +5,23 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node scripts/generateSitemap.js",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --fix",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "generate-sitemap": "node scripts/generateSitemap.js"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.0",
     "dayjs": "^1.11.13",
     "lucide-react": "^0.532.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5",
+    "react-router-dom": "^7.7.1",
     "react-tailwindcss-datepicker": "^2.0.0"
   },
   "devDependencies": {

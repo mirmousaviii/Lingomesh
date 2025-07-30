@@ -1,14 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import "./index.css";
-import App from "./components/layout/App/App";
+import { router } from "./routes";
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <React.StrictMode>
-      <App />
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
     </React.StrictMode>
   );
 }

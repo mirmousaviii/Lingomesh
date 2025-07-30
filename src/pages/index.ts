@@ -9,3 +9,4 @@ export { default as Numbers } from "./Numbers/Numbers";
 export { default as Time } from "./Time/Time";
 export { default as Date } from "./Date/Date";
 export { default as Weather } from "./Weather/Weather";
+export { default as NotFound } from "./NotFound/NotFound";

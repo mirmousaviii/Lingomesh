@@ -105,7 +105,7 @@ export default {
         "2xl": ["1.5rem", { lineHeight: "2" }],
         "3xl": ["1.875rem", { lineHeight: "2.25" }],
         "4xl": ["2.25rem", { lineHeight: "2.5" }],
-        "5xl": ["3rem", { lineHeight: "1.25" }],
+        "5xl": ["2.60rem", { lineHeight: "1.25" }],
         "6xl": ["3.75rem", { lineHeight: "1.25" }],
         "7xl": ["4.5rem", { lineHeight: "1.25" }],
         "8xl": ["6rem", { lineHeight: "1.25" }],

@@ -694,6 +694,38 @@ const Sidebar: React.FC<SidebarProps> = ({
   const [openDropdowns, setOpenDropdowns] = useState<string[]>([]);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
+  // Function to find parent menu items for a given page
+  const findParentMenuItems = (pageId: string): string[] => {
+    const parents: string[] = [];
+
+    const findParents = (items: MenuItem[], targetPage: string): boolean => {
+      for (const item of items) {
+        if (item.children) {
+          // Check if any child matches the target page
+          const hasTargetChild = item.children.some((child) => {
+            const mappedChildPage = mapMenuIdToPage(child.id);
+            return mappedChildPage === targetPage;
+          });
+
+          if (hasTargetChild) {
+            parents.push(item.id);
+            return true;
+          }
+
+          // Recursively check children
+          if (findParents(item.children, targetPage)) {
+            parents.push(item.id);
+            return true;
+          }
+        }
+      }
+      return false;
+    };
+
+    findParents(menuItems, pageId);
+    return parents;
+  };
+
   const menuItems: MenuItem[] = [
     {
       id: "home",
@@ -924,9 +956,73 @@ const Sidebar: React.FC<SidebarProps> = ({
     },
   ];
 
+  // Map menu IDs to actual page paths
+  const mapMenuIdToPage = (menuId: string): string => {
+    const pageMapping: Record<string, string> = {
+      // Home
+      home: "home",
+
+      // Vocabulary pages
+      alphabet: "alphabet",
+      numbers: "numbers",
+      time: "time",
+      date: "date",
+      weather: "weather",
+      countries: "countries",
+
+      // Grammar pages
+      articles: "articles",
+      adjectives: "adjectives",
+      declension: "declension",
+      adverbs: "adverbs",
+      prepositions: "prepositions",
+      questions: "questions",
+
+      // Verb pages
+      verbs: "verb-conjugator",
+      "modal-verbs": "modal-verbs",
+      "passive-voice": "passive-voice",
+      "reflexive-verbs": "reflexive-verbs",
+
+      // Tense pages
+      "present-tense": "present-tense",
+      "perfect-tense": "perfect-tense",
+      "past-tense": "past-tense",
+      "past-perfect": "past-perfect",
+      "future-tense": "future-tense",
+      "future-perfect": "future-perfect",
+      "irregular-verbs": "irregular-verbs",
+      "tenses-overview": "tenses-overview",
+
+      // Pronoun pages
+      pronouns: "personal-pronouns", // Map the menu "pronouns" to "personal-pronouns"
+      "personal-pronouns": "personal-pronouns",
+      possessives: "possessives",
+      "reflexive-pronouns": "reflexive-pronouns",
+      "relative-pronouns": "relative-pronouns",
+      "interrogative-pronouns": "interrogative-pronouns",
+      "demonstrative-pronouns": "demonstrative-pronouns",
+      "indefinite-pronouns": "indefinite-pronouns",
+
+      // Useful phrases pages
+      "general-phrases": "general-phrases",
+      "classroom-phrases": "classroom-phrases",
+      "restaurant-phrases": "restaurant-phrases",
+      "home-phrases": "home-phrases",
+      "friends-phrases": "friends-phrases",
+    };
+
+    return pageMapping[menuId] || menuId;
+  };
+
   const handlePageChange = (pageId: string) => {
-    onPageChange(pageId);
-    setOpenDropdowns([]);
+    const actualPage = mapMenuIdToPage(pageId);
+    onPageChange(actualPage);
+    // Don't close all dropdowns when a page is selected
+    // Only close dropdowns on mobile devices
+    if (window.innerWidth < 1024) {
+      setIsOpen(false);
+    }
   };
 
   const handleDropdownToggle = (id: string) => {
@@ -941,7 +1037,8 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   const renderMenuItem = (item: MenuItem, level: number = 0) => {
     const hasChildren = item.children && item.children.length > 0;
-    const isActive = currentPage === item.id;
+    const mappedPage = mapMenuIdToPage(item.id);
+    const isActive = currentPage === mappedPage;
     const isOpen = openDropdowns.includes(item.id);
 
     return (
@@ -952,10 +1049,10 @@ const Sidebar: React.FC<SidebarProps> = ({
               ? handleDropdownToggle(item.id)
               : handlePageChange(item.id)
           }
-          className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all duration-200 text-left ${
+          className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all duration-200 text-left border ${
             isActive
-              ? "bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-700"
-              : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+              ? "bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 border-primary-200 dark:border-primary-700"
+              : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 border-transparent"
           }`}
           style={{ paddingLeft: `${level * 16 + 12}px` }}
         >
@@ -989,6 +1086,22 @@ const Sidebar: React.FC<SidebarProps> = ({
       </div>
     );
   };
+
+  // Auto-open parent dropdowns when page changes
+  useEffect(() => {
+    const parentMenuItems = findParentMenuItems(currentPage);
+    if (parentMenuItems.length > 0) {
+      setOpenDropdowns((prev) => {
+        const newOpenDropdowns = [...prev];
+        parentMenuItems.forEach((parentId) => {
+          if (!newOpenDropdowns.includes(parentId)) {
+            newOpenDropdowns.push(parentId);
+          }
+        });
+        return newOpenDropdowns;
+      });
+    }
+  }, [currentPage]);
 
   // Close sidebar on mobile when clicking outside
   useEffect(() => {
