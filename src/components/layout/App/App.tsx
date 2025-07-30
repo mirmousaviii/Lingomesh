@@ -172,9 +172,7 @@ function App() {
         {/* Main Content */}
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Content Area */}
-          <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
-            {renderCurrentPage()}
-          </main>
+          <main className="flex-1 overflow-y-auto">{renderCurrentPage()}</main>
         </div>
       </div>
     </div>

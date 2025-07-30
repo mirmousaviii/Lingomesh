@@ -87,6 +87,42 @@
     animation: bounceGentle 2s infinite;
   }
 
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-gradient-shift {
+    animation: gradientShift 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-sparkle {
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .animate-soft-glow {
+    animation: softGlow 4s ease-in-out infinite;
+  }
+
   /* Hide scrollbar */
   .scrollbar-hide {
     -ms-overflow-style: none; /* Internet Explorer 10+ */
@@ -150,5 +186,105 @@
   100% {
     opacity: 0;
     transform: scale(0.95) translateY(-4px);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6),
+      0 0 60px rgba(236, 72, 153, 0.4);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1) rotate(180deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes softGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4),
+      0 0 40px rgba(236, 72, 153, 0.2);
   }
 }
