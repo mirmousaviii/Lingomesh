@@ -84,24 +84,23 @@ const Header: React.FC<HeaderProps> = ({
               </button>
 
               <div className="flex items-center space-x-3">
-                <h1 className="font-black bg-gradient-to-r from-primary-600 via-accent-600 to-accent-800 bg-clip-text text-transparent tracking-tight font-inter font-smooth text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-                  {t.app.name}
+                <h1 className="font-black bg-gradient-to-r from-primary-600 via-accent-600 to-accent-800 bg-clip-text text-transparent tracking-tight font-inter font-smooth text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-5xl">
+                  <a href={`/${language}`}>{t.app.name}</a>
                 </h1>
-                <span className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-neutral-600 dark:text-neutral-400 font-medium lg:pl-4">
-                  German Guide
+                <span className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl leading-tight text-neutral-600 dark:text-neutral-400 font-medium lg:pl-4">
+                  {t.app.subtitle}
                 </span>
               </div>
             </div>
           </div>
 
           {/* Right side - Settings Controls */}
-          <div className="flex items-center justify-end space-x-3 ml-6 mr-4">
+          <div className="flex items-center justify-end space-x-1 sm:space-x-3 ml-1 mr-0 md:mr-4 lg:mr-5 xl:mr-6">
             {/* Language Selector */}
             <HeaderDropdown
               value={language}
               onChange={(value) => setLanguage(value as Language)}
               options={languageOptions}
-              isScrolled={false}
               type="language"
             />
 
@@ -110,7 +109,6 @@ const Header: React.FC<HeaderProps> = ({
               value={themeMode}
               onChange={handleThemeChange}
               options={themeOptions}
-              isScrolled={false}
               type="theme"
             />
           </div>

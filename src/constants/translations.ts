@@ -9,6 +9,7 @@ export interface Translations {
     taglineEn: string;
     footer: string;
     developer: string;
+    subtitle: string;
   };
 
   // Navigation menu
@@ -265,6 +266,7 @@ export const translations: Record<Language, Translations> = {
         "Learn German with grammar, vocabulary, sentence structure and interactive tools",
       footer: "© {currentYear} LingoMesh.",
       developer: "mirmousavi.com",
+      subtitle: "Deutscher Leitfaden",
     },
     navigation: {
       home: "Startseite",
@@ -514,6 +516,7 @@ export const translations: Record<Language, Translations> = {
         "Learn German with grammar, vocabulary, sentence structure and interactive tools",
       footer: "© {currentYear} LingoMesh.",
       developer: "mirmousavi.com",
+      subtitle: "German Guide",
     },
     navigation: {
       home: "Home",
@@ -762,6 +765,7 @@ export const translations: Record<Language, Translations> = {
         "Learn German with grammar, vocabulary, sentence structure and interactive tools",
       footer: "© {currentYear} LingoMesh.\n Desarrollado por",
       developer: "mirmousavi.com",
+      subtitle: "Guía Alemana",
     },
     navigation: {
       home: "Inicio",
@@ -1011,6 +1015,7 @@ export const translations: Record<Language, Translations> = {
         "Learn German with grammar, vocabulary, sentence structure and interactive tools",
       footer: "© {currentYear} LingoMesh.\n Разработано",
       developer: "mirmousavi.com",
+      subtitle: "Немецкое Руководство",
     },
     navigation: {
       home: "Главная",

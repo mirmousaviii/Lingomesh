@@ -13,7 +13,6 @@ interface HeaderDropdownProps {
   onChange: (value: string) => void;
   options: HeaderDropdownOption[];
   className?: string;
-  isScrolled?: boolean;
   type: "language" | "theme";
 }
 
@@ -22,7 +21,6 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
   onChange,
   options,
   className = "",
-  isScrolled = false,
   type,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,11 +96,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
   const renderTriggerContent = () => {
     if (type === "language") {
       return (
-        <span
-          className={`font-medium transition-all duration-300 ${
-            isScrolled ? "text-xs" : "text-sm"
-          }`}
-        >
+        <span className="font-medium transition-all duration-300 text-xs sm:text-base">
           {selectedOption?.text}
         </span>
       );
@@ -110,9 +104,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
 
     return (
       <svg
-        className={`fill-current transition-all duration-300 ${
-          isScrolled ? "w-3 h-3 sm:w-4 sm:h-4" : "w-4 h-4 sm:w-5 sm:h-5"
-        }`}
+        className="fill-current transition-all duration-300 w-4 h-4 sm:w-5 sm:h-5"
         viewBox="0 0 20 20"
       >
         {selectedOption?.value === "light" ? (
@@ -133,9 +125,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
       {/* Trigger Button */}
       <button
         onClick={handleToggle}
-        className={`flex items-center justify-center transition-all duration-300 touch-manipulation bg-neutral-100/80 dark:bg-neutral-800/80 rounded-md p-1 border border-neutral-200/60 dark:border-neutral-600/60 ${
-          isScrolled ? "w-7 h-5 sm:w-8 sm:h-6" : "w-10 h-8 sm:w-12 sm:h-10"
-        }`}
+        className="flex items-center justify-center transition-all duration-300 touch-manipulation bg-neutral-100/80 dark:bg-neutral-800/80 rounded-md p-1 border border-neutral-200/60 dark:border-neutral-600/60 w-8 h-8 sm:w-12 sm:h-10"
       >
         {renderTriggerContent()}
       </button>
