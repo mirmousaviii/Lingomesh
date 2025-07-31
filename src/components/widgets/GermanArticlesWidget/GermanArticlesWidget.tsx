@@ -1,6 +1,6 @@
 import React from "react";
 import { Language } from "../../../hooks/useTranslations";
-import Widget from "../../ui/Widget/Widget";
+import Box from "../../ui/Box/Box";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 
 interface GermanArticlesWidgetProps {
@@ -147,8 +147,7 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
   ];
 
   return (
-    <Widget
-      titleKey="artikel"
+    <Box titleKey="artikel"
       language={language}
       headerColor="blue"
       description={
@@ -247,7 +246,7 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
           })}
         </div>
       </div>
-    </Widget>
+    </Box>
   );
 };
 

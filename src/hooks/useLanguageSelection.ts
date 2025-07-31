@@ -12,8 +12,10 @@ export const useLanguageSelection = () => {
     const savedLanguage = localStorage.getItem("language");
 
     if (!savedLanguage) {
-      // No language saved - show language selection modal
-      setShowLanguageModal(true);
+      // No language saved - set English as default
+      localStorage.setItem("language", "en");
+      const newUrl = buildUrl("en", "home");
+      navigate(newUrl);
     }
   }, [navigate]);
 

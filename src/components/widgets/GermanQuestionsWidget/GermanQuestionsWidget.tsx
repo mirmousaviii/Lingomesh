@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Language } from "../../../hooks/useTranslations";
-import Widget from "../../ui/Widget/Widget";
+import Box from "../../ui/Box/Box";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 
 interface GermanQuestionsWidgetProps {
@@ -155,8 +155,7 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
   const currentSection = questionSections[activeSection];
 
   return (
-    <Widget
-      titleKey="fragen"
+    <Box titleKey="fragen"
       language={language}
       headerColor="teal"
       description={
@@ -270,7 +269,7 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
           </div>
         </div>
       </div>
-    </Widget>
+    </Box>
   );
 };
 

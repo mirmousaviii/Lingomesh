@@ -173,6 +173,8 @@ export interface Translations {
     verbenPraepositionen: string;
     verbzeiten: string;
     adjektivdeklination: string;
+    basicNumbers: string;
+    ordinalNumbers: string;
     quiz: string;
     quizNumbers: string;
     quizDate: string;
@@ -489,6 +491,8 @@ export const translations: Record<Language, Translations> = {
       verbenPraepositionen: "Deutsche Verben & Präpositionen",
       verbzeiten: "Verbzeiten",
       adjektivdeklination: "Deutsche Adjektivdeklination",
+      basicNumbers: "Grundzahlen",
+      ordinalNumbers: "Ordinalzahlen",
       quiz: "Quiz",
       quizNumbers: "Zahlen Quiz",
       quizDate: "Datum Quiz",
@@ -821,6 +825,8 @@ export const translations: Record<Language, Translations> = {
       verbenPraepositionen: "German Verbs & Prepositions",
       verbzeiten: "Verb Tenses",
       adjektivdeklination: "German Adjective Declension",
+      basicNumbers: "Basic Numbers",
+      ordinalNumbers: "Ordinal Numbers",
       quiz: "Quiz",
       quizNumbers: "Number Quiz",
       quizDate: "Date Quiz",
@@ -1152,6 +1158,8 @@ export const translations: Record<Language, Translations> = {
       verbenPraepositionen: "Verbos y Preposiciones Alemanes",
       verbzeiten: "Tiempos Verbales",
       adjektivdeklination: "Declinación de Adjetivos Alemanes",
+      basicNumbers: "Números Básicos",
+      ordinalNumbers: "Números Ordinales",
       quiz: "Quiz",
       quizNumbers: "Quiz de Números",
       quizDate: "Quiz de Fechas",
@@ -1484,6 +1492,8 @@ export const translations: Record<Language, Translations> = {
       verbenPraepositionen: "Немецкие Глаголы и Предлоги",
       verbzeiten: "Времена Глаголов",
       adjektivdeklination: "Немецкое Склонение Прилагательных",
+      basicNumbers: "Основные Числа",
+      ordinalNumbers: "Порядковые Числа",
       quiz: "Викторина",
       quizNumbers: "Викторина по Числам",
       quizDate: "Викторина по Датам",

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Language } from "../../../hooks/useTranslations";
-import { useTranslation } from "../../../constants/translations";
-import Widget from "../../ui/Widget/Widget";
+import { useModuleTranslations } from "../../../hooks/useModuleTranslations";
+import { QuizTranslations } from "./translations";
+import Box from "../../ui/Box/Box";
 
 export interface QuizQuestion {
   question: string;
@@ -21,7 +22,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
   questions,
   subject,
 }) => {
-  const t = useTranslation(language);
+  const t = useModuleTranslations<QuizTranslations>("quiz", language);
   const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion | null>(
     null
   );
@@ -115,29 +116,29 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
 
   if (questions.length === 0) {
     return (
-      <Widget
-        titleKey={titleKey}
+      <Box titleKey={titleKey}
         language={language}
         headerColor="purple"
-        description={t.widgets.quizDescription}
+        description={
+          t?.description || "Test your knowledge with interactive quizzes"
+        }
       >
         <div className="text-center py-8">
           <p className="text-neutral-600 dark:text-neutral-400">
-            {language === "en"
-              ? "No quiz questions available"
-              : "Keine Quiz-Fragen verfügbar"}
+            {t?.noQuestionsAvailable || "No quiz questions available"}
           </p>
         </div>
-      </Widget>
+      </Box>
     );
   }
 
   return (
-    <Widget
-      titleKey={titleKey}
+    <Box titleKey={titleKey}
       language={language}
       headerColor="purple"
-      description={t.widgets.quizDescription}
+      description={
+        t?.description || "Test your knowledge with interactive quizzes"
+      }
     >
       <div className="space-y-4">
         {/* Score Display */}
@@ -244,7 +245,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
           </div>
         )}
       </div>
-    </Widget>
+    </Box>
   );
 };
 

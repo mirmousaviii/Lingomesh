@@ -7,6 +7,7 @@ import {
 } from "../../components/widgets/QuizWidget";
 import PageLayout from "../../components/layout/PageLayout";
 import AudioButton from "../../components/ui/AudioButton/AudioButton";
+import Box from "../../components/ui/Box/Box";
 
 interface PrepositionsProps {
   language: Language;
@@ -245,191 +246,165 @@ const Prepositions: React.FC<PrepositionsProps> = ({ language }) => {
   };
 
   return (
-    <PageLayout
-      widget={<GermanVerbsPrepositionsWidget language={language} />}
-      quizWidget={
-        <QuizWidget
-          language={language}
-          questions={quizQuestions}
-          subject="prepositions"
-        />
-      }
-    >
+    <PageLayout>
+      <GermanVerbsPrepositionsWidget language={language} />
+      <QuizWidget
+        language={language}
+        questions={quizQuestions}
+        subject="prepositions"
+      />
       {/* Preposition Types */}
       {prepositionTypes.map((type, index) => (
-        <div
+        <Box
           key={index}
-          className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden"
+          title={type.title}
+          description={type.description}
+          headerColor={index === 0 ? "green" : index === 1 ? "blue" : "pink"}
         >
-          <div
-            className={`bg-gradient-to-r ${
-              index === 0
-                ? "from-green-600 to-emerald-600"
-                : index === 1
-                ? "from-blue-600 to-indigo-600"
-                : "from-purple-600 to-pink-600"
-            } px-6 py-4`}
-          >
-            <h2 className="text-xl font-bold text-white">{type.title}</h2>
-            <p className="text-white/90 mt-1 text-sm">{type.description}</p>
-          </div>
-
-          <div className="p-6">
-            <div className="mb-4">
-              <div className="flex flex-wrap gap-2">
-                {type.prepositions.map((prep, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-neutral-50 dark:bg-neutral-800 rounded-lg px-3 py-2 border border-neutral-200 dark:border-neutral-700"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <span className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                        {prep}
-                      </span>
-                      <AudioButton
-                        onClick={() => speakGerman(prep)}
-                        title={t.ui.listen}
-                        size="sm"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                    {type.example}
-                  </span>
-                </div>
-                <AudioButton
-                  onClick={() => speakGerman(type.example)}
-                  title={t.ui.listen}
-                  size="sm"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-
-      {/* Verb-Preposition Combinations */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-orange-600 to-red-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman
-              ? "Verb-Präposition-Kombinationen"
-              : "Verb-Preposition Combinations"}
-          </h2>
-          <p className="text-orange-100 mt-1 text-sm">
-            {isGerman
-              ? "Häufige Verben mit festen Präpositionen"
-              : "Common verbs with fixed prepositions"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-4">
-            {verbPrepositions.map((item, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center space-x-3">
-                    <span className="text-sm font-semibold text-orange-600 dark:text-orange-400">
-                      {item.verb}
-                    </span>
-                    <span className="text-xs text-neutral-600 dark:text-neutral-400">
-                      ({item.english})
-                    </span>
-                    <span
-                      className={`text-xs font-medium ${getCaseColor(
-                        item.case
-                      )}`}
-                    >
-                      {item.case}
-                    </span>
-                  </div>
-                  <AudioButton
-                    onClick={() => speakGerman(item.verb)}
-                    title={t.ui.listen}
-                    size="sm"
-                  />
-                </div>
-                <div className="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-3 border border-neutral-200 dark:border-neutral-600">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-neutral-900 dark:text-neutral-100">
-                      {item.example}
+          <div className="mb-4">
+            <div className="flex flex-wrap gap-2">
+              {type.prepositions.map((prep, idx) => (
+                <div
+                  key={idx}
+                  className="bg-neutral-50 dark:bg-neutral-800 rounded-lg px-3 py-2 border border-neutral-200 dark:border-neutral-700"
+                >
+                  <div className="flex items-center space-x-2">
+                    <span className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                      {prep}
                     </span>
                     <AudioButton
-                      onClick={() => speakGerman(item.example)}
+                      onClick={() => speakGerman(prep)}
                       title={t.ui.listen}
                       size="sm"
                     />
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                  {type.example}
+                </span>
+              </div>
+              <AudioButton
+                onClick={() => speakGerman(type.example)}
+                title={t.ui.listen}
+                size="sm"
+              />
+            </div>
+          </div>
+        </Box>
+      ))}
 
-      {/* Additional Examples by Category */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Weitere Beispiele" : "Additional Examples"}
-          </h2>
-          <p className="text-indigo-100 mt-1 text-sm">
-            {isGerman
-              ? "Beispiele nach Kategorien geordnet"
-              : "Examples organized by categories"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-6">
-            {additionalExamples.map((category, categoryIndex) => (
-              <div key={categoryIndex}>
-                <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
-                  {category.category}
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {category.examples.map((example, exampleIndex) => (
-                    <div
-                      key={exampleIndex}
-                      className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <span
-                          className={`text-xs font-medium ${getCaseColor(
-                            example.case
-                          )}`}
-                        >
-                          {example.preposition} ({example.case})
-                        </span>
-                        <AudioButton
-                          onClick={() => speakGerman(example.german)}
-                          title={t.ui.listen}
-                          size="sm"
-                        />
-                      </div>
-                      <div className="text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-1">
-                        {example.german}
-                      </div>
-                      <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                        {example.english}
-                      </div>
-                    </div>
-                  ))}
+      {/* Verb-Preposition Combinations */}
+      <Box
+        title={
+          isGerman
+            ? "Verb-Präposition-Kombinationen"
+            : "Verb-Preposition Combinations"
+        }
+        description={
+          isGerman
+            ? "Häufige Verben mit festen Präpositionen"
+            : "Common verbs with fixed prepositions"
+        }
+        headerColor="orange"
+      >
+        <div className="space-y-4">
+          {verbPrepositions.map((item, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center space-x-3">
+                  <span className="text-sm font-semibold text-orange-600 dark:text-orange-400">
+                    {item.verb}
+                  </span>
+                  <span className="text-xs text-neutral-600 dark:text-neutral-400">
+                    ({item.english})
+                  </span>
+                  <span
+                    className={`text-xs font-medium ${getCaseColor(item.case)}`}
+                  >
+                    {item.case}
+                  </span>
+                </div>
+                <AudioButton
+                  onClick={() => speakGerman(item.verb)}
+                  title={t.ui.listen}
+                  size="sm"
+                />
+              </div>
+              <div className="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-3 border border-neutral-200 dark:border-neutral-600">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-neutral-900 dark:text-neutral-100">
+                    {item.example}
+                  </span>
+                  <AudioButton
+                    onClick={() => speakGerman(item.example)}
+                    title={t.ui.listen}
+                    size="sm"
+                  />
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </Box>
+
+      {/* Additional Examples by Category */}
+      <Box
+        title={isGerman ? "Weitere Beispiele" : "Additional Examples"}
+        description={
+          isGerman
+            ? "Beispiele nach Kategorien geordnet"
+            : "Examples organized by categories"
+        }
+        headerColor="blue"
+      >
+        <div className="space-y-6">
+          {additionalExamples.map((category, categoryIndex) => (
+            <div key={categoryIndex}>
+              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
+                {category.category}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {category.examples.map((example, exampleIndex) => (
+                  <div
+                    key={exampleIndex}
+                    className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span
+                        className={`text-xs font-medium ${getCaseColor(
+                          example.case
+                        )}`}
+                      >
+                        {example.preposition} ({example.case})
+                      </span>
+                      <AudioButton
+                        onClick={() => speakGerman(example.german)}
+                        title={t.ui.listen}
+                        size="sm"
+                      />
+                    </div>
+                    <div className="text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-1">
+                      {example.german}
+                    </div>
+                    <div className="text-xs text-neutral-600 dark:text-neutral-400">
+                      {example.english}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Box>
 
       {/* Practice Section */}
       <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">

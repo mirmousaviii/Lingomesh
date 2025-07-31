@@ -1,6 +1,6 @@
 import { Language } from "../../../hooks/useTranslations";
 import { useTranslation } from "../../../constants/translations";
-import Widget from "../../ui/Widget/Widget";
+import Box from "../../ui/Box/Box";
 
 interface SettingsWidgetProps {
   language: Language;
@@ -24,8 +24,7 @@ const SettingsWidget: React.FC<SettingsWidgetProps> = ({
   ];
 
   return (
-    <Widget
-      titleKey="einstellungen"
+    <Box titleKey="einstellungen"
       language={language}
       description={
         language === "de"
@@ -95,7 +94,7 @@ const SettingsWidget: React.FC<SettingsWidgetProps> = ({
           </div>
         </div>
       </div>
-    </Widget>
+    </Box>
   );
 };
 

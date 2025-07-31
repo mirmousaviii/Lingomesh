@@ -9,6 +9,7 @@ import {
 } from "../../components/widgets/QuizWidget";
 import PageLayout from "../../components/layout/PageLayout";
 import AudioButton from "../../components/ui/AudioButton/AudioButton";
+import Box from "../../components/ui/Box/Box";
 
 interface ArticlesProps {
   language: Language;
@@ -100,277 +101,255 @@ const Articles: React.FC<ArticlesProps> = ({ language }) => {
   }));
 
   return (
-    <PageLayout
-      widget={<GermanArticlesWidget language={language} />}
-      quizWidget={
-        <QuizWidget
-          language={language}
-          questions={quizQuestions}
-          subject="articles"
-        />
-      }
-    >
-      {/* Article Rules Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Artikel-Regeln" : "Article Rules"}
-          </h2>
-          <p className="text-blue-100 mt-1 text-sm">
-            {isGerman
-              ? "Grundlegende Regeln für deutsche Artikel"
-              : "Basic rules for German articles"}
-          </p>
-        </div>
+    <PageLayout>
+      {/* German Articles Widget */}
+      <GermanArticlesWidget language={language} />
 
-        <div className="p-6">
-          <div className="space-y-4">
-            {articleRules.map((rule, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
-              >
-                <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
-                  {rule.title}
-                </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
-                  {rule.description}
-                </p>
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border border-blue-200 dark:border-blue-800">
-                  <div className="space-y-2">
-                    {rule.examples.map((example, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center justify-between"
-                      >
-                        <span className="font-mono text-sm text-blue-700 dark:text-blue-300">
-                          {example}
-                        </span>
-                        <AudioButton
-                          onClick={() => speakGerman(example.split(" (")[0])}
-                          title={t.ui.listen}
-                          size="sm"
-                        />
-                      </div>
-                    ))}
-                  </div>
+      {/* Quiz Widget */}
+      <QuizWidget
+        language={language}
+        questions={quizQuestions}
+        subject="articles"
+      />
+      {/* Article Rules Section */}
+      <Box
+        title={isGerman ? "Artikel-Regeln" : "Article Rules"}
+        description={
+          isGerman
+            ? "Grundlegende Regeln für deutsche Artikel"
+            : "Basic rules for German articles"
+        }
+        headerColor="blue"
+      >
+        <div className="space-y-4">
+          {articleRules.map((rule, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+            >
+              <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+                {rule.title}
+              </h3>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+                {rule.description}
+              </p>
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border border-blue-200 dark:border-blue-800">
+                <div className="space-y-2">
+                  {rule.examples.map((example, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between"
+                    >
+                      <span className="font-mono text-sm text-blue-700 dark:text-blue-300">
+                        {example}
+                      </span>
+                      <AudioButton
+                        onClick={() => speakGerman(example.split(" (")[0])}
+                        title={t.ui.listen}
+                        size="sm"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </Box>
 
       {/* Common Nouns Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Häufige Substantive" : "Common Nouns"}
-          </h2>
-          <p className="text-purple-100 mt-1 text-sm">
-            {isGerman
-              ? "Die wichtigsten Wörter mit ihren Artikeln"
-              : "The most important words with their articles"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {commonNouns.map((noun, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div
-                      className={`text-sm font-semibold ${getGenderColor(
-                        noun.gender
-                      )} mb-1`}
-                    >
-                      {noun.german}
-                    </div>
-                    <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                      {noun.english}
-                    </div>
-                    <div className="text-xs text-neutral-500 capitalize">
-                      {noun.gender}
-                    </div>
+      <Box
+        title={isGerman ? "Häufige Substantive" : "Common Nouns"}
+        description={
+          isGerman
+            ? "Die wichtigsten Wörter mit ihren Artikeln"
+            : "The most important words with their articles"
+        }
+        headerColor="purple"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {commonNouns.map((noun, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <div
+                    className={`text-sm font-semibold ${getGenderColor(
+                      noun.gender
+                    )} mb-1`}
+                  >
+                    {noun.german}
                   </div>
-                  <AudioButton
-                    onClick={() => speakGerman(noun.german)}
-                    title={t.ui.listen}
-                    size="sm"
-                  />
+                  <div className="text-xs text-neutral-600 dark:text-neutral-400">
+                    {noun.english}
+                  </div>
+                  <div className="text-xs text-neutral-500 capitalize">
+                    {noun.gender}
+                  </div>
                 </div>
+                <AudioButton
+                  onClick={() => speakGerman(noun.german)}
+                  title={t.ui.listen}
+                  size="sm"
+                />
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </Box>
 
       {/* Gender Tips Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-green-600 to-teal-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Geschlechter-Tipps" : "Gender Tips"}
-          </h2>
-          <p className="text-green-100 mt-1 text-sm">
-            {isGerman
-              ? "Hilfreiche Tipps zur Bestimmung des Geschlechts"
-              : "Helpful tips for determining gender"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-4">
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-              <div className="flex items-center space-x-2 mb-2">
-                <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                <span className="font-semibold text-blue-700 dark:text-blue-300">
-                  {isGerman ? "Maskulin (der)" : "Masculine (der)"}
-                </span>
-              </div>
-              <p className="text-sm text-blue-600 dark:text-blue-400">
-                {isGerman
-                  ? "Oft: Männliche Personen, Wochentage, Monate, Jahreszeiten"
-                  : "Often: Male persons, weekdays, months, seasons"}
-              </p>
+      <Box
+        title={isGerman ? "Geschlechter-Tipps" : "Gender Tips"}
+        description={
+          isGerman
+            ? "Hilfreiche Tipps zur Bestimmung des Geschlechts"
+            : "Helpful tips for determining gender"
+        }
+        headerColor="green"
+      >
+        <div className="space-y-4">
+          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+            <div className="flex items-center space-x-2 mb-2">
+              <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
+              <span className="font-semibold text-blue-700 dark:text-blue-300">
+                {isGerman ? "Maskulin (der)" : "Masculine (der)"}
+              </span>
             </div>
+            <p className="text-sm text-blue-600 dark:text-blue-400">
+              {isGerman
+                ? "Oft: Männliche Personen, Wochentage, Monate, Jahreszeiten"
+                : "Often: Male persons, weekdays, months, seasons"}
+            </p>
+          </div>
 
-            <div className="bg-pink-50 dark:bg-pink-900/20 rounded-lg p-4 border border-pink-200 dark:border-pink-800">
-              <div className="flex items-center space-x-2 mb-2">
-                <div className="w-3 h-3 bg-pink-600 rounded-full"></div>
-                <span className="font-semibold text-pink-700 dark:text-pink-300">
-                  {isGerman ? "Feminin (die)" : "Feminine (die)"}
-                </span>
-              </div>
-              <p className="text-sm text-pink-600 dark:text-pink-400">
-                {isGerman
-                  ? "Oft: Weibliche Personen, Wörter mit -ung, -heit, -keit"
-                  : "Often: Female persons, words ending in -ung, -heit, -keit"}
-              </p>
+          <div className="bg-pink-50 dark:bg-pink-900/20 rounded-lg p-4 border border-pink-200 dark:border-pink-800">
+            <div className="flex items-center space-x-2 mb-2">
+              <div className="w-3 h-3 bg-pink-600 rounded-full"></div>
+              <span className="font-semibold text-pink-700 dark:text-pink-300">
+                {isGerman ? "Feminin (die)" : "Feminine (die)"}
+              </span>
             </div>
+            <p className="text-sm text-pink-600 dark:text-pink-400">
+              {isGerman
+                ? "Oft: Weibliche Personen, Wörter mit -ung, -heit, -keit"
+                : "Often: Female persons, words ending in -ung, -heit, -keit"}
+            </p>
+          </div>
 
-            <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 border border-green-200 dark:border-green-800">
-              <div className="flex items-center space-x-2 mb-2">
-                <div className="w-3 h-3 bg-green-600 rounded-full"></div>
-                <span className="font-semibold text-green-700 dark:text-green-300">
-                  {isGerman ? "Neutral (das)" : "Neuter (das)"}
-                </span>
-              </div>
-              <p className="text-sm text-green-600 dark:text-green-400">
-                {isGerman
-                  ? "Oft: Diminutive (-chen, -lein), Gerund (-en als Nomen)"
-                  : "Often: Diminutives (-chen, -lein), gerunds (-en as nouns)"}
-              </p>
+          <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 border border-green-200 dark:border-green-800">
+            <div className="flex items-center space-x-2 mb-2">
+              <div className="w-3 h-3 bg-green-600 rounded-full"></div>
+              <span className="font-semibold text-green-700 dark:text-green-300">
+                {isGerman ? "Neutral (das)" : "Neuter (das)"}
+              </span>
             </div>
+            <p className="text-sm text-green-600 dark:text-green-400">
+              {isGerman
+                ? "Oft: Diminutive (-chen, -lein), Gerund (-en als Nomen)"
+                : "Often: Diminutives (-chen, -lein), gerunds (-en as nouns)"}
+            </p>
           </div>
         </div>
-      </div>
+      </Box>
 
       {/* Practice Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Artikel üben" : "Practice Articles"}
-          </h2>
-          <p className="text-green-100 mt-1 text-sm">
-            {isGerman
-              ? "Gedächtnishilfen und Übungstipps"
-              : "Memory tips and practice hints"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-6">
-            <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-                {isGerman ? "Gedächtnishilfen" : "Memory Tips"}
-              </h3>
-              <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>der → den:</strong>{" "}
-                    {isGerman
-                      ? "Maskulin ändert sich im Akkusativ"
-                      : "Masculine changes in accusative"}
-                  </div>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>die → der:</strong>{" "}
-                    {isGerman
-                      ? "Feminin ändert sich im Dativ"
-                      : "Feminine changes in dative"}
-                  </div>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>das → dem:</strong>{" "}
-                    {isGerman
-                      ? "Neutrum ändert sich im Dativ"
-                      : "Neuter changes in dative"}
-                  </div>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>des:</strong>{" "}
-                    {isGerman
-                      ? "Wird für maskulin/neutral Genitiv verwendet"
-                      : "Used for masculine/neuter genitive"}
-                  </div>
+      <Box
+        title={isGerman ? "Artikel üben" : "Practice Articles"}
+        description={
+          isGerman
+            ? "Gedächtnishilfen und Übungstipps"
+            : "Memory tips and practice hints"
+        }
+        headerColor="emerald"
+      >
+        <div className="space-y-6">
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
+              {isGerman ? "Gedächtnishilfen" : "Memory Tips"}
+            </h3>
+            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>der → den:</strong>{" "}
+                  {isGerman
+                    ? "Maskulin ändert sich im Akkusativ"
+                    : "Masculine changes in accusative"}
                 </div>
               </div>
-            </div>
-
-            <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-                {isGerman ? "Häufige Muster" : "Common Patterns"}
-              </h3>
-              <div className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
                 <div>
-                  <strong>Nominativ:</strong> der, die, das, die
+                  <strong>die → der:</strong>{" "}
+                  {isGerman
+                    ? "Feminin ändert sich im Dativ"
+                    : "Feminine changes in dative"}
                 </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
                 <div>
-                  <strong>Akkusativ:</strong> den, die, das, die
+                  <strong>das → dem:</strong>{" "}
+                  {isGerman
+                    ? "Neutrum ändert sich im Dativ"
+                    : "Neuter changes in dative"}
                 </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
                 <div>
-                  <strong>Dativ:</strong> dem, der, dem, den
-                </div>
-                <div>
-                  <strong>Genitiv:</strong> des, der, des, der
+                  <strong>des:</strong>{" "}
+                  {isGerman
+                    ? "Wird für maskulin/neutral Genitiv verwendet"
+                    : "Used for masculine/neuter genitive"}
                 </div>
               </div>
             </div>
           </div>
+
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
+              {isGerman ? "Häufige Muster" : "Common Patterns"}
+            </h3>
+            <div className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+              <div>
+                <strong>Nominativ:</strong> der, die, das, die
+              </div>
+              <div>
+                <strong>Akkusativ:</strong> den, die, das, die
+              </div>
+              <div>
+                <strong>Dativ:</strong> dem, der, dem, den
+              </div>
+              <div>
+                <strong>Genitiv:</strong> des, der, des, der
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </Box>
 
       {/* Examples Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-emerald-600 to-blue-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Beispiele" : "Examples"}
-          </h2>
-          <p className="text-emerald-100 mt-1 text-sm">
-            {isGerman
-              ? "Praktische Sätze mit deutschen Artikeln"
-              : "Practical sentences with German articles"}
-          </p>
-        </div>
+      <Box
+        title={isGerman ? "Beispiele" : "Examples"}
+        description={
+          isGerman
+            ? "Praktische Sätze mit deutschen Artikeln"
+            : "Practical sentences with German articles"
+        }
+        headerColor="emerald"
+      >
         <div className="p-6">
           <div className="grid gap-6 md:grid-cols-2">
             {/* Masculine Examples */}
@@ -598,7 +577,7 @@ const Articles: React.FC<ArticlesProps> = ({ language }) => {
             </div>
           </div>
         </div>
-      </div>
+      </Box>
     </PageLayout>
   );
 };

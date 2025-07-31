@@ -1,6 +1,6 @@
 import { Language } from "../../../hooks/useTranslations";
 import { useTranslation } from "../../../constants/translations";
-import Widget from "../../ui/Widget/Widget";
+import Box from "../../ui/Box/Box";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 import { useRef } from "react";
 import { ClockIcon } from "@heroicons/react/24/outline";
@@ -222,7 +222,7 @@ const TimeWidget: React.FC<TimeWidgetProps> = ({
   };
 
   return (
-    <Widget
+    <Box
       titleKey="zeit"
       language={language}
       headerColor="primary"
@@ -334,7 +334,7 @@ const TimeWidget: React.FC<TimeWidgetProps> = ({
           </div>
         </div>
       </div>
-    </Widget>
+    </Box>
   );
 };
 

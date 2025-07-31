@@ -1,4 +1,5 @@
 import { Language } from "../../../hooks/useTranslations";
+import Box from "../../components/ui/Box/Box";
 import { useTranslation } from "../../../constants/translations";
 
 interface WidgetProps {

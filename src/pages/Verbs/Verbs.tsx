@@ -9,6 +9,7 @@ import {
 } from "../../components/widgets/QuizWidget";
 import PageLayout from "../../components/layout/PageLayout";
 import AudioButton from "../../components/ui/AudioButton/AudioButton";
+import Box from "../../components/ui/Box/Box";
 
 interface VerbsProps {
   language: Language;
@@ -117,334 +118,305 @@ const Verbs: React.FC<VerbsProps> = ({ language }) => {
   }));
 
   return (
-    <PageLayout
-      widget={<VerbConjugationWidget language={language} />}
-      quizWidget={
-        <QuizWidget
-          language={language}
-          questions={quizQuestions}
-          subject="verbs"
-        />
-      }
-    >
+    <PageLayout>
+      <VerbConjugationWidget language={language} />
+      <QuizWidget
+        language={language}
+        questions={quizQuestions}
+        subject="verbs"
+      />
       {/* Verb Rules Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Konjugationsregeln" : "Conjugation Rules"}
-          </h2>
-          <p className="text-green-100 mt-1 text-sm">
-            {isGerman
-              ? "Grundlegende Regeln für deutsche Verben"
-              : "Basic rules for German verbs"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-4">
-            {verbRules.map((rule, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
-              >
-                <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
-                  {rule.title}
-                </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
-                  {rule.description}
-                </p>
-                <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3 border border-green-200 dark:border-green-800">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-sm text-green-700 dark:text-green-300">
-                      {rule.example}
-                    </span>
-                    <AudioButton
-                      onClick={() =>
-                        speakGerman(
-                          rule.example.split(" → ")[1] || rule.example
-                        )
-                      }
-                      title={t.ui.listen}
-                      size="sm"
-                    />
-                  </div>
+      <Box
+        title={isGerman ? "Konjugationsregeln" : "Conjugation Rules"}
+        description={
+          isGerman
+            ? "Grundlegende Regeln für deutsche Verben"
+            : "Basic rules for German verbs"
+        }
+        headerColor="green"
+      >
+        <div className="space-y-4">
+          {verbRules.map((rule, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+            >
+              <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+                {rule.title}
+              </h3>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+                {rule.description}
+              </p>
+              <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3 border border-green-200 dark:border-green-800">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-sm text-green-700 dark:text-green-300">
+                    {rule.example}
+                  </span>
+                  <AudioButton
+                    onClick={() =>
+                      speakGerman(rule.example.split(" → ")[1] || rule.example)
+                    }
+                    title={t.ui.listen}
+                    size="sm"
+                  />
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </Box>
 
       {/* Common Verbs Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Häufige Verben" : "Common Verbs"}
-          </h2>
-          <p className="text-blue-100 mt-1 text-sm">
-            {isGerman
-              ? "Die wichtigsten deutschen Verben"
-              : "The most important German verbs"}
-          </p>
+      <Box
+        title={isGerman ? "Häufige Verben" : "Common Verbs"}
+        description={
+          isGerman
+            ? "Die wichtigsten deutschen Verben"
+            : "The most important German verbs"
+        }
+        headerColor="blue"
+      >
+        <div className="space-y-4">
+          {commonVerbs.map((verb, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+            >
+              <div className="mb-3">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                      {verb.infinitive}
+                    </span>
+                    <span className="text-xs text-neutral-600 dark:text-neutral-400 ml-2">
+                      ({verb.english})
+                    </span>
+                  </div>
+                  <AudioButton
+                    onClick={() => speakGerman(verb.infinitive)}
+                    title={t.ui.listen}
+                    size="sm"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-2 text-sm">
+                <div className="bg-neutral-100 dark:bg-neutral-700 rounded p-2 text-center">
+                  <div className="text-xs text-neutral-500 mb-1">ich</div>
+                  <div className="font-mono text-neutral-900 dark:text-neutral-100">
+                    {verb.ich}
+                  </div>
+                </div>
+                <div className="bg-neutral-100 dark:bg-neutral-700 rounded p-2 text-center">
+                  <div className="text-xs text-neutral-500 mb-1">du</div>
+                  <div className="font-mono text-neutral-900 dark:text-neutral-100">
+                    {verb.du}
+                  </div>
+                </div>
+                <div className="bg-neutral-100 dark:bg-neutral-700 rounded p-2 text-center">
+                  <div className="text-xs text-neutral-500 mb-1">er/sie/es</div>
+                  <div className="font-mono text-neutral-900 dark:text-neutral-100">
+                    {verb.er}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+      </Box>
 
-        <div className="p-6">
-          <div className="space-y-4">
-            {commonVerbs.map((verb, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
-              >
-                <div className="mb-3">
+      {/* Personal Pronouns Section */}
+      <Box
+        title={isGerman ? "Personalpronomen" : "Personal Pronouns"}
+        description={
+          isGerman
+            ? "Pronomen für die Verbkonjugation"
+            : "Pronouns for verb conjugation"
+        }
+        headerColor="pink"
+      >
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+              {isGerman ? "Singular" : "Singular"}
+            </h3>
+            <div className="space-y-2">
+              {[
+                { german: "ich", english: "I" },
+                { german: "du", english: "you (informal)" },
+                { german: "er/sie/es", english: "he/she/it" },
+              ].map((pronoun, index) => (
+                <div
+                  key={index}
+                  className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-2 border border-neutral-200 dark:border-neutral-700"
+                >
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                        {verb.infinitive}
+                      <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
+                        {pronoun.german}
                       </span>
                       <span className="text-xs text-neutral-600 dark:text-neutral-400 ml-2">
-                        ({verb.english})
+                        ({pronoun.english})
                       </span>
                     </div>
                     <AudioButton
-                      onClick={() => speakGerman(verb.infinitive)}
+                      onClick={() => speakGerman(pronoun.german)}
                       title={t.ui.listen}
                       size="sm"
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-3 gap-2 text-sm">
-                  <div className="bg-neutral-100 dark:bg-neutral-700 rounded p-2 text-center">
-                    <div className="text-xs text-neutral-500 mb-1">ich</div>
-                    <div className="font-mono text-neutral-900 dark:text-neutral-100">
-                      {verb.ich}
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+              {isGerman ? "Plural" : "Plural"}
+            </h3>
+            <div className="space-y-2">
+              {[
+                { german: "wir", english: "we" },
+                { german: "ihr", english: "you (informal plural)" },
+                { german: "sie/Sie", english: "they/you (formal)" },
+              ].map((pronoun, index) => (
+                <div
+                  key={index}
+                  className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-2 border border-neutral-200 dark:border-neutral-700"
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
+                        {pronoun.german}
+                      </span>
+                      <span className="text-xs text-neutral-600 dark:text-neutral-400 ml-2">
+                        ({pronoun.english})
+                      </span>
                     </div>
-                  </div>
-                  <div className="bg-neutral-100 dark:bg-neutral-700 rounded p-2 text-center">
-                    <div className="text-xs text-neutral-500 mb-1">du</div>
-                    <div className="font-mono text-neutral-900 dark:text-neutral-100">
-                      {verb.du}
-                    </div>
-                  </div>
-                  <div className="bg-neutral-100 dark:bg-neutral-700 rounded p-2 text-center">
-                    <div className="text-xs text-neutral-500 mb-1">
-                      er/sie/es
-                    </div>
-                    <div className="font-mono text-neutral-900 dark:text-neutral-100">
-                      {verb.er}
-                    </div>
+                    <AudioButton
+                      onClick={() => speakGerman(pronoun.german.split("/")[0])}
+                      title={t.ui.listen}
+                      size="sm"
+                    />
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Personal Pronouns Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Personalpronomen" : "Personal Pronouns"}
-          </h2>
-          <p className="text-purple-100 mt-1 text-sm">
-            {isGerman
-              ? "Pronomen für die Verbkonjugation"
-              : "Pronouns for verb conjugation"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                {isGerman ? "Singular" : "Singular"}
-              </h3>
-              <div className="space-y-2">
-                {[
-                  { german: "ich", english: "I" },
-                  { german: "du", english: "you (informal)" },
-                  { german: "er/sie/es", english: "he/she/it" },
-                ].map((pronoun, index) => (
-                  <div
-                    key={index}
-                    className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-2 border border-neutral-200 dark:border-neutral-700"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-                          {pronoun.german}
-                        </span>
-                        <span className="text-xs text-neutral-600 dark:text-neutral-400 ml-2">
-                          ({pronoun.english})
-                        </span>
-                      </div>
-                      <AudioButton
-                        onClick={() => speakGerman(pronoun.german)}
-                        title={t.ui.listen}
-                        size="sm"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                {isGerman ? "Plural" : "Plural"}
-              </h3>
-              <div className="space-y-2">
-                {[
-                  { german: "wir", english: "we" },
-                  { german: "ihr", english: "you (informal plural)" },
-                  { german: "sie/Sie", english: "they/you (formal)" },
-                ].map((pronoun, index) => (
-                  <div
-                    key={index}
-                    className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-2 border border-neutral-200 dark:border-neutral-700"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-                          {pronoun.german}
-                        </span>
-                        <span className="text-xs text-neutral-600 dark:text-neutral-400 ml-2">
-                          ({pronoun.english})
-                        </span>
-                      </div>
-                      <AudioButton
-                        onClick={() =>
-                          speakGerman(pronoun.german.split("/")[0])
-                        }
-                        title={t.ui.listen}
-                        size="sm"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      </Box>
 
       {/* Practice Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Verbkonjugationen üben" : "Practice Verb Conjugations"}
-          </h2>
-          <p className="text-green-100 mt-1 text-sm">
-            {isGerman
-              ? "Gedächtnishilfen und Übungstipps"
-              : "Memory tips and practice hints"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-6">
-            <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-                {isGerman ? "Gedächtnishilfen" : "Memory Tips"}
-              </h3>
-              <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>ich:</strong>{" "}
-                    {isGerman ? "Endet immer mit -e" : "Always ends with -e"}
-                  </div>
+      <Box
+        title={
+          isGerman ? "Verbkonjugationen üben" : "Practice Verb Conjugations"
+        }
+        description={
+          isGerman
+            ? "Gedächtnishilfen und Übungstipps"
+            : "Memory tips and practice hints"
+        }
+        headerColor="green"
+      >
+        <div className="space-y-6">
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
+              {isGerman ? "Gedächtnishilfen" : "Memory Tips"}
+            </h3>
+            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>ich:</strong>{" "}
+                  {isGerman ? "Endet immer mit -e" : "Always ends with -e"}
                 </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>du:</strong>{" "}
-                    {isGerman ? "Endet immer mit -st" : "Always ends with -st"}
-                  </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>du:</strong>{" "}
+                  {isGerman ? "Endet immer mit -st" : "Always ends with -st"}
                 </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>er/sie/es:</strong>{" "}
-                    {isGerman ? "Endet immer mit -t" : "Always ends with -t"}
-                  </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>er/sie/es:</strong>{" "}
+                  {isGerman ? "Endet immer mit -t" : "Always ends with -t"}
                 </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>wir/ihr/sie/Sie:</strong>{" "}
-                    {isGerman
-                      ? "Verwende Infinitivform oder -t/-en"
-                      : "Use infinitive form or -t/-en"}
-                  </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>wir/ihr/sie/Sie:</strong>{" "}
+                  {isGerman
+                    ? "Verwende Infinitivform oder -t/-en"
+                    : "Use infinitive form or -t/-en"}
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-                {isGerman ? "Perfekt Regeln" : "Perfekt Rules"}
-              </h3>
-              <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>haben:</strong>{" "}
-                    {isGerman
-                      ? "Die meisten Verben (lernen, lesen, schlafen)"
-                      : "Most verbs (learn, read, sleep)"}
-                  </div>
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
+              {isGerman ? "Perfekt Regeln" : "Perfekt Rules"}
+            </h3>
+            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>haben:</strong>{" "}
+                  {isGerman
+                    ? "Die meisten Verben (lernen, lesen, schlafen)"
+                    : "Most verbs (learn, read, sleep)"}
                 </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>sein:</strong>{" "}
-                    {isGerman
-                      ? "Bewegungsverben (gehen, fahren, fliegen) und Zustandsänderungen"
-                      : "Movement verbs (go, drive, fly) and state changes"}
-                  </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>sein:</strong>{" "}
+                  {isGerman
+                    ? "Bewegungsverben (gehen, fahren, fliegen) und Zustandsänderungen"
+                    : "Movement verbs (go, drive, fly) and state changes"}
                 </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>Partizip II:</strong>{" "}
-                    {isGerman
-                      ? "ge- + Verbstamm + -t/-en"
-                      : "ge- + verb stem + -t/-en"}
-                  </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>Partizip II:</strong>{" "}
+                  {isGerman
+                    ? "ge- + Verbstamm + -t/-en"
+                    : "ge- + verb stem + -t/-en"}
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Box>
 
       {/* Examples Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Beispiele" : "Examples"}
-          </h2>
-          <p className="text-green-100 mt-1 text-sm">
-            {isGerman
-              ? "Verbkonjugation in verschiedenen Zeiten"
-              : "Verb conjugation in different tenses"}
-          </p>
-        </div>
+      <Box
+        title={isGerman ? "Beispiele" : "Examples"}
+        description={
+          isGerman
+            ? "Verbkonjugation in verschiedenen Zeiten"
+            : "Verb conjugation in different tenses"
+        }
+        headerColor="green"
+      >
         <div className="p-6">
           <div className="grid gap-8">
             {/* Präsens Examples */}
@@ -678,7 +650,7 @@ const Verbs: React.FC<VerbsProps> = ({ language }) => {
             </div>
           </div>
         </div>
-      </div>
+      </Box>
     </PageLayout>
   );
 };

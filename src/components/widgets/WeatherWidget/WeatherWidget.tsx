@@ -1,7 +1,7 @@
 import React from "react";
 import { Language } from "../../../hooks/useTranslations";
 import { useTranslation } from "../../../constants/translations";
-import Widget from "../../ui/Widget/Widget";
+import Box from "../../ui/Box/Box";
 import Dropdown from "../../ui/Dropdown/Dropdown";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 
@@ -207,7 +207,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
 
   if (loading) {
     return (
-      <Widget
+      <Box
         titleKey="wetter"
         language={language}
         headerColor="primary"
@@ -220,13 +220,13 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
         <div className="flex items-center justify-center h-32">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
         </div>
-      </Widget>
+      </Box>
     );
   }
 
   if (error) {
     return (
-      <Widget
+      <Box
         titleKey="wetter"
         language={language}
         headerColor="primary"
@@ -239,13 +239,13 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
         <div className="text-center text-red-600 dark:text-red-400">
           {error}
         </div>
-      </Widget>
+      </Box>
     );
   }
 
   if (!weather) {
     return (
-      <Widget
+      <Box
         titleKey="wetter"
         language={language}
         headerColor="primary"
@@ -258,12 +258,12 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
         <div className="text-center text-neutral-600 dark:text-neutral-400">
           {t.weather.stadtAuswaehlen}
         </div>
-      </Widget>
+      </Box>
     );
   }
 
   return (
-    <Widget
+    <Box
       titleKey="wetter"
       language={language}
       headerColor="primary"
@@ -416,7 +416,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
           </div>
         </div>
       </div>
-    </Widget>
+    </Box>
   );
 };
 

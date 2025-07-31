@@ -18,6 +18,7 @@ export { default as GermanAdjectiveDeclensionWidget } from "./widgets/GermanAdje
 export { default as GermanVerbsPrepositionsWidget } from "./widgets/GermanVerbsPrepositionsWidget/GermanVerbsPrepositionsWidget";
 
 // UI components
+export { default as Box } from "./ui/Box/Box";
 export { default as Widget } from "./ui/Widget/Widget";
 export { default as Dropdown } from "./ui/Dropdown/Dropdown";
 export { default as AudioButton } from "./ui/AudioButton/AudioButton";

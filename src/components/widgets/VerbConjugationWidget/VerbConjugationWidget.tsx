@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Language } from "../../../hooks/useTranslations";
-import Widget from "../../ui/Widget/Widget";
+import Box from "../../ui/Box/Box";
 import Dropdown from "../../ui/Dropdown/Dropdown";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 
@@ -307,8 +307,7 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
   };
 
   return (
-    <Widget
-      titleKey="verbzeiten"
+    <Box titleKey="verbzeiten"
       language={language}
       headerColor="purple"
       description={
@@ -460,7 +459,7 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
           </div>
         )}
       </div>
-    </Widget>
+    </Box>
   );
 };
 

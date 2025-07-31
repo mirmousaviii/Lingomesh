@@ -8,6 +8,7 @@ import WeatherWidget from "../../components/widgets/WeatherWidget/WeatherWidget"
 import PageLayout from "../../components/layout/PageLayout";
 import AudioButton from "../../components/ui/AudioButton/AudioButton";
 import { QuizWidget, QuizQuestion } from "../../components/widgets/QuizWidget";
+import Box from "../../components/ui/Box/Box";
 
 interface WeatherProps {
   language: Language;
@@ -256,156 +257,139 @@ const Weather: React.FC<WeatherProps> = ({ language }) => {
   ];
 
   return (
-    <PageLayout
-      widget={
-        <WeatherWidget
-          weather={weather}
-          loading={isLoading}
-          error={error}
-          selectedCity={selectedCity}
-          setSelectedCity={setSelectedCity}
-          germanCities={GERMAN_CITIES}
-          language={language}
-        />
-      }
-      quizWidget={
-        <QuizWidget
-          language={language}
-          questions={weatherQuizQuestions}
-          subject={isGerman ? "Wetter" : "Weather"}
-        />
-      }
-    >
-      {/* Weather Vocabulary Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-blue-600 to-cyan-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Wetter-Vokabular" : "Weather Vocabulary"}
-          </h2>
-          <p className="text-blue-100 mt-1 text-sm">
-            {isGerman
-              ? "Wichtige Wörter zum Thema Wetter"
-              : "Important words related to weather"}
-          </p>
-        </div>
+    <PageLayout>
+      {/* Weather Widget */}
+      <WeatherWidget
+        weather={weather}
+        loading={isLoading}
+        error={error}
+        selectedCity={selectedCity}
+        setSelectedCity={setSelectedCity}
+        germanCities={GERMAN_CITIES}
+        language={language}
+      />
 
-        <div className="p-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {weatherVocabulary.map((item, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div
-                      className={`text-sm font-semibold ${getCategoryColor(
-                        item.category
-                      )} mb-1`}
-                    >
-                      {item.german}
-                    </div>
-                    <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                      {item.english}
-                    </div>
+      {/* Quiz Widget */}
+      <QuizWidget
+        language={language}
+        questions={weatherQuizQuestions}
+        subject={isGerman ? "Wetter" : "Weather"}
+      />
+      {/* Weather Vocabulary Section */}
+      <Box
+        title={isGerman ? "Wetter-Vokabular" : "Weather Vocabulary"}
+        description={
+          isGerman
+            ? "Wichtige Wörter zum Thema Wetter"
+            : "Important words related to weather"
+        }
+        headerColor="blue"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {weatherVocabulary.map((item, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <div
+                    className={`text-sm font-semibold ${getCategoryColor(
+                      item.category
+                    )} mb-1`}
+                  >
+                    {item.german}
                   </div>
-                  <AudioButton
-                    onClick={() => speakGerman(item.german)}
-                    title={t.ui.listen}
-                    size="sm"
-                  />
+                  <div className="text-xs text-neutral-600 dark:text-neutral-400">
+                    {item.english}
+                  </div>
                 </div>
+                <AudioButton
+                  onClick={() => speakGerman(item.german)}
+                  title={t.ui.listen}
+                  size="sm"
+                />
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </Box>
 
       {/* Seasons Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-green-600 to-teal-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Jahreszeiten" : "Seasons"}
-          </h2>
-          <p className="text-green-100 mt-1 text-sm">
-            {isGerman
-              ? "Die vier Jahreszeiten auf Deutsch"
-              : "The four seasons in German"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {seasons.map((season, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <div>
-                    <div className="text-sm font-semibold text-green-600 dark:text-green-400">
-                      {season.german}
-                    </div>
-                    <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                      {season.english}
-                    </div>
+      <Box
+        title={isGerman ? "Jahreszeiten" : "Seasons"}
+        description={
+          isGerman
+            ? "Die vier Jahreszeiten auf Deutsch"
+            : "The four seasons in German"
+        }
+        headerColor="green"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {seasons.map((season, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <div>
+                  <div className="text-sm font-semibold text-green-600 dark:text-green-400">
+                    {season.german}
                   </div>
-                  <AudioButton
-                    onClick={() => speakGerman(season.german)}
-                    title={t.ui.listen}
-                    size="sm"
-                  />
+                  <div className="text-xs text-neutral-600 dark:text-neutral-400">
+                    {season.english}
+                  </div>
                 </div>
-                <div className="text-xs text-neutral-500">
-                  {season.description}
-                </div>
+                <AudioButton
+                  onClick={() => speakGerman(season.german)}
+                  title={t.ui.listen}
+                  size="sm"
+                />
               </div>
-            ))}
-          </div>
+              <div className="text-xs text-neutral-500">
+                {season.description}
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </Box>
 
       {/* Weather Phrases Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Wetter-Phrasen" : "Weather Phrases"}
-          </h2>
-          <p className="text-purple-100 mt-1 text-sm">
-            {isGerman
-              ? "Nützliche Phrasen zum Thema Wetter"
-              : "Useful phrases about weather"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-4">
-            {weatherPhrases.map((phrase, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-neutral-900 dark:text-neutral-100">
-                    {phrase.german}
-                  </span>
-                  <AudioButton
-                    onClick={() => speakGerman(phrase.german)}
-                    title={t.ui.listen}
-                    size="sm"
-                  />
-                </div>
-                <div className="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
-                  {phrase.english}
-                </div>
-                <div className="text-xs text-purple-600 dark:text-purple-400">
-                  {phrase.usage}
-                </div>
+      <Box
+        title={isGerman ? "Wetter-Phrasen" : "Weather Phrases"}
+        description={
+          isGerman
+            ? "Nützliche Phrasen zum Thema Wetter"
+            : "Useful phrases about weather"
+        }
+        headerColor="pink"
+      >
+        <div className="space-y-4">
+          {weatherPhrases.map((phrase, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-semibold text-neutral-900 dark:text-neutral-100">
+                  {phrase.german}
+                </span>
+                <AudioButton
+                  onClick={() => speakGerman(phrase.german)}
+                  title={t.ui.listen}
+                  size="sm"
+                />
               </div>
-            ))}
-          </div>
+              <div className="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
+                {phrase.english}
+              </div>
+              <div className="text-xs text-purple-600 dark:text-purple-400">
+                {phrase.usage}
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </Box>
     </PageLayout>
   );
 };

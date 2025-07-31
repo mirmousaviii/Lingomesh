@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Language } from "../../../hooks/useTranslations";
-import Widget from "../../ui/Widget/Widget";
+import Box from "../../ui/Box/Box";
 import Dropdown from "../../ui/Dropdown/Dropdown";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 
@@ -187,8 +187,7 @@ const GermanVerbsPrepositionsWidget: React.FC<
   const filteredVerbs = getFilteredVerbs();
 
   return (
-    <Widget
-      titleKey="verbenPraepositionen"
+    <Box titleKey="verbenPraepositionen"
       language={language}
       headerColor="blue"
       description={
@@ -330,7 +329,7 @@ const GermanVerbsPrepositionsWidget: React.FC<
           </div>
         </div>
       </div>
-    </Widget>
+    </Box>
   );
 };
 

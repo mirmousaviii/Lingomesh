@@ -1,6 +1,6 @@
 import { Language } from "../../../hooks/useTranslations";
 import React, { useState } from "react";
-import Widget from "../../ui/Widget/Widget";
+import Box from "../../ui/Box/Box";
 import Dropdown from "../../ui/Dropdown/Dropdown";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 
@@ -295,8 +295,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
   const currentDeclension = getCurrentDeclension();
 
   return (
-    <Widget
-      titleKey="adjektivdeklination"
+    <Box titleKey="adjektivdeklination"
       language={language}
       headerColor="emerald"
       description={
@@ -471,7 +470,7 @@ const GermanAdjectiveDeclensionWidget: React.FC<
           </div>
         )}
       </div>
-    </Widget>
+    </Box>
   );
 };
 

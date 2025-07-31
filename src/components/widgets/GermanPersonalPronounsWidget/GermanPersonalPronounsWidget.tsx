@@ -1,6 +1,6 @@
 import React from "react";
 import { Language } from "../../../hooks/useTranslations";
-import Widget from "../../ui/Widget/Widget";
+import Box from "../../ui/Box/Box";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 
 interface GermanPersonalPronounsWidgetProps {
@@ -185,8 +185,7 @@ const GermanPersonalPronounsWidget: React.FC<
   ];
 
   return (
-    <Widget
-      titleKey="personalpronomen"
+    <Box titleKey="personalpronomen"
       language={language}
       headerColor="pink"
       description={
@@ -286,7 +285,7 @@ const GermanPersonalPronounsWidget: React.FC<
           </div>
         </div>
       </div>
-    </Widget>
+    </Box>
   );
 };
 

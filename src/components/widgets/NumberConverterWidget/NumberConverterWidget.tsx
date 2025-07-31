@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { Language } from "../../../hooks/useTranslations";
-import { useTranslation } from "../../../constants/translations";
-import Widget from "../../ui/Widget/Widget";
+import { useModuleTranslations } from "../../../hooks/useModuleTranslations";
+import { NumberConverterTranslations } from "./translations";
+import { UITranslations } from "../../ui/translations";
+import Box from "../../ui/Box/Box";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 import {
   convertNumberToGermanStructured,
@@ -18,7 +20,11 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
   const [numberInput, setNumberInput] = useState("321");
   const [convertedParts, setConvertedParts] = useState<NumberPart[]>([]);
   const [inputError, setInputError] = useState(false);
-  const t = useTranslation(language);
+  const t = useModuleTranslations<NumberConverterTranslations>(
+    "numberConverter",
+    language
+  );
+  const ui = useModuleTranslations<UITranslations>("ui", language);
 
   useEffect(() => {
     if (numberInput) {
@@ -74,11 +80,10 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
   };
 
   return (
-    <Widget
-      titleKey="zahlenkonverter"
+    <Box titleKey="zahlenkonverter"
       language={language}
       headerColor="primary"
-      description={t.widgets.numberConverterDescription}
+      description={t?.description || "Convert numbers to German words"}
     >
       <div className="space-y-6">
         {/* Input Section */}
@@ -98,7 +103,8 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
           />
           {inputError && (
             <p className="text-sm text-red-600 dark:text-red-400 mt-1">
-              {t.ui.numberRangeError}
+              {ui?.numberRangeError ||
+                "Please enter a number between 0 and 999,999,999"}
             </p>
           )}
         </div>
@@ -125,7 +131,7 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
 
                 <AudioButton
                   onClick={() => speakText(convertedParts)}
-                  title={t.ui.listen}
+                  title={ui?.listen || "Listen"}
                   size="lg"
                 />
               </div>
@@ -134,43 +140,43 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
             {/* Color Legend */}
             <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
               <h4 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-3">
-                {t.ui.colorLegend}
+                {ui?.colorLegend || "Color Legend"}
               </h4>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-blue-500"></div>
                   <span className="text-neutral-600 dark:text-neutral-400">
-                    {t.ui.units}
+                    {ui?.units || "Units"}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   <span className="text-neutral-600 dark:text-neutral-400">
-                    {t.ui.tens}
+                    {ui?.tens || "Tens"}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-purple-500"></div>
                   <span className="text-neutral-600 dark:text-neutral-400">
-                    {t.ui.hundreds}
+                    {ui?.hundreds || "Hundreds"}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-orange-500"></div>
                   <span className="text-neutral-600 dark:text-neutral-400">
-                    {t.ui.thousands}
+                    {ui?.thousands || "Thousands"}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <span className="text-neutral-600 dark:text-neutral-400">
-                    {t.ui.millions}
+                    {ui?.millions || "Millions"}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
                   <span className="text-neutral-600 dark:text-neutral-400">
-                    {t.ui.connectors}
+                    {ui?.connectors || "Connectors"}
                   </span>
                 </div>
               </div>
@@ -202,7 +208,7 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
           </div>
         )}
       </div>
-    </Widget>
+    </Box>
   );
 };
 

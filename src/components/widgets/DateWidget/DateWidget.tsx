@@ -1,6 +1,6 @@
 import { Language } from "../../../hooks/useTranslations";
 import { useTranslation } from "../../../constants/translations";
-import Widget from "../../ui/Widget/Widget";
+import Box from "../../ui/Box/Box";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 import { convertNumberToGerman } from "../../../utils/numberConverter";
 import { useState, useEffect, useRef } from "react";
@@ -232,7 +232,7 @@ const DateWidget: React.FC<DateWidgetProps> = ({
   };
 
   return (
-    <Widget
+    <Box
       titleKey="datum"
       language={language}
       headerColor="primary"
@@ -363,7 +363,7 @@ const DateWidget: React.FC<DateWidgetProps> = ({
           </div>
         </div>
       </div>
-    </Widget>
+    </Box>
   );
 };
 

@@ -5,6 +5,7 @@ import AudioButton from "../../components/ui/AudioButton/AudioButton";
 import PageLayout from "../../components/layout/PageLayout";
 import { QuizWidget, QuizQuestion } from "../../components/widgets/QuizWidget";
 import { useState, useEffect } from "react";
+import Box from "../../components/ui/Box/Box";
 
 interface TimeProps {
   language: Language;
@@ -240,171 +241,152 @@ const Time: React.FC<TimeProps> = ({ language }) => {
   ];
 
   return (
-    <PageLayout
-      widget={
-        <TimeWidget
-          currentTime={currentTime}
-          language={language}
-          setCurrentTime={setCurrentTime}
-        />
-      }
-      quizWidget={
-        <QuizWidget
-          language={language}
-          questions={timeQuizQuestions}
-          subject={isGerman ? "Zeit" : "Time"}
-        />
-      }
-    >
-      {/* Time Examples Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Zeitformate" : "Time Formats"}
-          </h2>
-          <p className="text-blue-100 mt-1 text-sm">
-            {isGerman
-              ? "Lernen Sie 12- und 24-Stunden-Formate im Deutschen"
-              : "Learn 12 and 24-hour formats in German"}
-          </p>
-        </div>
+    <PageLayout>
+      {/* Time Widget */}
+      <TimeWidget
+        currentTime={currentTime}
+        language={language}
+        setCurrentTime={setCurrentTime}
+      />
 
-        <div className="p-6">
-          <div className="space-y-4">
-            {timeExamples.map((item, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-                  <div className="text-center">
-                    <div className="text-xl font-bold text-blue-600 dark:text-blue-400">
-                      {item.time}
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-neutral-500">Formal:</span>
-                      <AudioButton
-                        onClick={() => speakGerman(item.formal)}
-                        title={t.ui.listen}
-                        size="sm"
-                      />
-                    </div>
-                    <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                      {item.formal}
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-neutral-500">
-                        Informal:
-                      </span>
-                      <AudioButton
-                        onClick={() => speakGerman(item.informal)}
-                        title={t.ui.listen}
-                        size="sm"
-                      />
-                    </div>
-                    <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                      {item.informal}
-                    </div>
+      {/* Quiz Widget */}
+      <QuizWidget
+        language={language}
+        questions={timeQuizQuestions}
+        subject={isGerman ? "Zeit" : "Time"}
+      />
+      {/* Time Examples Section */}
+      <Box
+        title={isGerman ? "Zeitformate" : "Time Formats"}
+        description={
+          isGerman
+            ? "Lernen Sie 12- und 24-Stunden-Formate im Deutschen"
+            : "Learn 12 and 24-hour formats in German"
+        }
+        headerColor="blue"
+      >
+        <div className="space-y-4">
+          {timeExamples.map((item, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                <div className="text-center">
+                  <div className="text-xl font-bold text-blue-600 dark:text-blue-400">
+                    {item.time}
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Time Rules Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Zeitausdrücke" : "Time Expressions"}
-          </h2>
-          <p className="text-indigo-100 mt-1 text-sm">
-            {isGerman
-              ? "Wichtige Ausdrücke für die Uhrzeit im Deutschen"
-              : "Important time expressions in German"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-4">
-            {timeRules.map((rule, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
-              >
-                <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
-                  {rule.title}
-                </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
-                  {rule.description}
-                </p>
-                <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-3 border border-indigo-200 dark:border-indigo-800">
+                <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-sm text-indigo-700 dark:text-indigo-300">
-                      {rule.example}
-                    </span>
+                    <span className="text-xs text-neutral-500">Formal:</span>
                     <AudioButton
-                      onClick={() => speakGerman(rule.example.split(" → ")[1])}
+                      onClick={() => speakGerman(item.formal)}
                       title={t.ui.listen}
                       size="sm"
                     />
                   </div>
+                  <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                    {item.formal}
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-neutral-500">Informal:</span>
+                    <AudioButton
+                      onClick={() => speakGerman(item.informal)}
+                      title={t.ui.listen}
+                      size="sm"
+                    />
+                  </div>
+                  <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                    {item.informal}
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </Box>
 
-      {/* Time Vocabulary Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Zeit-Vokabular" : "Time Vocabulary"}
-          </h2>
-          <p className="text-purple-100 mt-1 text-sm">
-            {isGerman
-              ? "Wichtige Wörter rund um die Zeit"
-              : "Important words related to time"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {timeVocabulary.map((item, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
-              >
+      {/* Time Rules Section */}
+      <Box
+        title={isGerman ? "Zeitausdrücke" : "Time Expressions"}
+        description={
+          isGerman
+            ? "Wichtige Ausdrücke für die Uhrzeit im Deutschen"
+            : "Important time expressions in German"
+        }
+        headerColor="purple"
+      >
+        <div className="space-y-4">
+          {timeRules.map((rule, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+            >
+              <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+                {rule.title}
+              </h3>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+                {rule.description}
+              </p>
+              <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-3 border border-indigo-200 dark:border-indigo-800">
                 <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div
-                      className={`text-sm font-semibold ${getCategoryColor(
-                        item.category
-                      )} mb-1`}
-                    >
-                      {item.german}
-                    </div>
-                    <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                      {item.english}
-                    </div>
-                  </div>
+                  <span className="font-mono text-sm text-indigo-700 dark:text-indigo-300">
+                    {rule.example}
+                  </span>
                   <AudioButton
-                    onClick={() => speakGerman(item.german)}
+                    onClick={() => speakGerman(rule.example.split(" → ")[1])}
                     title={t.ui.listen}
                     size="sm"
                   />
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </Box>
+
+      {/* Time Vocabulary Section */}
+      <Box
+        title={isGerman ? "Zeit-Vokabular" : "Time Vocabulary"}
+        description={
+          isGerman
+            ? "Wichtige Wörter rund um die Zeit"
+            : "Important words related to time"
+        }
+        headerColor="pink"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {timeVocabulary.map((item, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <div
+                    className={`text-sm font-semibold ${getCategoryColor(
+                      item.category
+                    )} mb-1`}
+                  >
+                    {item.german}
+                  </div>
+                  <div className="text-xs text-neutral-600 dark:text-neutral-400">
+                    {item.english}
+                  </div>
+                </div>
+                <AudioButton
+                  onClick={() => speakGerman(item.german)}
+                  title={t.ui.listen}
+                  size="sm"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </Box>
     </PageLayout>
   );
 };

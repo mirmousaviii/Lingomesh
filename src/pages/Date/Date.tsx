@@ -5,6 +5,7 @@ import AudioButton from "../../components/ui/AudioButton/AudioButton";
 import PageLayout from "../../components/layout/PageLayout";
 import { QuizWidget, QuizQuestion } from "../../components/widgets/QuizWidget";
 import { useState, useEffect } from "react";
+import Box from "../../components/ui/Box/Box";
 
 interface DatePageProps {
   language: Language;
@@ -238,195 +239,178 @@ const DatePage: React.FC<DatePageProps> = ({ language }) => {
   ];
 
   return (
-    <PageLayout
-      widget={
-        <DateWidget
-          currentTime={currentTime}
-          language={language}
-          setCurrentTime={setCurrentTime}
-        />
-      }
-      quizWidget={
-        <QuizWidget
-          language={language}
-          questions={dateQuizQuestions}
-          subject={isGerman ? "Datum" : "Date"}
-        />
-      }
-    >
-      {/* Date Formats Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Datumsformate" : "Date Formats"}
-          </h2>
-          <p className="text-emerald-100 mt-1 text-sm">
-            {isGerman
-              ? "Deutsche Datumsangaben verstehen und verwenden"
-              : "Understand and use German date formats"}
-          </p>
-        </div>
+    <PageLayout>
+      {/* Date Widget */}
+      <DateWidget
+        currentTime={currentTime}
+        language={language}
+        setCurrentTime={setCurrentTime}
+      />
 
-        <div className="p-6">
-          <div className="space-y-4">
-            {dateFormats.map((item, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
-                      {item.format}
-                    </div>
-                    <div className="text-xs text-neutral-500">
-                      {item.description}
-                    </div>
+      {/* Quiz Widget */}
+      <QuizWidget
+        language={language}
+        questions={dateQuizQuestions}
+        subject={isGerman ? "Datum" : "Date"}
+      />
+      {/* Date Formats Section */}
+      <Box
+        title={isGerman ? "Datumsformate" : "Date Formats"}
+        description={
+          isGerman
+            ? "Deutsche Datumsangaben verstehen und verwenden"
+            : "Understand and use German date formats"
+        }
+        headerColor="emerald"
+      >
+        <div className="space-y-4">
+          {dateFormats.map((item, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                <div className="text-center">
+                  <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
+                    {item.format}
                   </div>
-                  <div className="md:col-span-2 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-neutral-500">Spoken:</span>
-                      <AudioButton
-                        onClick={() => speakGerman(item.spoken)}
-                        title={t.ui.listen}
-                        size="sm"
-                      />
-                    </div>
-                    <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                      {item.spoken}
-                    </div>
+                  <div className="text-xs text-neutral-500">
+                    {item.description}
+                  </div>
+                </div>
+                <div className="md:col-span-2 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-neutral-500">Spoken:</span>
+                    <AudioButton
+                      onClick={() => speakGerman(item.spoken)}
+                      title={t.ui.listen}
+                      size="sm"
+                    />
+                  </div>
+                  <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                    {item.spoken}
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </Box>
 
       {/* Months and Days Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-blue-600 to-cyan-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Monate und Tage" : "Months and Days"}
-          </h2>
-          <p className="text-blue-100 mt-1 text-sm">
-            {isGerman
-              ? "Alle Monatsnamen und Wochentage auf Deutsch"
-              : "All month names and weekdays in German"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-6">
-            {/* Months */}
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-                {isGerman ? "Monate" : "Months"}
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {months.map((month, index) => (
-                  <div
-                    key={index}
-                    className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <div className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                          {month.german}
-                        </div>
-                        <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                          {month.english} ({month.abbr})
-                        </div>
+      <Box
+        title={isGerman ? "Monate und Tage" : "Months and Days"}
+        description={
+          isGerman
+            ? "Alle Monatsnamen und Wochentage auf Deutsch"
+            : "All month names and weekdays in German"
+        }
+        headerColor="blue"
+      >
+        <div className="space-y-6">
+          {/* Months */}
+          <div>
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
+              {isGerman ? "Monate" : "Months"}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {months.map((month, index) => (
+                <div
+                  key={index}
+                  className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <div className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                        {month.german}
                       </div>
-                      <AudioButton
-                        onClick={() => speakGerman(month.german)}
-                        title={t.ui.listen}
-                        size="sm"
-                      />
+                      <div className="text-xs text-neutral-600 dark:text-neutral-400">
+                        {month.english} ({month.abbr})
+                      </div>
                     </div>
+                    <AudioButton
+                      onClick={() => speakGerman(month.german)}
+                      title={t.ui.listen}
+                      size="sm"
+                    />
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
+          </div>
 
-            {/* Weekdays */}
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-                {isGerman ? "Wochentage" : "Weekdays"}
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {weekdays.map((day, index) => (
-                  <div
-                    key={index}
-                    className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <div className="text-sm font-semibold text-cyan-600 dark:text-cyan-400">
-                          {day.german}
-                        </div>
-                        <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                          {day.english} ({day.abbr})
-                        </div>
+          {/* Weekdays */}
+          <div>
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
+              {isGerman ? "Wochentage" : "Weekdays"}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {weekdays.map((day, index) => (
+                <div
+                  key={index}
+                  className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <div className="text-sm font-semibold text-cyan-600 dark:text-cyan-400">
+                        {day.german}
                       </div>
-                      <AudioButton
-                        onClick={() => speakGerman(day.german)}
-                        title={t.ui.listen}
-                        size="sm"
-                      />
+                      <div className="text-xs text-neutral-600 dark:text-neutral-400">
+                        {day.english} ({day.abbr})
+                      </div>
                     </div>
+                    <AudioButton
+                      onClick={() => speakGerman(day.german)}
+                      title={t.ui.listen}
+                      size="sm"
+                    />
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      </Box>
 
       {/* Date Expressions Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Datumsausdrücke" : "Date Expressions"}
-          </h2>
-          <p className="text-purple-100 mt-1 text-sm">
-            {isGerman
-              ? "Nützliche Ausdrücke für Datumsangaben"
-              : "Useful expressions for dates"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {dateExpressions.map((item, index) => (
-              <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div
-                      className={`text-sm font-semibold ${getCategoryColor(
-                        item.category
-                      )} mb-1`}
-                    >
-                      {item.german}
-                    </div>
-                    <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                      {item.english}
-                    </div>
+      <Box
+        title={isGerman ? "Datumsausdrücke" : "Date Expressions"}
+        description={
+          isGerman
+            ? "Nützliche Ausdrücke für Datumsangaben"
+            : "Useful expressions for dates"
+        }
+        headerColor="purple"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {dateExpressions.map((item, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <div
+                    className={`text-sm font-semibold ${getCategoryColor(
+                      item.category
+                    )} mb-1`}
+                  >
+                    {item.german}
                   </div>
-                  <AudioButton
-                    onClick={() => speakGerman(item.german)}
-                    title={t.ui.listen}
-                    size="sm"
-                  />
+                  <div className="text-xs text-neutral-600 dark:text-neutral-400">
+                    {item.english}
+                  </div>
                 </div>
+                <AudioButton
+                  onClick={() => speakGerman(item.german)}
+                  title={t.ui.listen}
+                  size="sm"
+                />
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </Box>
     </PageLayout>
   );
 };

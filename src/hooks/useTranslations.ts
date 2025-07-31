@@ -15,6 +15,10 @@ export const useTranslations = () => {
         savedLanguage === "ru")
     ) {
       setLanguage(savedLanguage as Language);
+    } else {
+      // Set English as default if no valid language is saved
+      setLanguage("en");
+      localStorage.setItem("language", "en");
     }
   }, []);
 

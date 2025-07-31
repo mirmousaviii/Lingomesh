@@ -7,6 +7,7 @@ import {
 } from "../../components/widgets/QuizWidget";
 import PageLayout from "../../components/layout/PageLayout";
 import AudioButton from "../../components/ui/AudioButton/AudioButton";
+import Box from "../../components/ui/Box/Box";
 
 interface PronounsProps {
   language: Language;
@@ -137,237 +138,221 @@ const Pronouns: React.FC<PronounsProps> = ({ language }) => {
   };
 
   return (
-    <PageLayout
-      widget={<GermanPersonalPronounsWidget language={language} />}
-      quizWidget={
-        <QuizWidget
-          language={language}
-          questions={quizQuestions}
-          subject="pronouns"
-        />
-      }
-    >
+    <PageLayout>
+      <GermanPersonalPronounsWidget language={language} />
+      <QuizWidget
+        language={language}
+        questions={quizQuestions}
+        subject="pronouns"
+      />
       {/* Cases Overview */}
       {pronounCases.map((caseData, index) => (
-        <div
+        <Box
           key={index}
-          className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden"
+          title={caseData.case}
+          description={caseData.description}
+          headerColor={
+            caseData.case.includes("Nominativ")
+              ? "blue"
+              : caseData.case.includes("Akkusativ")
+              ? "green"
+              : caseData.case.includes("Dativ")
+              ? "purple"
+              : "primary"
+          }
         >
-          <div
-            className={`bg-gradient-to-r ${getCaseColor(
-              caseData.case
-            )} px-6 py-4`}
-          >
-            <h2 className="text-xl font-bold text-white">{caseData.case}</h2>
-            <p className="text-white/90 mt-1 text-sm">{caseData.description}</p>
-          </div>
-
-          <div className="p-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {caseData.pronouns.map((pronoun, idx) => (
-                <div
-                  key={idx}
-                  className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                        {pronoun.german}
-                      </div>
-                      <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                        {pronoun.english}
-                      </div>
-                    </div>
-                    <AudioButton
-                      onClick={() => speakGerman(pronoun.german)}
-                      title={t.ui.listen}
-                      size="sm"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      ))}
-
-      {/* Usage Examples */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-orange-600 to-red-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Verwendungsbeispiele" : "Usage Examples"}
-          </h2>
-          <p className="text-orange-100 mt-1 text-sm">
-            {isGerman
-              ? "Praktische Beispiele für Personalpronomen"
-              : "Practical examples of personal pronouns"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-4">
-            {[
-              {
-                german: "Ich sehe dich.",
-                english: "I see you.",
-                explanation: isGerman
-                  ? "Nominativ (ich) + Akkusativ (dich)"
-                  : "Nominative (ich) + Accusative (dich)",
-              },
-              {
-                german: "Er gibt mir das Buch.",
-                english: "He gives me the book.",
-                explanation: isGerman
-                  ? "Nominativ (er) + Dativ (mir)"
-                  : "Nominative (er) + Dative (mir)",
-              },
-              {
-                german: "Wir helfen ihnen.",
-                english: "We help them.",
-                explanation: isGerman
-                  ? "Nominativ (wir) + Dativ (ihnen)"
-                  : "Nominative (wir) + Dative (ihnen)",
-              },
-              {
-                german: "Sie kennt uns sehr gut.",
-                english: "She knows us very well.",
-                explanation: isGerman
-                  ? "Nominativ (sie) + Akkusativ (uns)"
-                  : "Nominative (sie) + Accusative (uns)",
-              },
-            ].map((example, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {caseData.pronouns.map((pronoun, idx) => (
               <div
-                key={index}
-                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+                key={idx}
+                className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-neutral-900 dark:text-neutral-100">
-                    {example.german}
-                  </span>
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                      {pronoun.german}
+                    </div>
+                    <div className="text-xs text-neutral-600 dark:text-neutral-400">
+                      {pronoun.english}
+                    </div>
+                  </div>
                   <AudioButton
-                    onClick={() => speakGerman(example.german)}
+                    onClick={() => speakGerman(pronoun.german)}
                     title={t.ui.listen}
                     size="sm"
                   />
                 </div>
-                <div className="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
-                  {example.english}
-                </div>
-                <div className="text-xs text-orange-600 dark:text-orange-400">
-                  {example.explanation}
-                </div>
               </div>
             ))}
           </div>
-        </div>
-      </div>
+        </Box>
+      ))}
 
-      {/* Practice Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Pronomen üben" : "Practice Pronouns"}
-          </h2>
-          <p className="text-green-100 mt-1 text-sm">
-            {isGerman
-              ? "Gedächtnishilfen und Übungstipps"
-              : "Memory tips and practice hints"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-6">
-            <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-                {isGerman ? "Gedächtnishilfen" : "Memory Tips"}
-              </h3>
-              <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>ich → mich:</strong>{" "}
-                    {isGerman
-                      ? "Denke 'ich' wird zu 'mich' im Akkusativ"
-                      : "Think 'I' becomes 'me' in accusative"}
-                  </div>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>du → dich:</strong>{" "}
-                    {isGerman
-                      ? "Denke 'du' wird zu 'dich' (Objektform)"
-                      : "Think 'you' becomes 'you' (object form)"}
-                  </div>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>er → ihn:</strong>{" "}
-                    {isGerman
-                      ? "Denke 'er' wird zu 'ihn' im Akkusativ"
-                      : "Think 'he' becomes 'him' in accusative"}
-                  </div>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>sie → ihr:</strong>{" "}
-                    {isGerman
-                      ? "Denke 'sie' wird zu 'ihr' im Dativ"
-                      : "Think 'she' becomes 'her' in dative"}
-                  </div>
-                </div>
+      {/* Usage Examples */}
+      <Box
+        title={isGerman ? "Verwendungsbeispiele" : "Usage Examples"}
+        description={
+          isGerman
+            ? "Praktische Beispiele für Personalpronomen"
+            : "Practical examples of personal pronouns"
+        }
+        headerColor="orange"
+      >
+        <div className="space-y-4">
+          {[
+            {
+              german: "Ich sehe dich.",
+              english: "I see you.",
+              explanation: isGerman
+                ? "Nominativ (ich) + Akkusativ (dich)"
+                : "Nominative (ich) + Accusative (dich)",
+            },
+            {
+              german: "Er gibt mir das Buch.",
+              english: "He gives me the book.",
+              explanation: isGerman
+                ? "Nominativ (er) + Dativ (mir)"
+                : "Nominative (er) + Dative (mir)",
+            },
+            {
+              german: "Wir helfen ihnen.",
+              english: "We help them.",
+              explanation: isGerman
+                ? "Nominativ (wir) + Dativ (ihnen)"
+                : "Nominative (wir) + Dative (ihnen)",
+            },
+            {
+              german: "Sie kennt uns sehr gut.",
+              english: "She knows us very well.",
+              explanation: isGerman
+                ? "Nominativ (sie) + Akkusativ (uns)"
+                : "Nominative (sie) + Accusative (uns)",
+            },
+          ].map((example, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-semibold text-neutral-900 dark:text-neutral-100">
+                  {example.german}
+                </span>
+                <AudioButton
+                  onClick={() => speakGerman(example.german)}
+                  title={t.ui.listen}
+                  size="sm"
+                />
+              </div>
+              <div className="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
+                {example.english}
+              </div>
+              <div className="text-xs text-orange-600 dark:text-orange-400">
+                {example.explanation}
               </div>
             </div>
+          ))}
+        </div>
+      </Box>
 
-            <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-                {isGerman ? "Häufige Muster" : "Common Patterns"}
-              </h3>
-              <div className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+      {/* Practice Section */}
+      <Box
+        title={isGerman ? "Pronomen üben" : "Practice Pronouns"}
+        description={
+          isGerman
+            ? "Gedächtnishilfen und Übungstipps"
+            : "Memory tips and practice hints"
+        }
+        headerColor="green"
+      >
+        <div className="space-y-6">
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
+              {isGerman ? "Gedächtnishilfen" : "Memory Tips"}
+            </h3>
+            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
                 <div>
-                  <strong>Nominativ:</strong> ich, du, er, sie, es, wir, ihr,
-                  sie, Sie
+                  <strong>ich → mich:</strong>{" "}
+                  {isGerman
+                    ? "Denke 'ich' wird zu 'mich' im Akkusativ"
+                    : "Think 'I' becomes 'me' in accusative"}
                 </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
                 <div>
-                  <strong>Akkusativ:</strong> mich, dich, ihn, sie, es, uns,
-                  euch, sie, Sie
+                  <strong>du → dich:</strong>{" "}
+                  {isGerman
+                    ? "Denke 'du' wird zu 'dich' (Objektform)"
+                    : "Think 'you' becomes 'you' (object form)"}
                 </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
                 <div>
-                  <strong>Dativ:</strong> mir, dir, ihm, ihr, ihm, uns, euch,
-                  ihnen, Ihnen
+                  <strong>er → ihn:</strong>{" "}
+                  {isGerman
+                    ? "Denke 'er' wird zu 'ihn' im Akkusativ"
+                    : "Think 'he' becomes 'him' in accusative"}
                 </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
                 <div>
-                  <strong>Genitiv:</strong> meiner, deiner, seiner, ihrer,
-                  seiner, unserer, eurer, ihrer, Ihrer
+                  <strong>sie → ihr:</strong>{" "}
+                  {isGerman
+                    ? "Denke 'sie' wird zu 'ihr' im Dativ"
+                    : "Think 'she' becomes 'her' in dative"}
                 </div>
               </div>
             </div>
           </div>
+
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
+              {isGerman ? "Häufige Muster" : "Common Patterns"}
+            </h3>
+            <div className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+              <div>
+                <strong>Nominativ:</strong> ich, du, er, sie, es, wir, ihr, sie,
+                Sie
+              </div>
+              <div>
+                <strong>Akkusativ:</strong> mich, dich, ihn, sie, es, uns, euch,
+                sie, Sie
+              </div>
+              <div>
+                <strong>Dativ:</strong> mir, dir, ihm, ihr, ihm, uns, euch,
+                ihnen, Ihnen
+              </div>
+              <div>
+                <strong>Genitiv:</strong> meiner, deiner, seiner, ihrer, seiner,
+                unserer, eurer, ihrer, Ihrer
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </Box>
 
       {/* Examples Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman ? "Beispiele" : "Examples"}
-          </h2>
-          <p className="text-purple-100 mt-1 text-sm">
-            {isGerman
-              ? "Personalpronomen in verschiedenen Fällen"
-              : "Personal pronouns in different cases"}
-          </p>
-        </div>
+      <Box
+        title={isGerman ? "Beispiele" : "Examples"}
+        description={
+          isGerman
+            ? "Personalpronomen in verschiedenen Fällen"
+            : "Personal pronouns in different cases"
+        }
+        headerColor="purple"
+      >
         <div className="p-6">
           <div className="grid gap-8">
             {/* Nominativ Examples */}
@@ -566,7 +551,7 @@ const Pronouns: React.FC<PronounsProps> = ({ language }) => {
             </div>
           </div>
         </div>
-      </div>
+      </Box>
     </PageLayout>
   );
 };
