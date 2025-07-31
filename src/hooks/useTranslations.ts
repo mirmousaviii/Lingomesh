@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 export type Language = "de" | "en" | "es" | "ru";
 
 export const useTranslations = () => {
-  const [language, setLanguage] = useState<Language>("en");
+  const [language, setLanguage] = useState<Language | null>(null);
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("language");
+    const savedLanguage = localStorage.getItem("lang");
     if (
       savedLanguage &&
       (savedLanguage === "de" ||
@@ -15,17 +15,14 @@ export const useTranslations = () => {
         savedLanguage === "ru")
     ) {
       setLanguage(savedLanguage as Language);
-    } else {
-      // Set English as default if no valid language is saved
-      setLanguage("en");
-      localStorage.setItem("language", "en");
     }
+    // Don't set any default language - let the language selection modal handle it
   }, []);
 
   const handleLanguageChange = (newLanguage: Language) => {
     setLanguage(newLanguage);
-    localStorage.setItem("language", newLanguage);
+    localStorage.setItem("lang", newLanguage);
   };
 
-  return { language, setLanguage: handleLanguageChange };
+  return { language: language || "en", setLanguage: handleLanguageChange };
 };

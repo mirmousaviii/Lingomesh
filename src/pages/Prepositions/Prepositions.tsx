@@ -151,78 +151,78 @@ const Prepositions: React.FC<PrepositionsProps> = ({ language }) => {
     },
   ];
 
-  // Additional examples for practice
-  const additionalExamples = [
-    {
-      category: isGerman ? "Emotionen" : "Emotions",
-      examples: [
-        {
-          german: "Ich freue mich über das Geschenk.",
-          english: "I'm happy about the gift.",
-          preposition: "über",
-          case: "Akkusativ",
-        },
-        {
-          german: "Er ärgert sich über das Wetter.",
-          english: "He's angry about the weather.",
-          preposition: "über",
-          case: "Akkusativ",
-        },
-        {
-          german: "Sie freut sich auf die Reise.",
-          english: "She's looking forward to the trip.",
-          preposition: "auf",
-          case: "Akkusativ",
-        },
-      ],
-    },
-    {
-      category: isGerman ? "Kommunikation" : "Communication",
-      examples: [
-        {
-          german: "Ich spreche mit meiner Mutter.",
-          english: "I'm speaking with my mother.",
-          preposition: "mit",
-          case: "Dativ",
-        },
-        {
-          german: "Er antwortet auf meine Frage.",
-          english: "He answers my question.",
-          preposition: "auf",
-          case: "Akkusativ",
-        },
-        {
-          german: "Sie denkt an ihre Kindheit.",
-          english: "She thinks about her childhood.",
-          preposition: "an",
-          case: "Akkusativ",
-        },
-      ],
-    },
-    {
-      category: isGerman ? "Hilfe & Unterstützung" : "Help & Support",
-      examples: [
-        {
-          german: "Ich helfe dir bei der Arbeit.",
-          english: "I help you with the work.",
-          preposition: "bei",
-          case: "Dativ",
-        },
-        {
-          german: "Er dankt mir für die Hilfe.",
-          english: "He thanks me for the help.",
-          preposition: "für",
-          case: "Akkusativ",
-        },
-        {
-          german: "Sie kümmert sich um die Kinder.",
-          english: "She takes care of the children.",
-          preposition: "um",
-          case: "Akkusativ",
-        },
-      ],
-    },
-  ];
+  // Additional examples for practice (commented out for now)
+  // const additionalExamples = [
+  //   {
+  //     category: isGerman ? "Emotionen" : "Emotions",
+  //     examples: [
+  //       {
+  //         german: "Ich freue mich über das Geschenk.",
+  //         english: "I'm happy about the gift.",
+  //         preposition: "über",
+  //         case: "Akkusativ",
+  //       },
+  //       {
+  //         german: "Er ärgert sich über das Wetter.",
+  //         english: "He's angry about the weather.",
+  //         preposition: "über",
+  //         case: "Akkusativ",
+  //       },
+  //       {
+  //         german: "Sie freut sich auf die Reise.",
+  //         english: "She's looking forward to the trip.",
+  //         preposition: "auf",
+  //         case: "Akkusativ",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     category: isGerman ? "Kommunikation" : "Communication",
+  //     examples: [
+  //       {
+  //         german: "Ich spreche mit meiner Mutter.",
+  //         english: "I'm speaking with my mother.",
+  //         preposition: "mit",
+  //         case: "Dativ",
+  //       },
+  //       {
+  //         german: "Er antwortet auf meine Frage.",
+  //         english: "He answers my question.",
+  //         preposition: "auf",
+  //         case: "Akkusativ",
+  //       },
+  //       {
+  //         german: "Sie denkt an ihre Kindheit.",
+  //         english: "She thinks about her childhood.",
+  //         preposition: "an",
+  //         case: "Akkusativ",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     category: isGerman ? "Hilfe & Unterstützung" : "Help & Support",
+  //     examples: [
+  //       {
+  //         german: "Ich helfe dir bei der Arbeit.",
+  //         english: "I help you with the work.",
+  //         preposition: "bei",
+  //         case: "Dativ",
+  //       },
+  //       {
+  //         german: "Er dankt mir für die Hilfe.",
+  //         english: "He thanks me for the help.",
+  //         preposition: "für",
+  //         case: "Akkusativ",
+  //       },
+  //       {
+  //         german: "Sie kümmert sich um die Kinder.",
+  //         english: "She takes care of the children.",
+  //         preposition: "um",
+  //         case: "Akkusativ",
+  //       },
+  //     ],
+  //   },
+  // ];
 
   // Speech synthesis function
   const speakGerman = (text: string) => {

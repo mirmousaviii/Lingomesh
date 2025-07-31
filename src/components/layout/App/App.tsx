@@ -39,7 +39,8 @@ function App() {
     changePage,
   } = useRouting();
   const { themeMode, handleThemeChange } = useTheme();
-  const { showLanguageModal, handleLanguageSelect } = useLanguageSelection();
+  const { showLanguageModal, handleLanguageSelect, openModal } =
+    useLanguageSelection();
 
   // Page rendering function
   const renderCurrentPage = () => {
@@ -163,6 +164,7 @@ function App() {
         handleThemeChange={handleThemeChange}
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
+        openModal={openModal}
       />
 
       {/* Main Layout */}

@@ -9,6 +9,7 @@ interface HeaderProps {
   handleThemeChange: (theme: string) => void;
   isSidebarOpen: boolean;
   setIsSidebarOpen: (isOpen: boolean) => void;
+  openModal: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -18,6 +19,7 @@ const Header: React.FC<HeaderProps> = ({
   handleThemeChange,
   isSidebarOpen,
   setIsSidebarOpen,
+  openModal,
 }) => {
   const t = useTranslation(language);
 
@@ -47,12 +49,13 @@ const Header: React.FC<HeaderProps> = ({
     },
   ];
 
-  // Language options - Always in English regardless of selected language
+  // Language display options
   const languageOptions = [
-    { value: "en" as Language, label: "English", text: "EN" },
-    { value: "de" as Language, label: "German", text: "DE" },
-    { value: "es" as Language, label: "Spanish", text: "ES" },
-    { value: "ru" as Language, label: "Russian", text: "RU" },
+    {
+      value: language,
+      label: language.toUpperCase(),
+      text: language.toUpperCase(),
+    },
   ];
 
   return (
@@ -102,6 +105,7 @@ const Header: React.FC<HeaderProps> = ({
               onChange={(value) => setLanguage(value as Language)}
               options={languageOptions}
               type="language"
+              onClick={openModal}
             />
 
             {/* Theme Selector */}

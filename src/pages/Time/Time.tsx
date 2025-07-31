@@ -1,6 +1,5 @@
 import React from "react";
 import { Language } from "../../hooks/useTranslations";
-import { useTranslations } from "../../hooks/useTranslations";
 import PageLayout from "../../components/layout/PageLayout/PageLayout";
 import Box from "../../components/ui/Box/Box";
 import AudioButton from "../../components/ui/AudioButton/AudioButton";
@@ -15,7 +14,6 @@ interface TimeProps {
 }
 
 const Time: React.FC<TimeProps> = ({ language }) => {
-  const { language: currentLanguage } = useTranslations();
   const isGerman = language === "de";
 
   const getCategoryColor = (category: string) => {

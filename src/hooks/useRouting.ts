@@ -14,7 +14,7 @@ export const useRouting = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [currentLanguage, setCurrentLanguage] = useState<Language>(() =>
+  const [currentLanguage, setCurrentLanguage] = useState<Language | null>(() =>
     getLanguageFromPath(location.pathname)
   );
   const [currentPage, setCurrentPage] = useState<PageType>(() =>
@@ -41,7 +41,7 @@ export const useRouting = () => {
 
   // Function to change language
   const changeLanguage = (newLanguage: Language) => {
-    const newUrl = buildUrl(newLanguage, currentPage);
+    const newUrl = buildUrl(newLanguage, currentPage || "home");
     navigate(newUrl);
   };
 
@@ -49,7 +49,7 @@ export const useRouting = () => {
   const changePage = (newPage: string) => {
     const pageType = newPage as PageType;
     if (pageType && AVAILABLE_PAGES.includes(pageType)) {
-      const newUrl = buildUrl(currentLanguage, pageType);
+      const newUrl = buildUrl(currentLanguage || "en", pageType);
       navigate(newUrl);
     }
   };
@@ -61,7 +61,7 @@ export const useRouting = () => {
   };
 
   return {
-    currentLanguage,
+    currentLanguage: currentLanguage || "en",
     currentPage,
     isPageValid,
     changeLanguage,

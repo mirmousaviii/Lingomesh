@@ -291,10 +291,10 @@ const createLanguageRoutes = () => {
 
 // Create the router configuration
 export const router = createBrowserRouter([
-  // Redirect root to default language
+  // Root route - let App component handle language selection
   {
     path: "/",
-    element: <Navigate to="/en" replace />,
+    element: <App />,
   },
   // Language-specific routes
   ...createLanguageRoutes(),
@@ -312,7 +312,7 @@ export const isLanguageValid = (pathname: string): boolean => {
   return SUPPORTED_LANGUAGES.includes(language);
 };
 
-export const getLanguageFromPath = (pathname: string): Language => {
+export const getLanguageFromPath = (pathname: string): Language | null => {
   const pathSegments = pathname.split("/").filter(Boolean);
   const language = pathSegments[0] as Language;
 
@@ -320,7 +320,7 @@ export const getLanguageFromPath = (pathname: string): Language => {
     return language;
   }
 
-  return "en"; // Default to English
+  return null; // No language in URL
 };
 
 export const getPageFromPath = (pathname: string): PageType => {

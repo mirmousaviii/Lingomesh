@@ -14,6 +14,7 @@ interface HeaderDropdownProps {
   options: HeaderDropdownOption[];
   className?: string;
   type: "language" | "theme";
+  onClick?: () => void;
 }
 
 const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
@@ -22,6 +23,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
   options,
   className = "",
   type,
+  onClick,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -63,7 +65,11 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
 
   // Handle toggle
   const handleToggle = () => {
-    setIsOpen(!isOpen);
+    if (onClick) {
+      onClick();
+    } else {
+      setIsOpen(!isOpen);
+    }
   };
 
   // Calculate dropdown position
@@ -97,7 +103,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
     if (type === "language") {
       return (
         <span className="font-medium transition-all duration-300 text-xs sm:text-base">
-          {selectedOption?.text}
+          {selectedOption?.text || value}
         </span>
       );
     }

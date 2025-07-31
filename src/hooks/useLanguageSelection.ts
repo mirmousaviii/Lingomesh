@@ -9,23 +9,25 @@ export const useLanguageSelection = () => {
 
   useEffect(() => {
     // Check if language is already set in localStorage
-    const savedLanguage = localStorage.getItem("language");
+    const savedLanguage = localStorage.getItem("lang");
 
     if (!savedLanguage) {
-      // No language saved - set English as default
-      localStorage.setItem("language", "en");
-      const newUrl = buildUrl("en", "home");
-      navigate(newUrl);
+      // No language saved - show the language selection modal
+      setShowLanguageModal(true);
     }
-  }, [navigate]);
+  }, []);
 
   const handleLanguageSelect = (language: Language) => {
-    localStorage.setItem("language", language);
+    localStorage.setItem("lang", language);
     setShowLanguageModal(false);
 
     // Navigate to the selected language using React Router
     const newUrl = buildUrl(language, "home");
     navigate(newUrl);
+  };
+
+  const openModal = () => {
+    setShowLanguageModal(true);
   };
 
   const closeModal = () => {
@@ -35,6 +37,7 @@ export const useLanguageSelection = () => {
   return {
     showLanguageModal,
     handleLanguageSelect,
+    openModal,
     closeModal,
   };
 };
