@@ -89,7 +89,7 @@ const NotFound: React.FC<NotFoundProps> = ({ language, onPageChange }) => {
         </h2>
 
         {/* Description */}
-        <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-neutral-200/60 dark:border-neutral-600/60 mb-8">
+        <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm rounded-md p-8 shadow-xl border border-neutral-200/60 dark:border-neutral-600/60 mb-8">
           <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
             {t.description}
           </p>
@@ -98,13 +98,13 @@ const NotFound: React.FC<NotFoundProps> = ({ language, onPageChange }) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => onPageChange("home")}
-              className="px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+              className="px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-medium rounded-md shadow-lg hover:shadow-xl transition-all duration-200 transform "
             >
               {t.homeButton}
             </button>
             <button
               onClick={() => window.history.back()}
-              className="px-6 py-3 bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-700 dark:hover:bg-neutral-600 text-neutral-900 dark:text-neutral-100 font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
+              className="px-6 py-3 bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-700 dark:hover:bg-neutral-600 text-neutral-900 dark:text-neutral-100 font-medium rounded-md transition-all duration-200 transform "
             >
               {t.backButton}
             </button>

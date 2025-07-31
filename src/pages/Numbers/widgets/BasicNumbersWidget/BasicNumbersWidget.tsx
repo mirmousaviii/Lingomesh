@@ -70,7 +70,8 @@ const BasicNumbersWidget: React.FC<BasicNumbersWidgetProps> = ({
   };
 
   return (
-    <Box titleKey="basicNumbers"
+    <Box
+      titleKey="basicNumbers"
       language={language}
       description={
         t?.basicNumbersSubtitle || "The most important numbers in German"
@@ -81,7 +82,7 @@ const BasicNumbersWidget: React.FC<BasicNumbersWidgetProps> = ({
         {basicNumbers.map((item) => (
           <div
             key={item.number}
-            className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+            className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
           >
             <div className="flex flex-col items-center justify-center text-center">
               <div className="text-lg font-bold text-primary-600 dark:text-primary-400 mb-1">

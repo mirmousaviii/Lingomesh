@@ -69,7 +69,8 @@ const OrdinalNumbersWidget: React.FC<OrdinalNumbersWidgetProps> = ({
   };
 
   return (
-    <Box titleKey="ordinalNumbers"
+    <Box
+      titleKey="ordinalNumbers"
       language={language}
       description={t?.ordinalNumbersSubtitle || "Ordinal numbers in German"}
       headerColor="purple"
@@ -78,7 +79,7 @@ const OrdinalNumbersWidget: React.FC<OrdinalNumbersWidgetProps> = ({
         {ordinalNumbers.map((item, index) => (
           <div
             key={index}
-            className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+            className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
           >
             <div className="flex flex-col items-center justify-center text-center">
               <div className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-1">

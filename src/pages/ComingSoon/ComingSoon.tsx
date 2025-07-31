@@ -14,10 +14,9 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ language, onPageChange }) => {
   const translations = {
     de: {
       title: "Bald verfügbar",
-      subtitle:
-        "Diese Seite wird bald verfügbar sein. Wir arbeiten hart daran!",
+      subtitle: "Diese Seite wird bald verfügbar sein.",
       description:
-        "Wir entwickeln kontinuierlich neue Lernmodule und Funktionen für unsere deutsche Sprachlernplattform. Diese Seite wird bald mit interaktiven Übungen, Beispielen und Lernmaterialien gefüllt sein.",
+        "Wir entwickeln kontinuierlich neue Lernmodule und Funktionen. Diese Seite wird bald mit interaktiven Übungen, Beispielen und Lernmaterialien gefüllt sein.",
       features: {
         interactive: "Interaktive Übungen",
         audio: "Audio-Beispiele",
@@ -34,9 +33,9 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ language, onPageChange }) => {
     },
     en: {
       title: "Coming Soon",
-      subtitle: "This page will be available soon. We're working hard on it!",
+      subtitle: "This page will be available soon.",
       description:
-        "We are continuously developing new learning modules and features for our German language learning platform. This page will soon be filled with interactive exercises, examples, and learning materials.",
+        "We are continuously developing new learning modules and features. This page will soon be filled with interactive exercises, examples, and learning materials.",
       features: {
         interactive: "Interactive Exercises",
         audio: "Audio Examples",
@@ -53,10 +52,9 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ language, onPageChange }) => {
     },
     es: {
       title: "Próximamente",
-      subtitle:
-        "Esta página estará disponible pronto. ¡Estamos trabajando duro en ello!",
+      subtitle: "Esta página estará disponible pronto.",
       description:
-        "Estamos desarrollando continuamente nuevos módulos de aprendizaje y funciones para nuestra plataforma de aprendizaje del idioma alemán. Esta página pronto estará llena de ejercicios interactivos, ejemplos y materiales de aprendizaje.",
+        "Estamos desarrollando continuamente nuevos módulos de aprendizaje y funciones. Esta página pronto estará llena de ejercicios interactivos, ejemplos y materiales de aprendizaje.",
       features: {
         interactive: "Ejercicios Interactivos",
         audio: "Ejemplos de Audio",
@@ -73,10 +71,9 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ language, onPageChange }) => {
     },
     ru: {
       title: "Скоро",
-      subtitle:
-        "Эта страница скоро будет доступна. Мы усердно работаем над этим!",
+      subtitle: "Эта страница скоро будет доступна.",
       description:
-        "Мы постоянно разрабатываем новые учебные модули и функции для нашей платформы изучения немецкого языка. Эта страница скоро будет наполнена интерактивными упражнениями, примерами и учебными материалами.",
+        "Мы постоянно разрабатываем новые учебные модули и функции. Эта страница скоро будет наполнена интерактивными упражнениями, примерами и учебными материалами.",
       features: {
         interactive: "Интерактивные упражнения",
         audio: "Аудио примеры",
@@ -137,7 +134,7 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ language, onPageChange }) => {
         </p>
 
         {/* Description */}
-        <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-neutral-200/60 dark:border-neutral-600/60 mb-8">
+        <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm rounded-md p-8 shadow-xl border border-neutral-200/60 dark:border-neutral-600/60 mb-8">
           <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
             {t.description}
           </p>
@@ -158,14 +155,15 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ language, onPageChange }) => {
         </div>
 
         {/* Available Pages Links */}
-        <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-neutral-200/40 dark:border-neutral-600/40">
+        <div className="bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm rounded-md p-6 shadow-lg border border-neutral-200/40 dark:border-neutral-600/40">
           <h3 className="text-lg font-semibold bg-gradient-to-r from-primary-600 via-accent-600 to-accent-800 bg-clip-text text-transparent mb-4">
             {t.availablePages}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <button
               onClick={() => onPageChange("numbers")}
-              className="flex items-center space-x-3 p-3 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-800/30 dark:hover:to-blue-700/30 rounded-lg transition-all duration-200 transform hover:scale-105 border border-blue-200/50 dark:border-blue-700/50"
+              className="flex items-center space-x-3 p-3 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-800/30 dark:hover:to-blue-700/30 rounded-md
+               transition-all duration-200 transform  border border-blue-200/50 dark:border-blue-700/50"
             >
               <svg
                 className="w-5 h-5 text-blue-600 dark:text-blue-400"
@@ -187,7 +185,8 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ language, onPageChange }) => {
 
             <button
               onClick={() => onPageChange("time")}
-              className="flex items-center space-x-3 p-3 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 hover:from-green-100 hover:to-green-200 dark:hover:from-green-800/30 dark:hover:to-green-700/30 rounded-lg transition-all duration-200 transform hover:scale-105 border border-green-200/50 dark:border-green-700/50"
+              className="flex items-center space-x-3 p-3 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 hover:from-green-100 hover:to-green-200 dark:hover:from-green-800/30 dark:hover:to-green-700/30 rounded-md
+               transition-all duration-200 transform  border border-green-200/50 dark:border-green-700/50"
             >
               <svg
                 className="w-5 h-5 text-green-600 dark:text-green-400"
@@ -209,7 +208,7 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ language, onPageChange }) => {
 
             <button
               onClick={() => onPageChange("date")}
-              className="flex items-center space-x-3 p-3 bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 hover:from-purple-100 hover:to-purple-200 dark:hover:from-purple-800/30 dark:hover:to-purple-700/30 rounded-lg transition-all duration-200 transform hover:scale-105 border border-purple-200/50 dark:border-purple-700/50"
+              className="flex items-center space-x-3 p-3 bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 hover:from-purple-100 hover:to-purple-200 dark:hover:from-purple-800/30 dark:hover:to-purple-700/30 rounded-md transition-all duration-200 transform  border border-purple-200/50 dark:border-purple-700/50"
             >
               <svg
                 className="w-5 h-5 text-purple-600 dark:text-purple-400"
@@ -231,7 +230,7 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ language, onPageChange }) => {
 
             <button
               onClick={() => onPageChange("weather")}
-              className="flex items-center space-x-3 p-3 bg-gradient-to-r from-cyan-50 to-cyan-100 dark:from-cyan-900/20 dark:to-cyan-800/20 hover:from-cyan-100 hover:to-cyan-200 dark:hover:from-cyan-800/30 dark:hover:to-cyan-700/30 rounded-lg transition-all duration-200 transform hover:scale-105 border border-cyan-200/50 dark:border-cyan-700/50"
+              className="flex items-center space-x-3 p-3 bg-gradient-to-r from-cyan-50 to-cyan-100 dark:from-cyan-900/20 dark:to-cyan-800/20 hover:from-cyan-100 hover:to-cyan-200 dark:hover:from-cyan-800/30 dark:hover:to-cyan-700/30 rounded-md transition-all duration-200 transform border border-cyan-200/50 dark:border-cyan-700/50"
             >
               <svg
                 className="w-5 h-5 text-cyan-600 dark:text-cyan-400"

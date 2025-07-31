@@ -80,7 +80,8 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
   };
 
   return (
-    <Box titleKey="zahlenkonverter"
+    <Box
+      titleKey="zahlenkonverter"
       language={language}
       headerColor="primary"
       description={t?.description || "Convert numbers to German words"}
@@ -92,7 +93,7 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
             type="number"
             value={numberInput}
             onChange={handleInputChange}
-            className={`w-full px-4 py-3 text-lg border rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 ${
+            className={`w-full px-4 py-3 text-lg border rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 ${
               inputError
                 ? "border-red-500 dark:border-red-400 focus:ring-red-500"
                 : "border-neutral-300 dark:border-neutral-600"
@@ -112,7 +113,7 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
         {/* Result Section */}
         {convertedParts.length > 0 && (
           <div className="space-y-4">
-            <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 rounded-xl p-6 border border-primary-100 dark:border-primary-800">
+            <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 rounded-md p-6 border border-primary-100 dark:border-primary-800">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex-1 min-w-0">
                   <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed break-words hyphens-auto">
@@ -138,7 +139,7 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
             </div>
 
             {/* Color Legend */}
-            <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <div className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4 border border-neutral-200 dark:border-neutral-700">
               <h4 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-3">
                 {ui?.colorLegend || "Color Legend"}
               </h4>

@@ -167,7 +167,7 @@ const Numbers: React.FC<NumbersProps> = ({ language }) => {
           {numberRules.map((rule, index) => (
             <div
               key={index}
-              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4 border border-neutral-200 dark:border-neutral-700"
             >
               <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
                 {rule.title}
@@ -175,7 +175,7 @@ const Numbers: React.FC<NumbersProps> = ({ language }) => {
               <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
                 {rule.description}
               </p>
-              <div className="bg-primary-50 dark:bg-primary-900/20 rounded-lg p-3 border border-primary-200 dark:border-primary-800">
+              <div className="bg-primary-50 dark:bg-primary-900/20 rounded-md p-3 border border-primary-200 dark:border-primary-800">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sm text-primary-700 dark:text-primary-300">
                     {rule.example}

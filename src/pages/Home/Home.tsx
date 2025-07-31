@@ -121,7 +121,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
       hoverColor: "hover:from-orange-600 hover:to-orange-700",
     },
     {
-      id: "pronouns",
+      id: "personal-pronouns",
       title: t.home.learnPronouns,
       description: t.home.pronounsDescription,
       icon: (
@@ -143,7 +143,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
       hoverColor: "hover:from-pink-600 hover:to-pink-700",
     },
     {
-      id: "verbs",
+      id: "verb-conjugator",
       title: t.home.learnVerbs,
       description: t.home.verbsDescription,
       icon: (
@@ -257,7 +257,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
               <button
                 key={feature.id}
                 onClick={() => onPageChange(feature.id)}
-                className="group relative bg-white dark:bg-neutral-800 rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-neutral-200 dark:border-neutral-700 hover:border-primary-300 dark:hover:border-primary-600 hover:scale-105 hover:-translate-y-1 overflow-hidden animate-fade-in"
+                className="group relative bg-white dark:bg-neutral-800 rounded-lg p-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-neutral-200 dark:border-neutral-700 hover:border-primary-300 dark:hover:border-primary-600 hover:scale-105 hover:-translate-y-1 overflow-hidden animate-fade-in"
                 style={{
                   animationDelay: `${index * 0.1}s`,
                   animationFillMode: "both",
@@ -271,7 +271,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                 <div className="relative z-10">
                   <div className="flex items-center mb-3 sm:mb-4">
                     <div
-                      className={`${feature.color} ${feature.hoverColor} text-white p-2 sm:p-3 rounded-xl mr-3 sm:mr-4 group-hover:scale-110 transition-all duration-300 shadow-lg`}
+                      className={`${feature.color} ${feature.hoverColor} text-white p-2 sm:p-3 rounded-lg mr-3 sm:mr-4 group-hover:scale-110 transition-all duration-300 shadow-lg`}
                     >
                       {feature.icon}
                     </div>
@@ -283,25 +283,6 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                   <p className="text-sm text-neutral-600 dark:text-neutral-400 text-left mb-3 sm:mb-4 leading-relaxed">
                     {feature.description}
                   </p>
-
-                  <div className="mt-3 sm:mt-4 flex items-center text-primary-600 dark:text-primary-400 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <span className="text-xs sm:text-sm font-medium">
-                      {t.home.startLearning}
-                    </span>
-                    <svg
-                      className="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
                 </div>
               </button>
             ))}
@@ -312,7 +293,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
             className="mt-8 sm:mt-12 text-center animate-fade-in"
             style={{ animationDelay: "1s", animationFillMode: "both" }}
           >
-            <div className="relative bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-600 dark:from-purple-600 dark:via-pink-600 dark:to-indigo-700 rounded-2xl p-6 sm:p-8 shadow-2xl border border-purple-300 dark:border-purple-600 overflow-hidden animate-soft-glow">
+            <div className="relative bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-600 dark:from-purple-600 dark:via-pink-600 dark:to-indigo-700 rounded-lg p-6 sm:p-8 shadow-2xl border border-purple-300 dark:border-purple-600 overflow-hidden animate-soft-glow">
               {/* Shimmer effect overlay */}
               <div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-shimmer"
@@ -334,7 +315,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
               {/* Content */}
               <div className="relative z-10">
                 <div className="mb-4">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl mb-3 border border-white/30 animate-glow">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg mb-3 border border-white/30 animate-glow">
                     <svg
                       className="w-6 h-6 text-white"
                       fill="none"
