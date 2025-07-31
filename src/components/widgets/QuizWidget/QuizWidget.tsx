@@ -116,7 +116,8 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
 
   if (questions.length === 0) {
     return (
-      <Box titleKey={titleKey}
+      <Box
+        titleKey={titleKey}
         language={language}
         headerColor="purple"
         description={
@@ -133,7 +134,8 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
   }
 
   return (
-    <Box titleKey={titleKey}
+    <Box
+      titleKey={titleKey}
       language={language}
       headerColor="purple"
       description={
@@ -143,7 +145,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
       <div className="space-y-4">
         {/* Score Display */}
         {totalAnswered > 0 && (
-          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4">
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4">
             <div className="flex justify-between items-center">
               <div className="text-sm">
                 <span className="text-neutral-600 dark:text-neutral-400">
@@ -158,7 +160,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
               </div>
               <button
                 onClick={resetQuiz}
-                className="text-sm px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+                className="text-sm px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-md hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
               >
                 {language === "en" ? "Reset" : "Zurücksetzen"}
               </button>
@@ -169,7 +171,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
         {currentQuestion && (
           <div className="space-y-4">
             {/* Question */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-md p-4">
               <h3 className="text-lg font-medium text-blue-900 dark:text-blue-100 mb-2">
                 {currentQuestion.question}
               </h3>
@@ -182,7 +184,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
                   key={index}
                   onClick={() => !showResult && checkAnswer(index)}
                   disabled={showResult}
-                  className={`w-full text-left p-3 rounded-lg border transition-all duration-200 ${
+                  className={`w-full text-left p-3 rounded-md border transition-all duration-200 ${
                     showResult
                       ? index === currentQuestion.correctAnswer
                         ? "bg-green-100 dark:bg-green-900/30 border-green-500 dark:border-green-400 text-green-800 dark:text-green-200"
@@ -216,7 +218,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
 
             {/* Explanation */}
             {showResult && (
-              <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-md p-4">
                 <div className="flex items-start space-x-2">
                   <span className="text-yellow-600 dark:text-yellow-400 mt-0.5">
                     💡
@@ -237,7 +239,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
             {showResult && (
               <button
                 onClick={startNewQuestion}
-                className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+                className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors font-medium"
               >
                 {language === "en" ? "Next Question" : "Nächste Frage"}
               </button>

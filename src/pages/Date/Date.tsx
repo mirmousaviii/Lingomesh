@@ -247,12 +247,6 @@ const DatePage: React.FC<DatePageProps> = ({ language }) => {
         setCurrentTime={setCurrentTime}
       />
 
-      {/* Quiz Widget */}
-      <QuizWidget
-        language={language}
-        questions={dateQuizQuestions}
-        subject={isGerman ? "Datum" : "Date"}
-      />
       {/* Date Formats Section */}
       <Box
         title={isGerman ? "Datumsformate" : "Date Formats"}
@@ -267,7 +261,7 @@ const DatePage: React.FC<DatePageProps> = ({ language }) => {
           {dateFormats.map((item, index) => (
             <div
               key={index}
-              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4 border border-neutral-200 dark:border-neutral-700"
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
                 <div className="text-center">
@@ -317,7 +311,7 @@ const DatePage: React.FC<DatePageProps> = ({ language }) => {
               {months.map((month, index) => (
                 <div
                   key={index}
-                  className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+                  className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
@@ -348,7 +342,7 @@ const DatePage: React.FC<DatePageProps> = ({ language }) => {
               {weekdays.map((day, index) => (
                 <div
                   key={index}
-                  className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+                  className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
@@ -386,7 +380,7 @@ const DatePage: React.FC<DatePageProps> = ({ language }) => {
           {dateExpressions.map((item, index) => (
             <div
               key={index}
-              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
             >
               <div className="flex items-center justify-between">
                 <div className="flex-1">
@@ -411,6 +405,13 @@ const DatePage: React.FC<DatePageProps> = ({ language }) => {
           ))}
         </div>
       </Box>
+
+      {/* Quiz Widget */}
+      <QuizWidget
+        language={language}
+        questions={dateQuizQuestions}
+        subject={isGerman ? "Datum" : "Date"}
+      />
     </PageLayout>
   );
 };

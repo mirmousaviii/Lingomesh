@@ -249,12 +249,6 @@ const Time: React.FC<TimeProps> = ({ language }) => {
         setCurrentTime={setCurrentTime}
       />
 
-      {/* Quiz Widget */}
-      <QuizWidget
-        language={language}
-        questions={timeQuizQuestions}
-        subject={isGerman ? "Zeit" : "Time"}
-      />
       {/* Time Examples Section */}
       <Box
         title={isGerman ? "Zeitformate" : "Time Formats"}
@@ -269,7 +263,7 @@ const Time: React.FC<TimeProps> = ({ language }) => {
           {timeExamples.map((item, index) => (
             <div
               key={index}
-              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4 border border-neutral-200 dark:border-neutral-700"
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
                 <div className="text-center">
@@ -323,7 +317,7 @@ const Time: React.FC<TimeProps> = ({ language }) => {
           {timeRules.map((rule, index) => (
             <div
               key={index}
-              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4 border border-neutral-200 dark:border-neutral-700"
             >
               <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
                 {rule.title}
@@ -331,7 +325,7 @@ const Time: React.FC<TimeProps> = ({ language }) => {
               <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
                 {rule.description}
               </p>
-              <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-3 border border-indigo-200 dark:border-indigo-800">
+              <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-md p-3 border border-indigo-200 dark:border-indigo-800">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sm text-indigo-700 dark:text-indigo-300">
                     {rule.example}
@@ -362,7 +356,7 @@ const Time: React.FC<TimeProps> = ({ language }) => {
           {timeVocabulary.map((item, index) => (
             <div
               key={index}
-              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
             >
               <div className="flex items-center justify-between">
                 <div className="flex-1">
@@ -387,6 +381,13 @@ const Time: React.FC<TimeProps> = ({ language }) => {
           ))}
         </div>
       </Box>
+
+      {/* Quiz Widget */}
+      <QuizWidget
+        language={language}
+        questions={timeQuizQuestions}
+        subject={isGerman ? "Zeit" : "Time"}
+      />
     </PageLayout>
   );
 };

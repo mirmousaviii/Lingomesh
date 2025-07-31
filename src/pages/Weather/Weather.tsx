@@ -269,12 +269,6 @@ const Weather: React.FC<WeatherProps> = ({ language }) => {
         language={language}
       />
 
-      {/* Quiz Widget */}
-      <QuizWidget
-        language={language}
-        questions={weatherQuizQuestions}
-        subject={isGerman ? "Wetter" : "Weather"}
-      />
       {/* Weather Vocabulary Section */}
       <Box
         title={isGerman ? "Wetter-Vokabular" : "Weather Vocabulary"}
@@ -289,7 +283,7 @@ const Weather: React.FC<WeatherProps> = ({ language }) => {
           {weatherVocabulary.map((item, index) => (
             <div
               key={index}
-              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
             >
               <div className="flex items-center justify-between">
                 <div className="flex-1">
@@ -329,7 +323,7 @@ const Weather: React.FC<WeatherProps> = ({ language }) => {
           {seasons.map((season, index) => (
             <div
               key={index}
-              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
             >
               <div className="flex items-center justify-between mb-2">
                 <div>
@@ -368,7 +362,7 @@ const Weather: React.FC<WeatherProps> = ({ language }) => {
           {weatherPhrases.map((phrase, index) => (
             <div
               key={index}
-              className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4 border border-neutral-200 dark:border-neutral-700"
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="font-semibold text-neutral-900 dark:text-neutral-100">
@@ -390,6 +384,13 @@ const Weather: React.FC<WeatherProps> = ({ language }) => {
           ))}
         </div>
       </Box>
+
+      {/* Quiz Widget */}
+      <QuizWidget
+        language={language}
+        questions={weatherQuizQuestions}
+        subject={isGerman ? "Wetter" : "Weather"}
+      />
     </PageLayout>
   );
 };

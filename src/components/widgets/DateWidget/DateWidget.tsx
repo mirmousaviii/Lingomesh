@@ -253,7 +253,7 @@ const DateWidget: React.FC<DateWidgetProps> = ({
           {/* Formatted Date Display (Clickable) */}
           <div
             onClick={handleDateClick}
-            className="w-full px-4 py-3 text-lg border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-750 transition-colors duration-200 group"
+            className="w-full px-4 py-3 text-lg border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-750 transition-colors duration-200 group"
           >
             <div className="flex items-center justify-between">
               <p className="text-xl font-bold text-neutral-800 dark:text-neutral-200 md:text-2xl font-space-grotesk">
@@ -294,7 +294,7 @@ const DateWidget: React.FC<DateWidgetProps> = ({
 
         {/* Result Section */}
         <div className="space-y-4">
-          <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 rounded-xl p-6 border border-primary-100 dark:border-primary-800">
+          <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 rounded-md p-6 border border-primary-100 dark:border-primary-800">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex-1 min-w-0">
                 <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed break-words hyphens-auto">
@@ -324,7 +324,7 @@ const DateWidget: React.FC<DateWidgetProps> = ({
           </div>
 
           {/* Color Legend */}
-          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4 border border-neutral-200 dark:border-neutral-700">
             <h4 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-3">
               {t.ui.colorLegend}
             </h4>
