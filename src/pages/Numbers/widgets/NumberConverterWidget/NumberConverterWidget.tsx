@@ -143,7 +143,7 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
               <h4 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-3">
                 {ui?.colorLegend || "Color Legend"}
               </h4>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+              <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 text-xs">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-blue-500"></div>
                   <span className="text-neutral-600 dark:text-neutral-400">
