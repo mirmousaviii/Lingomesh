@@ -290,7 +290,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
 
           {/* Additional Info Section */}
           <div
-            className="mt-8 sm:mt-12 text-center animate-fade-in"
+            className="mt-8 sm:mt-12 text-center animate-fade-in mb-10"
             style={{ animationDelay: "1s", animationFillMode: "both" }}
           >
             <div className="relative bg-gradient-to-br from-blue-500 via-teal-500 to-green-600 dark:from-blue-600 dark:via-teal-600 dark:to-green-700 rounded-lg p-6 sm:p-8 shadow-2xl border border-blue-300 dark:border-blue-600 overflow-hidden animate-soft-glow">
@@ -558,10 +558,10 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-sm font-medium text-center mb-2">
+                    <p className="text-white/80 text-sm font-medium text-center mb-2 drop-shadow-lg">
                       {t.home.interactive}
                     </p>
-                    <p className="text-white/60 text-xs text-center leading-relaxed">
+                    <p className="text-white/60 text-xs text-center leading-relaxed drop-shadow-md">
                       {t.home.interactiveDescription}
                     </p>
                   </div>
@@ -582,10 +582,10 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-sm font-medium text-center mb-2">
+                    <p className="text-white/80 text-sm font-medium text-center mb-2 drop-shadow-lg">
                       {t.home.multilingual}
                     </p>
-                    <p className="text-white/60 text-xs text-center leading-relaxed">
+                    <p className="text-white/60 text-xs text-center leading-relaxed drop-shadow-md">
                       {t.home.multilingualDescription}
                     </p>
                   </div>
@@ -606,10 +606,10 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-sm font-medium text-center mb-2">
+                    <p className="text-white/80 text-sm font-medium text-center mb-2 drop-shadow-lg">
                       {t.home.dynamic}
                     </p>
-                    <p className="text-white/60 text-xs text-center leading-relaxed">
+                    <p className="text-white/60 text-xs text-center leading-relaxed drop-shadow-md">
                       {t.home.dynamicDescription}
                     </p>
                   </div>

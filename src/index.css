@@ -18,6 +18,37 @@
 
   body {
     @apply font-inter antialiased bg-gradient-to-br from-neutral-50 via-primary-50 to-accent-100 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800 min-h-screen text-neutral-900 dark:text-neutral-100 font-smooth;
+    transition: all 0.7s ease-in-out;
+  }
+
+  /* Apply smooth transitions to all elements */
+  * {
+    transition: background-color 0.7s ease-in-out, color 0.7s ease-in-out,
+      border-color 0.7s ease-in-out, box-shadow 0.7s ease-in-out;
+  }
+
+  /* Disable transitions for specific elements that shouldn't animate */
+  svg,
+  path,
+  rect,
+  circle,
+  polygon {
+    transition: none !important;
+  }
+
+  /* Keep smooth transitions for theme toggle icon */
+  .theme-toggle-icon {
+    transition: all 0.7s ease-in-out !important;
+  }
+
+  /* Ensure interactive elements have smooth theme transitions */
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    transition: background-color 0.7s ease-in-out, color 0.7s ease-in-out,
+      border-color 0.7s ease-in-out, box-shadow 0.7s ease-in-out !important;
   }
 
   #root {
@@ -121,6 +152,19 @@
 
   .animate-soft-glow {
     animation: softGlow 4s ease-in-out infinite;
+  }
+
+  /* Theme transition utilities */
+  .theme-transition {
+    transition: all 0.7s ease-in-out;
+  }
+
+  .theme-transition-fast {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .theme-transition-slow {
+    transition: all 1s ease-in-out;
   }
 
   /* Hide scrollbar */

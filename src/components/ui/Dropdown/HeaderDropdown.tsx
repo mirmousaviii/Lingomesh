@@ -131,7 +131,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
       {/* Trigger Button */}
       <button
         onClick={handleToggle}
-        className="flex items-center justify-center transition-all duration-300 touch-manipulation bg-neutral-100/80 dark:bg-neutral-800/80 rounded-md p-1 border border-neutral-200/60 dark:border-neutral-600/60 w-8 h-8 sm:w-12 sm:h-10"
+        className="flex items-center justify-center transition-all duration-300 touch-manipulation bg-neutral-100/80 dark:bg-neutral-800/80 rounded-md p-1 border border-neutral-200/60 dark:border-neutral-600/60 w-10 h-10 sm:w-12 sm:h-10"
       >
         {renderTriggerContent()}
       </button>

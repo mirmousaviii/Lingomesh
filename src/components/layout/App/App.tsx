@@ -142,7 +142,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 transition-colors duration-500">
+    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 theme-transition">
       {/* SEO Meta Tags */}
       <MetaTags
         language={currentLanguage}
@@ -181,9 +181,11 @@ function App() {
         />
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col overflow-hidden theme-transition">
           {/* Content Area */}
-          <main className="flex-1 overflow-y-auto">{renderCurrentPage()}</main>
+          <main className="flex-1 overflow-y-auto theme-transition">
+            {renderCurrentPage()}
+          </main>
         </div>
       </div>
     </div>
