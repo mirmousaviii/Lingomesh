@@ -302,6 +302,62 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                   animationDuration: "10s",
                 }}
               ></div>
+
+              {/* Enhanced Background Animated Objects */}
+
+              {/* Floating geometric shapes */}
+              <div
+                className="absolute top-4 left-20 w-2 h-2 border-2 border-white/20 rounded-lg animate-float-x animate-pulse"
+                style={{ animationDuration: "15s" }}
+              ></div>
+              <div
+                className="absolute top-10 left-20 w-4 h-4 rounded-full bg-white/10 animate-float-y animate-pulse"
+                style={{ animationDuration: "10s", animationDelay: "1s" }}
+              ></div>
+              <div
+                className="absolute bottom-6 right-6 w-4 h-4 border border-white/30 rounded-full animate-float-y"
+                style={{ animationDuration: "12s", animationDelay: "1s" }}
+              ></div>
+              <div
+                className="absolute top-1/2 left-2 w-3 h-3 bg-white/10 rounded-full animate-pulse"
+                style={{ animationDelay: "2s", animationDuration: "4s" }}
+              ></div>
+
+              {/* Animated particles */}
+              <div
+                className="absolute top-1/4 left-1/3 w-1 h-1 bg-yellow-200 rounded-full animate-ping"
+                style={{ animationDelay: "0s", animationDuration: "3s" }}
+              ></div>
+              <div
+                className="absolute bottom-1/4 right-1/3 w-1.5 h-1.5 bg-cyan-200 rounded-full animate-ping"
+                style={{ animationDelay: "1.5s", animationDuration: "3s" }}
+              ></div>
+              <div
+                className="absolute top-3/4 left-1/2 w-1 h-1 bg-pink-200 rounded-full animate-ping"
+                style={{ animationDelay: "3s", animationDuration: "3s" }}
+              ></div>
+              <div
+                className="absolute bottom-1/2 left-1/4 w-0.5 h-0.5 bg-white/60 rounded-full animate-ping"
+                style={{ animationDelay: "4.5s", animationDuration: "3s" }}
+              ></div>
+
+              {/* Rotating elements */}
+              <div
+                className="absolute top-2 right-1/4 w-4 h-4 border border-white/40 rounded-full animate-spin"
+                style={{ animationDuration: "20s" }}
+              ></div>
+
+              {/* Glowing orbs */}
+              <div className="absolute top-1/3 right-2 w-2 h-2 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full animate-pulse blur-sm"></div>
+              <div
+                className="absolute bottom-1/3 left-2 w-2.5 h-2.5 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full animate-pulse blur-sm"
+                style={{ animationDelay: "2s" }}
+              ></div>
+              <div
+                className="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-gradient-to-r from-pink-300 to-purple-300 rounded-full animate-pulse blur-sm"
+                style={{ animationDelay: "4s" }}
+              ></div>
+
               {/* Sparkle effects */}
               <div className="absolute top-3 right-6 w-2 h-2 bg-yellow-300 rounded-full animate-sparkle"></div>
               <div
@@ -393,7 +449,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         }}
                       ></div>
                     </div>
-                    {/* New: Animated floating icons */}
+                    {/* Enhanced Animated floating icons and shapes */}
                     <div className="absolute -left-8 top-1/2 transform -translate-y-1/2 animate-float-x">
                       <svg
                         className="w-4 h-4 text-yellow-200 opacity-80"
@@ -417,6 +473,38 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         <rect x="4" y="4" width="12" height="12" rx="3" />
                       </svg>
                     </div>
+
+                    {/* Additional floating elements around the line */}
+                    <div
+                      className="absolute -left-12 top-1/4 w-2 h-2 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full animate-float-y blur-sm"
+                      style={{ animationDuration: "10s" }}
+                    ></div>
+                    <div
+                      className="absolute -right-12 bottom-1/4 w-1.5 h-1.5 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full animate-float-x blur-sm"
+                      style={{ animationDuration: "14s", animationDelay: "1s" }}
+                    ></div>
+                    <div
+                      className="absolute -left-16 bottom-1/3 w-3 h-3 border border-white/40 rounded-full animate-spin"
+                      style={{ animationDuration: "20s" }}
+                    ></div>
+
+                    {/* Floating particles above and below the line */}
+                    <div
+                      className="absolute -top-6 left-1/4 w-1 h-1 bg-white/60 rounded-full animate-ping"
+                      style={{ animationDelay: "0s", animationDuration: "4s" }}
+                    ></div>
+                    <div
+                      className="absolute -bottom-6 right-1/4 w-1 h-1 bg-white/60 rounded-full animate-ping"
+                      style={{ animationDelay: "2s", animationDuration: "4s" }}
+                    ></div>
+                    <div
+                      className="absolute -top-4 right-1/3 w-0.5 h-0.5 bg-yellow-200 rounded-full animate-ping"
+                      style={{ animationDelay: "4s", animationDuration: "4s" }}
+                    ></div>
+                    <div
+                      className="absolute -bottom-4 left-1/3 w-0.5 h-0.5 bg-cyan-200 rounded-full animate-ping"
+                      style={{ animationDelay: "6s", animationDuration: "4s" }}
+                    ></div>
                   </div>
 
                   {/* Subtitle text below the line */}
@@ -426,7 +514,34 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                 </div>
 
                 {/* Feature highlights */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 relative">
+                  {/* Background animated elements for feature boxes */}
+                  <div className="absolute -top-2 left-1/4 w-3 h-3 bg-gradient-to-r from-green-300 to-emerald-300 rounded-full animate-pulse blur-sm opacity-60"></div>
+                  <div
+                    className="absolute -bottom-2 right-1/4 w-2 h-2 bg-gradient-to-r from-blue-300 to-cyan-300 rounded-full animate-pulse blur-sm opacity-60"
+                    style={{ animationDelay: "1s" }}
+                  ></div>
+                  <div
+                    className="absolute top-1/2 -left-2 w-2.5 h-2.5 bg-gradient-to-r from-purple-300 to-pink-300 rounded-full animate-pulse blur-sm opacity-60"
+                    style={{ animationDelay: "2s" }}
+                  ></div>
+                  <div
+                    className="absolute top-1/2 -right-2 w-2 h-2 bg-gradient-to-r from-yellow-300 to-orange-300 rounded-full animate-pulse blur-sm opacity-60"
+                    style={{ animationDelay: "3s" }}
+                  ></div>
+
+                  {/* Floating geometric shapes around feature boxes */}
+                  <div
+                    className="absolute top-1/2 -left-4 w-2 h-2 border border-white/30 rounded-full animate-spin"
+                    style={{ animationDuration: "20s" }}
+                  ></div>
+                  <div
+                    className="absolute top-1/2 -right-4 w-2.5 h-2.5 border border-white/25 rounded-full animate-spin"
+                    style={{
+                      animationDuration: "24s",
+                      animationDirection: "reverse",
+                    }}
+                  ></div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-green-300/30 shadow-2xl group">
                     <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg mb-3 mx-auto">
                       <svg
