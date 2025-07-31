@@ -170,6 +170,7 @@ const Box: React.FC<BoxProps> = ({
       flex flex-col
       transition-all duration-300 ease-in-out
       backdrop-blur-sm
+      m-0 p-0 !mt-0 !pt-0
     `;
   };
 
@@ -211,14 +212,21 @@ const Box: React.FC<BoxProps> = ({
           {showFullscreenButton && fullscreenEnabled && (
             <button
               onClick={toggleFullscreen}
-              className="ml-4 p-2 text-white/80 hover:text-white transition-colors duration-200 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20"
+              className={`
+                ml-4 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/20
+                ${
+                  isFullscreen
+                    ? "p-3 text-white rounded-md shadow-lg hover:shadow-xl transform hover:scale-110 border-2 border-white/20"
+                    : "p-2 text-white/80 hover:text-white rounded-md hover:bg-white/10 hover:scale-110"
+                }
+              `}
               title={
                 isFullscreen ? "Exit fullscreen (Esc)" : "Enter fullscreen"
               }
               aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
             >
               {isFullscreen ? (
-                <ArrowsPointingInIcon className="w-5 h-5" />
+                <ArrowsPointingInIcon className="w-6 h-6" />
               ) : (
                 <ArrowsPointingOutIcon className="w-5 h-5" />
               )}

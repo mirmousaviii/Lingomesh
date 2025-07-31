@@ -37,11 +37,15 @@ export const useFullscreen = (
       document.addEventListener("keydown", handleKeyDown);
       if (preventBodyScroll) {
         document.body.style.overflow = "hidden";
+        document.body.style.margin = "0";
+        document.body.style.padding = "0";
       }
     } else {
       document.removeEventListener("keydown", handleKeyDown);
       if (preventBodyScroll) {
         document.body.style.overflow = "";
+        document.body.style.margin = "";
+        document.body.style.padding = "";
       }
     }
 
@@ -49,6 +53,8 @@ export const useFullscreen = (
       document.removeEventListener("keydown", handleKeyDown);
       if (preventBodyScroll) {
         document.body.style.overflow = "";
+        document.body.style.margin = "";
+        document.body.style.padding = "";
       }
     };
   }, [isFullscreen, handleKeyDown, preventBodyScroll]);
