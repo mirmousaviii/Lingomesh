@@ -1,6 +1,5 @@
 import React from "react";
 import { Language } from "../../../hooks/useTranslations";
-import { translations } from "../../../constants/translations";
 
 interface LanguageSelectionModalProps {
   isOpen: boolean;
@@ -20,8 +19,7 @@ const LanguageSelectionModal: React.FC<LanguageSelectionModalProps> = ({
     { code: "ru", name: "Russian", nativeName: "Русский" },
   ];
 
-  const getModalText = (language: Language) => {
-    const t = translations[language];
+  const getModalText = () => {
     return {
       subtitle: "Choose your preferred language to learn German",
       subtitleDe: "Wählen Sie Ihre bevorzugte Sprache zum Deutschlernen",
@@ -35,7 +33,7 @@ const LanguageSelectionModal: React.FC<LanguageSelectionModalProps> = ({
   };
 
   // Default to English for the modal text
-  const modalText = getModalText("en");
+  const modalText = getModalText();
 
   // Prevent closing modal by clicking outside or pressing escape
   const handleBackdropClick = (e: React.MouseEvent) => {
