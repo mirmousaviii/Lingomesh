@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Language } from "../../../hooks/useTranslations";
 import { useModuleTranslations } from "../../../hooks/useModuleTranslations";
 import { QuizTranslations } from "./translations";
@@ -83,14 +83,14 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
 
   const titleKey = getQuizTitleKey(subject);
 
-  const startNewQuestion = () => {
+  const startNewQuestion = useCallback(() => {
     if (questions.length === 0) return;
 
     const randomIndex = Math.floor(Math.random() * questions.length);
     setCurrentQuestion(questions[randomIndex]);
     setSelectedAnswer(null);
     setShowResult(false);
-  };
+  }, [questions]);
 
   const checkAnswer = (answerIndex: number) => {
     if (!currentQuestion) return;
@@ -112,7 +112,7 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
 
   useEffect(() => {
     startNewQuestion();
-  }, [questions]);
+  }, [startNewQuestion]);
 
   if (questions.length === 0) {
     return (

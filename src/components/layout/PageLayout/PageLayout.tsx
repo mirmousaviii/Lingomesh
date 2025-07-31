@@ -6,7 +6,7 @@ interface PageLayoutProps {
 
 const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
   return (
-    <div className="container mx-auto p-8 max-w-full">
+    <div className="container p-8 max-w-screen-2xl mx-auto">
       <div className="space-y-6">{children}</div>
     </div>
   );

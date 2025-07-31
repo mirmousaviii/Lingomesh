@@ -121,22 +121,6 @@ const Pronouns: React.FC<PronounsProps> = ({ language }) => {
     },
   ];
 
-  const getCaseColor = (caseType: string) => {
-    switch (caseType) {
-      case "Nominativ":
-      case "Nominative":
-        return "from-blue-600 to-cyan-600";
-      case "Akkusativ":
-      case "Accusative":
-        return "from-green-600 to-teal-600";
-      case "Dativ":
-      case "Dative":
-        return "from-purple-600 to-pink-600";
-      default:
-        return "from-neutral-600 to-neutral-700";
-    }
-  };
-
   return (
     <PageLayout>
       <GermanPersonalPronounsWidget language={language} />
