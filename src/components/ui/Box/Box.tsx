@@ -1,6 +1,7 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import { Language } from "../../../hooks/useTranslations";
 import { useTranslation } from "../../../constants/translations";
+import { useFullscreen } from "../../../hooks/useFullscreen";
 import {
   ArrowsPointingOutIcon,
   ArrowsPointingInIcon,
@@ -29,6 +30,7 @@ interface BoxProps {
   rounded?: "none" | "small" | "medium" | "large";
   background?: "white" | "transparent" | "neutral" | "primary" | "accent";
   showFullscreenButton?: boolean;
+  fullscreenEnabled?: boolean;
 }
 
 const Box: React.FC<BoxProps> = ({
@@ -45,9 +47,14 @@ const Box: React.FC<BoxProps> = ({
   rounded = "small",
   background = "white",
   showFullscreenButton = true,
+  fullscreenEnabled = true,
 }) => {
   const t = useTranslation(language || "en");
-  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Use the custom fullscreen hook
+  const { isFullscreen, toggleFullscreen } = useFullscreen({
+    enabled: fullscreenEnabled,
+  });
 
   // Color mapping for different header colors
   const getHeaderGradient = (color: string) => {
@@ -153,9 +160,28 @@ const Box: React.FC<BoxProps> = ({
     throw new Error("Box component requires either 'title' or 'titleKey' prop");
   }
 
-  // Fullscreen toggle handler
-  const toggleFullscreen = () => {
-    setIsFullscreen(!isFullscreen);
+  // Fullscreen container styles
+  const getFullscreenStyles = () => {
+    if (!isFullscreen) return "";
+
+    return `
+      fixed inset-0 z-[9999] 
+      bg-white dark:bg-neutral-900 
+      flex flex-col
+      transition-all duration-300 ease-in-out
+      backdrop-blur-sm
+    `;
+  };
+
+  // Content container styles for fullscreen
+  const getContentStyles = () => {
+    if (!isFullscreen) return "";
+
+    return `
+      flex-1 overflow-auto
+      p-6
+      bg-white dark:bg-neutral-900
+    `;
   };
 
   return (
@@ -166,22 +192,30 @@ const Box: React.FC<BoxProps> = ({
         ${getShadowClass(shadow)}
         ${getBorderClass(border)}
         overflow-hidden
-        ${isFullscreen ? "fixed inset-0 z-50" : ""}
+        transition-all duration-300 ease-in-out
+        ${getFullscreenStyles()}
         ${className}
       `}
     >
       {/* Header - Always shown */}
-      <div className={`${getHeaderGradient(headerColor)} px-6 py-4 relative`}>
+      <div
+        className={`${getHeaderGradient(
+          headerColor
+        )} px-6 py-4 relative flex-shrink-0`}
+      >
         <div className="flex items-center justify-between">
           <div className="flex-1">
             <h3 className="text-xl font-bold text-white">{displayTitle}</h3>
             <p className="text-white/80 mt-1 text-sm">{description}</p>
           </div>
-          {showFullscreenButton && (
+          {showFullscreenButton && fullscreenEnabled && (
             <button
               onClick={toggleFullscreen}
-              className="ml-4 p-2 text-white/80 hover:text-white transition-colors duration-200 rounded-lg hover:bg-white/10"
-              title={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+              className="ml-4 p-2 text-white/80 hover:text-white transition-colors duration-200 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20"
+              title={
+                isFullscreen ? "Exit fullscreen (Esc)" : "Enter fullscreen"
+              }
+              aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
             >
               {isFullscreen ? (
                 <ArrowsPointingInIcon className="w-5 h-5" />
@@ -194,7 +228,9 @@ const Box: React.FC<BoxProps> = ({
       </div>
 
       {/* Content */}
-      <div className={getPaddingClass(padding)}>{children}</div>
+      <div className={`${getPaddingClass(padding)} ${getContentStyles()}`}>
+        {children}
+      </div>
     </div>
   );
 };

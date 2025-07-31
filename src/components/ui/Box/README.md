@@ -163,20 +163,75 @@ The component supports various header color themes:
 
 ## Fullscreen Feature
 
-The Box component includes a built-in fullscreen toggle button in the top-right corner of the header:
+The Box component includes a comprehensive and systematic fullscreen implementation with enhanced user experience:
 
-- **Default behavior**: Fullscreen button is shown by default
-- **Toggle functionality**: Click to enter/exit fullscreen mode
-- **Visual feedback**: Button icon changes based on fullscreen state
-- **Accessibility**: Proper ARIA labels and keyboard support
-- **Responsive**: Works on all screen sizes
-- **Customizable**: Can be disabled with `showFullscreenButton={false}`
+### **Systematic Implementation**
 
-### Fullscreen Behavior
+- **Custom Hook**: Uses `useFullscreen` hook for centralized logic
+- **State Management**: Proper React state management with cleanup
+- **Event Handling**: Automatic keyboard event listener management
+- **Performance**: Optimized with useCallback and proper dependencies
+
+### **Enhanced Features**
+
+- **Keyboard Shortcuts**: Press `Escape` to exit fullscreen
+- **Smooth Transitions**: 300ms duration with ease-in-out timing
+- **Body Scroll Control**: Prevents background scrolling during fullscreen
+- **High Z-Index**: Uses `z-[9999]` for proper layering
+- **Backdrop Blur**: Subtle blur effect for better visual separation
+
+### **Accessibility**
+
+- **ARIA Labels**: Proper accessibility labels for screen readers
+- **Focus Management**: Maintains proper focus during transitions
+- **Keyboard Navigation**: Full keyboard support
+- **Visual Feedback**: Clear button state indicators
+
+### **Configuration Options**
+
+```tsx
+<Box
+  title="My Widget"
+  description="Widget description"
+  showFullscreenButton={true} // Show/hide button
+  fullscreenEnabled={true} // Enable/disable functionality
+>
+  Content here
+</Box>
+```
+
+### **Fullscreen Behavior**
 
 When in fullscreen mode:
 
-- Box covers the entire screen (`fixed inset-0`)
-- High z-index (`z-50`) to appear above other content
-- Maintains all styling and functionality
-- Exit button changes to "minimize" icon
+- **Full Screen Coverage**: Box covers entire viewport (`fixed inset-0`)
+- **Flexbox Layout**: Proper content distribution with flex layout
+- **Scrollable Content**: Content area is scrollable if needed
+- **Header Persistence**: Header remains visible with fullscreen button
+- **Smooth Transitions**: All state changes are animated
+- **Body Scroll Prevention**: Background content is locked
+
+### **Custom Hook Usage**
+
+The fullscreen functionality is also available as a reusable hook:
+
+```tsx
+import { useFullscreen } from "../../../hooks/useFullscreen";
+
+const { isFullscreen, toggleFullscreen, enterFullscreen, exitFullscreen } =
+  useFullscreen({
+    enabled: true,
+    onEnter: () => console.log("Entered fullscreen"),
+    onExit: () => console.log("Exited fullscreen"),
+    preventBodyScroll: true,
+  });
+```
+
+### **Technical Details**
+
+- **Event Cleanup**: Proper cleanup of event listeners on unmount
+- **Memory Management**: No memory leaks with proper useEffect cleanup
+- **State Optimization**: Minimal re-renders with optimized callbacks
+- **CSS Transitions**: Hardware-accelerated transitions for smooth performance
+
+For detailed implementation guide, see: [FULLSCREEN_GUIDE.md](./FULLSCREEN_GUIDE.md)
