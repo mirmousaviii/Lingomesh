@@ -124,11 +124,7 @@ const Pronouns: React.FC<PronounsProps> = ({ language }) => {
   return (
     <PageLayout>
       <GermanPersonalPronounsWidget language={language} />
-      <QuizWidget
-        language={language}
-        questions={quizQuestions}
-        subject="pronouns"
-      />
+
       {/* Cases Overview */}
       {pronounCases.map((caseData, index) => (
         <Box
@@ -217,325 +213,244 @@ const Pronouns: React.FC<PronounsProps> = ({ language }) => {
               key={index}
               className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
             >
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-semibold text-neutral-900 dark:text-neutral-100">
-                  {example.german}
-                </span>
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <div className="font-medium text-neutral-900 dark:text-neutral-100">
+                    {example.german}
+                  </div>
+                  <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                    {example.english}
+                  </div>
+                  <div className="text-xs text-orange-600 dark:text-orange-400 mt-2">
+                    {example.explanation}
+                  </div>
+                </div>
                 <AudioButton
                   onClick={() => speakGerman(example.german)}
-                  title={t.ui.listen}
+                  title={isGerman ? "Anhören" : "Listen"}
                   size="sm"
                 />
-              </div>
-              <div className="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
-                {example.english}
-              </div>
-              <div className="text-xs text-orange-600 dark:text-orange-400">
-                {example.explanation}
               </div>
             </div>
           ))}
         </div>
       </Box>
 
-      {/* Practice Section */}
+      {/* Detailed Examples Section */}
       <Box
-        title={isGerman ? "Pronomen üben" : "Practice Pronouns"}
+        title={isGerman ? "Detaillierte Beispiele" : "Detailed Examples"}
         description={
           isGerman
-            ? "Gedächtnishilfen und Übungstipps"
-            : "Memory tips and practice hints"
+            ? "Beispiele für verschiedene Fälle"
+            : "Examples for different cases"
         }
-        headerColor="green"
+        headerColor="emerald"
       >
         <div className="space-y-6">
-          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-              {isGerman ? "Gedächtnishilfen" : "Memory Tips"}
+          {/* Nominativ Examples */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-2">
+              <span className="w-4 h-4 bg-blue-500 rounded-full"></span>
+              {isGerman ? "Nominativ (Subjekt)" : "Nominative (Subject)"}
             </h3>
-            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
-              <div className="flex items-start space-x-2">
-                <span className="text-green-600 dark:text-green-400 font-bold">
-                  •
-                </span>
-                <div>
-                  <strong>ich → mich:</strong>{" "}
-                  {isGerman
-                    ? "Denke 'ich' wird zu 'mich' im Akkusativ"
-                    : "Think 'I' becomes 'me' in accusative"}
+            <div className="grid gap-4 md:grid-cols-2">
+              {[
+                {
+                  german: "Ich bin müde.",
+                  english: "I am tired.",
+                  pronoun: "Ich",
+                  explanation: "Subject of the sentence",
+                },
+                {
+                  german: "Du lernst Deutsch.",
+                  english: "You learn German.",
+                  pronoun: "Du",
+                  explanation: "Subject of the sentence",
+                },
+                {
+                  german: "Er arbeitet viel.",
+                  english: "He works a lot.",
+                  pronoun: "Er",
+                  explanation: "Subject of the sentence",
+                },
+                {
+                  german: "Sie kommt heute.",
+                  english: "She comes today.",
+                  pronoun: "Sie",
+                  explanation: "Subject of the sentence",
+                },
+              ].map((example, index) => (
+                <div
+                  key={index}
+                  className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="font-medium text-neutral-900 dark:text-neutral-100">
+                        {example.german.split(example.pronoun)[0]}
+                        <span className="font-bold text-blue-600 dark:text-blue-400">
+                          {example.pronoun}
+                        </span>
+                        {example.german.split(example.pronoun)[1]}
+                      </div>
+                      <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                        {example.english}
+                      </div>
+                      <div className="text-xs text-blue-600 dark:text-blue-400 mt-2">
+                        {example.explanation}
+                      </div>
+                    </div>
+                    <AudioButton
+                      onClick={() => speakGerman(example.german)}
+                      title={isGerman ? "Anhören" : "Listen"}
+                      size="sm"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start space-x-2">
-                <span className="text-green-600 dark:text-green-400 font-bold">
-                  •
-                </span>
-                <div>
-                  <strong>du → dich:</strong>{" "}
-                  {isGerman
-                    ? "Denke 'du' wird zu 'dich' (Objektform)"
-                    : "Think 'you' becomes 'you' (object form)"}
-                </div>
-              </div>
-              <div className="flex items-start space-x-2">
-                <span className="text-green-600 dark:text-green-400 font-bold">
-                  •
-                </span>
-                <div>
-                  <strong>er → ihn:</strong>{" "}
-                  {isGerman
-                    ? "Denke 'er' wird zu 'ihn' im Akkusativ"
-                    : "Think 'he' becomes 'him' in accusative"}
-                </div>
-              </div>
-              <div className="flex items-start space-x-2">
-                <span className="text-green-600 dark:text-green-400 font-bold">
-                  •
-                </span>
-                <div>
-                  <strong>sie → ihr:</strong>{" "}
-                  {isGerman
-                    ? "Denke 'sie' wird zu 'ihr' im Dativ"
-                    : "Think 'she' becomes 'her' in dative"}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-              {isGerman ? "Häufige Muster" : "Common Patterns"}
+          {/* Akkusativ Examples */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-red-600 dark:text-red-400 flex items-center gap-2">
+              <span className="w-4 h-4 bg-red-500 rounded-full"></span>
+              {isGerman
+                ? "Akkusativ (Direktes Objekt)"
+                : "Accusative (Direct Object)"}
             </h3>
-            <div className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
-              <div>
-                <strong>Nominativ:</strong> ich, du, er, sie, es, wir, ihr, sie,
-                Sie
-              </div>
-              <div>
-                <strong>Akkusativ:</strong> mich, dich, ihn, sie, es, uns, euch,
-                sie, Sie
-              </div>
-              <div>
-                <strong>Dativ:</strong> mir, dir, ihm, ihr, ihm, uns, euch,
-                ihnen, Ihnen
-              </div>
-              <div>
-                <strong>Genitiv:</strong> meiner, deiner, seiner, ihrer, seiner,
-                unserer, eurer, ihrer, Ihrer
-              </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              {[
+                {
+                  german: "Ich sehe dich.",
+                  english: "I see you.",
+                  pronoun: "dich",
+                  explanation: "Direct object",
+                },
+                {
+                  german: "Du kennst mich.",
+                  english: "You know me.",
+                  pronoun: "mich",
+                  explanation: "Direct object",
+                },
+                {
+                  german: "Er liebt sie.",
+                  english: "He loves her.",
+                  pronoun: "sie",
+                  explanation: "Direct object",
+                },
+                {
+                  german: "Sie ruft uns an.",
+                  english: "She calls us.",
+                  pronoun: "uns",
+                  explanation: "Direct object",
+                },
+              ].map((example, index) => (
+                <div
+                  key={index}
+                  className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="font-medium text-neutral-900 dark:text-neutral-100">
+                        {example.german.split(example.pronoun)[0]}
+                        <span className="font-bold text-red-600 dark:text-red-400">
+                          {example.pronoun}
+                        </span>
+                        {example.german.split(example.pronoun)[1]}
+                      </div>
+                      <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                        {example.english}
+                      </div>
+                      <div className="text-xs text-red-600 dark:text-red-400 mt-2">
+                        {example.explanation}
+                      </div>
+                    </div>
+                    <AudioButton
+                      onClick={() => speakGerman(example.german)}
+                      title={isGerman ? "Anhören" : "Listen"}
+                      size="sm"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dativ Examples */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 flex items-center gap-2">
+              <span className="w-4 h-4 bg-green-500 rounded-full"></span>
+              {isGerman
+                ? "Dativ (Indirektes Objekt)"
+                : "Dative (Indirect Object)"}
+            </h3>
+            <div className="grid gap-4 md:grid-cols-2">
+              {[
+                {
+                  german: "Er gibt mir ein Buch.",
+                  english: "He gives me a book.",
+                  pronoun: "mir",
+                  explanation: "Indirect object",
+                },
+                {
+                  german: "Ich helfe dir.",
+                  english: "I help you.",
+                  pronoun: "dir",
+                  explanation: "Indirect object",
+                },
+                {
+                  german: "Sie gibt ihm einen Kaffee.",
+                  english: "She gives him a coffee.",
+                  pronoun: "ihm",
+                  explanation: "Indirect object",
+                },
+                {
+                  german: "Er schenkt ihr Blumen.",
+                  english: "He gives her flowers.",
+                  pronoun: "ihr",
+                  explanation: "Indirect object",
+                },
+              ].map((example, index) => (
+                <div
+                  key={index}
+                  className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="font-medium text-neutral-900 dark:text-neutral-100">
+                        {example.german.split(example.pronoun)[0]}
+                        <span className="font-bold text-green-600 dark:text-green-400">
+                          {example.pronoun}
+                        </span>
+                        {example.german.split(example.pronoun)[1]}
+                      </div>
+                      <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                        {example.english}
+                      </div>
+                      <div className="text-xs text-green-600 dark:text-green-400 mt-2">
+                        {example.explanation}
+                      </div>
+                    </div>
+                    <AudioButton
+                      onClick={() => speakGerman(example.german)}
+                      title={isGerman ? "Anhören" : "Listen"}
+                      size="sm"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </Box>
 
-      {/* Examples Section */}
-      <Box
-        title={isGerman ? "Beispiele" : "Examples"}
-        description={
-          isGerman
-            ? "Personalpronomen in verschiedenen Fällen"
-            : "Personal pronouns in different cases"
-        }
-        headerColor="purple"
-      >
-        <div className="p-6">
-          <div className="grid gap-8">
-            {/* Nominativ Examples */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-2">
-                <span className="w-4 h-4 bg-blue-500 rounded-full"></span>
-                {isGerman ? "Nominativ (Subjekt)" : "Nominative (Subject)"}
-              </h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                {[
-                  {
-                    german: "Ich lerne Deutsch.",
-                    english: "I learn German.",
-                    pronoun: "ich",
-                    explanation: "Subject of the sentence",
-                  },
-                  {
-                    german: "Du bist nett.",
-                    english: "You are nice.",
-                    pronoun: "du",
-                    explanation: "Subject of the sentence",
-                  },
-                  {
-                    german: "Er arbeitet heute.",
-                    english: "He works today.",
-                    pronoun: "er",
-                    explanation: "Subject of the sentence",
-                  },
-                  {
-                    german: "Sie singt schön.",
-                    english: "She sings beautifully.",
-                    pronoun: "sie",
-                    explanation: "Subject of the sentence",
-                  },
-                ].map((example, index) => (
-                  <div
-                    key={index}
-                    className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="font-medium text-neutral-900 dark:text-neutral-100">
-                          <span className="font-bold text-blue-600 dark:text-blue-400">
-                            {example.pronoun}
-                          </span>{" "}
-                          {example.german.substring(example.pronoun.length)}
-                        </div>
-                        <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-                          {example.english}
-                        </div>
-                        <div className="text-xs text-blue-600 dark:text-blue-400 mt-2">
-                          {example.explanation}
-                        </div>
-                      </div>
-                      <AudioButton
-                        onClick={() => speakGerman(example.german)}
-                        title={isGerman ? "Anhören" : "Listen"}
-                        size="sm"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Akkusativ Examples */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-red-600 dark:text-red-400 flex items-center gap-2">
-                <span className="w-4 h-4 bg-red-500 rounded-full"></span>
-                {isGerman
-                  ? "Akkusativ (Direktes Objekt)"
-                  : "Accusative (Direct Object)"}
-              </h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                {[
-                  {
-                    german: "Er sieht mich.",
-                    english: "He sees me.",
-                    pronoun: "mich",
-                    explanation: "Direct object",
-                  },
-                  {
-                    german: "Ich kenne dich.",
-                    english: "I know you.",
-                    pronoun: "dich",
-                    explanation: "Direct object",
-                  },
-                  {
-                    german: "Wir treffen ihn.",
-                    english: "We meet him.",
-                    pronoun: "ihn",
-                    explanation: "Direct object",
-                  },
-                  {
-                    german: "Ich rufe sie an.",
-                    english: "I call her.",
-                    pronoun: "sie",
-                    explanation: "Direct object",
-                  },
-                ].map((example, index) => (
-                  <div
-                    key={index}
-                    className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="font-medium text-neutral-900 dark:text-neutral-100">
-                          {example.german.split(example.pronoun)[0]}
-                          <span className="font-bold text-red-600 dark:text-red-400">
-                            {example.pronoun}
-                          </span>
-                          {example.german.split(example.pronoun)[1]}
-                        </div>
-                        <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-                          {example.english}
-                        </div>
-                        <div className="text-xs text-red-600 dark:text-red-400 mt-2">
-                          {example.explanation}
-                        </div>
-                      </div>
-                      <AudioButton
-                        onClick={() => speakGerman(example.german)}
-                        title={isGerman ? "Anhören" : "Listen"}
-                        size="sm"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Dativ Examples */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 flex items-center gap-2">
-                <span className="w-4 h-4 bg-green-500 rounded-full"></span>
-                {isGerman
-                  ? "Dativ (Indirektes Objekt)"
-                  : "Dative (Indirect Object)"}
-              </h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                {[
-                  {
-                    german: "Er gibt mir ein Buch.",
-                    english: "He gives me a book.",
-                    pronoun: "mir",
-                    explanation: "Indirect object",
-                  },
-                  {
-                    german: "Ich helfe dir.",
-                    english: "I help you.",
-                    pronoun: "dir",
-                    explanation: "Indirect object",
-                  },
-                  {
-                    german: "Sie gibt ihm einen Kaffee.",
-                    english: "She gives him a coffee.",
-                    pronoun: "ihm",
-                    explanation: "Indirect object",
-                  },
-                  {
-                    german: "Er schenkt ihr Blumen.",
-                    english: "He gives her flowers.",
-                    pronoun: "ihr",
-                    explanation: "Indirect object",
-                  },
-                ].map((example, index) => (
-                  <div
-                    key={index}
-                    className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="font-medium text-neutral-900 dark:text-neutral-100">
-                          {example.german.split(example.pronoun)[0]}
-                          <span className="font-bold text-green-600 dark:text-green-400">
-                            {example.pronoun}
-                          </span>
-                          {example.german.split(example.pronoun)[1]}
-                        </div>
-                        <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-                          {example.english}
-                        </div>
-                        <div className="text-xs text-green-600 dark:text-green-400 mt-2">
-                          {example.explanation}
-                        </div>
-                      </div>
-                      <AudioButton
-                        onClick={() => speakGerman(example.german)}
-                        title={isGerman ? "Anhören" : "Listen"}
-                        size="sm"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </Box>
+      {/* Quiz Widget - Last Component */}
+      <QuizWidget
+        language={language}
+        questions={quizQuestions}
+        subject="pronouns"
+      />
     </PageLayout>
   );
 };

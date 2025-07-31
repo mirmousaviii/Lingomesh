@@ -120,11 +120,7 @@ const Verbs: React.FC<VerbsProps> = ({ language }) => {
   return (
     <PageLayout>
       <VerbConjugationWidget language={language} />
-      <QuizWidget
-        language={language}
-        questions={quizQuestions}
-        subject="verbs"
-      />
+
       {/* Verb Rules Section */}
       <Box
         title={isGerman ? "Konjugationsregeln" : "Conjugation Rules"}
@@ -224,433 +220,206 @@ const Verbs: React.FC<VerbsProps> = ({ language }) => {
         </div>
       </Box>
 
-      {/* Personal Pronouns Section */}
+      {/* Verb Tenses Section */}
       <Box
-        title={isGerman ? "Personalpronomen" : "Personal Pronouns"}
+        title={isGerman ? "Verb-Zeiten" : "Verb Tenses"}
         description={
           isGerman
-            ? "Pronomen für die Verbkonjugation"
-            : "Pronouns for verb conjugation"
+            ? "Verschiedene Zeitformen im Deutschen"
+            : "Different tenses in German"
         }
-        headerColor="pink"
-      >
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-              {isGerman ? "Singular" : "Singular"}
-            </h3>
-            <div className="space-y-2">
-              {[
-                { german: "ich", english: "I" },
-                { german: "du", english: "you (informal)" },
-                { german: "er/sie/es", english: "he/she/it" },
-              ].map((pronoun, index) => (
-                <div
-                  key={index}
-                  className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-2 border border-neutral-200 dark:border-neutral-700"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-                        {pronoun.german}
-                      </span>
-                      <span className="text-xs text-neutral-600 dark:text-neutral-400 ml-2">
-                        ({pronoun.english})
-                      </span>
-                    </div>
-                    <AudioButton
-                      onClick={() => speakGerman(pronoun.german)}
-                      title={t.ui.listen}
-                      size="sm"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-              {isGerman ? "Plural" : "Plural"}
-            </h3>
-            <div className="space-y-2">
-              {[
-                { german: "wir", english: "we" },
-                { german: "ihr", english: "you (informal plural)" },
-                { german: "sie/Sie", english: "they/you (formal)" },
-              ].map((pronoun, index) => (
-                <div
-                  key={index}
-                  className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-2 border border-neutral-200 dark:border-neutral-700"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-                        {pronoun.german}
-                      </span>
-                      <span className="text-xs text-neutral-600 dark:text-neutral-400 ml-2">
-                        ({pronoun.english})
-                      </span>
-                    </div>
-                    <AudioButton
-                      onClick={() => speakGerman(pronoun.german.split("/")[0])}
-                      title={t.ui.listen}
-                      size="sm"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Box>
-
-      {/* Practice Section */}
-      <Box
-        title={
-          isGerman ? "Verbkonjugationen üben" : "Practice Verb Conjugations"
-        }
-        description={
-          isGerman
-            ? "Gedächtnishilfen und Übungstipps"
-            : "Memory tips and practice hints"
-        }
-        headerColor="green"
+        headerColor="purple"
       >
         <div className="space-y-6">
-          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-              {isGerman ? "Gedächtnishilfen" : "Memory Tips"}
+          {/* Present Tense Examples */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-2">
+              <span className="w-4 h-4 bg-blue-500 rounded-full"></span>
+              {isGerman ? "Präsens" : "Present Tense"}
             </h3>
-            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
-              <div className="flex items-start space-x-2">
-                <span className="text-green-600 dark:text-green-400 font-bold">
-                  •
-                </span>
-                <div>
-                  <strong>ich:</strong>{" "}
-                  {isGerman ? "Endet immer mit -e" : "Always ends with -e"}
+            <div className="grid gap-4 md:grid-cols-2">
+              {[
+                {
+                  german: "Ich lerne Deutsch.",
+                  english: "I learn German.",
+                  verb: "lernen",
+                  type: "regular",
+                },
+                {
+                  german: "Du sprichst gut.",
+                  english: "You speak well.",
+                  verb: "sprechen",
+                  type: "irregular",
+                },
+                {
+                  german: "Er arbeitet viel.",
+                  english: "He works a lot.",
+                  verb: "arbeiten",
+                  type: "regular",
+                },
+                {
+                  german: "Wir haben Zeit.",
+                  english: "We have time.",
+                  verb: "haben",
+                  type: "irregular",
+                },
+              ].map((example, index) => (
+                <div
+                  key={index}
+                  className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="font-medium text-neutral-900 dark:text-neutral-100">
+                        {example.german}
+                      </div>
+                      <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                        {example.english}
+                      </div>
+                      <div className="text-xs text-blue-600 dark:text-blue-400 mt-2">
+                        {example.verb} ({example.type})
+                      </div>
+                    </div>
+                    <AudioButton
+                      onClick={() => speakGerman(example.german)}
+                      title={isGerman ? "Anhören" : "Listen"}
+                      size="sm"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start space-x-2">
-                <span className="text-green-600 dark:text-green-400 font-bold">
-                  •
-                </span>
-                <div>
-                  <strong>du:</strong>{" "}
-                  {isGerman ? "Endet immer mit -st" : "Always ends with -st"}
-                </div>
-              </div>
-              <div className="flex items-start space-x-2">
-                <span className="text-green-600 dark:text-green-400 font-bold">
-                  •
-                </span>
-                <div>
-                  <strong>er/sie/es:</strong>{" "}
-                  {isGerman ? "Endet immer mit -t" : "Always ends with -t"}
-                </div>
-              </div>
-              <div className="flex items-start space-x-2">
-                <span className="text-green-600 dark:text-green-400 font-bold">
-                  •
-                </span>
-                <div>
-                  <strong>wir/ihr/sie/Sie:</strong>{" "}
-                  {isGerman
-                    ? "Verwende Infinitivform oder -t/-en"
-                    : "Use infinitive form or -t/-en"}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-              {isGerman ? "Perfekt Regeln" : "Perfekt Rules"}
+          {/* Perfekt Examples */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 flex items-center gap-2">
+              <span className="w-4 h-4 bg-green-500 rounded-full"></span>
+              {isGerman ? "Perfekt" : "Perfect Tense"}
             </h3>
-            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
-              <div className="flex items-start space-x-2">
-                <span className="text-green-600 dark:text-green-400 font-bold">
-                  •
-                </span>
-                <div>
-                  <strong>haben:</strong>{" "}
-                  {isGerman
-                    ? "Die meisten Verben (lernen, lesen, schlafen)"
-                    : "Most verbs (learn, read, sleep)"}
+            <div className="grid gap-4 md:grid-cols-2">
+              {[
+                {
+                  german: "Ich habe gelernt.",
+                  english: "I have learned.",
+                  auxiliary: "haben",
+                  type: "regular",
+                },
+                {
+                  german: "Du bist gekommen.",
+                  english: "You have come.",
+                  auxiliary: "sein",
+                  type: "irregular",
+                },
+                {
+                  german: "Er hat gearbeitet.",
+                  english: "He has worked.",
+                  auxiliary: "haben",
+                  type: "regular",
+                },
+                {
+                  german: "Wir sind gegangen.",
+                  english: "We have gone.",
+                  auxiliary: "sein",
+                  type: "state",
+                },
+              ].map((example, index) => (
+                <div
+                  key={index}
+                  className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="font-medium text-neutral-900 dark:text-neutral-100">
+                        {example.german}
+                      </div>
+                      <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                        {example.english}
+                      </div>
+                      <div className="text-xs text-green-600 dark:text-green-400 mt-2">
+                        {isGerman ? "Hilfsverb:" : "Auxiliary:"}{" "}
+                        <strong>{example.auxiliary}</strong>
+                      </div>
+                    </div>
+                    <AudioButton
+                      onClick={() => speakGerman(example.german)}
+                      title={isGerman ? "Anhören" : "Listen"}
+                      size="sm"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start space-x-2">
-                <span className="text-green-600 dark:text-green-400 font-bold">
-                  •
-                </span>
-                <div>
-                  <strong>sein:</strong>{" "}
-                  {isGerman
-                    ? "Bewegungsverben (gehen, fahren, fliegen) und Zustandsänderungen"
-                    : "Movement verbs (go, drive, fly) and state changes"}
+              ))}
+            </div>
+          </div>
+
+          {/* Präteritum Examples */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-purple-600 dark:text-purple-400 flex items-center gap-2">
+              <span className="w-4 h-4 bg-purple-500 rounded-full"></span>
+              {isGerman ? "Präteritum" : "Past Tense"}
+            </h3>
+            <div className="grid gap-4 md:grid-cols-2">
+              {[
+                {
+                  german: "Ich war zu Hause.",
+                  english: "I was at home.",
+                  verb: "sein → war",
+                  type: "irregular",
+                },
+                {
+                  german: "Er lernte Deutsch.",
+                  english: "He learned German.",
+                  verb: "lernen → lernte",
+                  type: "regular",
+                },
+                {
+                  german: "Wir hatten Zeit.",
+                  english: "We had time.",
+                  verb: "haben → hatten",
+                  type: "irregular",
+                },
+                {
+                  german: "Sie ging nach Hause.",
+                  english: "She went home.",
+                  verb: "gehen → ging",
+                  type: "irregular",
+                },
+              ].map((example, index) => (
+                <div
+                  key={index}
+                  className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="font-medium text-neutral-900 dark:text-neutral-100">
+                        {example.german}
+                      </div>
+                      <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                        {example.english}
+                      </div>
+                      <div className="text-xs text-purple-600 dark:text-purple-400 mt-2">
+                        {example.verb} ({example.type})
+                      </div>
+                    </div>
+                    <AudioButton
+                      onClick={() => speakGerman(example.german)}
+                      title={isGerman ? "Anhören" : "Listen"}
+                      size="sm"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start space-x-2">
-                <span className="text-green-600 dark:text-green-400 font-bold">
-                  •
-                </span>
-                <div>
-                  <strong>Partizip II:</strong>{" "}
-                  {isGerman
-                    ? "ge- + Verbstamm + -t/-en"
-                    : "ge- + verb stem + -t/-en"}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </Box>
 
-      {/* Examples Section */}
-      <Box
-        title={isGerman ? "Beispiele" : "Examples"}
-        description={
-          isGerman
-            ? "Verbkonjugation in verschiedenen Zeiten"
-            : "Verb conjugation in different tenses"
-        }
-        headerColor="green"
-      >
-        <div className="p-6">
-          <div className="grid gap-8">
-            {/* Präsens Examples */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-2">
-                <span className="w-4 h-4 bg-blue-500 rounded-full"></span>
-                {isGerman ? "Präsens" : "Present Tense"}
-              </h3>
-              <div className="grid gap-6 md:grid-cols-2">
-                {/* haben conjugation */}
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                  <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-3">
-                    haben (to have)
-                  </h4>
-                  <div className="space-y-2">
-                    {[
-                      { pronoun: "ich", verb: "habe", english: "I have" },
-                      { pronoun: "du", verb: "hast", english: "you have" },
-                      {
-                        pronoun: "er/sie/es",
-                        verb: "hat",
-                        english: "he/she/it has",
-                      },
-                      { pronoun: "wir", verb: "haben", english: "we have" },
-                      {
-                        pronoun: "ihr",
-                        verb: "habt",
-                        english: "you have (plural)",
-                      },
-                      {
-                        pronoun: "sie/Sie",
-                        verb: "haben",
-                        english: "they/you have (formal)",
-                      },
-                    ].map((conj, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center justify-between text-sm"
-                      >
-                        <span className="text-neutral-900 dark:text-neutral-100">
-                          <strong>{conj.pronoun}</strong> {conj.verb}
-                        </span>
-                        <div className="flex items-center space-x-2">
-                          <span className="text-neutral-600 dark:text-neutral-400 text-xs">
-                            {conj.english}
-                          </span>
-                          <AudioButton
-                            onClick={() =>
-                              speakGerman(`${conj.pronoun} ${conj.verb}`)
-                            }
-                            title={isGerman ? "Anhören" : "Listen"}
-                            size="sm"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* sein conjugation */}
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                  <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-3">
-                    sein (to be)
-                  </h4>
-                  <div className="space-y-2">
-                    {[
-                      { pronoun: "ich", verb: "bin", english: "I am" },
-                      { pronoun: "du", verb: "bist", english: "you are" },
-                      {
-                        pronoun: "er/sie/es",
-                        verb: "ist",
-                        english: "he/she/it is",
-                      },
-                      { pronoun: "wir", verb: "sind", english: "we are" },
-                      {
-                        pronoun: "ihr",
-                        verb: "seid",
-                        english: "you are (plural)",
-                      },
-                      {
-                        pronoun: "sie/Sie",
-                        verb: "sind",
-                        english: "they/you are (formal)",
-                      },
-                    ].map((conj, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center justify-between text-sm"
-                      >
-                        <span className="text-neutral-900 dark:text-neutral-100">
-                          <strong>{conj.pronoun}</strong> {conj.verb}
-                        </span>
-                        <div className="flex items-center space-x-2">
-                          <span className="text-neutral-600 dark:text-neutral-400 text-xs">
-                            {conj.english}
-                          </span>
-                          <AudioButton
-                            onClick={() =>
-                              speakGerman(`${conj.pronoun} ${conj.verb}`)
-                            }
-                            title={isGerman ? "Anhören" : "Listen"}
-                            size="sm"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Perfekt Examples */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 flex items-center gap-2">
-                <span className="w-4 h-4 bg-green-500 rounded-full"></span>
-                {isGerman ? "Perfekt" : "Perfect Tense"}
-              </h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                {[
-                  {
-                    german: "Ich habe Deutsch gelernt.",
-                    english: "I have learned German.",
-                    auxiliary: "haben",
-                    type: "regular",
-                  },
-                  {
-                    german: "Er ist nach Hause gegangen.",
-                    english: "He has gone home.",
-                    auxiliary: "sein",
-                    type: "movement",
-                  },
-                  {
-                    german: "Wir haben ein Auto gekauft.",
-                    english: "We have bought a car.",
-                    auxiliary: "haben",
-                    type: "regular",
-                  },
-                  {
-                    german: "Sie ist in Berlin gewesen.",
-                    english: "She has been in Berlin.",
-                    auxiliary: "sein",
-                    type: "state",
-                  },
-                ].map((example, index) => (
-                  <div
-                    key={index}
-                    className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="font-medium text-neutral-900 dark:text-neutral-100">
-                          {example.german}
-                        </div>
-                        <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-                          {example.english}
-                        </div>
-                        <div className="text-xs text-green-600 dark:text-green-400 mt-2">
-                          {isGerman ? "Hilfsverb:" : "Auxiliary:"}{" "}
-                          <strong>{example.auxiliary}</strong>
-                        </div>
-                      </div>
-                      <AudioButton
-                        onClick={() => speakGerman(example.german)}
-                        title={isGerman ? "Anhören" : "Listen"}
-                        size="sm"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Präteritum Examples */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-purple-600 dark:text-purple-400 flex items-center gap-2">
-                <span className="w-4 h-4 bg-purple-500 rounded-full"></span>
-                {isGerman ? "Präteritum" : "Past Tense"}
-              </h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                {[
-                  {
-                    german: "Ich war zu Hause.",
-                    english: "I was at home.",
-                    verb: "sein → war",
-                    type: "irregular",
-                  },
-                  {
-                    german: "Er lernte Deutsch.",
-                    english: "He learned German.",
-                    verb: "lernen → lernte",
-                    type: "regular",
-                  },
-                  {
-                    german: "Wir hatten Zeit.",
-                    english: "We had time.",
-                    verb: "haben → hatten",
-                    type: "irregular",
-                  },
-                  {
-                    german: "Sie ging nach Hause.",
-                    english: "She went home.",
-                    verb: "gehen → ging",
-                    type: "irregular",
-                  },
-                ].map((example, index) => (
-                  <div
-                    key={index}
-                    className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="font-medium text-neutral-900 dark:text-neutral-100">
-                          {example.german}
-                        </div>
-                        <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-                          {example.english}
-                        </div>
-                        <div className="text-xs text-purple-600 dark:text-purple-400 mt-2">
-                          {example.verb} ({example.type})
-                        </div>
-                      </div>
-                      <AudioButton
-                        onClick={() => speakGerman(example.german)}
-                        title={isGerman ? "Anhören" : "Listen"}
-                        size="sm"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </Box>
+      {/* Quiz Widget - Last Component */}
+      <QuizWidget
+        language={language}
+        questions={quizQuestions}
+        subject="verbs"
+      />
     </PageLayout>
   );
 };

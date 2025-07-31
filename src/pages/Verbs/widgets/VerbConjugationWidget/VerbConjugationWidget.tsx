@@ -307,7 +307,8 @@ const VerbConjugationWidget: React.FC<VerbConjugationWidgetProps> = ({
   };
 
   return (
-    <Box titleKey="verbzeiten"
+    <Box
+      titleKey="verbzeiten"
       language={language}
       headerColor="purple"
       description={

@@ -1,1 +1,2 @@
-export { default as QuizWidget, type QuizQuestion } from "./QuizWidget";
+export { default as QuizWidget } from "./QuizWidget";
+export type { QuizQuestion } from "../../../../components/widgets/QuizWidget/QuizWidget";

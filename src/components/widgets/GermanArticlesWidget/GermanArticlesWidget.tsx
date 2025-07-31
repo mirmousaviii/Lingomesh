@@ -147,7 +147,8 @@ const GermanArticlesWidget: React.FC<GermanArticlesWidgetProps> = ({
   ];
 
   return (
-    <Box titleKey="artikel"
+    <Box
+      titleKey="artikel"
       language={language}
       headerColor="blue"
       description={

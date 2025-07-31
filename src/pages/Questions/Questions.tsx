@@ -99,51 +99,57 @@ const Questions: React.FC<QuestionsProps> = ({ language }) => {
       german: "Hast du Zeit?",
       english: "Do you have time?",
       pattern: isGerman
-        ? "Hilfsverb + Subjekt + Objekt?"
-        : "Auxiliary verb + Subject + Object?",
+        ? "Haben + Subjekt + Objekt?"
+        : "Have + Subject + Object?",
     },
     {
-      german: "Gehst du ins Kino?",
-      english: "Are you going to the cinema?",
+      german: "Kommst du mit?",
+      english: "Are you coming along?",
       pattern: isGerman
-        ? "Verb + Subjekt + Präposition + Objekt?"
-        : "Verb + Subject + Preposition + Object?",
+        ? "Verb + Subjekt + Präposition?"
+        : "Verb + Subject + Preposition?",
     },
     {
-      german: "Kannst du mir helfen?",
-      english: "Can you help me?",
+      german: "Sprechen Sie Deutsch?",
+      english: "Do you speak German?",
       pattern: isGerman
-        ? "Modalverb + Subjekt + Dativ + Infinitiv?"
-        : "Modal verb + Subject + Dative + Infinitive?",
+        ? "Verb + Subjekt + Objekt?"
+        : "Verb + Subject + Object?",
+    },
+    {
+      german: "Ist das richtig?",
+      english: "Is that correct?",
+      pattern: isGerman
+        ? "Sein + Subjekt + Adjektiv?"
+        : "To be + Subject + Adjective?",
     },
   ];
 
   // Question formation rules
   const questionRules = [
     {
-      title: isGerman ? "W-Fragen" : "Wh-Questions",
+      title: isGerman ? "W-Fragen (W-Questions)" : "W-Questions",
       description: isGerman
-        ? "Beginnen mit einem Fragewort (W-Wort), dann folgt das Verb."
-        : "Begin with a question word (W-word), followed by the verb.",
-      example: "Was machst du? (What are you doing?)",
+        ? "Fragen mit Fragewörtern beginnen mit W-Wörtern"
+        : "Questions with question words start with W-words",
+      example: "Wo wohnst du? (Where do you live?)",
     },
     {
       title: isGerman ? "Ja/Nein-Fragen" : "Yes/No Questions",
       description: isGerman
-        ? "Beginnen mit dem Verb, das Subjekt folgt danach."
-        : "Begin with the verb, followed by the subject.",
-      example: "Kommst du heute? (Are you coming today?)",
+        ? "Fragen, die mit Ja oder Nein beantwortet werden können"
+        : "Questions that can be answered with Yes or No",
+      example: "Bist du müde? (Are you tired?)",
     },
     {
-      title: isGerman ? "Indirekte Fragen" : "Indirect Questions",
+      title: isGerman ? "Verb-Position" : "Verb Position",
       description: isGerman
-        ? "Das Verb steht am Ende des Satzes."
-        : "The verb goes to the end of the sentence.",
-      example: "Ich frage, ob du kommst. (I ask if you're coming.)",
+        ? "Das Verb steht in W-Fragen an zweiter Stelle"
+        : "The verb comes in second position in W-questions",
+      example: "Was machst du? (What are you doing?)",
     },
   ];
 
-  // Speech synthesis function
   const speakGerman = (text: string) => {
     if ("speechSynthesis" in window) {
       const utterance = new SpeechSynthesisUtterance(text);
@@ -153,9 +159,9 @@ const Questions: React.FC<QuestionsProps> = ({ language }) => {
     }
   };
 
-  // Convert questionQuizQuestions to QuizQuestion format
+  // Convert quiz questions to the correct format
   const quizQuestions: QuizQuestion[] = questionQuizQuestions.map((q) => ({
-    question: language === "de" ? q.question : q.questionEn,
+    question: q.question,
     options: q.options,
     correctAnswer: q.correctAnswer,
     explanation: language === "de" ? q.explanation : q.explanationEn,
@@ -164,11 +170,7 @@ const Questions: React.FC<QuestionsProps> = ({ language }) => {
   return (
     <PageLayout>
       <GermanQuestionsWidget language={language} />
-      <QuizWidget
-        language={language}
-        questions={quizQuestions}
-        subject="questions"
-      />
+
       {/* Question Words Section */}
       <Box
         title={isGerman ? "Fragewörter" : "Question Words"}
@@ -285,6 +287,13 @@ const Questions: React.FC<QuestionsProps> = ({ language }) => {
           ))}
         </div>
       </Box>
+
+      {/* Quiz Widget - Last Component */}
+      <QuizWidget
+        language={language}
+        questions={quizQuestions}
+        subject="questions"
+      />
     </PageLayout>
   );
 };

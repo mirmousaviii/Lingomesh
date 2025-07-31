@@ -155,7 +155,8 @@ const GermanQuestionsWidget: React.FC<GermanQuestionsWidgetProps> = ({
   const currentSection = questionSections[activeSection];
 
   return (
-    <Box titleKey="fragen"
+    <Box
+      titleKey="fragen"
       language={language}
       headerColor="teal"
       description={

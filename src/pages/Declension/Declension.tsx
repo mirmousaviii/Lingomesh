@@ -302,11 +302,7 @@ const Declension: React.FC<DeclensionProps> = ({ language }) => {
   return (
     <PageLayout>
       <GermanAdjectiveDeclensionWidget language={language} />
-      <QuizWidget
-        language={language}
-        questions={quizQuestions}
-        subject="declension"
-      />
+
       {/* Declension Types */}
       {declensionTypes.map((type, index) => (
         <Box
@@ -397,50 +393,58 @@ const Declension: React.FC<DeclensionProps> = ({ language }) => {
                   </thead>
                   <tbody>
                     <tr className="border-b border-neutral-100 dark:border-neutral-800">
-                      <td className="py-2 font-medium">Nominativ</td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-neutral-700 dark:text-neutral-300">
+                        {isGerman ? "Nominativ" : "Nominative"}
+                      </td>
+                      <td className="py-2 text-blue-600 dark:text-blue-400">
                         {declension.endings.maskulin.nom}
                       </td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-pink-600 dark:text-pink-400">
                         {declension.endings.feminin.nom}
                       </td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-green-600 dark:text-green-400">
                         {declension.endings.neutral.nom}
                       </td>
                     </tr>
                     <tr className="border-b border-neutral-100 dark:border-neutral-800">
-                      <td className="py-2 font-medium">Akkusativ</td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-neutral-700 dark:text-neutral-300">
+                        {isGerman ? "Akkusativ" : "Accusative"}
+                      </td>
+                      <td className="py-2 text-blue-600 dark:text-blue-400">
                         {declension.endings.maskulin.akk}
                       </td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-pink-600 dark:text-pink-400">
                         {declension.endings.feminin.akk}
                       </td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-green-600 dark:text-green-400">
                         {declension.endings.neutral.akk}
                       </td>
                     </tr>
                     <tr className="border-b border-neutral-100 dark:border-neutral-800">
-                      <td className="py-2 font-medium">Dativ</td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-neutral-700 dark:text-neutral-300">
+                        {isGerman ? "Dativ" : "Dative"}
+                      </td>
+                      <td className="py-2 text-blue-600 dark:text-blue-400">
                         {declension.endings.maskulin.dat}
                       </td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-pink-600 dark:text-pink-400">
                         {declension.endings.feminin.dat}
                       </td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-green-600 dark:text-green-400">
                         {declension.endings.neutral.dat}
                       </td>
                     </tr>
                     <tr>
-                      <td className="py-2 font-medium">Genitiv</td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-neutral-700 dark:text-neutral-300">
+                        {isGerman ? "Genitiv" : "Genitive"}
+                      </td>
+                      <td className="py-2 text-blue-600 dark:text-blue-400">
                         {declension.endings.maskulin.gen}
                       </td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-pink-600 dark:text-pink-400">
                         {declension.endings.feminin.gen}
                       </td>
-                      <td className="py-2 font-mono">
+                      <td className="py-2 text-green-600 dark:text-green-400">
                         {declension.endings.neutral.gen}
                       </td>
                     </tr>
@@ -647,6 +651,13 @@ const Declension: React.FC<DeclensionProps> = ({ language }) => {
           </div>
         </div>
       </Box>
+
+      {/* Quiz Widget - Last Component */}
+      <QuizWidget
+        language={language}
+        questions={quizQuestions}
+        subject="declension"
+      />
     </PageLayout>
   );
 };

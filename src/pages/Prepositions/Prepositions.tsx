@@ -248,11 +248,7 @@ const Prepositions: React.FC<PrepositionsProps> = ({ language }) => {
   return (
     <PageLayout>
       <GermanVerbsPrepositionsWidget language={language} />
-      <QuizWidget
-        language={language}
-        questions={quizQuestions}
-        subject="prepositions"
-      />
+
       {/* Preposition Types */}
       {prepositionTypes.map((type, index) => (
         <Box
@@ -339,67 +335,8 @@ const Prepositions: React.FC<PrepositionsProps> = ({ language }) => {
                   size="sm"
                 />
               </div>
-              <div className="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-3 border border-neutral-200 dark:border-neutral-600">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-neutral-900 dark:text-neutral-100">
-                    {item.example}
-                  </span>
-                  <AudioButton
-                    onClick={() => speakGerman(item.example)}
-                    title={t.ui.listen}
-                    size="sm"
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Box>
-
-      {/* Additional Examples by Category */}
-      <Box
-        title={isGerman ? "Weitere Beispiele" : "Additional Examples"}
-        description={
-          isGerman
-            ? "Beispiele nach Kategorien geordnet"
-            : "Examples organized by categories"
-        }
-        headerColor="blue"
-      >
-        <div className="space-y-6">
-          {additionalExamples.map((category, categoryIndex) => (
-            <div key={categoryIndex}>
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
-                {category.category}
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {category.examples.map((example, exampleIndex) => (
-                  <div
-                    key={exampleIndex}
-                    className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span
-                        className={`text-xs font-medium ${getCaseColor(
-                          example.case
-                        )}`}
-                      >
-                        {example.preposition} ({example.case})
-                      </span>
-                      <AudioButton
-                        onClick={() => speakGerman(example.german)}
-                        title={t.ui.listen}
-                        size="sm"
-                      />
-                    </div>
-                    <div className="text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-1">
-                      {example.german}
-                    </div>
-                    <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                      {example.english}
-                    </div>
-                  </div>
-                ))}
+              <div className="text-sm text-neutral-600 dark:text-neutral-400">
+                {item.example}
               </div>
             </div>
           ))}
@@ -407,118 +344,116 @@ const Prepositions: React.FC<PrepositionsProps> = ({ language }) => {
       </Box>
 
       {/* Practice Section */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-4">
-          <h2 className="text-xl font-bold text-white">
-            {isGerman
-              ? "Verb-Präpositions-Kombinationen üben"
-              : "Practice Verb-Preposition Combinations"}
-          </h2>
-          <p className="text-green-100 mt-1 text-sm">
-            {isGerman
-              ? "Gedächtnishilfen und Übungstipps"
-              : "Memory tips and practice hints"}
-          </p>
-        </div>
-
-        <div className="p-6">
-          <div className="space-y-6">
-            <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-                {isGerman ? "Gedächtnishilfen" : "Memory Tips"}
-              </h3>
-              <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>auf + Akkusativ:</strong>{" "}
-                    {isGerman
-                      ? "Auf etwas warten (warten auf)"
-                      : "Waiting for something (warten auf)"}
-                  </div>
+      <Box
+        title={isGerman ? "Präpositionen üben" : "Practice Prepositions"}
+        description={
+          isGerman
+            ? "Gedächtnishilfen und Übungstipps"
+            : "Memory tips and practice hints"
+        }
+        headerColor="green"
+      >
+        <div className="space-y-6">
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
+              {isGerman ? "Gedächtnishilfen" : "Memory Tips"}
+            </h3>
+            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>auf + Akkusativ:</strong>{" "}
+                  {isGerman
+                    ? "Auf etwas warten (warten auf)"
+                    : "Waiting for something (warten auf)"}
                 </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>an + Akkusativ:</strong>{" "}
-                    {isGerman
-                      ? "An etwas denken (denken an)"
-                      : "Thinking about something (denken an)"}
-                  </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>an + Akkusativ:</strong>{" "}
+                  {isGerman
+                    ? "An etwas denken (denken an)"
+                    : "Thinking about something (denken an)"}
                 </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>mit + Dativ:</strong>{" "}
-                    {isGerman
-                      ? "Etwas mit jemandem machen (sprechen mit)"
-                      : "Doing something with someone (sprechen mit)"}
-                  </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>mit + Dativ:</strong>{" "}
+                  {isGerman
+                    ? "Etwas mit jemandem machen (sprechen mit)"
+                    : "Doing something with someone (sprechen mit)"}
                 </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>für + Akkusativ:</strong>{" "}
-                    {isGerman
-                      ? "Für etwas/jemanden (sich interessieren für, danken für)"
-                      : "For something/someone (sich interessieren für, danken für)"}
-                  </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>für + Akkusativ:</strong>{" "}
+                  {isGerman
+                    ? "Für etwas/jemanden (sich interessieren für, danken für)"
+                    : "For something/someone (sich interessieren für, danken für)"}
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
-                {isGerman ? "Häufige Muster" : "Common Patterns"}
-              </h3>
-              <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>Emotions:</strong> sich freuen über, sich ärgern
-                    über
-                  </div>
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
+              {isGerman ? "Häufige Muster" : "Common Patterns"}
+            </h3>
+            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>Emotions:</strong> sich freuen über, sich ärgern über
                 </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>Communication:</strong> sprechen mit, antworten auf
-                  </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>Communication:</strong> sprechen mit, antworten auf
                 </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>Help:</strong> helfen bei, danken für
-                  </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>Help:</strong> helfen bei, danken für
                 </div>
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-600 dark:text-green-400 font-bold">
-                    •
-                  </span>
-                  <div>
-                    <strong>Interest:</strong> sich interessieren für, glauben
-                    an
-                  </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-green-600 dark:text-green-400 font-bold">
+                  •
+                </span>
+                <div>
+                  <strong>Interest:</strong> sich interessieren für, glauben an
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Box>
+
+      {/* Quiz Widget - Last Component */}
+      <QuizWidget
+        language={language}
+        questions={quizQuestions}
+        subject="prepositions"
+      />
     </PageLayout>
   );
 };

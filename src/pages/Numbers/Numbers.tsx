@@ -6,7 +6,8 @@ import NumberConverterWidget from "./widgets/NumberConverterWidget/NumberConvert
 import BasicNumbersWidget from "./widgets/BasicNumbersWidget/BasicNumbersWidget";
 import OrdinalNumbersWidget from "./widgets/OrdinalNumbersWidget/OrdinalNumbersWidget";
 import AudioButton from "../../components/ui/AudioButton/AudioButton";
-import QuizWidget, { QuizQuestion } from "./widgets/QuizWidget/QuizWidget";
+import QuizWidget from "./widgets/QuizWidget/QuizWidget";
+import type { QuizQuestion } from "../../components/widgets/QuizWidget/QuizWidget";
 import PageLayout from "../../components/layout/PageLayout";
 import Box from "../../components/ui/Box/Box";
 

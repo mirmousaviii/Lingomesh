@@ -185,7 +185,8 @@ const GermanPersonalPronounsWidget: React.FC<
   ];
 
   return (
-    <Box titleKey="personalpronomen"
+    <Box
+      titleKey="personalpronomen"
       language={language}
       headerColor="pink"
       description={
