@@ -293,7 +293,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
             className="mt-8 sm:mt-12 text-center animate-fade-in"
             style={{ animationDelay: "1s", animationFillMode: "both" }}
           >
-            <div className="relative bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-600 dark:from-purple-600 dark:via-pink-600 dark:to-indigo-700 rounded-lg p-6 sm:p-8 shadow-2xl border border-purple-300 dark:border-purple-600 overflow-hidden animate-soft-glow">
+            <div className="relative bg-gradient-to-br from-blue-500 via-teal-500 to-green-600 dark:from-blue-600 dark:via-teal-600 dark:to-green-700 rounded-lg p-6 sm:p-8 shadow-2xl border border-blue-300 dark:border-blue-600 overflow-hidden animate-soft-glow">
               {/* Shimmer effect overlay */}
               <div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-shimmer"
@@ -314,26 +314,11 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
               ></div>
               {/* Content */}
               <div className="relative z-10">
-                <div className="mb-4">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg mb-3 border border-white/30 animate-glow">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                      />
-                    </svg>
-                  </div>
-                  <h2 className="text-xl sm:text-2xl font-bold mb-2 drop-shadow-lg bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-600 bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient-x animate-pulse">
+                <div className="py-4">
+                  <h2 className="text-xl sm:text-2xl font-bold mb-6 drop-shadow-lg text-white animate-pulse">
                     {t.home.lingoMeshFeatures}
                   </h2>
-                  <div className="relative flex justify-center items-center my-4">
+                  <div className="relative flex justify-center items-center mb-8">
                     {/* Magical sparkle animation */}
                     <div className="absolute left-1/4 -top-2 w-3 h-3 bg-gradient-to-br from-yellow-300 via-pink-400 to-blue-400 rounded-full blur-sm animate-pulse-sparkle animate-bounce"></div>
                     <div
@@ -344,9 +329,69 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                       className="absolute left-1/2 top-0 w-1.5 h-1.5 bg-gradient-to-br from-white to-blue-300 rounded-full blur-sm animate-pulse-sparkle animate-bounce"
                       style={{ animationDelay: "1.2s" }}
                     ></div>
-                    {/* Magical glowing line with animated width and shimmer */}
-                    <div className="w-48 h-1 bg-gradient-to-r from-cyan-400 via-white to-blue-500 rounded-full shadow-lg animate-magical-glow relative overflow-hidden">
-                      <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-transparent via-white/60 to-transparent animate-shimmer"></div>
+                    {/* Enhanced animated line with multiple effects */}
+                    <div className="relative">
+                      {/* Main animated line */}
+                      <div
+                        className="w-64 h-1 bg-gradient-to-r from-cyan-400 via-white to-blue-500 rounded-full shadow-lg relative overflow-hidden"
+                        style={{ animation: "pulse 3s ease-in-out infinite" }}
+                      >
+                        {/* Shimmer effect */}
+                        <div
+                          className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-transparent via-white/60 to-transparent"
+                          style={{
+                            animation: "shimmer 4s ease-in-out infinite",
+                          }}
+                        ></div>
+                        {/* Moving dots */}
+                        <div
+                          className="absolute top-0 left-0 w-2 h-2 bg-yellow-300 rounded-full"
+                          style={{
+                            animation: "bounce 2s ease-in-out infinite",
+                            animationDelay: "0s",
+                          }}
+                        ></div>
+                        <div
+                          className="absolute top-0 left-1/3 w-1.5 h-1.5 bg-pink-300 rounded-full"
+                          style={{
+                            animation: "bounce 2s ease-in-out infinite",
+                            animationDelay: "1s",
+                          }}
+                        ></div>
+                        <div
+                          className="absolute top-0 right-0 w-2 h-2 bg-cyan-300 rounded-full"
+                          style={{
+                            animation: "bounce 2s ease-in-out infinite",
+                            animationDelay: "2s",
+                          }}
+                        ></div>
+                      </div>
+
+                      {/* Glow effect */}
+                      <div
+                        className="absolute inset-0 w-64 h-1 bg-gradient-to-r from-cyan-400 via-white to-blue-500 rounded-full blur-sm opacity-50"
+                        style={{ animation: "pulse 3s ease-in-out infinite" }}
+                      ></div>
+
+                      {/* Floating particles around the line */}
+                      <div
+                        className="absolute -top-2 left-1/4 w-1 h-1 bg-yellow-200 rounded-full"
+                        style={{ animation: "ping 3s ease-in-out infinite" }}
+                      ></div>
+                      <div
+                        className="absolute -bottom-2 right-1/4 w-1 h-1 bg-pink-200 rounded-full"
+                        style={{
+                          animation: "ping 3s ease-in-out infinite",
+                          animationDelay: "1.5s",
+                        }}
+                      ></div>
+                      <div
+                        className="absolute -top-1 left-3/4 w-0.5 h-0.5 bg-cyan-200 rounded-full"
+                        style={{
+                          animation: "ping 3s ease-in-out infinite",
+                          animationDelay: "3s",
+                        }}
+                      ></div>
                     </div>
                     {/* New: Animated floating icons */}
                     <div className="absolute -left-8 top-1/2 transform -translate-y-1/2 animate-float-x">
@@ -355,7 +400,12 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
-                        <circle cx="10" cy="10" r="8" />
+                        <circle
+                          cx="10"
+                          cy="10"
+                          r="8"
+                          className="animate-pulse"
+                        />
                       </svg>
                     </div>
                     <div className="absolute -right-8 top-1/3 animate-float-y">
@@ -368,14 +418,19 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                       </svg>
                     </div>
                   </div>
+
+                  {/* Subtitle text below the line */}
+                  <p className="text-white/70 text-sm text-center mb-6 font-medium">
+                    {t.home.platformSubtitle}
+                  </p>
                 </div>
 
                 {/* Feature highlights */}
-                <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 group">
-                    <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg mb-2 mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-green-300/30 shadow-2xl group">
+                    <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg mb-3 mx-auto">
                       <svg
-                        className="w-4 h-4 text-white"
+                        className="w-5 h-5 text-white"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -384,22 +439,22 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={2}
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-xs font-medium text-center mb-1">
+                    <p className="text-white/80 text-sm font-medium text-center mb-2">
                       {t.home.interactive}
                     </p>
-                    <p className="text-white/60 text-xs text-center leading-tight">
+                    <p className="text-white/60 text-xs text-center leading-relaxed">
                       {t.home.interactiveDescription}
                     </p>
                   </div>
 
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 group">
-                    <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg mb-2 mx-auto">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-blue-300/30 shadow-2xl group">
+                    <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg mb-3 mx-auto">
                       <svg
-                        className="w-4 h-4 text-white"
+                        className="w-5 h-5 text-white"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -408,22 +463,22 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={2}
-                          d="M3 5h18M7 5v1a1 1 0 01-1 1H6a1 1 0 01-1-1V5a2 2 0 012-2h6a2 2 0 012 2v1a1 1 0 01-1 1H8a1 1 0 01-1-1V5a2 2 0 00-2 2v11a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2z"
+                          d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-xs font-medium text-center mb-1">
+                    <p className="text-white/80 text-sm font-medium text-center mb-2">
                       {t.home.multilingual}
                     </p>
-                    <p className="text-white/60 text-xs text-center leading-tight">
+                    <p className="text-white/60 text-xs text-center leading-relaxed">
                       {t.home.multilingualDescription}
                     </p>
                   </div>
 
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 group">
-                    <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg mb-2 mx-auto">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-purple-300/30 shadow-2xl group">
+                    <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg mb-3 mx-auto">
                       <svg
-                        className="w-4 h-4 text-white"
+                        className="w-5 h-5 text-white"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -432,14 +487,14 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={2}
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                          d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-xs font-medium text-center mb-1">
+                    <p className="text-white/80 text-sm font-medium text-center mb-2">
                       {t.home.dynamic}
                     </p>
-                    <p className="text-white/60 text-xs text-center leading-tight">
+                    <p className="text-white/60 text-xs text-center leading-relaxed">
                       {t.home.dynamicDescription}
                     </p>
                   </div>

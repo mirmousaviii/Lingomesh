@@ -140,6 +140,11 @@ export interface Translations {
     dynamicDescription: string;
     dynamicDescriptionDe: string;
     dynamicDescriptionEn: string;
+    platformSubtitle: string;
+    platformSubtitleDe: string;
+    platformSubtitleEn: string;
+    platformSubtitleEs: string;
+    platformSubtitleRu: string;
     withInteractiveExercises: string;
     withInteractiveExercisesDe: string;
     withInteractiveExercisesEn: string;
@@ -461,7 +466,18 @@ export const translations: Record<Language, Translations> = {
       dynamic: "Dynamisch",
       dynamicDescription: "Anpassbare Inhalte und personalisierte Lernpfade",
       dynamicDescriptionDe: "Anpassbare Inhalte und personalisierte Lernpfade",
-      dynamicDescriptionEn: "Adaptable content and personalized learning paths",
+      dynamicDescriptionEn:
+        "AI-generated questions and personalized learning paths",
+      platformSubtitle:
+        "Fortgeschrittene KI-gestützte deutsche Lernplattform mit personalisierten Inhalten",
+      platformSubtitleDe:
+        "Fortgeschrittene KI-gestützte deutsche Lernplattform mit personalisierten Inhalten",
+      platformSubtitleEn:
+        "Advanced AI-powered German learning platform with personalized content",
+      platformSubtitleEs:
+        "Plataforma avanzada de aprendizaje de alemán con IA y contenido personalizado",
+      platformSubtitleRu:
+        "Продвинутая платформа изучения немецкого языка с ИИ и персонализированным контентом",
       withInteractiveExercises: "mit interaktiven Übungen",
       withInteractiveExercisesDe: "mit interaktiven Übungen",
       withInteractiveExercisesEn: "With interactive exercises",
@@ -793,9 +809,21 @@ export const translations: Record<Language, Translations> = {
       multilingualDescriptionEn:
         "Support for multiple languages and translations",
       dynamic: "Dynamic",
-      dynamicDescription: "Adaptable content and personalized learning paths",
+      dynamicDescription:
+        "AI-generated questions and personalized learning paths",
       dynamicDescriptionDe: "Anpassbare Inhalte und personalisierte Lernpfade",
-      dynamicDescriptionEn: "Adaptable content and personalized learning paths",
+      dynamicDescriptionEn:
+        "AI-generated questions and personalized learning paths",
+      platformSubtitle:
+        "Advanced AI-powered German learning platform with personalized content",
+      platformSubtitleDe:
+        "Fortgeschrittene KI-gestützte deutsche Lernplattform mit personalisierten Inhalten",
+      platformSubtitleEn:
+        "Advanced AI-powered German learning platform with personalized content",
+      platformSubtitleEs:
+        "Plataforma avanzada de aprendizaje de alemán con IA y contenido personalizado",
+      platformSubtitleRu:
+        "Продвинутая платформа изучения немецкого языка с ИИ и персонализированным контентом",
       withInteractiveExercises: "With interactive exercises",
       withInteractiveExercisesDe: "mit interaktiven Übungen",
       withInteractiveExercisesEn: "With interactive exercises",
@@ -1128,7 +1156,18 @@ export const translations: Record<Language, Translations> = {
       dynamicDescription:
         "Contenido adaptable y rutas de aprendizaje personalizadas",
       dynamicDescriptionDe: "Anpassbare Inhalte und personalisierte Lernpfade",
-      dynamicDescriptionEn: "Adaptable content and personalized learning paths",
+      dynamicDescriptionEn:
+        "AI-generated questions and personalized learning paths",
+      platformSubtitle:
+        "Plataforma avanzada de aprendizaje de alemán con IA y contenido personalizado",
+      platformSubtitleDe:
+        "Fortgeschrittene KI-gestützte deutsche Lernplattform mit personalisierten Inhalten",
+      platformSubtitleEn:
+        "Advanced AI-powered German learning platform with personalized content",
+      platformSubtitleEs:
+        "Plataforma avanzada de aprendizaje de alemán con IA y contenido personalizado",
+      platformSubtitleRu:
+        "Продвинутая платформа изучения немецкого языка с ИИ и персонализированным контентом",
       withInteractiveExercises: "Con ejercicios interactivos",
       withInteractiveExercisesDe: "mit interaktiven Übungen",
       withInteractiveExercisesEn: "With interactive exercises",
@@ -1462,7 +1501,18 @@ export const translations: Record<Language, Translations> = {
       dynamicDescription:
         "Адаптивный контент и персонализированные пути обучения",
       dynamicDescriptionDe: "Anpassbare Inhalte und personalisierte Lernpfade",
-      dynamicDescriptionEn: "Adaptable content and personalized learning paths",
+      dynamicDescriptionEn:
+        "AI-generated questions and personalized learning paths",
+      platformSubtitle:
+        "Продвинутая платформа изучения немецкого языка с ИИ и персонализированным контентом",
+      platformSubtitleDe:
+        "Fortgeschrittene KI-gestützte deutsche Lernplattform mit personalisierten Inhalten",
+      platformSubtitleEn:
+        "Advanced AI-powered German learning platform with personalized content",
+      platformSubtitleEs:
+        "Plataforma avanzada de aprendizaje de alemán con IA y contenido personalizado",
+      platformSubtitleRu:
+        "Продвинутая платформа изучения немецкого языка с ИИ и персонализированным контентом",
       withInteractiveExercises: "С интерактивными упражнениями",
       withInteractiveExercisesDe: "mit interaktiven Übungen",
       withInteractiveExercisesEn: "With interactive exercises",
