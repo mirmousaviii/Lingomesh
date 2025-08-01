@@ -12,8 +12,8 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
 
   const features = [
     {
-      id: "numbers",
-      title: t.home.learnNumbers,
+      id: "number",
+      title: t.home.learnNumber,
       description: t.home.numbersDescription,
       icon: (
         <svg
@@ -100,7 +100,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
       hoverColor: "hover:from-cyan-600 hover:to-cyan-700",
     },
     {
-      id: "articles",
+      id: "article",
       title: t.home.learnArticles,
       description: t.home.articlesDescription,
       icon: (
@@ -122,7 +122,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
       hoverColor: "hover:from-orange-600 hover:to-orange-700",
     },
     {
-      id: "personal-pronouns",
+      id: "personal-pronoun",
       title: t.home.learnPronouns,
       description: t.home.pronounsDescription,
       icon: (
@@ -166,7 +166,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
       hoverColor: "hover:from-red-600 hover:to-red-700",
     },
     {
-      id: "prepositions",
+      id: "preposition",
       title: t.home.learnPrepositions,
       description: t.home.prepositionsDescription,
       icon: (
@@ -210,7 +210,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
       hoverColor: "hover:from-teal-600 hover:to-teal-700",
     },
     {
-      id: "questions",
+      id: "question",
       title: t.home.learnQuestions,
       description: t.home.questionsDescription,
       icon: (

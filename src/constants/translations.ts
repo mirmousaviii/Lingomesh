@@ -16,18 +16,23 @@ export interface Translations {
   navigation: {
     home: string;
     vocabulary: string;
-    numbers: string;
+    number: string;
     alphabet: string;
     time: string;
     date: string;
     weather: string;
+    country: string;
     countries: string;
     grammar: string;
+    verb: string;
     verbs: string;
     verbConjugator: string;
+    modalVerb: string;
     modalVerbs: string;
     passiveVoice: string;
+    reflexiveVerb: string;
     reflexiveVerbs: string;
+    tense: string;
     tenses: string;
     presentTense: string;
     perfectTense: string;
@@ -35,28 +40,44 @@ export interface Translations {
     pastPerfect: string;
     futureTense: string;
     futurePerfect: string;
+    irregularVerb: string;
     irregularVerbs: string;
+    tenseOverview: string;
     tensesOverview: string;
+    pronoun: string;
     pronouns: string;
+    personalPronoun: string;
     personalPronouns: string;
+    possessive: string;
     possessives: string;
+    reflexivePronoun: string;
     reflexivePronouns: string;
+    relativePronoun: string;
     relativePronouns: string;
+    interrogativePronoun: string;
     interrogativePronouns: string;
+    demonstrativePronoun: string;
     demonstrativePronouns: string;
+    indefinitePronoun: string;
     indefinitePronouns: string;
+    adjective: string;
     adjectives: string;
     declension: string;
+    adverb: string;
     adverbs: string;
+    preposition: string;
     prepositions: string;
+    article: string;
     articles: string;
+    question: string;
     questions: string;
+    usefulPhrase: string;
     usefulPhrases: string;
     general: string;
     classroom: string;
     restaurant: string;
-    homePhrases: string;
-    friends: string;
+    bank: string;
+    friend: string;
   };
 
   // Home
@@ -66,7 +87,7 @@ export interface Translations {
     heroSubtitleDe: string;
     heroSubtitleEn: string;
     startLearning: string;
-    learnNumbers: string;
+    learnNumber: string;
     learnNumbersDe: string;
     learnNumbersEn: string;
     learnTime: string;
@@ -336,18 +357,23 @@ export const translations: Record<Language, Translations> = {
     navigation: {
       home: "Startseite",
       vocabulary: "Wortschatz",
-      numbers: "Zahlen",
+      number: "Zahl",
       alphabet: "Alphabet",
       time: "Zeit",
       date: "Datum",
       weather: "Wetter",
+      country: "Land & Nationalität",
       countries: "Länder & Nationalitäten",
       grammar: "Grammatik",
+      verb: "Verb",
       verbs: "Verben",
       verbConjugator: "Verbkonjugator",
+      modalVerb: "Modalverb",
       modalVerbs: "Modalverben",
       passiveVoice: "Passiv",
-      reflexiveVerbs: "Reflexive Verben",
+      reflexiveVerb: "Reflexives Verb",
+      reflexiveVerbs: "Reflexivverben",
+      tense: "Zeit",
       tenses: "Zeiten",
       presentTense: "Präsens",
       perfectTense: "Perfekt",
@@ -355,28 +381,44 @@ export const translations: Record<Language, Translations> = {
       pastPerfect: "Plusquamperfekt",
       futureTense: "Futur",
       futurePerfect: "Futur II",
+      irregularVerb: "Unregelmäßiges Verb",
       irregularVerbs: "Unregelmäßige Verben",
+      tenseOverview: "Übersicht der Zeiten",
       tensesOverview: "Übersicht der Zeiten",
+      pronoun: "Pronomen",
       pronouns: "Pronomen",
+      personalPronoun: "Personalpronomen",
       personalPronouns: "Personalpronomen",
+      possessive: "Possessivpronomen",
       possessives: "Possessivpronomen",
+      reflexivePronoun: "Reflexivpronomen",
       reflexivePronouns: "Reflexivpronomen",
+      relativePronoun: "Relativpronomen",
       relativePronouns: "Relativpronomen",
+      interrogativePronoun: "Interrogativpronomen",
       interrogativePronouns: "Interrogativpronomen",
+      demonstrativePronoun: "Demonstrativpronomen",
       demonstrativePronouns: "Demonstrativpronomen",
+      indefinitePronoun: "Indefinitpronomen",
       indefinitePronouns: "Indefinitpronomen",
+      adjective: "Adjektiv",
       adjectives: "Adjektive",
       declension: "Deklination",
+      adverb: "Adverb",
       adverbs: "Adverbien",
+      preposition: "Präposition",
       prepositions: "Präpositionen",
+      article: "Artikel",
       articles: "Artikel",
+      question: "Frage",
       questions: "Fragen",
+      usefulPhrase: "Nützlicher Satz",
       usefulPhrases: "Nützliche Sätze",
       general: "Allgemein",
       classroom: "Klassenzimmer",
       restaurant: "Restaurant",
-      homePhrases: "Zuhause",
-      friends: "Freunde",
+      bank: "Bank",
+      friend: "Freund",
     },
     home: {
       heroTitle: "Lasst uns Deutsch lernen!",
@@ -387,7 +429,7 @@ export const translations: Record<Language, Translations> = {
       heroSubtitleEn:
         "Discover our interactive learning modules for the German language",
       startLearning: "Jetzt lernen",
-      learnNumbers: "Zahlen",
+      learnNumber: "Zahl",
       learnNumbersDe: "Zahlen",
       learnNumbersEn: "Numbers",
       learnTime: "Zeit",
@@ -681,18 +723,23 @@ export const translations: Record<Language, Translations> = {
     navigation: {
       home: "Home",
       vocabulary: "Vocabulary",
-      numbers: "Numbers",
+      number: "Number",
       alphabet: "Alphabet",
       time: "Time",
       date: "Date",
       weather: "Weather",
+      country: "Country & Nationality",
       countries: "Countries & Nationalities",
       grammar: "Grammar",
+      verb: "Verb",
       verbs: "Verbs",
       verbConjugator: "Verb Conjugator",
+      modalVerb: "Modal Verb",
       modalVerbs: "Modal Verbs",
       passiveVoice: "Passive Voice",
+      reflexiveVerb: "Reflexive Verb",
       reflexiveVerbs: "Reflexive Verbs",
+      tense: "Tense",
       tenses: "Tenses",
       presentTense: "Present Tense",
       perfectTense: "Perfect Tense",
@@ -700,28 +747,44 @@ export const translations: Record<Language, Translations> = {
       pastPerfect: "Past Perfect",
       futureTense: "Future",
       futurePerfect: "Future Perfect",
+      irregularVerb: "Irregular Verb",
       irregularVerbs: "Irregular Verbs",
+      tenseOverview: "Overview of the Tenses",
       tensesOverview: "Overview of the Tenses",
+      pronoun: "Pronoun",
       pronouns: "Pronouns",
+      personalPronoun: "Personal Pronoun",
       personalPronouns: "Personal Pronouns",
+      possessive: "Possessive",
       possessives: "Possessives",
+      reflexivePronoun: "Reflexive Pronoun",
       reflexivePronouns: "Reflexive Pronouns",
+      relativePronoun: "Relative Pronoun",
       relativePronouns: "Relative Pronouns",
+      interrogativePronoun: "Interrogative Pronoun",
       interrogativePronouns: "Interrogative Pronouns",
+      demonstrativePronoun: "Demonstrative Pronoun",
       demonstrativePronouns: "Demonstrative Pronouns",
+      indefinitePronoun: "Indefinite Pronoun",
       indefinitePronouns: "Indefinite Pronouns",
+      adjective: "Adjective",
       adjectives: "Adjectives",
       declension: "Declension",
+      adverb: "Adverb",
       adverbs: "Adverbs",
+      preposition: "Preposition",
       prepositions: "Prepositions",
+      article: "Article",
       articles: "Articles",
+      question: "Question",
       questions: "Questions",
+      usefulPhrase: "Useful Phrase",
       usefulPhrases: "Useful Phrases",
       general: "General",
       classroom: "Classroom",
       restaurant: "Restaurant",
-      homePhrases: "Home",
-      friends: "Friends",
+      bank: "Bank",
+      friend: "Friend",
     },
     home: {
       heroTitle: "Let's learn German!",
@@ -732,7 +795,7 @@ export const translations: Record<Language, Translations> = {
       heroSubtitleEn:
         "Discover our interactive learning modules for the German language",
       startLearning: "Start learning",
-      learnNumbers: "Numbers",
+      learnNumber: "Number",
       learnNumbersDe: "Lernen Sie deutsche Zahlen",
       learnNumbersEn: "Numbers",
       learnTime: "Time",
@@ -1026,18 +1089,23 @@ export const translations: Record<Language, Translations> = {
     navigation: {
       home: "Inicio",
       vocabulary: "Vocabulario",
-      numbers: "Números",
+      number: "Número",
       alphabet: "Alfabeto",
       time: "Tiempo",
       date: "Fecha",
       weather: "Clima",
+      country: "País y Nacionalidad",
       countries: "Países y Nacionalidades",
       grammar: "Gramática",
+      verb: "Verbo",
       verbs: "Verbos",
       verbConjugator: "Conjugador de Verbos",
+      modalVerb: "Verbo Modal",
       modalVerbs: "Verbos Modales",
       passiveVoice: "Voz Pasiva",
+      reflexiveVerb: "Verbo Reflexivo",
       reflexiveVerbs: "Verbos Reflexivos",
+      tense: "Tiempo",
       tenses: "Tiempos",
       presentTense: "Presente",
       perfectTense: "Perfecto",
@@ -1045,28 +1113,44 @@ export const translations: Record<Language, Translations> = {
       pastPerfect: "Pluscuamperfecto",
       futureTense: "Futuro",
       futurePerfect: "Futuro Perfecto",
+      irregularVerb: "Verbo Irregular",
       irregularVerbs: "Verbos Irregulares",
+      tenseOverview: "Resumen de los Tiempos",
       tensesOverview: "Resumen de los Tiempos",
+      pronoun: "Pronombre",
       pronouns: "Pronombres",
+      personalPronoun: "Pronombre Personal",
       personalPronouns: "Pronombres Personales",
-      possessives: "Posesivos",
+      possessive: "Posesivo",
+      possessives: "Poseivos",
+      reflexivePronoun: "Pronombre Reflexivo",
       reflexivePronouns: "Pronombres Reflexivos",
+      relativePronoun: "Pronombre Relativo",
       relativePronouns: "Pronombres Relativos",
+      interrogativePronoun: "Pronombre Interrogativo",
       interrogativePronouns: "Pronombres Interrogativos",
+      demonstrativePronoun: "Pronombre Demostrativo",
       demonstrativePronouns: "Pronombres Demostrativos",
+      indefinitePronoun: "Pronombre Indefinido",
       indefinitePronouns: "Pronombres Indefinidos",
+      adjective: "Adjetivo",
       adjectives: "Adjetivos",
       declension: "Declinación",
+      adverb: "Adverbio",
       adverbs: "Adverbios",
+      preposition: "Preposición",
       prepositions: "Preposiciones",
+      article: "Artículo",
       articles: "Artículos",
+      question: "Pregunta",
       questions: "Preguntas",
+      usefulPhrase: "Frase Útil",
       usefulPhrases: "Frases Útiles",
       general: "General",
       classroom: "Aula",
       restaurant: "Restaurante",
-      homePhrases: "Casa",
-      friends: "Amigos",
+      bank: "Banco",
+      friend: "Amigo",
     },
     home: {
       heroTitle: "¡Aprendamos alemán!",
@@ -1077,7 +1161,7 @@ export const translations: Record<Language, Translations> = {
       heroSubtitleEn:
         "Discover our interactive learning modules for the German language",
       startLearning: "Comenzar a aprender",
-      learnNumbers: "Números",
+      learnNumber: "Número",
       learnNumbersDe: "Lernen Sie deutsche Zahlen",
       learnNumbersEn: "Learn German numbers",
       learnTime: "Tiempo",
@@ -1371,18 +1455,23 @@ export const translations: Record<Language, Translations> = {
     navigation: {
       home: "Главная",
       vocabulary: "Словарь",
-      numbers: "Числа",
+      number: "Число",
       alphabet: "Алфавит",
       time: "Время",
       date: "Дата",
       weather: "Погода",
+      country: "Страна и Национальность",
       countries: "Страны и Национальности",
       grammar: "Грамматика",
+      verb: "Глагол",
       verbs: "Глаголы",
       verbConjugator: "Спряжение Глаголов",
+      modalVerb: "Модальный Глагол",
       modalVerbs: "Модальные Глаголы",
       passiveVoice: "Пассивный Залог",
+      reflexiveVerb: "Возвратный Глагол",
       reflexiveVerbs: "Возвратные Глаголы",
+      tense: "Время",
       tenses: "Времена",
       presentTense: "Настоящее Время",
       perfectTense: "Перфект",
@@ -1390,28 +1479,44 @@ export const translations: Record<Language, Translations> = {
       pastPerfect: "Плюсквамперфект",
       futureTense: "Будущее Время",
       futurePerfect: "Будущее Совершенное",
+      irregularVerb: "Неправильный Глагол",
       irregularVerbs: "Неправильные Глаголы",
+      tenseOverview: "Обзор Времен",
       tensesOverview: "Обзор Времен",
+      pronoun: "Местоимение",
       pronouns: "Местоимения",
+      personalPronoun: "Личное Местоимение",
       personalPronouns: "Личные Местоимения",
+      possessive: "Притяжательное",
       possessives: "Притяжательные",
+      reflexivePronoun: "Возвратное Местоимение",
       reflexivePronouns: "Возвратные Местоимения",
+      relativePronoun: "Относительное Местоимение",
       relativePronouns: "Относительные Местоимения",
+      interrogativePronoun: "Вопросительное Местоимение",
       interrogativePronouns: "Вопросительные Местоимения",
+      demonstrativePronoun: "Указательное Местоимение",
       demonstrativePronouns: "Указательные Местоимения",
+      indefinitePronoun: "Неопределенное Местоимение",
       indefinitePronouns: "Неопределенные Местоимения",
+      adjective: "Прилагательное",
       adjectives: "Прилагательные",
       declension: "Склонение",
+      adverb: "Наречие",
       adverbs: "Наречия",
+      preposition: "Предлог",
       prepositions: "Предлоги",
+      article: "Артикль",
       articles: "Артикли",
+      question: "Вопрос",
       questions: "Вопросы",
+      usefulPhrase: "Полезная Фраза",
       usefulPhrases: "Полезные Фразы",
       general: "Общие",
       classroom: "Класс",
       restaurant: "Ресторан",
-      homePhrases: "Дом",
-      friends: "Друзья",
+      bank: "Банк",
+      friend: "Друг",
     },
     home: {
       heroTitle: "Давайте изучать немецкий!",
@@ -1422,7 +1527,7 @@ export const translations: Record<Language, Translations> = {
       heroSubtitleEn:
         "Discover our interactive learning modules for the German language",
       startLearning: "Начать обучение",
-      learnNumbers: "Числа",
+      learnNumber: "Число",
       learnNumbersDe: "Lernen Sie deutsche Zahlen",
       learnNumbersEn: "Learn German numbers",
       learnTime: "Время",

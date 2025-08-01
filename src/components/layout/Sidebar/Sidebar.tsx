@@ -70,7 +70,7 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
-    numbers: (
+    number: (
       <svg
         className={className}
         fill="none"
@@ -130,7 +130,7 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
-    countries: (
+    country: (
       <svg
         className={className}
         fill="none"
@@ -160,7 +160,7 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
-    verbs: (
+    verb: (
       <svg
         className={className}
         fill="none"
@@ -190,7 +190,7 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
-    modalVerbs: (
+    modalVerb: (
       <svg
         className={className}
         fill="none"
@@ -235,7 +235,37 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
+    reflexiveVerb: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+        />
+      </svg>
+    ),
     tenses: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
+    tense: (
       <svg
         className={className}
         fill="none"
@@ -355,7 +385,37 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
+    irregularVerb: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+        />
+      </svg>
+    ),
     tensesOverview: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+        />
+      </svg>
+    ),
+    tenseOverview: (
       <svg
         className={className}
         fill="none"
@@ -385,7 +445,37 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
+    pronoun: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+        />
+      </svg>
+    ),
     personalPronouns: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+        />
+      </svg>
+    ),
+    personalPronoun: (
       <svg
         className={className}
         fill="none"
@@ -415,7 +505,37 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
+    possessive: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        />
+      </svg>
+    ),
     reflexivePronouns: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+        />
+      </svg>
+    ),
+    reflexivePronoun: (
       <svg
         className={className}
         fill="none"
@@ -445,7 +565,37 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
+    relativePronoun: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+        />
+      </svg>
+    ),
     interrogativePronouns: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
+    interrogativePronoun: (
       <svg
         className={className}
         fill="none"
@@ -475,6 +625,21 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
+    demonstrativePronoun: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M7 11l5-5m0 0l5 5m-5-5v12"
+        />
+      </svg>
+    ),
     indefinitePronouns: (
       <svg
         className={className}
@@ -490,7 +655,23 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
-    articles: (
+    indefinitePronoun: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
+
+    article: (
       <svg
         className={className}
         fill="none"
@@ -505,7 +686,8 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
-    adjectives: (
+
+    adjective: (
       <svg
         className={className}
         fill="none"
@@ -535,7 +717,8 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
-    adverbs: (
+
+    adverb: (
       <svg
         className={className}
         fill="none"
@@ -550,6 +733,7 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
+
     prepositions: (
       <svg
         className={className}
@@ -571,6 +755,28 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
+    preposition: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+        />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+        />
+      </svg>
+    ),
+
     questions: (
       <svg
         className={className}
@@ -586,7 +792,38 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
+    question: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
+
     usefulPhrases: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+        />
+      </svg>
+    ),
+    usefulPhrase: (
       <svg
         className={className}
         fill="none"
@@ -646,7 +883,7 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
         />
       </svg>
     ),
-    homePhrases: (
+    bank: (
       <svg
         className={className}
         fill="none"
@@ -657,11 +894,12 @@ const Icon: React.FC<{ name: string; className?: string }> = ({
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+          d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
         />
       </svg>
     ),
-    friends: (
+
+    friend: (
       <svg
         className={className}
         fill="none"
@@ -743,9 +981,9 @@ const Sidebar: React.FC<SidebarProps> = ({
           icon: "alphabet",
         },
         {
-          id: "numbers",
-          label: t.navigation.numbers,
-          icon: "numbers",
+          id: "number",
+          label: t.navigation.number,
+          icon: "number",
         },
         {
           id: "time",
@@ -763,9 +1001,9 @@ const Sidebar: React.FC<SidebarProps> = ({
           icon: "weather",
         },
         {
-          id: "countries",
-          label: t.navigation.countries,
-          icon: "countries",
+          id: "country",
+          label: t.navigation.country,
+          icon: "country",
         },
       ],
     },
@@ -775,19 +1013,19 @@ const Sidebar: React.FC<SidebarProps> = ({
       icon: "grammar",
       children: [
         {
-          id: "verbs-main",
-          label: t.navigation.verbs,
-          icon: "verbs",
+          id: "verb-main",
+          label: t.navigation.verb,
+          icon: "verb",
           children: [
             {
-              id: "verbs",
+              id: "verb",
               label: t.navigation.verbConjugator,
               icon: "verbConjugator",
             },
             {
-              id: "modal-verbs",
-              label: t.navigation.modalVerbs,
-              icon: "modalVerbs",
+              id: "modal-verb",
+              label: t.navigation.modalVerb,
+              icon: "modalVerb",
             },
             {
               id: "passive-voice",
@@ -795,16 +1033,16 @@ const Sidebar: React.FC<SidebarProps> = ({
               icon: "passiveVoice",
             },
             {
-              id: "reflexive-verbs",
-              label: t.navigation.reflexiveVerbs,
-              icon: "reflexiveVerbs",
+              id: "reflexive-verb",
+              label: t.navigation.reflexiveVerb,
+              icon: "reflexiveVerb",
             },
           ],
         },
         {
-          id: "tenses",
-          label: t.navigation.tenses,
-          icon: "tenses",
+          id: "tense",
+          label: t.navigation.tense,
+          icon: "tense",
           children: [
             {
               id: "present-tense",
@@ -837,68 +1075,68 @@ const Sidebar: React.FC<SidebarProps> = ({
               icon: "futurePerfect",
             },
             {
-              id: "irregular-verbs",
-              label: t.navigation.irregularVerbs,
-              icon: "irregularVerbs",
+              id: "irregular-verb",
+              label: t.navigation.irregularVerb,
+              icon: "irregularVerb",
             },
             {
-              id: "tenses-overview",
-              label: t.navigation.tensesOverview,
-              icon: "tensesOverview",
+              id: "tense-overview",
+              label: t.navigation.tenseOverview,
+              icon: "tenseOverview",
             },
           ],
         },
         {
-          id: "pronouns-main",
-          label: t.navigation.pronouns,
-          icon: "pronouns",
+          id: "pronoun-main",
+          label: t.navigation.pronoun,
+          icon: "pronoun",
           children: [
             {
-              id: "pronouns",
-              label: t.navigation.personalPronouns,
-              icon: "personalPronouns",
+              id: "pronoun",
+              label: t.navigation.personalPronoun,
+              icon: "personalPronoun",
             },
             {
-              id: "possessives",
-              label: t.navigation.possessives,
-              icon: "possessives",
+              id: "possessive",
+              label: t.navigation.possessive,
+              icon: "possessive",
             },
             {
-              id: "reflexive-pronouns",
-              label: t.navigation.reflexivePronouns,
-              icon: "reflexivePronouns",
+              id: "reflexive-pronoun",
+              label: t.navigation.reflexivePronoun,
+              icon: "reflexivePronoun",
             },
             {
-              id: "relative-pronouns",
-              label: t.navigation.relativePronouns,
-              icon: "relativePronouns",
+              id: "relative-pronoun",
+              label: t.navigation.relativePronoun,
+              icon: "relativePronoun",
             },
             {
-              id: "interrogative-pronouns",
-              label: t.navigation.interrogativePronouns,
-              icon: "interrogativePronouns",
+              id: "interrogative-pronoun",
+              label: t.navigation.interrogativePronoun,
+              icon: "interrogativePronoun",
             },
             {
-              id: "demonstrative-pronouns",
-              label: t.navigation.demonstrativePronouns,
-              icon: "demonstrativePronouns",
+              id: "demonstrative-pronoun",
+              label: t.navigation.demonstrativePronoun,
+              icon: "demonstrativePronoun",
             },
             {
-              id: "indefinite-pronouns",
-              label: t.navigation.indefinitePronouns,
-              icon: "indefinitePronouns",
+              id: "indefinite-pronoun",
+              label: t.navigation.indefinitePronoun,
+              icon: "indefinitePronoun",
             },
           ],
         },
         {
-          id: "articles",
-          label: t.navigation.articles,
-          icon: "articles",
+          id: "article",
+          label: t.navigation.article,
+          icon: "article",
         },
         {
-          id: "adjectives",
-          label: t.navigation.adjectives,
-          icon: "adjectives",
+          id: "adjective",
+          label: t.navigation.adjective,
+          icon: "adjective",
         },
         {
           id: "declension",
@@ -906,19 +1144,19 @@ const Sidebar: React.FC<SidebarProps> = ({
           icon: "declension",
         },
         {
-          id: "adverbs",
-          label: t.navigation.adverbs,
-          icon: "adverbs",
+          id: "adverb",
+          label: t.navigation.adverb,
+          icon: "adverb",
         },
         {
-          id: "prepositions",
-          label: t.navigation.prepositions,
-          icon: "prepositions",
+          id: "preposition",
+          label: t.navigation.preposition,
+          icon: "preposition",
         },
         {
-          id: "questions",
-          label: t.navigation.questions,
-          icon: "questions",
+          id: "question",
+          label: t.navigation.question,
+          icon: "question",
         },
       ],
     },
@@ -928,29 +1166,29 @@ const Sidebar: React.FC<SidebarProps> = ({
       icon: "usefulPhrases",
       children: [
         {
-          id: "general-phrases",
+          id: "general-phrase",
           label: t.navigation.general,
           icon: "general",
         },
         {
-          id: "classroom-phrases",
+          id: "classroom-phrase",
           label: t.navigation.classroom,
           icon: "classroom",
         },
         {
-          id: "restaurant-phrases",
+          id: "restaurant-phrase",
           label: t.navigation.restaurant,
           icon: "restaurant",
         },
         {
-          id: "home-phrases",
-          label: t.navigation.homePhrases,
-          icon: "homePhrases",
+          id: "bank-phrase",
+          label: t.navigation.bank,
+          icon: "bank",
         },
         {
-          id: "friends-phrases",
-          label: t.navigation.friends,
-          icon: "friends",
+          id: "friend-phrase",
+          label: t.navigation.friend,
+          icon: "friend",
         },
       ],
     },
@@ -964,25 +1202,25 @@ const Sidebar: React.FC<SidebarProps> = ({
 
       // Vocabulary pages
       alphabet: "alphabet",
-      numbers: "numbers",
+      number: "number",
       time: "time",
       date: "date",
       weather: "weather",
-      countries: "countries",
+      country: "country",
 
       // Grammar pages
-      articles: "articles",
-      adjectives: "adjectives",
+      article: "article",
+      adjective: "adjective",
       declension: "declension",
-      adverbs: "adverbs",
-      prepositions: "prepositions",
-      questions: "questions",
+      adverb: "adverb",
+      preposition: "preposition",
+      question: "question",
 
       // Verb pages
-      verbs: "verb-conjugator",
-      "modal-verbs": "modal-verbs",
+      verb: "verb-conjugator",
+      "modal-verb": "modal-verb",
       "passive-voice": "passive-voice",
-      "reflexive-verbs": "reflexive-verbs",
+      "reflexive-verb": "reflexive-verb",
 
       // Tense pages
       "present-tense": "present-tense",
@@ -991,25 +1229,25 @@ const Sidebar: React.FC<SidebarProps> = ({
       "past-perfect": "past-perfect",
       "future-tense": "future-tense",
       "future-perfect": "future-perfect",
-      "irregular-verbs": "irregular-verbs",
-      "tenses-overview": "tenses-overview",
+      "irregular-verb": "irregular-verb",
+      "tense-overview": "tense-overview",
 
       // Pronoun pages
-      pronouns: "personal-pronouns", // Map the menu "pronouns" to "personal-pronouns"
-      "personal-pronouns": "personal-pronouns",
-      possessives: "possessives",
-      "reflexive-pronouns": "reflexive-pronouns",
-      "relative-pronouns": "relative-pronouns",
-      "interrogative-pronouns": "interrogative-pronouns",
-      "demonstrative-pronouns": "demonstrative-pronouns",
-      "indefinite-pronouns": "indefinite-pronouns",
+      pronoun: "personal-pronoun", // Map the menu "pronoun" to "personal-pronoun"
+      "personal-pronoun": "personal-pronoun",
+      possessive: "possessive",
+      "reflexive-pronoun": "reflexive-pronoun",
+      "relative-pronoun": "relative-pronoun",
+      "interrogative-pronoun": "interrogative-pronoun",
+      "demonstrative-pronoun": "demonstrative-pronoun",
+      "indefinite-pronoun": "indefinite-pronoun",
 
       // Useful phrases pages
-      "general-phrases": "general-phrases",
-      "classroom-phrases": "classroom-phrases",
-      "restaurant-phrases": "restaurant-phrases",
-      "home-phrases": "home-phrases",
-      "friends-phrases": "friends-phrases",
+      "general-phrase": "general-phrase",
+      "classroom-phrase": "classroom-phrase",
+      "restaurant-phrase": "restaurant-phrase",
+      "bank-phrase": "bank-phrase",
+      "friend-phrase": "friend-phrase",
     };
 
     return pageMapping[menuId] || menuId;

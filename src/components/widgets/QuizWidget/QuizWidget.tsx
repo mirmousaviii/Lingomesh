@@ -169,29 +169,29 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
     >
       <div className="space-y-4 px-2 sm:px-0">
         {/* Score Display */}
-        {totalAnswered > 0 && (
-          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 sm:p-4">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-2 sm:space-y-0">
-              <div className="text-sm">
-                <span className="text-neutral-600 dark:text-neutral-400">
-                  {t?.score || "Score:"}
-                </span>
-                <span className="ml-2 font-semibold text-green-600 dark:text-green-400">
-                  {score}/{totalAnswered}
-                </span>
-                <span className="ml-2 text-neutral-500">
-                  ({Math.round((score / totalAnswered) * 100)}%)
-                </span>
-              </div>
-              <button
-                onClick={resetQuiz}
-                className="text-sm px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-md hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors w-full sm:w-auto"
-              >
-                {t?.reset || "Reset"}
-              </button>
+        <div className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 sm:p-4">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-2 sm:space-y-0">
+            <div className="text-sm">
+              <span className="text-neutral-600 dark:text-neutral-400">
+                {t?.score || "Score:"}
+              </span>
+              <span className="ml-2 font-semibold text-green-600 dark:text-green-400">
+                {totalAnswered > 0 ? `${score}/${totalAnswered}` : "0/0"}
+              </span>
+              <span className="ml-2 text-neutral-500">
+                {totalAnswered > 0
+                  ? `(${Math.round((score / totalAnswered) * 100)}%)`
+                  : "(0%)"}
+              </span>
             </div>
+            <button
+              onClick={resetQuiz}
+              className="text-sm px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-md hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors w-full sm:w-auto"
+            >
+              {t?.reset || "Reset"}
+            </button>
           </div>
-        )}
+        </div>
 
         {currentQuestion && (
           <div className="space-y-4">
@@ -226,51 +226,52 @@ const QuizWidget: React.FC<QuizWidgetProps> = ({
                     <span className="flex-1 text-sm sm:text-base leading-relaxed">
                       {option}
                     </span>
-                    {showResult && index === currentQuestion.correctAnswer && (
-                      <span className="flex-shrink-0 ml-2 text-green-600 dark:text-green-400 text-lg">
-                        ✓
-                      </span>
-                    )}
-                    {showResult &&
-                      index === selectedAnswer &&
-                      index !== currentQuestion.correctAnswer && (
-                        <span className="flex-shrink-0 ml-2 text-red-600 dark:text-red-400 text-lg">
-                          ✗
-                        </span>
-                      )}
+                    <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
+                      {showResult &&
+                        index === currentQuestion.correctAnswer && (
+                          <span className="text-green-600 dark:text-green-400 text-lg">
+                            ✓
+                          </span>
+                        )}
+                      {showResult &&
+                        index === selectedAnswer &&
+                        index !== currentQuestion.correctAnswer && (
+                          <span className="text-red-600 dark:text-red-400 text-lg">
+                            ✗
+                          </span>
+                        )}
+                    </span>
                   </div>
                 </button>
               ))}
             </div>
 
             {/* Explanation */}
-            {showResult && (
-              <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-3 sm:p-4">
-                <div className="flex items-start space-x-2">
-                  <span className="text-yellow-600 dark:text-yellow-400 mt-0.5 flex-shrink-0">
-                    💡
-                  </span>
-                  <div className="flex-1">
-                    <h4 className="font-medium text-yellow-800 dark:text-yellow-200 mb-1 text-sm sm:text-base">
-                      {t?.explanation || "Explanation:"}
-                    </h4>
-                    <p className="text-yellow-700 dark:text-yellow-300 text-sm leading-relaxed">
-                      {currentQuestion.explanation}
-                    </p>
-                  </div>
+            <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-3 sm:p-4">
+              <div className="flex items-start space-x-2">
+                <span className="text-yellow-600 dark:text-yellow-400 mt-0.5 flex-shrink-0">
+                  💡
+                </span>
+                <div className="flex-1">
+                  <h4 className="font-medium text-yellow-800 dark:text-yellow-200 mb-1 text-sm sm:text-base">
+                    {t?.explanation || "Explanation:"}
+                  </h4>
+                  <p className="text-yellow-700 dark:text-yellow-300 text-sm leading-relaxed">
+                    {showResult
+                      ? currentQuestion.explanation
+                      : "Select an answer to see the explanation"}
+                  </p>
                 </div>
               </div>
-            )}
+            </div>
 
             {/* Next Question Button */}
-            {showResult && (
-              <button
-                onClick={startNewQuestion}
-                className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors font-medium text-sm sm:text-base"
-              >
-                {t?.nextQuestion || "Next Question"}
-              </button>
-            )}
+            <button
+              onClick={startNewQuestion}
+              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors font-medium text-sm sm:text-base"
+            >
+              {t?.nextQuestion || "Next Question"}
+            </button>
           </div>
         )}
       </div>

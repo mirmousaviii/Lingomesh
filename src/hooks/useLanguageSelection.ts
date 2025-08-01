@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Language } from "./useTranslations";
-import { buildUrl } from "../routes";
+import { buildUrl, getPageFromPath } from "../routes";
 
 export const useLanguageSelection = () => {
   const [showLanguageModal, setShowLanguageModal] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     // Only show modal if explicitly opened, not automatically
@@ -16,8 +17,11 @@ export const useLanguageSelection = () => {
     localStorage.setItem("lang", language);
     setShowLanguageModal(false);
 
-    // Navigate to the selected language using React Router
-    const newUrl = buildUrl(language, "home");
+    // Get the current page from the URL
+    const currentPage = getPageFromPath(location.pathname);
+
+    // Navigate to the same page with the new language
+    const newUrl = buildUrl(language, currentPage);
     navigate(newUrl);
   };
 

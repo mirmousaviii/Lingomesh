@@ -64,19 +64,19 @@ function App() {
     switch (currentPage) {
       case "home":
         return <Home {...pageProps} />;
-      case "articles":
+      case "article":
         return <Articles {...pageProps} />;
-      case "adjectives":
+      case "adjective":
         return <ComingSoon {...pageProps} />;
-      case "adverbs":
+      case "adverb":
         return <ComingSoon {...pageProps} />;
       case "declension":
         return <Declension {...pageProps} />;
-      case "prepositions":
+      case "preposition":
         return <Prepositions {...pageProps} />;
-      case "questions":
+      case "question":
         return <Questions {...pageProps} />;
-      case "numbers":
+      case "number":
         return <Numbers {...pageProps} />;
       case "time":
         return <Time {...pageProps} />;
@@ -86,16 +86,16 @@ function App() {
         return <Weather {...pageProps} />;
       case "alphabet":
         return <ComingSoon {...pageProps} />;
-      case "countries":
+      case "country":
         return <ComingSoon {...pageProps} />;
       // Verb-related pages
       case "verb-conjugator":
         return <Verbs {...pageProps} />;
-      case "modal-verbs":
+      case "modal-verb":
         return <ComingSoon {...pageProps} />;
       case "passive-voice":
         return <ComingSoon {...pageProps} />;
-      case "reflexive-verbs":
+      case "reflexive-verb":
         return <ComingSoon {...pageProps} />;
       // Tense-related pages
       case "present-tense":
@@ -110,35 +110,37 @@ function App() {
         return <ComingSoon {...pageProps} />;
       case "future-perfect":
         return <ComingSoon {...pageProps} />;
-      case "irregular-verbs":
+      case "irregular-verb":
         return <ComingSoon {...pageProps} />;
-      case "tenses-overview":
+      case "tense-overview":
         return <ComingSoon {...pageProps} />;
       // Pronoun-related pages
-      case "personal-pronouns":
+      case "personal-pronoun":
         return <Pronouns {...pageProps} />;
-      case "possessives":
+      case "possessive":
         return <ComingSoon {...pageProps} />;
-      case "reflexive-pronouns":
+      case "reflexive-pronoun":
         return <ComingSoon {...pageProps} />;
-      case "relative-pronouns":
+      case "relative-pronoun":
         return <ComingSoon {...pageProps} />;
-      case "interrogative-pronouns":
+      case "interrogative-pronoun":
         return <ComingSoon {...pageProps} />;
-      case "demonstrative-pronouns":
+      case "demonstrative-pronoun":
         return <ComingSoon {...pageProps} />;
-      case "indefinite-pronouns":
+      case "indefinite-pronoun":
         return <ComingSoon {...pageProps} />;
       // Useful phrases pages
-      case "general-phrases":
+      case "general-phrase":
         return <ComingSoon {...pageProps} />;
-      case "classroom-phrases":
+      case "classroom-phrase":
         return <ComingSoon {...pageProps} />;
-      case "restaurant-phrases":
+      case "restaurant-phrase":
         return <ComingSoon {...pageProps} />;
-      case "home-phrases":
+      case "home-phrase":
         return <ComingSoon {...pageProps} />;
-      case "friends-phrases":
+      case "friend-phrase":
+        return <ComingSoon {...pageProps} />;
+      case "bank-phrase":
         return <ComingSoon {...pageProps} />;
       // 404 page
       case "404":

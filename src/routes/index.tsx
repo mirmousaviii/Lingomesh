@@ -17,30 +17,30 @@ export const CATEGORY_STRUCTURE = {
     path: "vocabulary",
     children: {
       alphabet: { id: "alphabet", path: "alphabet" },
-      numbers: { id: "numbers", path: "numbers" },
+      number: { id: "number", path: "number" },
       time: { id: "time", path: "time" },
       date: { id: "date", path: "date" },
       weather: { id: "weather", path: "weather" },
-      countries: { id: "countries", path: "countries" },
+      country: { id: "country", path: "country" },
     },
   },
   grammar: {
     id: "grammar",
     path: "grammar",
     children: {
-      verbs: {
-        id: "verbs-main",
-        path: "verbs",
+      verb: {
+        id: "verb-main",
+        path: "verb",
         children: {
-          "verb-conjugator": { id: "verbs", path: "verb-conjugator" },
-          "modal-verbs": { id: "modal-verbs", path: "modal-verbs" },
+          "verb-conjugator": { id: "verb", path: "verb-conjugator" },
+          "modal-verb": { id: "modal-verb", path: "modal-verb" },
           "passive-voice": { id: "passive-voice", path: "passive-voice" },
-          "reflexive-verbs": { id: "reflexive-verbs", path: "reflexive-verbs" },
+          "reflexive-verb": { id: "reflexive-verb", path: "reflexive-verb" },
         },
       },
-      tenses: {
-        id: "tenses",
-        path: "tenses",
+      tense: {
+        id: "tense",
+        path: "tense",
         children: {
           "present-tense": { id: "present-tense", path: "present-tense" },
           "perfect-tense": { id: "perfect-tense", path: "perfect-tense" },
@@ -48,61 +48,65 @@ export const CATEGORY_STRUCTURE = {
           "past-perfect": { id: "past-perfect", path: "past-perfect" },
           "future-tense": { id: "future-tense", path: "future-tense" },
           "future-perfect": { id: "future-perfect", path: "future-perfect" },
-          "irregular-verbs": { id: "irregular-verbs", path: "irregular-verbs" },
-          "tenses-overview": { id: "tenses-overview", path: "tenses-overview" },
+          "irregular-verb": { id: "irregular-verb", path: "irregular-verb" },
+          "tense-overview": { id: "tense-overview", path: "tense-overview" },
         },
       },
-      pronouns: {
-        id: "pronouns-main",
-        path: "pronouns",
+      pronoun: {
+        id: "pronoun-main",
+        path: "pronoun",
         children: {
-          "personal-pronouns": { id: "pronouns", path: "personal-pronouns" },
-          possessives: { id: "possessives", path: "possessives" },
-          "reflexive-pronouns": {
-            id: "reflexive-pronouns",
-            path: "reflexive-pronouns",
+          "personal-pronoun": {
+            id: "personal-pronoun",
+            path: "personal-pronoun",
           },
-          "relative-pronouns": {
-            id: "relative-pronouns",
-            path: "relative-pronouns",
+          possessive: { id: "possessive", path: "possessive" },
+          "reflexive-pronoun": {
+            id: "reflexive-pronoun",
+            path: "reflexive-pronoun",
           },
-          "interrogative-pronouns": {
-            id: "interrogative-pronouns",
-            path: "interrogative-pronouns",
+          "relative-pronoun": {
+            id: "relative-pronoun",
+            path: "relative-pronoun",
           },
-          "demonstrative-pronouns": {
-            id: "demonstrative-pronouns",
-            path: "demonstrative-pronouns",
+          "interrogative-pronoun": {
+            id: "interrogative-pronoun",
+            path: "interrogative-pronoun",
           },
-          "indefinite-pronouns": {
-            id: "indefinite-pronouns",
-            path: "indefinite-pronouns",
+          "demonstrative-pronoun": {
+            id: "demonstrative-pronoun",
+            path: "demonstrative-pronoun",
+          },
+          "indefinite-pronoun": {
+            id: "indefinite-pronoun",
+            path: "indefinite-pronoun",
           },
         },
       },
-      articles: { id: "articles", path: "articles" },
-      adjectives: { id: "adjectives", path: "adjectives" },
+      article: { id: "article", path: "article" },
+      adjective: { id: "adjective", path: "adjective" },
       declension: { id: "declension", path: "declension" },
-      adverbs: { id: "adverbs", path: "adverbs" },
-      prepositions: { id: "prepositions", path: "prepositions" },
-      questions: { id: "questions", path: "questions" },
+      adverb: { id: "adverb", path: "adverb" },
+      preposition: { id: "preposition", path: "preposition" },
+      question: { id: "question", path: "question" },
     },
   },
-  "useful-phrases": {
-    id: "useful-phrases",
-    path: "useful-phrases",
+  "useful-phrase": {
+    id: "useful-phrase",
+    path: "useful-phrase",
     children: {
-      "general-phrases": { id: "general-phrases", path: "general-phrases" },
-      "classroom-phrases": {
-        id: "classroom-phrases",
-        path: "classroom-phrases",
+      "general-phrase": { id: "general-phrase", path: "general-phrase" },
+      "classroom-phrase": {
+        id: "classroom-phrase",
+        path: "classroom-phrase",
       },
-      "restaurant-phrases": {
-        id: "restaurant-phrases",
-        path: "restaurant-phrases",
+      "restaurant-phrase": {
+        id: "restaurant-phrase",
+        path: "restaurant-phrase",
       },
-      "home-phrases": { id: "home-phrases", path: "home-phrases" },
-      "friends-phrases": { id: "friends-phrases", path: "friends-phrases" },
+      "home-phrase": { id: "home-phrase", path: "home-phrase" },
+      "friend-phrase": { id: "friend-phrase", path: "friend-phrase" },
+      "bank-phrase": { id: "bank-phrase", path: "bank-phrase" },
     },
   },
 } as const;
@@ -111,41 +115,42 @@ export const CATEGORY_STRUCTURE = {
 export const AVAILABLE_PAGES = [
   "home",
   "alphabet",
-  "numbers",
+  "number",
   "time",
   "date",
   "weather",
-  "countries",
+  "country",
   "verb-conjugator",
-  "modal-verbs",
+  "modal-verb",
   "passive-voice",
-  "reflexive-verbs",
+  "reflexive-verb",
   "present-tense",
   "perfect-tense",
   "past-tense",
   "past-perfect",
   "future-tense",
   "future-perfect",
-  "irregular-verbs",
-  "tenses-overview",
-  "personal-pronouns",
-  "possessives",
-  "reflexive-pronouns",
-  "relative-pronouns",
-  "interrogative-pronouns",
-  "demonstrative-pronouns",
-  "indefinite-pronouns",
-  "articles",
-  "adjectives",
+  "irregular-verb",
+  "tense-overview",
+  "personal-pronoun",
+  "possessive",
+  "reflexive-pronoun",
+  "relative-pronoun",
+  "interrogative-pronoun",
+  "demonstrative-pronoun",
+  "indefinite-pronoun",
+  "article",
+  "adjective",
   "declension",
-  "adverbs",
-  "prepositions",
-  "questions",
-  "general-phrases",
-  "classroom-phrases",
-  "restaurant-phrases",
-  "home-phrases",
-  "friends-phrases",
+  "adverb",
+  "preposition",
+  "question",
+  "general-phrase",
+  "classroom-phrase",
+  "restaurant-phrase",
+  "home-phrase",
+  "friend-phrase",
+  "bank-phrase",
   "404", // Special page for 404 errors
 ] as const;
 
@@ -210,11 +215,11 @@ const createLanguageRoutes = () => {
           element: <App />,
           children: [
             { path: "alphabet", element: <App /> },
-            { path: "numbers", element: <App /> },
+            { path: "number", element: <App /> },
             { path: "time", element: <App /> },
             { path: "date", element: <App /> },
             { path: "weather", element: <App /> },
-            { path: "countries", element: <App /> },
+            { path: "country", element: <App /> },
           ],
         },
         {
@@ -222,17 +227,17 @@ const createLanguageRoutes = () => {
           element: <App />,
           children: [
             {
-              path: "verbs",
+              path: "verb",
               element: <App />,
               children: [
                 { path: "verb-conjugator", element: <App /> },
-                { path: "modal-verbs", element: <App /> },
+                { path: "modal-verb", element: <App /> },
                 { path: "passive-voice", element: <App /> },
-                { path: "reflexive-verbs", element: <App /> },
+                { path: "reflexive-verb", element: <App /> },
               ],
             },
             {
-              path: "tenses",
+              path: "tense",
               element: <App />,
               children: [
                 { path: "present-tense", element: <App /> },
@@ -241,40 +246,41 @@ const createLanguageRoutes = () => {
                 { path: "past-perfect", element: <App /> },
                 { path: "future-tense", element: <App /> },
                 { path: "future-perfect", element: <App /> },
-                { path: "irregular-verbs", element: <App /> },
-                { path: "tenses-overview", element: <App /> },
+                { path: "irregular-verb", element: <App /> },
+                { path: "tense-overview", element: <App /> },
               ],
             },
             {
-              path: "pronouns",
+              path: "pronoun",
               element: <App />,
               children: [
-                { path: "personal-pronouns", element: <App /> },
-                { path: "possessives", element: <App /> },
-                { path: "reflexive-pronouns", element: <App /> },
-                { path: "relative-pronouns", element: <App /> },
-                { path: "interrogative-pronouns", element: <App /> },
-                { path: "demonstrative-pronouns", element: <App /> },
-                { path: "indefinite-pronouns", element: <App /> },
+                { path: "personal-pronoun", element: <App /> },
+                { path: "possessive", element: <App /> },
+                { path: "reflexive-pronoun", element: <App /> },
+                { path: "relative-pronoun", element: <App /> },
+                { path: "interrogative-pronoun", element: <App /> },
+                { path: "demonstrative-pronoun", element: <App /> },
+                { path: "indefinite-pronoun", element: <App /> },
               ],
             },
-            { path: "articles", element: <App /> },
-            { path: "adjectives", element: <App /> },
+            { path: "article", element: <App /> },
+            { path: "adjective", element: <App /> },
             { path: "declension", element: <App /> },
-            { path: "adverbs", element: <App /> },
-            { path: "prepositions", element: <App /> },
-            { path: "questions", element: <App /> },
+            { path: "adverb", element: <App /> },
+            { path: "preposition", element: <App /> },
+            { path: "question", element: <App /> },
           ],
         },
         {
-          path: "useful-phrases",
+          path: "useful-phrase",
           element: <App />,
           children: [
-            { path: "general-phrases", element: <App /> },
-            { path: "classroom-phrases", element: <App /> },
-            { path: "restaurant-phrases", element: <App /> },
-            { path: "home-phrases", element: <App /> },
-            { path: "friends-phrases", element: <App /> },
+            { path: "general-phrase", element: <App /> },
+            { path: "classroom-phrase", element: <App /> },
+            { path: "restaurant-phrase", element: <App /> },
+            { path: "home-phrase", element: <App /> },
+            { path: "friend-phrase", element: <App /> },
+            { path: "bank-phrase", element: <App /> },
           ],
         },
         // Individual page routes (for backward compatibility)
@@ -348,27 +354,22 @@ export const getPageFromPath = (pathname: string): PageType => {
     if (category === "vocabulary") {
       if (
         subcategory &&
-        [
-          "alphabet",
-          "numbers",
-          "time",
-          "date",
-          "weather",
-          "countries",
-        ].includes(subcategory)
+        ["alphabet", "number", "time", "date", "weather", "country"].includes(
+          subcategory
+        )
       ) {
         return subcategory as PageType;
       }
     } else if (category === "grammar") {
-      if (subcategory === "verbs" && page) {
+      if (subcategory === "verb" && page) {
         const verbPages: Record<string, PageType> = {
           "verb-conjugator": "verb-conjugator",
-          "modal-verbs": "modal-verbs",
+          "modal-verb": "modal-verb",
           "passive-voice": "passive-voice",
-          "reflexive-verbs": "reflexive-verbs",
+          "reflexive-verb": "reflexive-verb",
         };
         return verbPages[page] || "verb-conjugator";
-      } else if (subcategory === "tenses" && page) {
+      } else if (subcategory === "tense" && page) {
         const tensePages: Record<string, PageType> = {
           "present-tense": "present-tense",
           "perfect-tense": "perfect-tense",
@@ -376,42 +377,43 @@ export const getPageFromPath = (pathname: string): PageType => {
           "past-perfect": "past-perfect",
           "future-tense": "future-tense",
           "future-perfect": "future-perfect",
-          "irregular-verbs": "irregular-verbs",
-          "tenses-overview": "tenses-overview",
+          "irregular-verb": "irregular-verb",
+          "tense-overview": "tense-overview",
         };
         return tensePages[page] || "present-tense";
-      } else if (subcategory === "pronouns" && page) {
+      } else if (subcategory === "pronoun" && page) {
         const pronounPages: Record<string, PageType> = {
-          "personal-pronouns": "personal-pronouns",
-          possessives: "possessives",
-          "reflexive-pronouns": "reflexive-pronouns",
-          "relative-pronouns": "relative-pronouns",
-          "interrogative-pronouns": "interrogative-pronouns",
-          "demonstrative-pronouns": "demonstrative-pronouns",
-          "indefinite-pronouns": "indefinite-pronouns",
+          "personal-pronoun": "personal-pronoun",
+          possessive: "possessive",
+          "reflexive-pronoun": "reflexive-pronoun",
+          "relative-pronoun": "relative-pronoun",
+          "interrogative-pronoun": "interrogative-pronoun",
+          "demonstrative-pronoun": "demonstrative-pronoun",
+          "indefinite-pronoun": "indefinite-pronoun",
         };
-        return pronounPages[page] || "personal-pronouns";
+        return pronounPages[page] || "personal-pronoun";
       } else if (
         [
-          "articles",
-          "adjectives",
+          "article",
+          "adjective",
           "declension",
-          "adverbs",
-          "prepositions",
-          "questions",
+          "adverb",
+          "preposition",
+          "question",
         ].includes(subcategory)
       ) {
         return subcategory as PageType;
       }
-    } else if (category === "useful-phrases" && subcategory) {
+    } else if (category === "useful-phrase" && subcategory) {
       const phrasePages: Record<string, PageType> = {
-        "general-phrases": "general-phrases",
-        "classroom-phrases": "classroom-phrases",
-        "restaurant-phrases": "restaurant-phrases",
-        "home-phrases": "home-phrases",
-        "friends-phrases": "friends-phrases",
+        "general-phrase": "general-phrase",
+        "classroom-phrase": "classroom-phrase",
+        "restaurant-phrase": "restaurant-phrase",
+        "home-phrase": "home-phrase",
+        "friend-phrase": "friend-phrase",
+        "bank-phrase": "bank-phrase",
       };
-      return phrasePages[subcategory] || "general-phrases";
+      return phrasePages[subcategory] || "general-phrase";
     }
   }
 

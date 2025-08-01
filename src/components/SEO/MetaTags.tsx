@@ -45,8 +45,8 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
         keywords:
           "German alphabet, pronunciation, German letters, vocabulary, LingoMesh, lingomesh.com",
       },
-      numbers: {
-        title: `${t.navigation.numbers} - ${t.app.name}`,
+      number: {
+        title: `${t.navigation.number} - ${t.app.name}`,
         description: `Learn German numbers and counting with interactive tools on ${t.app.name}. Practice German number pronunciation and usage.`,
         keywords:
           "German numbers, counting, German vocabulary, numbers, LingoMesh, lingomesh.com",
@@ -69,21 +69,21 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
         keywords:
           "German weather, weather vocabulary, German expressions, LingoMesh, lingomesh.com",
       },
-      countries: {
-        title: `${t.navigation.countries} - ${t.app.name}`,
+      country: {
+        title: `${t.navigation.country} - ${t.app.name}`,
         description: `Learn German country names and nationalities on ${t.app.name}. Master geographical vocabulary in German.`,
         keywords:
           "German countries, nationalities, geography, vocabulary, LingoMesh, lingomesh.com",
       },
       // Grammar pages
-      articles: {
-        title: `${t.navigation.articles} - ${t.app.name}`,
+      article: {
+        title: `${t.navigation.article} - ${t.app.name}`,
         description: `Learn German articles (der, die, das) with interactive exercises and examples on ${t.app.name}. Master German definite and indefinite articles.`,
         keywords:
           "German articles, der die das, German grammar, definite articles, LingoMesh, lingomesh.com",
       },
-      adjectives: {
-        title: `${t.navigation.adjectives} - ${t.app.name}`,
+      adjective: {
+        title: `${t.navigation.adjective} - ${t.app.name}`,
         description: `Learn German adjectives and their usage in sentences on ${t.app.name}. Master German descriptive words and adjective placement.`,
         keywords:
           "German adjectives, descriptive words, German grammar, LingoMesh, lingomesh.com",
@@ -94,20 +94,20 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
         keywords:
           "German declension, adjective declension, German grammar, LingoMesh, lingomesh.com",
       },
-      adverbs: {
-        title: `${t.navigation.adverbs} - ${t.app.name}`,
+      adverb: {
+        title: `${t.navigation.adverb} - ${t.app.name}`,
         description: `Learn German adverbs and their placement in sentences on ${t.app.name}. Master German adverb usage and word order.`,
         keywords:
           "German adverbs, word order, German grammar, LingoMesh, lingomesh.com",
       },
-      prepositions: {
-        title: `${t.navigation.prepositions} - ${t.app.name}`,
+      preposition: {
+        title: `${t.navigation.preposition} - ${t.app.name}`,
         description: `Master German prepositions with examples and practice exercises on ${t.app.name}. Learn German preposition usage and case requirements.`,
         keywords:
           "German prepositions, grammar, prepositions, LingoMesh, lingomesh.com",
       },
-      questions: {
-        title: `${t.navigation.questions} - ${t.app.name}`,
+      question: {
+        title: `${t.navigation.question} - ${t.app.name}`,
         description:
           "Learn to ask questions in German with proper grammar and examples.",
         keywords:
@@ -120,8 +120,8 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
           "Learn German verb conjugation with interactive tools and examples.",
         keywords: "German verb conjugation, verb forms, German grammar",
       },
-      "modal-verbs": {
-        title: `${t.navigation.modalVerbs} - ${t.app.name}`,
+      "modal-verb": {
+        title: `${t.navigation.modalVerb} - ${t.app.name}`,
         description: "Learn German modal verbs and their usage patterns.",
         keywords: "German modal verbs, können, müssen, wollen, German grammar",
       },
@@ -130,8 +130,8 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
         description: "Learn German passive voice construction and usage.",
         keywords: "German passive voice, werden, German grammar",
       },
-      "reflexive-verbs": {
-        title: `${t.navigation.reflexiveVerbs} - ${t.app.name}`,
+      "reflexive-verb": {
+        title: `${t.navigation.reflexiveVerb} - ${t.app.name}`,
         description: "Learn German reflexive verbs and their patterns.",
         keywords: "German reflexive verbs, sich, German grammar",
       },
@@ -166,26 +166,26 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
         description: "Learn German future perfect tense (Futur II).",
         keywords: "German future perfect, Futur II, German grammar",
       },
-      "irregular-verbs": {
-        title: `${t.navigation.irregularVerbs} - ${t.app.name}`,
+      "irregular-verb": {
+        title: `${t.navigation.irregularVerb} - ${t.app.name}`,
         description:
           "Learn German irregular verbs and their conjugation patterns.",
         keywords: "German irregular verbs, strong verbs, German grammar",
       },
-      "tenses-overview": {
-        title: `${t.navigation.tensesOverview} - ${t.app.name}`,
+      "tense-overview": {
+        title: `${t.navigation.tenseOverview} - ${t.app.name}`,
         description: "Overview of all German verb tenses and their usage.",
         keywords: "German tenses overview, verb conjugation, German grammar",
       },
       // Pronoun pages
-      "personal-pronouns": {
-        title: `${t.navigation.personalPronouns} - ${t.app.name}`,
+      "personal-pronoun": {
+        title: `${t.navigation.personalPronoun} - ${t.app.name}`,
         description:
           "Learn German personal pronouns with examples and practice.",
         keywords: "German personal pronouns, ich, du, er, sie, German grammar",
       },
-      possessives: {
-        title: `${t.navigation.possessives} - ${t.app.name}`,
+      possessive: {
+        title: `${t.navigation.possessive} - ${t.app.name}`,
         description: "Learn German possessive pronouns and adjectives.",
         keywords:
           "German possessive pronouns, mein, dein, sein, German grammar",
@@ -236,13 +236,13 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
         keywords: "German restaurant phrases, dining, food, vocabulary",
       },
       "home-phrases": {
-        title: `${t.navigation.homePhrases} - ${t.app.name}`,
+        title: `${t.navigation.homePhrase} - ${t.app.name}`,
         description: `Learn German phrases for everyday home and family situations on ${t.app.name}. Master German household and family vocabulary.`,
         keywords:
           "German home phrases, family, household, vocabulary, LingoMesh, lingomesh.com",
       },
       "friends-phrases": {
-        title: `${t.navigation.friends} - ${t.app.name}`,
+        title: `${t.navigation.friend} - ${t.app.name}`,
         description: `Learn German phrases for social situations with friends on ${t.app.name}. Master casual German conversation and social vocabulary.`,
         keywords:
           "German friend phrases, social, casual, vocabulary, LingoMesh, lingomesh.com",

@@ -6,6 +6,7 @@ import AudioButton from "../../components/ui/AudioButton/AudioButton";
 import QuizWidget, {
   convertMultilingualQuestions,
 } from "../../components/widgets/QuizWidget/QuizWidget";
+import TimeWidget from "./widgets/TimeWidget/TimeWidget";
 import { timeQuizQuestions } from "../../data/quizData";
 
 interface TimeProps {
@@ -15,6 +16,7 @@ interface TimeProps {
 
 const Time: React.FC<TimeProps> = ({ language }) => {
   const isGerman = language === "de";
+  const [currentTime, setCurrentTime] = React.useState(new Date());
 
   const getCategoryColor = (category: string) => {
     switch (category) {
@@ -125,6 +127,13 @@ const Time: React.FC<TimeProps> = ({ language }) => {
 
   return (
     <PageLayout>
+      {/* Interactive Time Widget */}
+      <TimeWidget
+        currentTime={currentTime}
+        language={language}
+        setCurrentTime={setCurrentTime}
+      />
+
       {/* Time Display Section */}
       <Box
         title={isGerman ? "Zeitanzeige" : "Time Display"}
