@@ -497,6 +497,94 @@ export const weatherQuizQuestions: MultilingualQuizQuestion[] = [
   },
 ];
 
+// Alphabet Quiz Questions
+export const alphabetQuizQuestions: MultilingualQuizQuestion[] = [
+  {
+    question: {
+      en: "Wie spricht man 'ß' aus?",
+      de: "Wie spricht man 'ß' aus?",
+      es: "Wie spricht man 'ß' aus?",
+      ru: "Wie spricht man 'ß' aus?",
+    },
+    options: {
+      en: ["like 's'", "like 'ss'", "like 'z'", "like 'sh'"],
+      de: ["like 's'", "like 'ss'", "like 'z'", "like 'sh'"],
+      es: ["like 's'", "like 'ss'", "like 'z'", "like 'sh'"],
+      ru: ["like 's'", "like 'ss'", "like 'z'", "like 'sh'"],
+    },
+    correctAnswer: 1,
+    explanation: {
+      en: "'ß' is pronounced like 'ss' - it's called 'eszett' or 'sharp s'.",
+      de: "'ß' wird wie 'ss' ausgesprochen - es heißt 'eszett' oder 'scharfes s'.",
+      es: "'ß' se pronuncia como 'ss' - se llama 'eszett' o 's aguda'.",
+      ru: "'ß' произносится как 'ss' - это называется 'eszett' или 'острое s'.",
+    },
+  },
+  {
+    question: {
+      en: "Welche Buchstaben gibt es im deutschen Alphabet, die im englischen nicht vorkommen?",
+      de: "Welche Buchstaben gibt es im deutschen Alphabet, die im englischen nicht vorkommen?",
+      es: "Welche Buchstaben gibt es im deutschen Alphabet, die im englischen nicht vorkommen?",
+      ru: "Welche Buchstaben gibt es im deutschen Alphabet, die im englischen nicht vorkommen?",
+    },
+    options: {
+      en: ["ä, ö, ü, ß", "a, o, u, s", "e, i, o, u", "b, c, d, f"],
+      de: ["ä, ö, ü, ß", "a, o, u, s", "e, i, o, u", "b, c, d, f"],
+      es: ["ä, ö, ü, ß", "a, o, u, s", "e, i, o, u", "b, c, d, f"],
+      ru: ["ä, ö, ü, ß", "a, o, u, s", "e, i, o, u", "b, c, d, f"],
+    },
+    correctAnswer: 0,
+    explanation: {
+      en: "The German alphabet has four additional letters: ä, ö, ü, and ß.",
+      de: "Das deutsche Alphabet hat vier zusätzliche Buchstaben: ä, ö, ü und ß.",
+      es: "El alfabeto alemán tiene cuatro letras adicionales: ä, ö, ü y ß.",
+      ru: "В немецком алфавите есть четыре дополнительные буквы: ä, ö, ü и ß.",
+    },
+  },
+  {
+    question: {
+      en: "Wie viele Buchstaben hat das deutsche Alphabet?",
+      de: "Wie viele Buchstaben hat das deutsche Alphabet?",
+      es: "Wie viele Buchstaben hat das deutsche Alphabet?",
+      ru: "Wie viele Buchstaben hat das deutsche Alphabet?",
+    },
+    options: {
+      en: ["26", "30", "29", "28"],
+      de: ["26", "30", "29", "28"],
+      es: ["26", "30", "29", "28"],
+      ru: ["26", "30", "29", "28"],
+    },
+    correctAnswer: 1,
+    explanation: {
+      en: "The German alphabet has 30 letters: A-Z plus ä, ö, ü, and ß.",
+      de: "Das deutsche Alphabet hat 30 Buchstaben: A-Z plus ä, ö, ü und ß.",
+      es: "El alfabeto alemán tiene 30 letras: A-Z más ä, ö, ü y ß.",
+      ru: "В немецком алфавите 30 букв: A-Z плюс ä, ö, ü и ß.",
+    },
+  },
+  {
+    question: {
+      en: "Was ist der Name des Buchstabens 'ä'?",
+      de: "Was ist der Name des Buchstabens 'ä'?",
+      es: "Was ist der Name des Buchstabens 'ä'?",
+      ru: "Was ist der Name des Buchstabens 'ä'?",
+    },
+    options: {
+      en: ["a-umlaut", "a-dot", "a-accent", "a-hook"],
+      de: ["a-umlaut", "a-dot", "a-accent", "a-hook"],
+      es: ["a-umlaut", "a-dot", "a-accent", "a-hook"],
+      ru: ["a-umlaut", "a-dot", "a-accent", "a-hook"],
+    },
+    correctAnswer: 0,
+    explanation: {
+      en: "'ä' is called 'a-umlaut' - the dots are called umlauts.",
+      de: "'ä' heißt 'a-umlaut' - die Punkte heißen Umlaute.",
+      es: "'ä' se llama 'a-umlaut' - los puntos se llaman umlauts.",
+      ru: "'ä' называется 'a-umlaut' - точки называются умляутами.",
+    },
+  },
+];
+
 // Export all quiz data
 export const quizData = {
   time: timeQuizQuestions,
@@ -504,4 +592,5 @@ export const quizData = {
   articles: articlesQuizQuestions,
   numbers: numbersQuizQuestions,
   weather: weatherQuizQuestions,
+  alphabet: alphabetQuizQuestions,
 };

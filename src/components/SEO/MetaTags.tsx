@@ -190,62 +190,68 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
         keywords:
           "German possessive pronouns, mein, dein, sein, German grammar",
       },
-      "reflexive-pronouns": {
+      "reflexive-pronoun": {
         title: `${t.navigation.reflexivePronouns} - ${t.app.name}`,
         description: "Learn German reflexive pronouns and their usage.",
         keywords: "German reflexive pronouns, sich, German grammar",
       },
-      "relative-pronouns": {
+      "relative-pronoun": {
         title: `${t.navigation.relativePronouns} - ${t.app.name}`,
         description: "Learn German relative pronouns and relative clauses.",
         keywords: "German relative pronouns, der, die, das, German grammar",
       },
-      "interrogative-pronouns": {
+      "interrogative-pronoun": {
         title: `${t.navigation.interrogativePronouns} - ${t.app.name}`,
         description: "Learn German interrogative pronouns and question words.",
         keywords: "German interrogative pronouns, wer, was, wo, German grammar",
       },
-      "demonstrative-pronouns": {
+      "demonstrative-pronoun": {
         title: `${t.navigation.demonstrativePronouns} - ${t.app.name}`,
         description: "Learn German demonstrative pronouns and their usage.",
         keywords:
           "German demonstrative pronouns, dieser, jener, German grammar",
       },
-      "indefinite-pronouns": {
+      "indefinite-pronoun": {
         title: `${t.navigation.indefinitePronouns} - ${t.app.name}`,
         description: "Learn German indefinite pronouns and their meanings.",
         keywords: "German indefinite pronouns, jeder, manche, German grammar",
       },
       // Useful phrases pages
-      "general-phrases": {
+      "general-phrase": {
         title: `${t.navigation.general} - ${t.app.name}`,
         description:
           "Learn useful general German phrases for everyday conversation.",
         keywords: "German phrases, everyday German, conversation, vocabulary",
       },
-      "classroom-phrases": {
+      "classroom-phrase": {
         title: `${t.navigation.classroom} - ${t.app.name}`,
         description:
           "Learn German phrases commonly used in classroom settings.",
         keywords: "German classroom phrases, education, school, vocabulary",
       },
-      "restaurant-phrases": {
+      "restaurant-phrase": {
         title: `${t.navigation.restaurant} - ${t.app.name}`,
         description:
           "Learn German phrases for dining out and restaurant situations.",
         keywords: "German restaurant phrases, dining, food, vocabulary",
       },
-      "home-phrases": {
-        title: `${t.navigation.homePhrase} - ${t.app.name}`,
+      "home-phrase": {
+        title: `${t.navigation.home} - ${t.app.name}`,
         description: `Learn German phrases for everyday home and family situations on ${t.app.name}. Master German household and family vocabulary.`,
         keywords:
           "German home phrases, family, household, vocabulary, LingoMesh, lingomesh.com",
       },
-      "friends-phrases": {
+      "friend-phrase": {
         title: `${t.navigation.friend} - ${t.app.name}`,
         description: `Learn German phrases for social situations with friends on ${t.app.name}. Master casual German conversation and social vocabulary.`,
         keywords:
           "German friend phrases, social, casual, vocabulary, LingoMesh, lingomesh.com",
+      },
+      "bank-phrase": {
+        title: `${t.navigation.bank} - ${t.app.name}`,
+        description: `Learn German phrases for banking and financial situations on ${t.app.name}. Master German banking vocabulary and expressions.`,
+        keywords:
+          "German bank phrases, banking, finance, vocabulary, LingoMesh, lingomesh.com",
       },
     };
 

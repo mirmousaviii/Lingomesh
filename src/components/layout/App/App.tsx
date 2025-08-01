@@ -23,6 +23,7 @@ import {
   Time,
   Date,
   Weather,
+  Alphabet,
   ComingSoon,
   NotFound,
 } from "../../../pages";
@@ -85,7 +86,7 @@ function App() {
       case "weather":
         return <Weather {...pageProps} />;
       case "alphabet":
-        return <ComingSoon {...pageProps} />;
+        return <Alphabet {...pageProps} />;
       case "country":
         return <ComingSoon {...pageProps} />;
       // Verb-related pages
