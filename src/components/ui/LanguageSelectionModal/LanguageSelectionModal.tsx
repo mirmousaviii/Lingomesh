@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Language } from "../../../hooks/useTranslations";
 
 interface LanguageSelectionModalProps {
@@ -10,7 +10,23 @@ const LanguageSelectionModal: React.FC<LanguageSelectionModalProps> = ({
   isOpen,
   onLanguageSelect,
 }) => {
-  if (!isOpen) return null;
+  const [isClosing, setIsClosing] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setShouldRender(true);
+      setIsClosing(false);
+    } else if (shouldRender) {
+      setIsClosing(true);
+      const timer = setTimeout(() => {
+        setShouldRender(false);
+      }, 300); // Match the animation duration
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, shouldRender]);
+
+  if (!shouldRender) return null;
 
   const languages: { code: Language; name: string; nativeName: string }[] = [
     { code: "en", name: "English", nativeName: "Englisch" },
@@ -49,7 +65,9 @@ const LanguageSelectionModal: React.FC<LanguageSelectionModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center z-[9999] p-4"
+      className={`fixed inset-0 flex items-center justify-center z-[9999] p-4 bg-opacity-75 backdrop-blur-sm ${
+        isClosing ? "animate-fadeOut" : "animate-fadeIn"
+      }`}
       onClick={handleBackdropClick}
       onKeyDown={handleKeyDown}
       role="dialog"
@@ -57,7 +75,11 @@ const LanguageSelectionModal: React.FC<LanguageSelectionModalProps> = ({
       aria-labelledby="language-modal-title"
       aria-describedby="language-modal-description"
     >
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 max-w-sm sm:max-w-md w-full shadow-xl">
+      <div
+        className={`bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 max-w-sm sm:max-w-md w-full shadow-xl ${
+          isClosing ? "animate-modalSlideOut" : "animate-modalSlideIn"
+        }`}
+      >
         <div className="text-center mb-4 sm:mb-6">
           <p
             id="language-modal-description"

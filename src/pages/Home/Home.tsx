@@ -290,10 +290,10 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
 
           {/* Additional Info Section */}
           <div
-            className="mt-8 sm:mt-12 text-center animate-fade-in mb-10"
+            className="mt-12 sm:mt-16 text-center animate-fade-in mb-16"
             style={{ animationDelay: "1s", animationFillMode: "both" }}
           >
-            <div className="relative bg-gradient-to-br from-blue-500 via-teal-500 to-green-600 dark:from-blue-600 dark:via-teal-600 dark:to-green-700 rounded-lg p-6 sm:p-8 shadow-2xl border border-blue-300 dark:border-blue-600 overflow-hidden animate-soft-glow">
+            <div className="relative bg-gradient-to-br from-blue-500 via-teal-500 to-green-600 dark:from-blue-600 dark:via-teal-600 dark:to-green-700 rounded-xl p-8 sm:p-12 shadow-2xl border border-blue-300 dark:border-blue-600 overflow-hidden animate-soft-glow">
               {/* Shimmer effect overlay */}
               <div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-shimmer"
@@ -371,10 +371,16 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
               {/* Content */}
               <div className="relative z-10">
                 <div className="py-4">
-                  <h2 className="text-xl sm:text-2xl font-bold mb-6 drop-shadow-lg text-white animate-pulse">
+                  <h2
+                    className="text-3xl sm:text-4xl font-bold mb-6 text-white animate-pulse"
+                    style={{
+                      textShadow:
+                        "2px 2px 4px rgba(0,0,0,0.5), 0 0 6px rgba(0,0,0,0.3)",
+                    }}
+                  >
                     {t.home.lingoMeshFeatures}
                   </h2>
-                  <div className="relative flex justify-center items-center mb-8">
+                  <div className="relative flex justify-center items-center mb-10">
                     {/* Magical sparkle animation */}
                     <div className="absolute left-1/4 -top-2 w-3 h-3 bg-gradient-to-br from-yellow-300 via-pink-400 to-blue-400 rounded-full blur-sm animate-pulse-sparkle animate-bounce"></div>
                     <div
@@ -389,7 +395,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                     <div className="relative">
                       {/* Main animated line */}
                       <div
-                        className="w-64 h-1 bg-gradient-to-r from-cyan-400 via-white to-blue-500 rounded-full shadow-lg relative overflow-hidden"
+                        className="w-96 h-1 bg-gradient-to-r from-cyan-400 via-white to-blue-500 rounded-full shadow-lg relative overflow-hidden"
                         style={{ animation: "pulse 3s ease-in-out infinite" }}
                       >
                         {/* Shimmer effect */}
@@ -425,7 +431,7 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
 
                       {/* Glow effect */}
                       <div
-                        className="absolute inset-0 w-64 h-1 bg-gradient-to-r from-cyan-400 via-white to-blue-500 rounded-full blur-sm opacity-50"
+                        className="absolute inset-0 w-96 h-1 bg-gradient-to-r from-cyan-400 via-white to-blue-500 rounded-full blur-sm opacity-50"
                         style={{ animation: "pulse 3s ease-in-out infinite" }}
                       ></div>
 
@@ -508,13 +514,19 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                   </div>
 
                   {/* Subtitle text below the line */}
-                  <p className="text-white/70 text-sm text-center mb-6 font-medium">
+                  <p
+                    className="text-white/80 text-md text-center mb-6 font-medium"
+                    style={{
+                      textShadow:
+                        "1px 1px 3px rgba(0,0,0,0.6), 0 0 4px rgba(0,0,0,0.4)",
+                    }}
+                  >
                     {t.home.platformSubtitle}
                   </p>
                 </div>
 
                 {/* Feature highlights */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 relative">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
                   {/* Background animated elements for feature boxes */}
                   <div className="absolute -top-2 left-1/4 w-3 h-3 bg-gradient-to-r from-green-300 to-emerald-300 rounded-full animate-pulse blur-sm opacity-60"></div>
                   <div
@@ -542,10 +554,22 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                       animationDirection: "reverse",
                     }}
                   ></div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-green-300/30 shadow-2xl group">
-                    <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg mb-3 mx-auto">
+                  <div
+                    className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-green-300/30 shadow-2xl group hover:shadow-3xl hover:border-green-400 transition-all duration-300"
+                    style={{
+                      boxShadow:
+                        "0 10px 25px rgba(0,0,0,0.3), 0 4px 10px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)",
+                    }}
+                  >
+                    <div
+                      className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg mb-3 mx-auto shadow-lg"
+                      style={{
+                        boxShadow:
+                          "0 4px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2)",
+                      }}
+                    >
                       <svg
-                        className="w-5 h-5 text-white"
+                        className="w-5 h-5 text-white drop-shadow-lg"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -558,18 +582,30 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-sm font-medium text-center mb-2 drop-shadow-lg">
+                    <p className="text-base text-center mb-2 bg-gradient-to-r from-lime-700 to-green-700 bg-clip-text text-transparent">
                       {t.home.interactive}
                     </p>
-                    <p className="text-white/60 text-xs text-center leading-relaxed drop-shadow-md">
+                    <p className="text-gray-500 text-sm text-center leading-relaxed font-medium">
                       {t.home.interactiveDescription}
                     </p>
                   </div>
 
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-blue-300/30 shadow-2xl group">
-                    <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg mb-3 mx-auto">
+                  <div
+                    className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-blue-300/30 shadow-2xl group hover:shadow-3xl hover:border-blue-400 transition-all duration-300"
+                    style={{
+                      boxShadow:
+                        "0 10px 25px rgba(0,0,0,0.3), 0 4px 10px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)",
+                    }}
+                  >
+                    <div
+                      className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg mb-3 mx-auto shadow-lg"
+                      style={{
+                        boxShadow:
+                          "0 4px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2)",
+                      }}
+                    >
                       <svg
-                        className="w-5 h-5 text-white"
+                        className="w-5 h-5 text-white drop-shadow-lg"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -582,18 +618,30 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-sm font-medium text-center mb-2 drop-shadow-lg">
+                    <p className="text-base text-center mb-2 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                       {t.home.multilingual}
                     </p>
-                    <p className="text-white/60 text-xs text-center leading-relaxed drop-shadow-md">
+                    <p className="text-gray-500 text-sm text-center leading-relaxed font-medium">
                       {t.home.multilingualDescription}
                     </p>
                   </div>
 
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-purple-300/30 shadow-2xl group">
-                    <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg mb-3 mx-auto">
+                  <div
+                    className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-purple-300/30 shadow-2xl group hover:shadow-3xl hover:border-purple-400 transition-all duration-300"
+                    style={{
+                      boxShadow:
+                        "0 10px 25px rgba(0,0,0,0.3), 0 4px 10px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)",
+                    }}
+                  >
+                    <div
+                      className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg mb-3 mx-auto shadow-lg"
+                      style={{
+                        boxShadow:
+                          "0 4px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2)",
+                      }}
+                    >
                       <svg
-                        className="w-5 h-5 text-white"
+                        className="w-5 h-5 text-white drop-shadow-lg"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -606,10 +654,10 @@ const Home: React.FC<HomeProps> = ({ language, onPageChange }) => {
                         />
                       </svg>
                     </div>
-                    <p className="text-white/80 text-sm font-medium text-center mb-2 drop-shadow-lg">
+                    <p className="text-base text-center mb-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                       {t.home.dynamic}
                     </p>
-                    <p className="text-white/60 text-xs text-center leading-relaxed drop-shadow-md">
+                    <p className="text-gray-500 text-sm text-center leading-relaxed font-medium">
                       {t.home.dynamicDescription}
                     </p>
                   </div>

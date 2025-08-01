@@ -17,13 +17,10 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({
   return (
     <button
       onClick={toggleTheme}
-      className="flex items-center justify-center transition-all duration-300 ease-in-out touch-manipulation bg-neutral-100/80 dark:bg-neutral-800/80 rounded-md p-1 border border-neutral-200/60 dark:border-neutral-600/60 w-10 h-10 sm:w-12 sm:h-10 hover:bg-neutral-200/80 dark:hover:bg-neutral-700/80 hover:scale-105 active:scale-95"
-      title={
-        themeMode === "light" ? "Switch to dark mode" : "Switch to light mode"
-      }
+      className="flex items-center justify-center transition-all duration-300 ease-in-out touch-manipulation bg-neutral-100/80 dark:bg-neutral-800/80 rounded-md p-1 border border-neutral-200/60 dark:border-neutral-600/60 w-10 h-10 sm:w-12 sm:h-10 hover:bg-neutral-200/80 dark:hover:bg-neutral-700/80 hover:scale-105 active:scale-95 group"
     >
       <svg
-        className="fill-current transition-all duration-1000 ease-in-out w-4 h-4 sm:w-5 sm:h-5 transform theme-toggle-icon"
+        className="fill-current transition-all duration-150 ease-in-out w-4 h-4 sm:w-5 sm:h-5 transform theme-toggle-icon group-hover:text-primary-600 dark:group-hover:text-primary-400"
         viewBox="0 0 20 20"
         style={{
           transform: themeMode === "light" ? "rotate(0deg)" : "rotate(180deg)",
