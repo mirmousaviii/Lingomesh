@@ -1,7 +1,0 @@
-LingoMesh Favicon Description:
-- Purple circular background (#7c3aed) matching the site's theme color
-- White letter "L" representing "LingoMesh"
-- Small white dots representing language learning concepts
-- Available in multiple formats: SVG, ICO, PNG (16x16, 32x32, 48x48)
-- Mobile icons: Apple Touch Icon (180x180), Android Chrome (192x192, 512x512)
-- Web app manifest included for PWA support 
