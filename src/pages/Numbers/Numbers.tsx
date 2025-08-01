@@ -25,9 +25,18 @@ const Numbers: React.FC<NumbersProps> = ({ language }) => {
   const numberRulesTitle = t?.numberRulesTitle || "Number Rules";
   const numberRulesSubtitle =
     t?.numberRulesSubtitle || "Important rules for German numbers";
+  const decimalNumbersTitle = t?.decimalNumbersTitle || "Decimal Numbers";
+  const decimalNumbersSubtitle =
+    t?.decimalNumbersSubtitle ||
+    "How to read and write decimal numbers in German";
+  const mathOperatorsTitle = t?.mathOperatorsTitle || "Mathematical Operators";
+  const mathOperatorsSubtitle =
+    t?.mathOperatorsSubtitle || "Basic mathematical operations in German";
 
   // Number rules from translations
   const numberRules = t?.numberRules || [];
+  const decimalRules = t?.decimalRules || [];
+  const mathOperators = t?.mathOperators || [];
 
   // Speech synthesis function
   const speakGerman = (text: string) => {
@@ -183,6 +192,78 @@ const Numbers: React.FC<NumbersProps> = ({ language }) => {
                   </span>
                   <AudioButton
                     onClick={() => speakGerman(rule.example.split(" → ")[1])}
+                    title={ui?.listen || "Listen"}
+                    size="sm"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Box>
+
+      {/* Decimal Numbers Section */}
+      <Box
+        title={decimalNumbersTitle}
+        description={decimalNumbersSubtitle}
+        headerColor="purple"
+      >
+        <div className="space-y-4">
+          {decimalRules.map((rule, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4 border border-neutral-200 dark:border-neutral-700"
+            >
+              <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+                {rule.title}
+              </h3>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+                {rule.description}
+              </p>
+              <div className="bg-purple-50 dark:bg-purple-900/20 rounded-md p-3 border border-purple-200 dark:border-purple-800">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-sm text-purple-700 dark:text-purple-300">
+                    {rule.example}
+                  </span>
+                  <AudioButton
+                    onClick={() => speakGerman(rule.example.split(" → ")[1])}
+                    title={ui?.listen || "Listen"}
+                    size="sm"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Box>
+
+      {/* Mathematical Operators Section */}
+      <Box
+        title={mathOperatorsTitle}
+        description={mathOperatorsSubtitle}
+        headerColor="green"
+      >
+        <div className="space-y-4">
+          {mathOperators.map((operator, index) => (
+            <div
+              key={index}
+              className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4 border border-neutral-200 dark:border-neutral-700"
+            >
+              <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+                {operator.title}
+              </h3>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+                {operator.description}
+              </p>
+              <div className="bg-green-50 dark:bg-green-900/20 rounded-md p-3 border border-green-200 dark:border-green-800">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-sm text-green-700 dark:text-green-300">
+                    {operator.example}
+                  </span>
+                  <AudioButton
+                    onClick={() =>
+                      speakGerman(operator.example.split(" → ")[1])
+                    }
                     title={ui?.listen || "Listen"}
                     size="sm"
                   />

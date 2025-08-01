@@ -7,6 +7,7 @@ import Box from "../../../../components/ui/Box/Box";
 import AudioButton from "../../../../components/ui/AudioButton/AudioButton";
 import {
   convertNumberToGermanStructured,
+  convertDecimalToGermanStructured,
   NumberPart,
 } from "../../../../utils/numberConverter";
 
@@ -28,8 +29,19 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
 
   useEffect(() => {
     if (numberInput) {
-      const numberValue = parseInt(numberInput, 10);
-      setConvertedParts(convertNumberToGermanStructured(numberValue));
+      // Convert comma to dot for internal processing (German decimal separator)
+      const normalizedValue = numberInput.replace(",", ".");
+      const numberValue = parseFloat(normalizedValue);
+
+      if (!isNaN(numberValue)) {
+        if (Number.isInteger(numberValue)) {
+          setConvertedParts(convertNumberToGermanStructured(numberValue));
+        } else {
+          setConvertedParts(convertDecimalToGermanStructured(numberValue));
+        }
+      } else {
+        setConvertedParts([]);
+      }
     } else {
       setConvertedParts([]);
     }
@@ -37,10 +49,16 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    const numValue = parseInt(value, 10);
 
-    // Validate the input
-    if (value === "" || (numValue >= 0 && numValue <= 999999999)) {
+    // Convert comma to dot for internal processing (German decimal separator)
+    const normalizedValue = value.replace(",", ".");
+    const numValue = parseFloat(normalizedValue);
+
+    // Validate the input - allow decimal numbers up to 999,999,999.999
+    if (
+      value === "" ||
+      (numValue >= 0 && numValue <= 999999999.999 && !isNaN(numValue))
+    ) {
       setNumberInput(value);
       setInputError(false);
     } else {
@@ -72,6 +90,8 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
         return "text-orange-600 dark:text-orange-400";
       case "millions":
         return "text-red-600 dark:text-red-400";
+      case "decimal":
+        return "text-pink-600 dark:text-pink-400";
       case "connector":
         return "text-neutral-500 dark:text-neutral-400";
       default:
@@ -91,6 +111,7 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
         <div className="space-y-2">
           <input
             type="number"
+            step="any"
             value={numberInput}
             onChange={handleInputChange}
             className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg border rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 ${
@@ -105,7 +126,7 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
           {inputError && (
             <p className="text-xs sm:text-sm text-red-600 dark:text-red-400 mt-1">
               {ui?.numberRangeError ||
-                "Please enter a number between 0 and 999,999,999"}
+                "Please enter a number between 0 and 999,999,999.999"}
             </p>
           )}
         </div>
@@ -145,7 +166,7 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
               <h4 className="text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 sm:mb-3">
                 {ui?.colorLegend || "Color Legend"}
               </h4>
-              <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-2 text-xs">
+              <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-7 gap-2 text-xs">
                 <div className="flex items-center gap-1 sm:gap-2">
                   <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-blue-500 flex-shrink-0"></div>
                   <span className="text-neutral-600 dark:text-neutral-400 text-xs">
@@ -174,6 +195,12 @@ const NumberConverterWidget: React.FC<NumberConverterWidgetProps> = ({
                   <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500 flex-shrink-0"></div>
                   <span className="text-neutral-600 dark:text-neutral-400 text-xs">
                     {ui?.millions || "Millions"}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1 sm:gap-2">
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-pink-500 flex-shrink-0"></div>
+                  <span className="text-neutral-600 dark:text-neutral-400 text-xs">
+                    {ui?.decimals || "Decimals"}
                   </span>
                 </div>
                 <div className="flex items-center gap-1 sm:gap-2">

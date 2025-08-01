@@ -8,6 +8,7 @@ export interface UITranslations {
   hundreds: string;
   thousands: string;
   millions: string;
+  decimals: string;
   connectors: string;
   numberRangeError: string;
 }
@@ -21,8 +22,9 @@ export const uiTranslations = createTranslations<UITranslations>({
     hundreds: "Hundreds",
     thousands: "Thousands",
     millions: "Millions",
+    decimals: "Decimals",
     connectors: "Connectors",
-    numberRangeError: "Please enter a number between 0 and 999,999,999",
+    numberRangeError: "Please enter a number between 0 and 999,999,999.999",
   },
   de: {
     listen: "Anhören",
@@ -32,9 +34,10 @@ export const uiTranslations = createTranslations<UITranslations>({
     hundreds: "Hunderter",
     thousands: "Tausender",
     millions: "Millionen",
+    decimals: "Dezimalstellen",
     connectors: "Verbindungen",
     numberRangeError:
-      "Bitte geben Sie eine Zahl zwischen 0 und 999.999.999 ein",
+      "Bitte geben Sie eine Zahl zwischen 0 und 999.999.999,999 ein",
   },
   es: {
     listen: "Escuchar",
@@ -44,8 +47,9 @@ export const uiTranslations = createTranslations<UITranslations>({
     hundreds: "Centenas",
     thousands: "Miles",
     millions: "Millones",
+    decimals: "Decimales",
     connectors: "Conectores",
-    numberRangeError: "Por favor ingrese un número entre 0 y 999,999,999",
+    numberRangeError: "Por favor ingrese un número entre 0 y 999,999,999.999",
   },
   ru: {
     listen: "Слушать",
@@ -55,7 +59,8 @@ export const uiTranslations = createTranslations<UITranslations>({
     hundreds: "Сотни",
     thousands: "Тысячи",
     millions: "Миллионы",
+    decimals: "Десятичные",
     connectors: "Соединители",
-    numberRangeError: "Пожалуйста, введите число от 0 до 999,999,999",
+    numberRangeError: "Пожалуйста, введите число от 0 до 999,999,999.999",
   },
 });

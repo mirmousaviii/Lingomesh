@@ -26,7 +26,14 @@ const tens = [
 
 export interface NumberPart {
   text: string;
-  type: "unit" | "tens" | "hundreds" | "thousands" | "millions" | "connector";
+  type:
+    | "unit"
+    | "tens"
+    | "hundreds"
+    | "thousands"
+    | "millions"
+    | "connector"
+    | "decimal";
 }
 
 export const convertNumberToGermanStructured = (num: number): NumberPart[] => {
@@ -123,8 +130,54 @@ export const convertNumberToGermanStructured = (num: number): NumberPart[] => {
   return [{ text: num.toString(), type: "unit" }];
 };
 
+// Function to convert decimal numbers to German
+export const convertDecimalToGermanStructured = (num: number): NumberPart[] => {
+  const parts: NumberPart[] = [];
+
+  // Handle the integer part
+  const integerPart = Math.floor(num);
+  if (integerPart > 0) {
+    parts.push(...convertNumberToGermanStructured(integerPart));
+  } else {
+    parts.push({ text: "null", type: "unit" });
+  }
+
+  // Handle the decimal part
+  const decimalPart = num - integerPart;
+  if (decimalPart > 0) {
+    parts.push({ text: " komma ", type: "connector" });
+
+    // Convert to string and find the decimal point
+    const numStr = num.toString();
+    const decimalIndex = numStr.indexOf(".");
+
+    if (decimalIndex !== -1) {
+      // Extract decimal digits after the decimal point
+      const decimalDigits = numStr.substring(decimalIndex + 1);
+
+      // Convert each digit individually
+      for (let i = 0; i < decimalDigits.length; i++) {
+        const digit = parseInt(decimalDigits[i]);
+        if (digit > 0) {
+          parts.push({ text: units[digit], type: "decimal" });
+        } else {
+          parts.push({ text: "null", type: "decimal" });
+        }
+      }
+    }
+  }
+
+  return parts;
+};
+
 // Keep the original function for backward compatibility
 export const convertNumberToGerman = (num: number): string => {
   const parts = convertNumberToGermanStructured(num);
+  return parts.map((part) => part.text).join("");
+};
+
+// New function for decimal numbers
+export const convertDecimalToGerman = (num: number): string => {
+  const parts = convertDecimalToGermanStructured(num);
   return parts.map((part) => part.text).join("");
 };

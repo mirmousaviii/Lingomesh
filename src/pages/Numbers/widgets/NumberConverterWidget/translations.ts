@@ -7,15 +7,19 @@ export interface NumberConverterTranslations {
 export const numberConverterTranslations =
   createTranslations<NumberConverterTranslations>({
     en: {
-      description: "Convert numbers to German words",
+      description:
+        "Convert numbers (including decimals) to German words. Use comma or dot as decimal separator.",
     },
     de: {
-      description: "Konvertieren Sie Zahlen in deutsche Wörter",
+      description:
+        "Konvertieren Sie Zahlen (einschließlich Dezimalzahlen) in deutsche Wörter. Verwenden Sie Komma oder Punkt als Dezimaltrennzeichen.",
     },
     es: {
-      description: "Convierte números a palabras alemanas",
+      description:
+        "Convierte números (incluyendo decimales) a palabras alemanas. Usa coma o punto como separador decimal.",
     },
     ru: {
-      description: "Конвертируйте числа в немецкие слова",
+      description:
+        "Конвертируйте числа (включая десятичные) в немецкие слова. Используйте запятую или точку как десятичный разделитель.",
     },
   });
