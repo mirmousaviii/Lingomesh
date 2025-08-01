@@ -6,7 +6,7 @@ import AudioButton from "../../components/ui/AudioButton/AudioButton";
 import QuizWidget, {
   convertMultilingualQuestions,
 } from "../../components/widgets/QuizWidget/QuizWidget";
-import AlphabetWidget from "../../components/widgets/AlphabetWidget/AlphabetWidget";
+
 import { alphabetQuizQuestions } from "../../data/quizData";
 
 interface AlphabetProps {

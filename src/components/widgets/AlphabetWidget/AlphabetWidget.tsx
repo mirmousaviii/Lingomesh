@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Language } from "../../../hooks/useTranslations";
 import AudioButton from "../../ui/AudioButton/AudioButton";
 
@@ -8,12 +8,26 @@ interface AlphabetWidgetProps {
 
 const AlphabetWidget: React.FC<AlphabetWidgetProps> = ({ language }) => {
   const isGerman = language === "de";
+  const currentUtterance = useRef<SpeechSynthesisUtterance | null>(null);
 
   const speakGerman = (text: string) => {
     if ("speechSynthesis" in window) {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "de-DE";
       utterance.rate = 0.8;
+
+      // Store the utterance reference
+      currentUtterance.current = utterance;
+
+      // Add event listeners to clean up the reference
+      utterance.onend = () => {
+        currentUtterance.current = null;
+      };
+
+      utterance.onerror = () => {
+        currentUtterance.current = null;
+      };
+
       speechSynthesis.speak(utterance);
     }
   };
@@ -377,6 +391,7 @@ const AlphabetWidget: React.FC<AlphabetWidgetProps> = ({ language }) => {
                   onClick={() => speakGerman(item.letter)}
                   title={isGerman ? "Hören" : "Listen"}
                   size="sm"
+                  utteranceRef={currentUtterance}
                 />
               </div>
               <div className="text-center">
@@ -425,6 +440,7 @@ const AlphabetWidget: React.FC<AlphabetWidgetProps> = ({ language }) => {
                     onClick={() => speakGerman(item.example)}
                     title={isGerman ? "Hören" : "Listen"}
                     size="sm"
+                    utteranceRef={currentUtterance}
                   />
                 </div>
                 <div className="space-y-1">
