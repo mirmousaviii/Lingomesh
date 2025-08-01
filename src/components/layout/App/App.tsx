@@ -8,6 +8,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import { MetaTags } from "../../SEO/MetaTags";
 import LanguageSelectionModal from "../../ui/LanguageSelectionModal";
 import RootHandler from "../RootHandler";
+import ScrollToTop from "../ScrollToTop";
 
 // Import all pages
 import {
@@ -149,6 +150,7 @@ function App() {
 
   return (
     <RootHandler>
+      <ScrollToTop />
       <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 theme-transition">
         {/* SEO Meta Tags */}
         <MetaTags
