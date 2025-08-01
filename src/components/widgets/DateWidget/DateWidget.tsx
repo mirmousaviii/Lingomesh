@@ -242,37 +242,37 @@ const DateWidget: React.FC<DateWidgetProps> = ({
           : "Dates and date expressions in German"
       }
     >
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {/* Custom Date Picker Section */}
         <div className="relative">
           {/* Label for date input */}
-          <label className="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+          <label className="block text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
             {language === "de" ? t.time.datumAendern : t.time.clickToChangeDate}
           </label>
 
           {/* Formatted Date Display (Clickable) */}
           <div
             onClick={handleDateClick}
-            className="w-full px-4 py-3 text-lg border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-750 transition-colors duration-200 group"
+            className="w-full px-3 sm:px-4 py-2 sm:py-3 text-base sm:text-lg border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-750 transition-colors duration-200 group"
           >
             <div className="flex items-center justify-between">
-              <p className="text-xl font-bold text-neutral-800 dark:text-neutral-200 md:text-2xl font-space-grotesk">
+              <p className="text-lg sm:text-xl md:text-2xl font-bold text-neutral-800 dark:text-neutral-200 font-space-grotesk">
                 {formatDisplayDate(currentTime)}
               </p>
-              <CalendarDaysIcon className="w-6 h-6 text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors duration-200" />
+              <CalendarDaysIcon className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors duration-200 flex-shrink-0" />
             </div>
             {language === "en" && (
-              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300 md:text-base">
+              <p className="mt-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 md:text-base">
                 {formatEnglishDate(currentTime)}
               </p>
             )}
             {language === "es" && (
-              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300 md:text-base">
+              <p className="mt-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 md:text-base">
                 {formatSpanishDate(currentTime)}
               </p>
             )}
             {language === "ru" && (
-              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300 md:text-base">
+              <p className="mt-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 md:text-base">
                 {formatRussianDate(currentTime)}
               </p>
             )}
@@ -294,17 +294,17 @@ const DateWidget: React.FC<DateWidgetProps> = ({
 
         {/* Result Section */}
         <div className="space-y-4">
-          <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 rounded-md p-6 border border-primary-100 dark:border-primary-800">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex-1 min-w-0">
-                <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed break-words hyphens-auto">
+          <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 rounded-md p-3 sm:p-4 md:p-6 border border-primary-100 dark:border-primary-800">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="flex-1 min-w-0 w-full">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold leading-tight sm:leading-relaxed break-words hyphens-auto overflow-hidden">
                   {convertDateToGermanStructured(currentTime).map(
                     (part, index) => (
                       <span
                         key={index}
                         className={`${getColorClass(
                           part.type
-                        )} transition-colors duration-200`}
+                        )} transition-colors duration-200 inline-block`}
                       >
                         {part.text}
                       </span>
@@ -313,49 +313,51 @@ const DateWidget: React.FC<DateWidgetProps> = ({
                 </p>
               </div>
 
-              <AudioButton
-                onClick={() =>
-                  speakText(convertDateToGermanStructured(currentTime))
-                }
-                title={t.ui.listen}
-                size="lg"
-              />
+              <div className="flex-shrink-0">
+                <AudioButton
+                  onClick={() =>
+                    speakText(convertDateToGermanStructured(currentTime))
+                  }
+                  title={t.ui.listen}
+                  size="lg"
+                />
+              </div>
             </div>
           </div>
 
           {/* Color Legend */}
-          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-4 border border-neutral-200 dark:border-neutral-700">
-            <h4 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-3">
+          <div className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 sm:p-4 border border-neutral-200 dark:border-neutral-700">
+            <h4 className="text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 sm:mb-3">
               {t.ui.colorLegend}
             </h4>
-            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 text-xs">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-neutral-500"></div>
-                <span className="text-neutral-600 dark:text-neutral-400">
+            <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-2 text-xs">
+              <div className="flex items-center gap-1 sm:gap-2">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-neutral-500 flex-shrink-0"></div>
+                <span className="text-neutral-600 dark:text-neutral-400 text-xs">
                   {language === "de" ? "Präfix" : "Prefix"}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                <span className="text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-center gap-1 sm:gap-2">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-blue-500 flex-shrink-0"></div>
+                <span className="text-neutral-600 dark:text-neutral-400 text-xs">
                   {language === "de" ? "Wochentag" : "Weekday"}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <span className="text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-center gap-1 sm:gap-2">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500 flex-shrink-0"></div>
+                <span className="text-neutral-600 dark:text-neutral-400 text-xs">
                   {language === "de" ? "Ordinalzahl" : "Ordinal"}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-purple-500"></div>
-                <span className="text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-center gap-1 sm:gap-2">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-purple-500 flex-shrink-0"></div>
+                <span className="text-neutral-600 dark:text-neutral-400 text-xs">
                   {language === "de" ? "Monat" : "Month"}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-orange-500"></div>
-                <span className="text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-center gap-1 sm:gap-2">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-orange-500 flex-shrink-0"></div>
+                <span className="text-neutral-600 dark:text-neutral-400 text-xs">
                   {language === "de" ? "Jahr" : "Year"}
                 </span>
               </div>

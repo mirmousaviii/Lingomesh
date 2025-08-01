@@ -75,27 +75,27 @@ const OrdinalNumbersWidget: React.FC<OrdinalNumbersWidgetProps> = ({
       description={t?.ordinalNumbersSubtitle || "Ordinal numbers in German"}
       headerColor="purple"
     >
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-3">
         {ordinalNumbers.map((item, index) => (
           <div
             key={index}
-            className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200 relative"
+            className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-2 sm:p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200 relative min-h-[80px] sm:min-h-[100px]"
           >
-            <div className="absolute top-2 right-2 z-10">
+            <div className="absolute top-1 right-1 sm:top-2 sm:right-2 z-10">
               <AudioButton
                 onClick={() => speakGerman(item.german)}
                 title={ui?.listen || "Listen"}
                 size="sm"
               />
             </div>
-            <div className="flex flex-col items-center justify-center text-center">
-              <div className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-1">
+            <div className="flex flex-col items-center justify-center text-center pt-6 sm:pt-8">
+              <div className="text-base sm:text-lg font-bold text-purple-600 dark:text-purple-400 mb-1">
                 {item.number.replace(/\d+/, (match) => {
                   const num = parseInt(match);
                   return num >= 1000 ? num.toLocaleString() : match;
                 })}
               </div>
-              <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+              <div className="text-xs sm:text-sm font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
                 {item.german}
               </div>
             </div>
