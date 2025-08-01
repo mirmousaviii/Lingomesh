@@ -82,22 +82,24 @@ const BasicNumbersWidget: React.FC<BasicNumbersWidgetProps> = ({
         {basicNumbers.map((item) => (
           <div
             key={item.number}
-            className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200"
+            className="bg-neutral-50 dark:bg-neutral-800 rounded-md p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200 relative"
           >
+            <div className="absolute top-2 right-2 z-10">
+              <AudioButton
+                onClick={() => speakGerman(item.german)}
+                title={ui?.listen || "Listen"}
+                size="sm"
+              />
+            </div>
             <div className="flex flex-col items-center justify-center text-center">
               <div className="text-lg font-bold text-primary-600 dark:text-primary-400 mb-1">
                 {item.number >= 1000
                   ? item.number.toLocaleString()
                   : item.number}
               </div>
-              <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+              <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
                 {item.german}
               </div>
-              <AudioButton
-                onClick={() => speakGerman(item.german)}
-                title={ui?.listen || "Listen"}
-                size="sm"
-              />
             </div>
           </div>
         ))}
