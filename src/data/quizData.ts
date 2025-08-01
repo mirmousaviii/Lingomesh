@@ -585,6 +585,155 @@ export const alphabetQuizQuestions: MultilingualQuizQuestion[] = [
   },
 ];
 
+// Country Quiz Questions
+export const countryQuizQuestions: MultilingualQuizQuestion[] = [
+  {
+    question: {
+      en: "Wie sagt man 'Germany' auf Deutsch?",
+      de: "Wie sagt man 'Germany' auf Deutsch?",
+      es: "Wie sagt man 'Germany' auf Deutsch?",
+      ru: "Wie sagt man 'Germany' auf Deutsch?",
+    },
+    options: {
+      en: ["Österreich", "Deutschland", "Schweiz", "Frankreich"],
+      de: ["Österreich", "Deutschland", "Schweiz", "Frankreich"],
+      es: ["Österreich", "Deutschland", "Schweiz", "Frankreich"],
+      ru: ["Österreich", "Deutschland", "Schweiz", "Frankreich"],
+    },
+    correctAnswer: 1,
+    explanation: {
+      en: "'Germany' is 'Deutschland' in German.",
+      de: "'Germany' ist 'Deutschland' auf Deutsch.",
+      es: "'Germany' es 'Deutschland' en alemán.",
+      ru: "'Germany' это 'Deutschland' на немецком.",
+    },
+  },
+  {
+    question: {
+      en: "Wie sagt man 'I am German' auf Deutsch?",
+      de: "Wie sagt man 'I am German' auf Deutsch?",
+      es: "Wie sagt man 'I am German' auf Deutsch?",
+      ru: "Wie sagt man 'I am German' auf Deutsch?",
+    },
+    options: {
+      en: [
+        "Ich bin Deutschland",
+        "Ich bin Deutscher",
+        "Ich bin Deutsch",
+        "Ich bin Deutschlander",
+      ],
+      de: [
+        "Ich bin Deutschland",
+        "Ich bin Deutscher",
+        "Ich bin Deutsch",
+        "Ich bin Deutschlander",
+      ],
+      es: [
+        "Ich bin Deutschland",
+        "Ich bin Deutscher",
+        "Ich bin Deutsch",
+        "Ich bin Deutschlander",
+      ],
+      ru: [
+        "Ich bin Deutschland",
+        "Ich bin Deutscher",
+        "Ich bin Deutsch",
+        "Ich bin Deutschlander",
+      ],
+    },
+    correctAnswer: 1,
+    explanation: {
+      en: "'I am German' is 'Ich bin Deutscher' (male) or 'Ich bin Deutsche' (female).",
+      de: "'I am German' ist 'Ich bin Deutscher' (männlich) oder 'Ich bin Deutsche' (weiblich).",
+      es: "'I am German' es 'Ich bin Deutscher' (masculino) o 'Ich bin Deutsche' (femenino).",
+      ru: "'I am German' это 'Ich bin Deutscher' (мужской) или 'Ich bin Deutsche' (женский).",
+    },
+  },
+  {
+    question: {
+      en: "Welches Land hat die Hauptstadt 'Wien'?",
+      de: "Welches Land hat die Hauptstadt 'Wien'?",
+      es: "Welches Land hat die Hauptstadt 'Wien'?",
+      ru: "Welches Land hat die Hauptstadt 'Wien'?",
+    },
+    options: {
+      en: ["Deutschland", "Österreich", "Schweiz", "Ungarn"],
+      de: ["Deutschland", "Österreich", "Schweiz", "Ungarn"],
+      es: ["Deutschland", "Österreich", "Schweiz", "Ungarn"],
+      ru: ["Deutschland", "Österreich", "Schweiz", "Ungarn"],
+    },
+    correctAnswer: 1,
+    explanation: {
+      en: "Vienna (Wien) is the capital of Austria (Österreich).",
+      de: "Wien ist die Hauptstadt von Österreich.",
+      es: "Viena (Wien) es la capital de Austria (Österreich).",
+      ru: "Вена (Wien) - столица Австрии (Österreich).",
+    },
+  },
+  {
+    question: {
+      en: "Wie sagt man 'I come from France' auf Deutsch?",
+      de: "Wie sagt man 'I come from France' auf Deutsch?",
+      es: "Wie sagt man 'I come from France' auf Deutsch?",
+      ru: "Wie sagt man 'I come from France' auf Deutsch?",
+    },
+    options: {
+      en: [
+        "Ich komme aus Frankreich",
+        "Ich komme von Frankreich",
+        "Ich bin aus Frankreich",
+        "Ich bin von Frankreich",
+      ],
+      de: [
+        "Ich komme aus Frankreich",
+        "Ich komme von Frankreich",
+        "Ich bin aus Frankreich",
+        "Ich bin von Frankreich",
+      ],
+      es: [
+        "Ich komme aus Frankreich",
+        "Ich komme von Frankreich",
+        "Ich bin aus Frankreich",
+        "Ich bin von Frankreich",
+      ],
+      ru: [
+        "Ich komme aus Frankreich",
+        "Ich komme von Frankreich",
+        "Ich bin aus Frankreich",
+        "Ich bin von Frankreich",
+      ],
+    },
+    correctAnswer: 0,
+    explanation: {
+      en: "'I come from France' is 'Ich komme aus Frankreich' in German.",
+      de: "'I come from France' ist 'Ich komme aus Frankreich' auf Deutsch.",
+      es: "'I come from France' es 'Ich komme aus Frankreich' en alemán.",
+      ru: "'I come from France' это 'Ich komme aus Frankreich' на немецком.",
+    },
+  },
+  {
+    question: {
+      en: "Welches Land hat keinen Artikel im Deutschen?",
+      de: "Welches Land hat keinen Artikel im Deutschen?",
+      es: "Welches Land hat keinen Artikel im Deutschen?",
+      ru: "Welches Land hat keinen Artikel im Deutschen?",
+    },
+    options: {
+      en: ["die Schweiz", "Deutschland", "die USA", "Österreich"],
+      de: ["die Schweiz", "Deutschland", "die USA", "Österreich"],
+      es: ["die Schweiz", "Deutschland", "die USA", "Österreich"],
+      ru: ["die Schweiz", "Deutschland", "die USA", "Österreich"],
+    },
+    correctAnswer: 1,
+    explanation: {
+      en: "Most countries don't have articles, but some do like 'die Schweiz' and 'die USA'.",
+      de: "Die meisten Länder haben keinen Artikel, aber einige wie 'die Schweiz' und 'die USA'.",
+      es: "La mayoría de países no tienen artículos, pero algunos como 'die Schweiz' y 'die USA' sí.",
+      ru: "Большинство стран не имеют артиклей, но некоторые как 'die Schweiz' и 'die USA' имеют.",
+    },
+  },
+];
+
 // Export all quiz data
 export const quizData = {
   time: timeQuizQuestions,
@@ -593,4 +742,5 @@ export const quizData = {
   numbers: numbersQuizQuestions,
   weather: weatherQuizQuestions,
   alphabet: alphabetQuizQuestions,
+  country: countryQuizQuestions,
 };
