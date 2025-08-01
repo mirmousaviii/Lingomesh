@@ -21,6 +21,10 @@ export const useRouting = () => {
     getPageFromPath(location.pathname)
   );
   const [isPageValid, setIsPageValid] = useState<boolean>(() => {
+    // Special handling for root path
+    if (location.pathname === "/") {
+      return true; // Root path is always valid, RootHandler will handle it
+    }
     const page = getPageFromPath(location.pathname);
     const languageValid = isLanguageValid(location.pathname);
     return AVAILABLE_PAGES.includes(page) && page !== "404" && languageValid;
@@ -28,6 +32,14 @@ export const useRouting = () => {
 
   // Update state when URL changes
   useEffect(() => {
+    // Special handling for root path
+    if (location.pathname === "/") {
+      setCurrentLanguage(null);
+      setCurrentPage("home");
+      setIsPageValid(true); // Root path is always valid, RootHandler will handle it
+      return;
+    }
+
     const newLanguage = getLanguageFromPath(location.pathname);
     const newPage = getPageFromPath(location.pathname);
     const languageValid = isLanguageValid(location.pathname);

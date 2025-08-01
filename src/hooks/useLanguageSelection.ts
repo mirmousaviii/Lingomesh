@@ -8,13 +8,8 @@ export const useLanguageSelection = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if language is already set in localStorage
-    const savedLanguage = localStorage.getItem("lang");
-
-    if (!savedLanguage) {
-      // No language saved - show the language selection modal
-      setShowLanguageModal(true);
-    }
+    // Only show modal if explicitly opened, not automatically
+    // The RootHandler will handle the initial language detection
   }, []);
 
   const handleLanguageSelect = (language: Language) => {

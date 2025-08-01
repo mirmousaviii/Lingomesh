@@ -7,6 +7,7 @@ import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 import { MetaTags } from "../../SEO/MetaTags";
 import LanguageSelectionModal from "../../ui/LanguageSelectionModal";
+import RootHandler from "../RootHandler";
 
 // Import all pages
 import {
@@ -48,6 +49,11 @@ function App() {
       language: currentLanguage,
       onPageChange: changePage,
     };
+
+    // Special handling for root path
+    if (window.location.pathname === "/") {
+      return <Home {...pageProps} />;
+    }
 
     // Show 404 page if the current page is not valid
     if (!isPageValid) {
@@ -142,53 +148,55 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 theme-transition">
-      {/* SEO Meta Tags */}
-      <MetaTags
-        language={currentLanguage}
-        page={currentPage}
-        is404={!isPageValid}
-      />
-
-      {/* Language Selection Modal */}
-      <LanguageSelectionModal
-        isOpen={showLanguageModal}
-        onLanguageSelect={handleLanguageSelect}
-      />
-
-      {/* Header */}
-      <Header
-        language={currentLanguage}
-        setLanguage={changeLanguage}
-        themeMode={themeMode}
-        handleThemeChange={handleThemeChange}
-        isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-        openModal={openModal}
-      />
-
-      {/* Main Layout */}
-      <div className="flex h-[calc(100vh-4rem)]">
-        {/* Sidebar */}
-        <Sidebar
-          currentPage={currentPage}
-          onPageChange={changePage}
+    <RootHandler>
+      <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 theme-transition">
+        {/* SEO Meta Tags */}
+        <MetaTags
           language={currentLanguage}
-          isOpen={isSidebarOpen}
-          setIsOpen={setIsSidebarOpen}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
+          page={currentPage}
+          is404={!isPageValid}
         />
 
-        {/* Main Content */}
-        <div className="flex-1 flex flex-col overflow-hidden theme-transition">
-          {/* Content Area */}
-          <main className="flex-1 overflow-y-auto theme-transition">
-            {renderCurrentPage()}
-          </main>
+        {/* Language Selection Modal */}
+        <LanguageSelectionModal
+          isOpen={showLanguageModal}
+          onLanguageSelect={handleLanguageSelect}
+        />
+
+        {/* Header */}
+        <Header
+          language={currentLanguage}
+          setLanguage={changeLanguage}
+          themeMode={themeMode}
+          handleThemeChange={handleThemeChange}
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+          openModal={openModal}
+        />
+
+        {/* Main Layout */}
+        <div className="flex h-[calc(100vh-4rem)]">
+          {/* Sidebar */}
+          <Sidebar
+            currentPage={currentPage}
+            onPageChange={changePage}
+            language={currentLanguage}
+            isOpen={isSidebarOpen}
+            setIsOpen={setIsSidebarOpen}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+
+          {/* Main Content */}
+          <div className="flex-1 flex flex-col overflow-hidden theme-transition">
+            {/* Content Area */}
+            <main className="flex-1 overflow-y-auto theme-transition">
+              {renderCurrentPage()}
+            </main>
+          </div>
         </div>
       </div>
-    </div>
+    </RootHandler>
   );
 }
 
